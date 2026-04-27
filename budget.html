@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Price a GitHub Actions workflow in your browser - depmedic</title>
+<meta name="description" content="Paste a workflow YAML, get the dollar cost per run and projected monthly spend. Matrix expansion, real GitHub-hosted runner pricing. Runs entirely in your browser." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/budget.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Price a GitHub Actions workflow in your browser" />
+<meta property="og:description" content="Paste a workflow, see the per-run cost in dollars and the projected monthly spend. No signup, no upload." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/budget.html" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; }
+  .nav a { color: #9aa3ad; }
+  .lead { color: #b6bec7; margin: 0 0 24px; max-width: 64ch; }
+  h2 { font-size: 16px; color: #c9d1d9; margin: 24px 0 10px; letter-spacing: 0.02em; text-transform: uppercase; }
+
+  textarea {
+    width: 100%; min-height: 220px;
+    background: #0b0d10; color: #e6e8eb;
+    border: 1px solid #2a3744; border-radius: 8px; padding: 14px 16px;
+    font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace;
+    resize: vertical;
+  }
+  textarea.drop { border-color: #6cb6ff; }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 16px; align-items: center; }
+  button {
+    background: #2a3744; color: #e6e8eb; border: 1px solid #3a4754;
+    padding: 9px 16px; border-radius: 6px; font: inherit; cursor: pointer;
+  }
+  button.primary { background: #2d5a7a; border-color: #3a6e94; }
+  button:hover { filter: brightness(1.1); }
+  .input { display: flex; align-items: center; gap: 6px; color: #9aa3ad; font-size: 14px; }
+  .input input {
+    width: 80px; background: #0b0d10; color: #e6e8eb;
+    border: 1px solid #2a3744; border-radius: 6px; padding: 6px 8px;
+    font: inherit;
+  }
+
+  .totals {
+    display: none; gap: 14px; margin: 18px 0; flex-wrap: wrap;
+  }
+  .totals.show { display: flex; }
+  .stat {
+    flex: 1 1 200px; background: #11151b; border: 1px solid #1e242c; border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .stat .label { color: #9aa3ad; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .val { font-size: 24px; font-weight: 600; margin-top: 4px; color: #9ce29c; }
+  .stat .val.neutral { color: #e6e8eb; }
+  .stat .sub { color: #6f7882; font-size: 13px; margin-top: 2px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 14px; display: none; }
+  table.show { display: table; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  tr:last-child td { border-bottom: none; }
+  td.right, th.right { text-align: right; }
+  td.cost { color: #9ce29c; font-weight: 500; }
+  td.muted { color: #6f7882; }
+
+  .cta {
+    background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px;
+    padding: 22px 24px; margin: 24px 0;
+    display: none; flex-wrap: wrap; align-items: center; gap: 14px;
+  }
+  .cta.show { display: flex; }
+  .cta .text { flex: 1 1 320px; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; }
+  .cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+  .cta .btn {
+    display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500;
+    border: 1px solid #3a4754;
+  }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+
+  .err { color: #ffb8b8; font-size: 14px; margin-top: 8px; }
+  .footnote { color: #6f7882; font-size: 13px; margin: 28px 0 0; border-top: 1px solid #1e242c; padding-top: 14px; }
+  .badge { display: inline-block; padding: 1px 8px; border-radius: 999px; background: #1e242c; color: #9aa3ad; font-size: 12px; vertical-align: middle; margin-left: 6px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / budget</p>
+
+<h1>Price a workflow in your browser <span class="badge">no upload</span></h1>
+<p class="lead">
+  Paste or drop a GitHub Actions workflow YAML. The page expands matrix
+  combinations, applies official GitHub-hosted runner pricing, and tells
+  you per-run cost and projected monthly spend. Same engine as
+  <a href="https://www.npmjs.com/package/gha-budget">gha-budget</a> on npm.
+  Nothing leaves this page.
+</p>
+
+<textarea id="src" placeholder="# Paste your workflow YAML here.
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - run: npm test"></textarea>
+
+<div class="controls">
+  <button class="primary" id="priceBtn">Price it</button>
+  <button id="sampleBtn">Load expensive example</button>
+  <button id="shareBtn" title="Copy a link that reproduces this estimate">Copy share link</button>
+  <span style="flex:1"></span>
+  <span class="input">
+    <label for="minutes">Avg minutes per job</label>
+    <input id="minutes" type="number" min="1" value="5" />
+  </span>
+  <span class="input">
+    <label for="rpd">Runs per day</label>
+    <input id="rpd" type="number" min="1" value="10" />
+  </span>
+</div>
+
+<div class="totals" id="totals"></div>
+<table id="jobs">
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>Runs on</th>
+      <th class="right">Matrix</th>
+      <th class="right">Min/run</th>
+      <th class="right">Rate/min</th>
+      <th class="right">Cost/run</th>
+    </tr>
+  </thead>
+  <tbody id="jobsBody"></tbody>
+</table>
+
+<div class="err" id="err"></div>
+
+<div class="cta" id="cta">
+  <div class="text">
+    <h3 id="ctaH">Want to make that number go down?</h3>
+    <p id="ctaP">
+      The <strong>Cut Your CI Bill</strong> cookbook ships 30 paste-ready
+      patterns for trimming exactly this kind of bill. $19, one-time,
+      MIT-licensed templates.
+    </p>
+  </div>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD" rel="noopener">Get the cookbook</a>
+</div>
+
+<h2>See where the money goes</h2>
+<p>
+  This page only prices the workflow. To see <em>what is wasteful and how to
+  fix it</em>, run the audit: <a href="/audit.html">audit it in your browser</a>
+  or <code>npx ci-doctor</code> in CI.
+</p>
+
+<p class="footnote">
+  Pricing per <a href="https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions">GitHub's published rates</a>:
+  ubuntu $0.008/min, windows $0.016/min, macos $0.08/min. Larger runners
+  are priced separately. Self-hosted runners cost $0 in this model.
+</p>
+
+</main>
+<script src="./gha-budget.bundle.js"></script>
+<script>
+const SAMPLE = `name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci && npm test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./deploy.sh
+`;
+
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => '$' + Number(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtSmall = (n) => '$' + Number(n).toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+
+function render(result, runsPerDay) {
+  const totals = $('totals');
+  const tbody = $('jobsBody');
+  const tbl = $('jobs');
+  const err = $('err');
+  const cta = $('cta');
+  err.textContent = '';
+
+  if (result.error) {
+    err.textContent = result.error;
+    totals.classList.remove('show');
+    tbl.classList.remove('show');
+    cta.classList.remove('show');
+    return;
+  }
+
+  tbody.innerHTML = '';
+  for (const j of result.jobs) {
+    const tr = document.createElement('tr');
+    const rate = j.ratePerMinUsd == null ? '—' : fmtSmall(j.ratePerMinUsd);
+    const cost = j.costPerRunUsd == null
+      ? '<span class="muted">unknown runner</span>'
+      : fmt(j.costPerRunUsd);
+    tr.innerHTML =
+      '<td><code>' + j.job + '</code></td>' +
+      '<td>' + j.runsOn + (j.selfHosted ? ' <span class="muted">(self-hosted)</span>' : '') + '</td>' +
+      '<td class="right">' + j.matrix + '</td>' +
+      '<td class="right">' + j.minutesPerRun + '</td>' +
+      '<td class="right">' + rate + '</td>' +
+      '<td class="right cost">' + cost + '</td>';
+    tbody.appendChild(tr);
+  }
+  tbl.classList.add('show');
+
+  const proj = window.ghaBudget.projectMonthly([result], runsPerDay);
+  totals.innerHTML =
+    '<div class="stat"><div class="label">Per run</div><div class="val">' + fmt(proj.totalPerRunUsd) + '</div><div class="sub">' + result.knownJobs + ' priced job(s)</div></div>' +
+    '<div class="stat"><div class="label">Daily (' + runsPerDay + ' runs)</div><div class="val neutral">' + fmt(proj.dailyUsd) + '</div></div>' +
+    '<div class="stat"><div class="label">Monthly projection</div><div class="val">' + fmt(proj.monthlyUsd) + '</div><div class="sub">30 days &times; daily</div></div>';
+  totals.classList.add('show');
+
+  const ctaH = $('ctaH');
+  const ctaP = $('ctaP');
+  if (proj.monthlyUsd >= 100) {
+    ctaH.textContent = 'About ' + fmt(proj.monthlyUsd) + '/month. The cookbook is ' + fmt(19) + '.';
+    ctaP.innerHTML = '30 paste-ready patterns and 5 hardened workflow templates that target exactly this kind of leak. The cancel-superseded-runs pattern alone usually pays for itself in days.';
+  } else {
+    ctaH.textContent = 'Want to push that down further?';
+    ctaP.innerHTML = 'The <strong>Cut Your CI Bill</strong> cookbook ships 30 paste-ready patterns and 5 hardened workflow templates. $19, one-time, MIT-licensed templates.';
+  }
+  cta.classList.add('show');
+}
+
+function run() {
+  const src = $('src').value;
+  if (!src.trim()) return;
+  const minutes = Math.max(1, Number($('minutes').value) || 5);
+  const rpd = Math.max(1, Number($('rpd').value) || 10);
+  try {
+    const r = window.ghaBudget.analyzeWorkflow('workflow.yml', src, { minutes });
+    render(r, rpd);
+  } catch (e) {
+    $('err').textContent = (e && e.message) || String(e);
+  }
+}
+
+$('priceBtn').addEventListener('click', run);
+$('sampleBtn').addEventListener('click', () => { $('src').value = SAMPLE; run(); });
+$('minutes').addEventListener('input', run);
+$('rpd').addEventListener('input', run);
+$('src').addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') run();
+});
+
+$('shareBtn').addEventListener('click', async () => {
+  const v = $('src').value;
+  if (!v.trim()) return;
+  let payload;
+  try {
+    const bytes = new TextEncoder().encode(v);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    payload = btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  } catch (e) {
+    payload = encodeURIComponent(v);
+  }
+  const params = 'y=' + payload + '&m=' + $('minutes').value + '&r=' + $('rpd').value;
+  const url = location.origin + location.pathname + '#' + params;
+  history.replaceState(null, '', url);
+  try {
+    await navigator.clipboard.writeText(url);
+    const btn = $('shareBtn');
+    const old = btn.textContent;
+    btn.textContent = 'Copied. Link in address bar.';
+    setTimeout(() => { btn.textContent = old; }, 2200);
+  } catch (e) { prompt('Share link:', url); }
+});
+
+(function loadFromHash() {
+  const h = location.hash.replace(/^#/, '');
+  if (!h) return;
+  const params = new URLSearchParams(h.replace(/&amp;/g, '&'));
+  const y = params.get('y');
+  const m = params.get('m');
+  const r = params.get('r');
+  if (m) $('minutes').value = m;
+  if (r) $('rpd').value = r;
+  if (!y) return;
+  try {
+    let b64 = y.replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    $('src').value = new TextDecoder().decode(bytes);
+    run();
+  } catch (e) { /* ignore */ }
+})();
+
+const ta = $('src');
+ta.addEventListener('dragover', (e) => { e.preventDefault(); ta.classList.add('drop'); });
+ta.addEventListener('dragleave', () => ta.classList.remove('drop'));
+ta.addEventListener('drop', (e) => {
+  e.preventDefault();
+  ta.classList.remove('drop');
+  const file = e.dataTransfer.files[0];
+  if (!file) return;
+  const r = new FileReader();
+  r.onload = () => { ta.value = r.result; run(); };
+  r.readAsText(file);
+});
+</script>
+</body>
+</html>
