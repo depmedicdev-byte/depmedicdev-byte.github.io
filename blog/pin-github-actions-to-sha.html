@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pin every GitHub Action to a SHA. One command. - depmedic</title>
+<meta name="description" content="Tags are mutable. Branches are mutable. SHAs are not. pin-actions rewrites every uses: line in your workflows to a full commit SHA. Supply chain hardening in one command." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/pin-github-actions-to-sha.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Pin every GitHub Action to a SHA. One command." />
+<meta property="og:description" content="pin-actions rewrites every uses: line in your workflows to a full commit SHA." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/pin-github-actions-to-sha.html" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #9aa3ad; margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; color: #c9d1d9; }
+  p { margin: 0 0 16px; }
+  code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; font-size: 13.5px; background: #11151b; padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 13.5px; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; }
+  blockquote { border-left: 3px solid #1e242c; margin: 16px 0; padding: 4px 16px; color: #b6bec7; }
+  .nav { font-size: 13.5px; color: #9aa3ad; margin-bottom: 28px; }
+  .nav a { color: #9aa3ad; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>Pin every GitHub Action to a SHA. One command.</h1>
+<p class="meta">2026-04-27 - pin-actions</p>
+
+<p>
+  Tags are mutable. Branches are mutable. The author of an action you use
+  can rewrite <code>v4</code> tomorrow morning to point at code that
+  exfiltrates your <code>GITHUB_TOKEN</code>. The first you'd hear about it
+  is when an attacker pushes commits to your default branch using the
+  privileges your CI handed out the last time the workflow ran.
+</p>
+
+<p>
+  This is not theoretical. The
+  <a href="https://www.stepsecurity.io/blog/popular-github-action-tj-actions-changed-files-is-compromised">tj-actions/changed-files compromise</a>
+  in early 2025 hit thousands of repos this exact way. Affected workflows
+  pinned to a tag. The patched workflows pinned to a SHA.
+</p>
+
+<p>
+  GitHub's own
+  <a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">security hardening guide</a>
+  says, plainly: pin third-party actions to a full-length commit SHA.
+</p>
+
+<h2>Nobody does this by hand</h2>
+
+<p>
+  A 40-character SHA is not a thing humans want to type into YAML. So
+  almost everyone uses tags. And the few people who pin to SHAs do it for
+  one or two actions in one or two repos and then give up.
+</p>
+
+<p>
+  <a href="https://www.npmjs.com/package/pin-actions"><code>pin-actions</code></a>
+  is a free MIT CLI that walks every <code>.github/workflows/*.yml</code>,
+  finds every <code>uses: owner/repo@ref</code> line, resolves the ref
+  against the GitHub API, and rewrites the line in place to use the full
+  SHA - keeping the original ref as a comment so the file is still readable.
+</p>
+
+<p>
+  Before:
+</p>
+
+<pre><code>- uses: actions/checkout@v4</code></pre>
+
+<p>
+  After:
+</p>
+
+<pre><code>- uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11  # v4</code></pre>
+
+<h2>One command</h2>
+
+<pre><code>npx pin-actions</code></pre>
+
+<p>
+  That's the whole flow. It walks your workflows, calls the GitHub API to
+  resolve each ref, rewrites the file, and prints what it changed.
+</p>
+
+<p>
+  In CI, use <code>--check</code> to fail the job if anything is unpinned:
+</p>
+
+<pre><code>npx pin-actions --check</code></pre>
+
+<p>
+  That's a one-line, zero-config supply-chain CI gate.
+</p>
+
+<h2>What it leaves alone</h2>
+
+<ul>
+  <li>Local actions (<code>uses: ./actions/foo</code>) - they live in your repo.</li>
+  <li>Docker actions (<code>uses: docker://alpine:3</code>) - they're versioned at the registry, not at git.</li>
+  <li>Already-pinned refs (40-char SHA) - it's idempotent. Run it as often as you want.</li>
+</ul>
+
+<h2>Rate limits</h2>
+
+<p>
+  Unauthenticated GitHub API requests are limited to 60 per hour. Most
+  workflows have under ten unique <code>uses:</code> lines, so the
+  unauthenticated limit is fine for one-off runs. For CI, pass a token:
+</p>
+
+<pre><code>GITHUB_TOKEN=ghp_xxx npx pin-actions --check</code></pre>
+
+<p>
+  In a GitHub Actions workflow, <code>${{ github.token }}</code> is the
+  token to pass.
+</p>
+
+<h2>The companion tool</h2>
+
+<p>
+  <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
+  flags unpinned actions as a warning and points at <code>pin-actions</code>.
+  The two-line workflow hardening pass is:
+</p>
+
+<pre><code>npx ci-doctor --fix     # adds permissions, concurrency, timeouts
+npx pin-actions         # pins every action to a SHA</code></pre>
+
+<p>
+  Both finish in under two seconds on a normal repo. Both are MIT.
+</p>
+
+<h2>Try it</h2>
+
+<pre><code>npx pin-actions</code></pre>
+
+<p>
+  Source on
+  <a href="https://github.com/depmedicdev-byte/pin-actions">GitHub</a>.
+</p>
+
+<footer>
+  <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>
