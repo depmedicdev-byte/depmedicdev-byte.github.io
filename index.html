@@ -132,6 +132,20 @@
   .cta { color: #6cb6ff; }
   footer { margin-top: 48px; color: #6f7882; font-size: 13px; }
   footer a { color: #9aa3ad; }
+  .hero-cta {
+    background: linear-gradient(135deg, #11151b, #16202b);
+    border: 1px solid #2a3744; border-radius: 10px;
+    padding: 14px 18px; margin: 0 0 28px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  }
+  .hero-cta .text { color: #b6bec7; font-size: 14.5px; flex: 1 1 320px; }
+  .hero-cta .text strong { color: #e6e8eb; }
+  .hero-cta .btn {
+    display: inline-block; padding: 8px 14px; border-radius: 6px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500;
+    border: 1px solid #3a4754; font-size: 14px;
+  }
+  .hero-cta .btn:hover { text-decoration: none; background: #3a4754; }
 </style>
 </head>
 <body>
@@ -141,6 +155,15 @@
   <h1>depmedic <span class="pill">small tools, real bills</span></h1>
   <p class="tag">Tools for the boring, expensive parts of CI and dependency management. Free CLIs are MIT. Paid playbooks ship as zips.</p>
 </header>
+
+<div class="hero-cta">
+  <div class="text">
+    <strong>Cut Your CI Bill cookbook</strong> &mdash; 30 paste-ready GitHub
+    Actions patterns and 5 hardened workflow templates. Companion to
+    ci-doctor. $19, one-time.
+  </div>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD" rel="noopener">Get the cookbook</a>
+</div>
 
 <h2>Free CLIs</h2>
 <div class="grid">
@@ -199,8 +222,8 @@
     </tr>
     <tr>
       <td><a href="https://buy.polar.sh/polar_cl_JVgKDJuOyHONZmW2GlP8oBoIIME2ZDCxlfP5c3ZA1ZN" class="cta">Pro license (yearly)</a></td>
-      <td class="price">$39/yr</td>
-      <td>Same as monthly. Two months free.</td>
+      <td class="price">$90/yr</td>
+      <td>Same as monthly. Two months free vs paying monthly.</td>
     </tr>
   </tbody>
 </table>
