@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>depmedic - tools for the boring, expensive parts of CI</title>
+<meta name="description" content="Free CLIs and paid playbooks for cutting CI cost, triaging npm vulnerabilities, and getting senior-dev output from AI coding tools. MIT, no signup, no telemetry." />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="depmedic - tools for the boring, expensive parts of CI" />
+<meta property="og:description" content="Four free CLIs (depmedic, ci-doctor, gha-budget, cursor-rules-init) and a small set of paid playbooks. MIT." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #0b0d10;
+    color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 880px; margin: 0 auto; padding: 56px 24px 80px; }
+  header h1 {
+    font-size: 32px; margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  header .tag { color: #9aa3ad; margin: 0 0 24px; }
+  h2 {
+    font-size: 18px; margin: 36px 0 12px;
+    color: #c9d1d9; letter-spacing: 0.02em; text-transform: uppercase;
+  }
+  code, pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; }
+  pre {
+    background: #11151b; border: 1px solid #1e242c; border-radius: 8px;
+    padding: 14px 16px; overflow: auto; font-size: 13.5px;
+  }
+  .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: #11151b; border: 1px solid #1e242c; border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 16px; }
+  .card p { margin: 0 0 10px; color: #b6bec7; font-size: 14.5px; }
+  .card .cmd { color: #9ce29c; font-size: 13px; }
+  .pill {
+    display: inline-block; padding: 1px 8px; border-radius: 999px;
+    background: #1e242c; color: #9aa3ad; font-size: 12px; margin-left: 6px;
+    vertical-align: middle;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  .price { white-space: nowrap; color: #c9d1d9; }
+  .cta { color: #6cb6ff; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; }
+  footer a { color: #9aa3ad; }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>depmedic <span class="pill">small tools, real bills</span></h1>
+  <p class="tag">Tools for the boring, expensive parts of CI and dependency management. Free CLIs are MIT. Paid playbooks ship as zips.</p>
+</header>
+
+<h2>Free CLIs</h2>
+<div class="grid">
+  <div class="card">
+    <h3><a href="https://www.npmjs.com/package/depmedic">depmedic</a></h3>
+    <p>Surgical npm vulnerability triage. Smallest set of bumps that close the reported vulns. Prod/dev split. CI exit codes.</p>
+    <div class="cmd">$ npx depmedic</div>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a></h3>
+    <p>Audit GitHub Actions workflows for waste, cost, and security gaps. CLI plus an Action that posts a sticky PR comment.</p>
+    <div class="cmd">$ npx ci-doctor --demo</div>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.npmjs.com/package/gha-budget">gha-budget</a></h3>
+    <p>Estimate the dollar cost of a GHA workflow before you commit it. Per-runner pricing, matrix expansion, monthly projection.</p>
+    <div class="cmd">$ npx gha-budget</div>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.npmjs.com/package/cursor-rules-init">cursor-rules-init</a></h3>
+    <p>Scaffold an opinionated <code>.cursorrules</code> starter for Cursor, Claude, ChatGPT. Stack overlays for TS, React, Next.js, Python, Node.</p>
+    <div class="cmd">$ npx cursor-rules-init typescript</div>
+  </div>
+</div>
+
+<h2>Paid playbooks</h2>
+<table>
+  <thead>
+    <tr><th>Product</th><th>Price</th><th>What's in it</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://buy.polar.sh/polar_cl_uB8vltMstgTufNMgUCEslCJXYrJdKh7IiaV4X40HCoS" class="cta">Senior Dev System Prompt</a></td>
+      <td class="price">$3</td>
+      <td>One hand-tuned system prompt that makes any chat-based AI tool act like a senior dev. Drops into Cursor, Claude, ChatGPT, local LLMs.</td>
+    </tr>
+    <tr>
+      <td><a href="https://buy.polar.sh/polar_cl_jxM0uITjh3WOQYgLnrVfRgN3yLjhvCCB8iItg3PHmOy" class="cta">Senior Dev Cursor Rules pack</a></td>
+      <td class="price">$7</td>
+      <td>24 <code>.cursorrules</code> files plus 3 system prompts. Stack overlays for TS, React, Next.js App Router, Python, Node, REST, Postgres, testing, security.</td>
+    </tr>
+    <tr>
+      <td><a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD" class="cta">Cut Your CI Bill cookbook</a></td>
+      <td class="price">$19</td>
+      <td>30 patterns for cheaper, faster, less leaky GitHub Actions. 5 paste-ready snippet workflows. Companion to ci-doctor.</td>
+    </tr>
+    <tr>
+      <td><a href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09" class="cta">Pro license (monthly)</a></td>
+      <td class="price">$9/mo</td>
+      <td>Pro tier for depmedic + ci-doctor. Org policy file, audit history, private-repo support, dollar-based cost projection.</td>
+    </tr>
+    <tr>
+      <td><a href="https://buy.polar.sh/polar_cl_JVgKDJuOyHONZmW2GlP8oBoIIME2ZDCxlfP5c3ZA1ZN" class="cta">Pro license (yearly)</a></td>
+      <td class="price">$39/yr</td>
+      <td>Same as monthly. Two months free.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Why these tools</h2>
+<p>
+  <code>npm audit fix</code> is too aggressive. Dependabot floods inboxes. Snyk wants
+  an enterprise contract. Most teams discover their CI bill after it triples.
+  Most <code>.cursorrules</code> files are copied from blog posts and never updated.
+</p>
+<p>
+  These tools each do one thing, ship as a single CLI, run in seconds, and
+  give CI-friendly exit codes. The paid playbooks are the deeper pattern set
+  for the same problems.
+</p>
+
+<h2>How to reach me</h2>
+<p>
+  Open an issue on the relevant repo, or email
+  <a href="mailto:depmedic.dev@gmail.com">depmedic.dev@gmail.com</a> for licensing or
+  commercial questions. Source is on <a href="https://github.com/depmedicdev-byte">GitHub</a>.
+</p>
+
+<footer>
+  Built and reviewed line by line. Shipped only when tests pass. MIT for free
+  CLIs; paid playbooks are licensed for the buyer's use.
+</footer>
+
+</main>
+</body>
+</html>
