@@ -129,6 +129,7 @@ jobs:
 <div class="controls">
   <button class="primary" id="auditBtn">Audit workflow</button>
   <button id="sampleBtn">Load a known-bad example</button>
+  <button id="shareBtn" title="Copy a link that reproduces this audit">Copy share link</button>
   <button id="clearBtn">Clear</button>
   <span style="flex:1"></span>
   <span style="color:#6f7882;font-size:13px;align-self:center;">Engine: ci-doctor <span id="ver">--</span></span>
@@ -277,10 +278,49 @@ $('clearBtn').addEventListener('click', () => {
   $('summary').style.display = 'none';
   $('findings').style.display = 'none';
   $('cta').classList.remove('show');
+  history.replaceState(null, '', location.pathname);
+});
+$('shareBtn').addEventListener('click', async () => {
+  const v = $('src').value;
+  if (!v.trim()) return;
+  let payload;
+  try {
+    const bytes = new TextEncoder().encode(v);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    payload = btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  } catch (e) {
+    payload = encodeURIComponent(v);
+  }
+  const url = location.origin + location.pathname + '#y=' + payload;
+  history.replaceState(null, '', url);
+  try {
+    await navigator.clipboard.writeText(url);
+    const btn = $('shareBtn');
+    const old = btn.textContent;
+    btn.textContent = 'Copied. Link in address bar.';
+    setTimeout(() => { btn.textContent = old; }, 2200);
+  } catch (e) {
+    prompt('Share link (copy):', url);
+  }
 });
 $('src').addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') runAudit();
 });
+
+(function loadFromHash() {
+  const m = location.hash.match(/y=([A-Za-z0-9_\-]+)/);
+  if (!m) return;
+  try {
+    let b64 = m[1].replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    $('src').value = new TextDecoder().decode(bytes);
+    runAudit();
+  } catch (e) { /* ignore */ }
+})();
 
 const ta = $('src');
 ta.addEventListener('dragover', (e) => { e.preventDefault(); ta.classList.add('drop'); });
