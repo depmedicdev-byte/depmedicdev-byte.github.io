@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://depmedicdev-byte.github.io/sitemap.xml

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stop linting your GitHub Actions. Fix them. - depmedic</title>
+<meta name="description" content="ci-doctor 0.2 ships --fix mode: auto-applies safe fixes for missing-permissions, missing-concurrency, missing-timeout, and artifact-no-retention. Comments preserved." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/stop-linting-github-actions.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Stop linting your GitHub Actions. Fix them." />
+<meta property="og:description" content="ci-doctor 0.2 ships --fix mode. Auto-applies safe workflow fixes in place. Comments preserved. MIT." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/stop-linting-github-actions.html" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #9aa3ad; margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; color: #c9d1d9; }
+  p { margin: 0 0 16px; }
+  code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; font-size: 13.5px; background: #11151b; padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 13.5px; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; }
+  blockquote { border-left: 3px solid #1e242c; margin: 16px 0; padding: 4px 16px; color: #b6bec7; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 16px 0; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  .nav { font-size: 13.5px; color: #9aa3ad; margin-bottom: 28px; }
+  .nav a { color: #9aa3ad; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>Stop linting your GitHub Actions. Fix them.</h1>
+<p class="meta">2026-04-27 - ci-doctor 0.2.0</p>
+
+<p>
+  Every GitHub Actions linter on the market is read-only. <code>actionlint</code>
+  catches syntax. <code>sherif</code> spots bad patterns. <code>octoscan</code>
+  yells about untrusted inputs. They all stop at "this workflow has problems."
+  You still have to open the file and type the fix yourself.
+</p>
+
+<p>
+  That gap is the whole reason CI workflows rot. Nobody is paid to maintain
+  them. They drift, the bill creeps up, and the next person who touches the
+  YAML doesn't even know what good looks like.
+</p>
+
+<p>
+  <strong><a href="https://www.npmjs.com/package/ci-doctor">ci-doctor 0.2</a>
+  ships <code>--fix</code></strong>. It rewrites your workflows in place, in
+  the second between <code>git pull</code> and <code>git commit</code>. Free,
+  MIT, no signup, no telemetry.
+</p>
+
+<h2>What --fix does</h2>
+
+<p>
+  Four issues that have a single safe answer get applied automatically:
+</p>
+
+<table>
+  <thead><tr><th>Rule</th><th>What it adds</th></tr></thead>
+  <tbody>
+    <tr><td><code>missing-permissions</code></td><td>top-level <code>permissions: { contents: read }</code></td></tr>
+    <tr><td><code>missing-concurrency</code></td><td><code>concurrency</code> block with <code>cancel-in-progress: true</code></td></tr>
+    <tr><td><code>missing-timeout</code></td><td><code>timeout-minutes: 15</code> on every job missing it</td></tr>
+    <tr><td><code>artifact-no-retention</code></td><td><code>retention-days: 7</code> on every <code>actions/upload-artifact</code> step</td></tr>
+  </tbody>
+</table>
+
+<p>
+  Try it on a workflow you already have:
+</p>
+
+<pre><code>npx ci-doctor --fix --dry-run</code></pre>
+
+<p>
+  Dry-run prints the patched YAML to stdout so you can diff it before
+  writing. Drop <code>--dry-run</code> to apply in place.
+</p>
+
+<h2>What --fix does NOT do</h2>
+
+<p>
+  Anything that requires a judgment call keeps a warning so a human can
+  decide:
+</p>
+
+<ul>
+  <li>Cache ecosystem (<code>cache: npm</code> vs <code>cache: pnpm</code> vs <code>cache: pip</code>) - depends on your repo.</li>
+  <li>Action major-version bumps (e.g. <code>actions/checkout@v3</code> &rarr; <code>v4</code>) - changes runtime behavior.</li>
+  <li>SHA pinning - delegated to the companion CLI, <a href="https://www.npmjs.com/package/pin-actions"><code>pin-actions</code></a>, which queries the GitHub API to resolve refs.</li>
+  <li>Runner cost decisions (<code>macos-latest</code> &rarr; <code>ubuntu-latest</code>) - sometimes you need the macOS runner.</li>
+</ul>
+
+<p>
+  These rules still fire as warnings. The principle: never apply a "fix" that
+  could plausibly break someone's workflow.
+</p>
+
+<h2>Comments and ordering are preserved</h2>
+
+<p>
+  ci-doctor uses <code>yaml.parseDocument</code>, not <code>yaml.parse</code>.
+  That means we mutate the document model and serialize it back, so existing
+  comments and key ordering survive. The new keys are appended at the end of
+  their parent map - YAML is unordered, so this is semantically identical and
+  diff-friendly.
+</p>
+
+<h2>The two-CLI workflow</h2>
+
+<p>
+  The opinionated way to harden a repo's CI:
+</p>
+
+<pre><code>npx ci-doctor --fix
+npx pin-actions</code></pre>
+
+<p>
+  First command applies the four safe fixes above. Second pins every
+  <code>uses: owner/repo@ref</code> to a full commit SHA, so a compromised
+  tag can't ship malicious code through your pipeline. Both finish in under
+  two seconds on a normal repo.
+</p>
+
+<h2>Where the rest of the cost lives</h2>
+
+<p>
+  Not every CI cost has a single safe fix. Matrix overcommit, expensive
+  runners, redundant test jobs - those need patterns. The
+  <a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Cut Your CI Bill cookbook</a>
+  is 30 of those patterns plus 5 ready-to-paste workflows ($19, one-time).
+  The CLI ships every rule and stays MIT.
+</p>
+
+<p>
+  If you want to know what each finding actually costs in dollars, the
+  companion CLI <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>
+  prices a workflow against the official runner rates.
+</p>
+
+<h2>Try it</h2>
+
+<pre><code># audit
+npx ci-doctor
+
+# fix the easy stuff
+npx ci-doctor --fix
+
+# pin every action to a SHA
+npx pin-actions
+
+# what does this workflow cost?
+npx gha-budget</code></pre>
+
+<footer>
+  Open an issue on
+  <a href="https://github.com/depmedicdev-byte/ci-doctor">github.com/depmedicdev-byte/ci-doctor</a>
+  if anything breaks. <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>
