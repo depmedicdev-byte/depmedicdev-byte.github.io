@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>depmedic blog</title>
+<link>https://depmedicdev-byte.github.io/</link>
+<description>Notes on cheaper, faster, less leaky CI. Free CLIs and a small set of paid playbooks.</description>
+<language>en-us</language>
+<atom:link href="https://depmedicdev-byte.github.io/rss.xml" rel="self" type="application/rss+xml" />
+<lastBuildDate>Mon, 27 Apr 2026 09:03:19 GMT</lastBuildDate>
+<item>
+  <title>A .cursorrules that actually fits your stack.</title>
+  <link>https://depmedicdev-byte.github.io/blog/cursorrules-starter.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/cursorrules-starter.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>cursor-rules-init scaffolds a starter .cursorrules / AGENTS.md / system prompt for Cursor, Claude Code, and ChatGPT. Stack-aware: TypeScript, React, Next.js, Python, Node servers.</description>
+</item>
+<item>
+  <title>How much does my GitHub Actions workflow cost?</title>
+  <link>https://depmedicdev-byte.github.io/blog/github-actions-cost-estimate.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/github-actions-cost-estimate.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>Estimate GitHub Actions workflow cost in dollars from the YAML alone. gha-budget reads jobs, expands matrices, applies the official runner pricing, and projects monthly spend.</description>
+</item>
+<item>
+  <title>GitHub Actions linters compared: actionlint, ci-doctor, sherif, octoscan</title>
+  <link>https://depmedicdev-byte.github.io/blog/github-actions-linters-compared.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/github-actions-linters-compared.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>Comparison of the four open-source GitHub Actions linters in 2026: actionlint, ci-doctor, sherif, and octoscan. What each one catches, where each one stops, and how to combine them.</description>
+</item>
+<item>
+  <title>npm audit without the noise. depmedic triages instead.</title>
+  <link>https://depmedicdev-byte.github.io/blog/npm-audit-without-the-noise.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/npm-audit-without-the-noise.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>npm audit reports every CVE in every transitive dep regardless of reachability. depmedic prioritizes by reachability, severity, and fix availability. CI-friendly exit codes.</description>
+</item>
+<item>
+  <title>What 20 popular OSS projects pay for GitHub Actions</title>
+  <link>https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 902 CI smells, $51k combined monthly spend. Public dataset.</description>
+</item>
+<item>
+  <title>Pin every GitHub Action to a SHA. One command.</title>
+  <link>https://depmedicdev-byte.github.io/blog/pin-github-actions-to-sha.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/pin-github-actions-to-sha.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>Tags are mutable. Branches are mutable. SHAs are not. pin-actions rewrites every uses: line in your workflows to a full commit SHA. Supply chain hardening in one command.</description>
+</item>
+<item>
+  <title>Stop linting your GitHub Actions. Fix them.</title>
+  <link>https://depmedicdev-byte.github.io/blog/stop-linting-github-actions.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/stop-linting-github-actions.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>ci-doctor 0.2 ships --fix mode: auto-applies safe fixes for missing-permissions, missing-concurrency, missing-timeout, and artifact-no-retention. Comments preserved.</description>
+</item>
+</channel>
+</rss>
