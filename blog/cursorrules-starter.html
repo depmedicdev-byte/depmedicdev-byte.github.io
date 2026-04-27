@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A .cursorrules that actually fits your stack. - depmedic</title>
+<meta name="description" content="cursor-rules-init scaffolds a starter .cursorrules / AGENTS.md / system prompt for Cursor, Claude Code, and ChatGPT. Stack-aware: TypeScript, React, Next.js, Python, Node servers." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/cursorrules-starter.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="A .cursorrules that actually fits your stack." />
+<meta property="og:description" content="cursor-rules-init scaffolds stack-aware AI rules in one command." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/cursorrules-starter.html" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #9aa3ad; margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; color: #c9d1d9; }
+  p { margin: 0 0 16px; }
+  code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; font-size: 13.5px; background: #11151b; padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 13.5px; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; }
+  .nav { font-size: 13.5px; color: #9aa3ad; margin-bottom: 28px; }
+  .nav a { color: #9aa3ad; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>A <code>.cursorrules</code> that actually fits your stack.</h1>
+<p class="meta">2026-04-27 - cursor-rules-init</p>
+
+<p>
+  Most <code>.cursorrules</code> files in real repos were copied from a
+  blog post in 2024, never updated, and contain three lines that
+  contradict the actual code style of the repo. The same goes for
+  <code>AGENTS.md</code> for Claude Code and the system prompt people
+  paste into ChatGPT.
+</p>
+
+<p>
+  The fix is not "write a better blog post." The fix is to scaffold a
+  starter that's <em>opinionated about your stack</em>, ships in five
+  seconds, and has the parts you can keep or delete clearly labelled.
+</p>
+
+<p>
+  <a href="https://www.npmjs.com/package/cursor-rules-init"><code>cursor-rules-init</code></a>
+  is a free MIT CLI that does exactly this. One command, one stack
+  argument, and you have a working <code>.cursorrules</code> tuned for
+  the language and framework you're using.
+</p>
+
+<h2>One command</h2>
+
+<pre><code>npx cursor-rules-init react
+npx cursor-rules-init typescript
+npx cursor-rules-init nextjs
+npx cursor-rules-init python
+npx cursor-rules-init node-server</code></pre>
+
+<p>
+  Each stack picks a different opinionated baseline. The TypeScript one
+  knows about strict mode, the React one knows about hooks rules, the
+  Python one knows about type hints and the venv conventions, the
+  node-server one knows about request handlers and async error
+  propagation.
+</p>
+
+<p>
+  The file is sectioned: identity, stack assumptions, code style, file
+  layout, things to avoid, things to do. Delete the sections that don't
+  match your codebase.
+</p>
+
+<h2>Why a CLI and not a template repo</h2>
+
+<p>
+  Template repos go stale. A CLI gets updated and the next
+  <code>npx</code> run pulls the latest opinion. If a section turns out
+  to be wrong (e.g. a Cursor model behaviour change), the next minor
+  release fixes it for everyone.
+</p>
+
+<p>
+  The CLI also writes the file directly, so there is no clone / copy /
+  rename step. The repo stays clean.
+</p>
+
+<h2>What it does NOT do</h2>
+
+<ul>
+  <li>It does not analyse your existing code. The starter is opinionated, not adaptive.</li>
+  <li>It does not overwrite an existing <code>.cursorrules</code>. It refuses unless you pass <code>--force</code>.</li>
+  <li>It does not include rules for tools you didn't ask for.</li>
+</ul>
+
+<h2>The deeper version</h2>
+
+<p>
+  For a system prompt that produces senior-developer-quality output across
+  any stack - not just a starter file - the
+  <a href="https://buy.polar.sh/polar_cl_uB8vltMstgTufNMgUCEslCJXYrJdKh7IiaV4X40HCoS">Senior Dev System Prompt</a>
+  is the playbook. It's the multi-page rule set the free CLI templates
+  draw from, with the model-tuning notes the CLI omits ($9, one-time).
+</p>
+
+<h2>Try it</h2>
+
+<pre><code>npx cursor-rules-init typescript</code></pre>
+
+<p>
+  Source on
+  <a href="https://github.com/depmedicdev-byte/cursor-rules-init">GitHub</a>.
+</p>
+
+<footer>
+  <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>

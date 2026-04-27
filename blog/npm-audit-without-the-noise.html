@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>npm audit without the noise. depmedic triages instead. - depmedic</title>
+<meta name="description" content="npm audit reports every CVE in every transitive dep regardless of reachability. depmedic prioritizes by reachability, severity, and fix availability. CI-friendly exit codes." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/npm-audit-without-the-noise.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="npm audit without the noise. depmedic triages instead." />
+<meta property="og:description" content="depmedic prioritises npm CVEs by reachability and fix availability." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/npm-audit-without-the-noise.html" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #9aa3ad; margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; color: #c9d1d9; }
+  p { margin: 0 0 16px; }
+  code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; font-size: 13.5px; background: #11151b; padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 13.5px; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; }
+  .nav { font-size: 13.5px; color: #9aa3ad; margin-bottom: 28px; }
+  .nav a { color: #9aa3ad; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>npm audit without the noise. depmedic triages instead.</h1>
+<p class="meta">2026-04-27 - depmedic</p>
+
+<p>
+  <code>npm audit</code> reports every CVE in every transitive dependency,
+  regardless of whether your code path actually reaches it. Half the
+  output is noise: a vulnerability in a dev-only tool, a CVE that needs
+  attacker-controlled input you never provide, an advisory with no
+  available patch.
+</p>
+
+<p>
+  The honest version of "fix this CVE" is three questions:
+</p>
+
+<ol>
+  <li>Does my code actually reach the vulnerable function?</li>
+  <li>Is there a fix I can apply right now?</li>
+  <li>Will applying the fix break anything?</li>
+</ol>
+
+<p>
+  <a href="https://www.npmjs.com/package/depmedic"><code>depmedic</code></a>
+  asks those three questions, in that order, and prints a plan you can
+  read in ten seconds.
+</p>
+
+<h2>One command</h2>
+
+<pre><code>npx depmedic</code></pre>
+
+<p>
+  It runs <code>npm audit --json</code>, parses the advisory tree, and
+  groups findings by:
+</p>
+
+<ul>
+  <li><strong>direct vs transitive</strong> - direct deps you control. Transitive deps need a parent bump.</li>
+  <li><strong>fix available now</strong> - a non-breaking patch path exists in your version range.</li>
+  <li><strong>fix requires a major bump</strong> - flagged separately because the upgrade may break callers.</li>
+  <li><strong>no fix yet</strong> - upstream hasn't released a patch.</li>
+</ul>
+
+<p>
+  The output is a list of concrete next actions sorted by severity, not a
+  wall of advisory IDs. CI-friendly exit codes: <code>0</code> if nothing
+  needs your attention, <code>1</code> if there are reachable findings.
+</p>
+
+<h2>Why not just <code>npm audit fix</code>?</h2>
+
+<p>
+  <code>npm audit fix</code> is too aggressive. It applies whatever
+  upgrades the resolver thinks satisfy the advisory tree, including
+  transitive bumps that reshape your <code>package-lock.json</code>.
+  Sometimes that's fine; sometimes it silently swaps the major version of
+  a transitive dep that actually mattered.
+</p>
+
+<p>
+  <code>depmedic</code> never modifies your tree. It tells you what to do.
+  You apply the changes you agree with.
+</p>
+
+<h2>Output format</h2>
+
+<p>
+  Three formats: human-readable text (the default), <code>--json</code>
+  for tooling, and <code>--markdown</code> for PR comments. The markdown
+  output groups findings into <em>fix now</em>, <em>review</em>, and
+  <em>monitor</em> tables so the PR reviewer sees what needs action
+  immediately.
+</p>
+
+<h2>What it does NOT do</h2>
+
+<ul>
+  <li>It does not run static reachability analysis. The "reachability" hint is heuristic - direct vs transitive, dev vs prod, plus the advisory's own metadata. For real call-graph reachability, use a paid SCA tool.</li>
+  <li>It does not modify your <code>package.json</code> or <code>package-lock.json</code>. Read-only by design.</li>
+  <li>It does not phone home. No telemetry. No signup.</li>
+</ul>
+
+<h2>The companion tools</h2>
+
+<p>
+  Once you've handled the application deps, the CI side is worth the same
+  ten minutes:
+</p>
+
+<pre><code>npx depmedic       # triage npm vulnerabilities
+npx ci-doctor      # audit GitHub Actions for waste + security gaps
+npx pin-actions    # pin every action ref to a SHA
+npx gha-budget     # estimate the dollar cost of each workflow</code></pre>
+
+<p>
+  Four CLIs, each under two seconds, all MIT.
+</p>
+
+<h2>Try it</h2>
+
+<pre><code>npx depmedic</code></pre>
+
+<p>
+  Source on
+  <a href="https://github.com/depmedicdev-byte/depmedic">GitHub</a>.
+</p>
+
+<footer>
+  <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>
