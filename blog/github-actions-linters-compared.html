@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GitHub Actions linters compared: actionlint, ci-doctor, sherif, octoscan - depmedic</title>
+<meta name="description" content="Comparison of the four open-source GitHub Actions linters in 2026: actionlint, ci-doctor, sherif, and octoscan. What each one catches, where each one stops, and how to combine them." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/github-actions-linters-compared.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="GitHub Actions linters compared: actionlint, ci-doctor, sherif, octoscan" />
+<meta property="og:description" content="What each tool catches, where each one stops, and how to combine them." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/github-actions-linters-compared.html" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #9aa3ad; margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; color: #c9d1d9; }
+  h3 { font-size: 17px; margin: 24px 0 8px; color: #c9d1d9; }
+  p { margin: 0 0 16px; }
+  code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; font-size: 13.5px; background: #11151b; padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 13.5px; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 16px 0; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  td.y { color: #9ce29c; }
+  td.n { color: #6f7882; }
+  td.p { color: #e3c074; }
+  .nav { font-size: 13.5px; color: #9aa3ad; margin-bottom: 28px; }
+  .nav a { color: #9aa3ad; }
+  .disclosure { color: #9aa3ad; font-size: 13.5px; border-left: 3px solid #1e242c; padding: 4px 16px; margin: 24px 0; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>GitHub Actions linters compared: actionlint, ci-doctor, sherif, octoscan</h1>
+<p class="meta">2026-04-27 - what each tool catches, where each one stops</p>
+
+<div class="disclosure">
+  Disclosure: I maintain ci-doctor. The comparison below describes each tool by what it
+  documents and ships, not by my opinion of its authors. Run all four on
+  the same workflow to see for yourself.
+</div>
+
+<p>
+  GitHub Actions YAML is small enough that one tool could in theory
+  validate everything: syntax, secret hygiene, runner cost, supply-chain
+  pinning, deprecated actions, untrusted inputs. In practice, the
+  open-source landscape splits this work across four projects. They
+  overlap in some areas and miss each other in others.
+</p>
+
+<h2>The short version</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concern</th>
+      <th>actionlint</th>
+      <th>ci-doctor</th>
+      <th>sherif</th>
+      <th>octoscan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>YAML / shell syntax</td><td class="y">yes</td><td class="n">no</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Untrusted input injection</td><td class="p">partial</td><td class="n">no</td><td class="n">no</td><td class="y">yes</td></tr>
+    <tr><td>Action ref pinned to SHA</td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="y">yes</td></tr>
+    <tr><td>Top-level <code>permissions</code></td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="y">yes</td></tr>
+    <tr><td>Concurrency / cancel-in-progress</td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Job <code>timeout-minutes</code></td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Cache hint on setup-* actions</td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Artifact retention-days</td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Matrix combinatorial explosion</td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Cost projection in dollars</td><td class="n">no</td><td class="p">via gha-budget</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Auto-fix in place</td><td class="n">no</td><td class="y">yes</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>Auto-pin actions to SHA</td><td class="n">no</td><td class="p">via pin-actions</td><td class="n">no</td><td class="n">no</td></tr>
+    <tr><td>SARIF output for Code Scanning</td><td class="p">via wrappers</td><td class="y">yes</td><td class="n">no</td><td class="y">yes</td></tr>
+    <tr><td>Monorepo / multi-repo focus</td><td class="n">no</td><td class="n">no</td><td class="y">yes</td><td class="n">no</td></tr>
+  </tbody>
+</table>
+
+<h2>actionlint</h2>
+
+<p>
+  The reference syntax checker. Written in Go, fast, no dependencies.
+  Catches expression syntax errors, unknown event names, unknown
+  contexts, malformed shell scripts in <code>run:</code> blocks (it
+  invokes <code>shellcheck</code>), and a small number of security
+  patterns like <code>${{ github.event.pull_request.title }}</code> in a
+  shell context.
+</p>
+
+<p>
+  What it doesn't do: enforce policy. <code>actionlint</code> tells you
+  whether your YAML parses and runs; it does not tell you whether your
+  workflow is cheap, secure-by-default, or maintainable.
+</p>
+
+<h3>Use it for</h3>
+<p>Pre-merge syntax validation. Catching shell quoting bugs.</p>
+
+<h2>ci-doctor</h2>
+
+<p>
+  Policy and cost focus. Eleven rules grouped into cost, security, and
+  maintenance. Includes <code>--fix</code> mode that auto-applies safe
+  fixes (permissions, concurrency, timeouts, artifact retention) and
+  <code>--sarif</code> for GitHub Code Scanning. Pairs with
+  <a href="https://www.npmjs.com/package/pin-actions"><code>pin-actions</code></a>
+  for SHA pinning and
+  <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>
+  for dollar cost projection.
+</p>
+
+<p>
+  What it doesn't do: validate YAML or shell syntax (use actionlint),
+  detect injection vulnerabilities at the expression level (use
+  octoscan), or compare workflows across repos (use sherif).
+</p>
+
+<h3>Use it for</h3>
+<p>Cost discipline. Default-secure policy. PR comments. Code Scanning
+ingestion. Auto-fixing the four common issues that have a single safe
+answer.</p>
+
+<h2>sherif</h2>
+
+<p>
+  Cross-repo / monorepo lens. Sherif's value is comparing workflows
+  across many repos under one org and surfacing inconsistency: same job,
+  different timeout; same matrix, different runner; same checkout step,
+  different version.
+</p>
+
+<p>
+  What it doesn't do: ship policy rules of its own. It tells you which
+  workflows disagree; it does not say which one is right.
+</p>
+
+<h3>Use it for</h3>
+<p>Standardising CI across an org once you've decided on a baseline.</p>
+
+<h2>octoscan</h2>
+
+<p>
+  Security-first. Looks for untrusted-input injection patterns
+  specifically (the
+  <code>${{ github.event.* }}</code> in shell context class), unpinned
+  actions, missing top-level <code>permissions</code>, and similar
+  hardening misses. Emits SARIF.
+</p>
+
+<p>
+  What it doesn't do: cost analysis, auto-fix, cache hints, retention
+  policy, matrix sanity.
+</p>
+
+<h3>Use it for</h3>
+<p>Security audit before a release. Quick check that your
+<code>actions/checkout@&hellip;</code> isn't shipping someone else's code.</p>
+
+<h2>How to combine them</h2>
+
+<p>
+  None of these tools is a superset of the others. The cheapest
+  composition that covers all four lenses is:
+</p>
+
+<pre><code># syntax
+actionlint
+
+# cost + maintenance + auto-fix
+npx ci-doctor --fix
+npx ci-doctor --sarif &gt; ci-doctor.sarif
+
+# supply chain
+npx pin-actions --check
+
+# expression-level injection scanning
+octoscan run
+
+# cross-repo consistency, if you run an org
+sherif --workspace .</code></pre>
+
+<p>
+  Total runtime on a normal repo: under five seconds.
+</p>
+
+<h2>What I'd actually run in CI</h2>
+
+<p>
+  In order, fail fast:
+</p>
+
+<ol>
+  <li><code>actionlint</code> - syntax must be valid before policy makes sense.</li>
+  <li><code>npx pin-actions --check</code> - cheap, supply chain.</li>
+  <li><code>npx ci-doctor --sarif &gt; ci-doctor.sarif</code> +
+    <code>codeql-action/upload-sarif</code> - findings as PR annotations.</li>
+  <li><code>octoscan</code> if your workflow accepts external input.</li>
+</ol>
+
+<p>
+  The first three are non-negotiable for any repo with public CI. The
+  fourth is non-negotiable for any workflow that runs against PRs from
+  forks.
+</p>
+
+<h2>The deep version</h2>
+
+<p>
+  The free CLIs handle the standard rules. The longer playbook of
+  patterns - matrix shaping, runner choice, secret scoping, branch
+  triggers, billing-aware retries - is in the
+  <a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Cut Your CI Bill cookbook</a>
+  ($19, one-time). Free CLI ships every rule.
+</p>
+
+<footer>
+  <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>
