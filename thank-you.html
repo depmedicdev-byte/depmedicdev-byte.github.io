@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thanks for buying - depmedic</title>
+<meta name="description" content="Your purchase is confirmed. Quick start, what to do first, and the other things you might want from depmedic." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/thank-you.html" />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#0b0d10" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 60px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; }
+  .nav a { color: #9aa3ad; }
+  h1 { font-size: 32px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 19px; color: #c9d1d9; margin: 36px 0 8px; }
+  .hero {
+    background: linear-gradient(135deg, #11151b, #0e1b1c);
+    border: 1px solid #2a4732; border-radius: 12px;
+    padding: 28px 30px; margin: 0 0 28px;
+  }
+  .hero p { color: #b6bec7; margin: 6px 0 0; }
+  .check { display: inline-flex; align-items: center; gap: 8px; color: #9ce29c; font-weight: 500; font-size: 14px; margin-bottom: 4px; }
+  .check::before {
+    content: ""; width: 18px; height: 18px;
+    background: #9ce29c; border-radius: 50%; display: inline-block;
+    box-shadow: inset 0 0 0 4px #0e1b1c;
+  }
+  pre { background: #0d1117; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; }
+  code { font: 13.5px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+  p code, li code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  .block {
+    border: 1px solid #1e242c; border-radius: 10px; padding: 18px 22px;
+    margin: 14px 0; background: #0d1117;
+  }
+  .block h3 { margin: 0 0 6px; color: #e6e8eb; font-size: 17px; }
+  .block p { color: #b6bec7; margin: 6px 0; }
+  .upsell {
+    background: linear-gradient(135deg, #11151b, #1a1320);
+    border: 1px solid #2a3744;
+  }
+  .btn {
+    display: inline-block; padding: 10px 18px; border-radius: 6px; margin-top: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754;
+  }
+  .btn:hover { text-decoration: none; background: #3a4754; }
+  .price { color: #9aa3ad; font-size: 13px; margin-left: 8px; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / thanks</p>
+
+<div class="hero">
+  <div class="check">Payment confirmed</div>
+  <h1>Thanks. Your file is on its way.</h1>
+  <p>
+    Polar emails the download link to the address you used at checkout.
+    If you don't see it in two minutes, check the promotions/spam folder
+    for a message from <code>noreply@polar.sh</code>. The link does not
+    expire.
+  </p>
+</div>
+
+<h2>While you wait for the email</h2>
+
+<div class="block">
+  <h3>If you bought the <em>Cut Your CI Bill cookbook</em></h3>
+  <p>
+    The ZIP unpacks into one folder. The two files to read first are:
+  </p>
+  <ul>
+    <li><code>COOKBOOK.md</code> - the 30 patterns, ordered by cost-impact. If you only have an hour, do patterns 1-7.</li>
+    <li><code>snippets/01-pr-fast-lane.yml</code> - the most-copied template. Drop it into <code>.github/workflows/</code> as a starting point and trim from there.</li>
+  </ul>
+  <p>
+    Pair the cookbook with these two free CLIs to apply patterns
+    automatically:
+  </p>
+<pre><code>npx ci-doctor --fix     # auto-applies the four "single safe answer" patterns
+npx pin-actions         # pins every action ref to a SHA</code></pre>
+</div>
+
+<div class="block">
+  <h3>If you bought the <em>Senior Dev Cursor Rules pack</em></h3>
+  <p>
+    The ZIP has two folders: <code>rules/</code> and <code>prompts/</code>.
+    The fastest way to wire it up:
+  </p>
+  <ol>
+    <li>Copy <code>rules/00-core.cursorrules</code> to your repo as <code>.cursorrules</code>.</li>
+    <li>Append the stack-specific file (e.g. <code>02-react-modern.cursorrules</code>) to the same file.</li>
+    <li>For Claude Code or ChatGPT, drop <code>prompts/senior-dev-system.md</code> into the system prompt slot.</li>
+  </ol>
+  <p>
+    Each <code>.cursorrules</code> file is independent. Mix and match the
+    overlays that match your stack; delete the rest.
+  </p>
+</div>
+
+<div class="block">
+  <h3>If you bought the <em>Senior Dev System Prompt</em></h3>
+  <p>
+    The ZIP has one file you'll use: <code>senior-dev-system.md</code>.
+    Paste the entire file into the system prompt slot of whatever tool
+    you're using - Cursor's "Rules for AI", Claude's system message,
+    ChatGPT's custom instructions, or your local LLM's system prompt.
+  </p>
+  <p>
+    The <code>USAGE.md</code> in the same folder explains the few
+    knobs (review tone, refactor scope, comment policy) you can tune.
+  </p>
+</div>
+
+<div class="block">
+  <h3>If you preordered <em>depmedic Pro</em></h3>
+  <p>
+    Polar emailed your license key with the receipt. Hold onto it - the
+    Pro feature set ships in stages over the next four weeks. You'll get
+    an email at each release. Cancel any time at
+    <a href="https://polar.sh/depmedicdev/portal" rel="noopener">polar.sh/depmedicdev/portal</a>.
+  </p>
+</div>
+
+<h2>You might also want</h2>
+
+<div class="block upsell">
+  <h3>The free in-browser tools</h3>
+  <p>
+    These pair with what you bought. No install, no upload, your YAML
+    never leaves the tab.
+  </p>
+  <ul>
+    <li><a href="/audit.html">Audit a workflow</a> - same engine as <code>ci-doctor</code> on npm.</li>
+    <li><a href="/budget.html">Price a workflow</a> - same engine as <code>gha-budget</code> on npm.</li>
+    <li><a href="/calculator.html">Estimate monthly waste</a> - quick category-based number.</li>
+    <li><a href="/benchmarks.html">Cost benchmarks for 20 popular OSS projects</a> - public data.</li>
+  </ul>
+</div>
+
+<div class="block upsell">
+  <h3>The other paid items</h3>
+  <p>
+    If one of these makes sense for you. No urgency.
+  </p>
+  <ul>
+    <li><a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Cut Your CI Bill cookbook</a> <span class="price">$19, one-time</span> - 30 GHA patterns + 5 templates.</li>
+    <li><a href="https://buy.polar.sh/polar_cl_jxM0uITjh3WOQYgLnrVfRgN3yLjhvCCB8iItg3PHmOy">Senior Dev Cursor Rules pack</a> <span class="price">$7, one-time</span> - 24 .cursorrules + 3 prompts.</li>
+    <li><a href="https://buy.polar.sh/polar_cl_uB8vltMstgTufNMgUCEslCJXYrJdKh7IiaV4X40HCoS">Senior Dev System Prompt</a> <span class="price">$3, one-time</span> - one hand-tuned system prompt.</li>
+  </ul>
+</div>
+
+<h2>Stay in the loop without an inbox commitment</h2>
+
+<p>
+  No newsletter. The blog has an
+  <a href="/rss.xml">RSS feed</a> if you use a reader. New posts go up
+  every 1-2 weeks. New CLI versions ship to npm in their own
+  CHANGELOG; subscribe to the GitHub release feed:
+  <a href="https://github.com/depmedicdev-byte/ci-doctor/releases.atom">ci-doctor</a>,
+  <a href="https://github.com/depmedicdev-byte/gha-budget/releases.atom">gha-budget</a>,
+  <a href="https://github.com/depmedicdev-byte/depmedic/releases.atom">depmedic</a>.
+</p>
+
+<h2>Something wrong?</h2>
+
+<p>
+  If the download email doesn't arrive, the file is broken, or the
+  receipt looks off, email
+  <a href="mailto:depmedic.dev@gmail.com">depmedic.dev@gmail.com</a> with
+  the subject "order help" and your Polar order ID. I will refund
+  cheerfully and fix the underlying issue.
+</p>
+
+<footer>
+  Thanks again. <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>
