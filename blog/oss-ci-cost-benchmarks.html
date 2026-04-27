@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What 20 popular OSS projects pay for GitHub Actions - depmedic</title>
-<meta name="description" content="Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 902 CI smells, $51k combined monthly spend. Public dataset." />
+<meta name="description" content="Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 902 real CI smells, modeled ~$51k/mo combined spend at 30 runs/day. Public methodology and dataset." />
 <link rel="canonical" href="https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html" />
 <meta name="theme-color" content="#0b0d10" />
 <meta property="og:title" content="What 20 popular OSS projects pay for GitHub Actions" />
-<meta property="og:description" content="229 workflows, 902 CI smells, $51k combined monthly spend. Real data from public workflow YAML." />
+<meta property="og:description" content="229 workflows, 902 real CI smells. Modeled ~$51k/mo combined spend at 30 runs/day. Public methodology, raw data linked." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html" />
 <meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
@@ -70,11 +70,13 @@
 </p>
 
 <p>
-  <strong>The headline:</strong> 229 workflows, 388 priced jobs, 902 CI smells,
-  about <strong>$51,000 of combined monthly spend</strong> assuming each job runs
-  ~30 times a day for ~8 minutes. That is a deliberately conservative estimate
-  - 159 jobs ran on self-hosted or large runners and could not be priced from
-  the YAML alone, so the true combined number is higher.
+  <strong>The headline:</strong> 229 workflows, 388 priced jobs, 902 CI smells.
+  Modeled at 30 runs/day and ~8 minutes per job, the combined spend works out
+  to <strong>about $51,000/month</strong>. The 902 smells are real and counted
+  from the YAML; the dollar number is a model, and your number depends entirely
+  on your real run frequency. 159 additional jobs ran on self-hosted or
+  large runners and could not be priced from the YAML alone, so the modeled
+  total is conservative for the projects that use only standard runners.
 </p>
 
 <p>

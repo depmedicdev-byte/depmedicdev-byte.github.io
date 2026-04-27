@@ -6,7 +6,7 @@
 <description>Notes on cheaper, faster, less leaky CI. Free CLIs and a small set of paid playbooks.</description>
 <language>en-us</language>
 <atom:link href="https://depmedicdev-byte.github.io/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Mon, 27 Apr 2026 09:03:19 GMT</lastBuildDate>
+<lastBuildDate>Mon, 27 Apr 2026 23:35:48 GMT</lastBuildDate>
 <item>
   <title>A .cursorrules that actually fits your stack.</title>
   <link>https://depmedicdev-byte.github.io/blog/cursorrules-starter.html</link>
@@ -40,7 +40,7 @@
   <link>https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html</link>
   <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html</guid>
   <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
-  <description>Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 902 CI smells, $51k combined monthly spend. Public dataset.</description>
+  <description>Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 902 real CI smells, modeled ~$51k/mo combined spend at 30 runs/day. Public methodology and dataset.</description>
 </item>
 <item>
   <title>Pin every GitHub Action to a SHA. One command.</title>
