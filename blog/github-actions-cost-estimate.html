@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How much does my GitHub Actions workflow cost? - depmedic</title>
+<meta name="description" content="Estimate GitHub Actions workflow cost in dollars from the YAML alone. gha-budget reads jobs, expands matrices, applies the official runner pricing, and projects monthly spend." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/github-actions-cost-estimate.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="How much does my GitHub Actions workflow cost?" />
+<meta property="og:description" content="gha-budget estimates dollar cost of a GitHub Actions workflow before you commit it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/github-actions-cost-estimate.html" />
+<meta name="twitter:card" content="summary" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #9aa3ad; margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; color: #c9d1d9; }
+  p { margin: 0 0 16px; }
+  code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; font-size: 13.5px; background: #11151b; padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 13.5px; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 16px 0; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  .nav { font-size: 13.5px; color: #9aa3ad; margin-bottom: 28px; }
+  .nav a { color: #9aa3ad; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>How much does my GitHub Actions workflow cost?</h1>
+<p class="meta">2026-04-27 - gha-budget</p>
+
+<p>
+  GitHub bills Actions in <em>minutes</em>. Most engineers know that. Far
+  fewer know what a minute costs on the runner they're using, that the cost
+  changes per OS, that matrices multiply runs, and that the number on the
+  invoice is the sum across every workflow file in every repo in the org.
+</p>
+
+<p>
+  By the time you see the bill, the bill already happened.
+</p>
+
+<p>
+  <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>
+  is a free MIT CLI that reads a workflow YAML, walks the jobs, expands
+  matrices, applies the official runner price multipliers, and tells you
+  what each run costs - and what a month of typical usage will cost - before
+  you commit.
+</p>
+
+<h2>The pricing model</h2>
+
+<p>
+  GitHub-hosted runners are priced as a multiplier over the base
+  <code>ubuntu-latest</code> rate. As of writing:
+</p>
+
+<table>
+  <thead><tr><th>Runner</th><th>Multiplier</th></tr></thead>
+  <tbody>
+    <tr><td><code>ubuntu-latest</code> (2-core)</td><td>1x</td></tr>
+    <tr><td><code>windows-latest</code></td><td>2x</td></tr>
+    <tr><td><code>macos-latest</code> (3-core)</td><td>10x</td></tr>
+    <tr><td><code>macos-latest</code> (M1)</td><td>10x</td></tr>
+    <tr><td><code>macos-13-xlarge</code></td><td>12x</td></tr>
+    <tr><td>self-hosted</td><td>0x (you eat the bill)</td></tr>
+  </tbody>
+</table>
+
+<p>
+  At current rates the base minute is roughly $0.008 for Linux on private
+  repos. So one minute on <code>macos-latest</code> is about $0.08, ten
+  minutes is $0.80, a 4x4 matrix that runs ten minutes on macOS is $12.80
+  per push. Multiply by 30 pushes a day and that's $384/day on one job.
+</p>
+
+<h2>One command</h2>
+
+<pre><code>npx gha-budget</code></pre>
+
+<p>
+  It scans <code>.github/workflows/</code>, reads each file, and prints a
+  table per workflow:
+</p>
+
+<pre><code>workflow: ci.yml
+  job: build (matrix: 6 combos)
+    runner: ubuntu-latest
+    estimated minutes per run: 60
+    cost per run: $0.48
+  job: e2e (matrix: 1 combo)
+    runner: macos-latest
+    estimated minutes per run: 15
+    cost per run: $1.20
+
+total per push: $1.68
+projected monthly (30 push/day): $1,512
+</code></pre>
+
+<p>
+  Use <code>--json</code> to feed the numbers into a budget alert,
+  <code>--markdown</code> to drop the table into a PR comment.
+</p>
+
+<h2>What it can't tell you</h2>
+
+<p>
+  <code>gha-budget</code> uses <em>estimated</em> minutes per job. It
+  doesn't run your workflow. The estimate counts steps and assigns
+  reasonable defaults; you can override with <code>--minutes-per-job</code>
+  or annotate jobs with <code>x-budget-minutes</code> in the YAML if you
+  have observed numbers.
+</p>
+
+<p>
+  For real per-run minutes you need GitHub's
+  <a href="https://docs.github.com/en/actions/administering-github-actions/usage-limits-billing-and-administration">Usage</a>
+  CSV. <code>gha-budget</code> answers a different question: <em>before</em>
+  this workflow merges, what shape is the bill?
+</p>
+
+<h2>The two tools to run before you push a workflow</h2>
+
+<p>
+  In order:
+</p>
+
+<pre><code>npx ci-doctor --fix     # apply safe permissions / concurrency / timeout fixes
+npx gha-budget          # see what this workflow will cost</code></pre>
+
+<p>
+  <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
+  cuts cost by adding <code>cancel-in-progress</code>, capping job timeouts,
+  and trimming artifact retention. <code>gha-budget</code> tells you whether
+  the cost is acceptable in the first place.
+</p>
+
+<h2>The deep version</h2>
+
+<p>
+  The CLI is free and ships every rule. The
+  <a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Cut Your CI Bill cookbook</a>
+  is the longer playbook: 30 patterns and 5 paste-ready snippet workflows
+  for cheaper, faster, less leaky GitHub Actions ($19, one-time).
+</p>
+
+<h2>Try it</h2>
+
+<pre><code>npx gha-budget</code></pre>
+
+<p>
+  No signup. No telemetry. Source on
+  <a href="https://github.com/depmedicdev-byte/gha-budget">GitHub</a>.
+</p>
+
+<footer>
+  <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>
