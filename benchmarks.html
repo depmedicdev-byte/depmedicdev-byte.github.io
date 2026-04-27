@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Real GitHub Actions cost benchmarks - 20 popular OSS projects - depmedic</title>
+<meta name="description" content="What 20 popular open-source projects actually pay for GitHub Actions. 229 workflows analyzed, 902 CI smells found, monthly spend per repo at 30 runs/day. Pure data, no signup." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/benchmarks.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="What 20 popular open-source projects pay for GitHub Actions" />
+<meta property="og:description" content="229 workflows, 902 CI smells, monthly spend per repo. Real data from public workflows." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/benchmarks.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 30px; letter-spacing: -0.01em; margin: 0 0 8px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 24px; }
+  h2 { font-size: 18px; color: #c9d1d9; margin: 32px 0 12px; letter-spacing: 0.01em; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 18px 0 26px; }
+  .stat { background: #11151b; border: 1px solid #1e242c; border-radius: 10px; padding: 14px 18px; }
+  .stat .label { color: #9aa3ad; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .val { font-size: 22px; font-weight: 600; margin-top: 4px; }
+  .stat .val.green { color: #9ce29c; }
+  .stat .val.red { color: #ffb86c; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 14px; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  tr:last-child td { border-bottom: none; }
+  td.right, th.right { text-align: right; }
+  td.cost { color: #9ce29c; }
+  td.cost-strong { color: #9ce29c; font-weight: 600; }
+  code { background: #11151b; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 28px 0;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .cta .text { flex: 1 1 320px; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; }
+  .cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+  .small { color: #6f7882; font-size: 13px; margin-top: 18px; }
+  details { margin: 14px 0; color: #b6bec7; }
+  summary { cursor: pointer; color: #c9d1d9; }
+</style>
+</head>
+<body>
+<main>
+<p class="nav"><a href="/">depmedic</a> / benchmarks</p>
+<h1>What 20 popular open-source projects pay for GitHub Actions</h1>
+<p class="lead">
+  Pulled the live <code>.github/workflows</code> directory from 20 widely-used OSS
+  repos (React, Next.js, Vite, TypeScript, Deno, etc.), priced every job using
+  GitHub's published per-runner rates, and ran <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a>
+  across all of them. Below is what the data says. Reproduce locally with
+  <code>npx ci-doctor</code> + <code>npx gha-budget</code>; data and scripts are
+  in the workspace.
+</p>
+
+<div class="stats">
+  <div class="stat"><div class="label">Repos scanned</div><div class="val">20</div></div>
+  <div class="stat"><div class="label">Workflows analyzed</div><div class="val">229</div></div>
+  <div class="stat"><div class="label">CI smells found</div><div class="val red">902</div></div>
+  <div class="stat"><div class="label">Combined monthly @ 30 runs/day</div><div class="val green">$50,976.00</div></div>
+</div>
+
+<h2>Per-repo cost (sorted by monthly spend)</h2>
+<p class="small">Assumes 8 minutes per job, 30 runs per day, GitHub-hosted runner pricing.
+Self-hosted and large runners are unpriced (shown as <code>priced/total</code>).</p>
+<table>
+  <thead>
+    <tr>
+      <th>Repo</th>
+      <th class="right">Workflows</th>
+      <th class="right">Priced jobs</th>
+      <th class="right">Per run</th>
+      <th class="right">Monthly @ 30/day</th>
+      <th class="right">CI smells</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a href="https://github.com/denoland/deno" rel="noopener">denoland/deno</a></td>
+    <td class="right">11</td>
+    <td class="right">37/51</td>
+    <td class="right cost">$18.30</td>
+    <td class="right cost-strong">$16,473.60</td>
+    <td class="right">84</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/facebook/react" rel="noopener">facebook/react</a></td>
+    <td class="right">24</td>
+    <td class="right">57/67</td>
+    <td class="right cost">$16.19</td>
+    <td class="right cost-strong">$14,572.80</td>
+    <td class="right">87</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/vercel/next.js" rel="noopener">vercel/next.js</a></td>
+    <td class="right">37</td>
+    <td class="right">57/116</td>
+    <td class="right cost">$4.10</td>
+    <td class="right cost-strong">$3,686.40</td>
+    <td class="right">164</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/axios/axios" rel="noopener">axios/axios</a></td>
+    <td class="right">8</td>
+    <td class="right">21/21</td>
+    <td class="right cost">$2.62</td>
+    <td class="right cost-strong">$2,361.60</td>
+    <td class="right">40</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/storybookjs/storybook" rel="noopener">storybookjs/storybook</a></td>
+    <td class="right">15</td>
+    <td class="right">32/33</td>
+    <td class="right cost">$2.05</td>
+    <td class="right cost-strong">$1,843.20</td>
+    <td class="right">66</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/microsoft/TypeScript" rel="noopener">microsoft/TypeScript</a></td>
+    <td class="right">18</td>
+    <td class="right">31/32</td>
+    <td class="right cost">$1.92</td>
+    <td class="right cost-strong">$1,728.00</td>
+    <td class="right">75</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/eslint/eslint" rel="noopener">eslint/eslint</a></td>
+    <td class="right">8</td>
+    <td class="right">15/18</td>
+    <td class="right cost">$1.54</td>
+    <td class="right cost-strong">$1,382.40</td>
+    <td class="right">40</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/remix-run/react-router" rel="noopener">remix-run/react-router</a></td>
+    <td class="right">19</td>
+    <td class="right">18/30</td>
+    <td class="right cost">$1.22</td>
+    <td class="right cost-strong">$1,094.40</td>
+    <td class="right">52</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a></td>
+    <td class="right">9</td>
+    <td class="right">14/17</td>
+    <td class="right cost">$1.15</td>
+    <td class="right cost-strong">$1,036.80</td>
+    <td class="right">25</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a></td>
+    <td class="right">12</td>
+    <td class="right">17/18</td>
+    <td class="right cost">$1.09</td>
+    <td class="right cost-strong">$979.20</td>
+    <td class="right">25</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/prettier/prettier" rel="noopener">prettier/prettier</a></td>
+    <td class="right">17</td>
+    <td class="right">16/23</td>
+    <td class="right cost">$1.02</td>
+    <td class="right cost-strong">$921.60</td>
+    <td class="right">29</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/jestjs/jest" rel="noopener">jestjs/jest</a></td>
+    <td class="right">9</td>
+    <td class="right">11/28</td>
+    <td class="right cost">$0.90</td>
+    <td class="right cost-strong">$806.40</td>
+    <td class="right">20</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/parcel-bundler/parcel" rel="noopener">parcel-bundler/parcel</a></td>
+    <td class="right">6</td>
+    <td class="right">9/15</td>
+    <td class="right cost">$0.90</td>
+    <td class="right cost-strong">$806.40</td>
+    <td class="right">51</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/vuejs/core" rel="noopener">vuejs/core</a></td>
+    <td class="right">9</td>
+    <td class="right">12/14</td>
+    <td class="right cost">$0.83</td>
+    <td class="right cost-strong">$748.80</td>
+    <td class="right">39</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/sveltejs/svelte" rel="noopener">sveltejs/svelte</a></td>
+    <td class="right">5</td>
+    <td class="right">11/12</td>
+    <td class="right cost">$0.70</td>
+    <td class="right cost-strong">$633.60</td>
+    <td class="right">13</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/rollup/rollup" rel="noopener">rollup/rollup</a></td>
+    <td class="right">4</td>
+    <td class="right">8/10</td>
+    <td class="right cost">$0.64</td>
+    <td class="right cost-strong">$576.00</td>
+    <td class="right">23</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/preactjs/preact" rel="noopener">preactjs/preact</a></td>
+    <td class="right">8</td>
+    <td class="right">10/25</td>
+    <td class="right cost">$0.64</td>
+    <td class="right cost-strong">$576.00</td>
+    <td class="right">30</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/tannerlinsley/react-query" rel="noopener">tannerlinsley/react-query</a></td>
+    <td class="right">5</td>
+    <td class="right">7/9</td>
+    <td class="right cost">$0.45</td>
+    <td class="right cost-strong">$403.20</td>
+    <td class="right">20</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/expressjs/express" rel="noopener">expressjs/express</a></td>
+    <td class="right">4</td>
+    <td class="right">5/7</td>
+    <td class="right cost">$0.38</td>
+    <td class="right cost-strong">$345.60</td>
+    <td class="right">16</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/sindresorhus/got" rel="noopener">sindresorhus/got</a></td>
+    <td class="right">1</td>
+    <td class="right">0/1</td>
+    <td class="right cost">$0.00</td>
+    <td class="right cost-strong">$0.00</td>
+    <td class="right">3</td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>The most common CI smells</h2>
+<p class="small">Across all 229 workflows. Percentage is share of priced jobs that hit at least one of that rule.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th class="right">Hits</th>
+      <th class="right">Per priced job</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>missing-timeout</code></td>
+    <td class="right">364</td>
+    <td class="right">94%</td>
+  </tr>
+  <tr>
+    <td><code>missing-cache</code></td>
+    <td class="right">113</td>
+    <td class="right">29%</td>
+  </tr>
+  <tr>
+    <td><code>pinned-action-sha</code></td>
+    <td class="right">91</td>
+    <td class="right">23%</td>
+  </tr>
+  <tr>
+    <td><code>missing-permissions</code></td>
+    <td class="right">80</td>
+    <td class="right">21%</td>
+  </tr>
+  <tr>
+    <td><code>artifact-no-retention</code></td>
+    <td class="right">73</td>
+    <td class="right">19%</td>
+  </tr>
+  <tr>
+    <td><code>missing-concurrency</code></td>
+    <td class="right">52</td>
+    <td class="right">13%</td>
+  </tr>
+  <tr>
+    <td><code>matrix-overcommit</code></td>
+    <td class="right">52</td>
+    <td class="right">13%</td>
+  </tr>
+  <tr>
+    <td><code>deprecated-action</code></td>
+    <td class="right">39</td>
+    <td class="right">10%</td>
+  </tr>
+  <tr>
+    <td><code>fetch-depth-zero</code></td>
+    <td class="right">22</td>
+    <td class="right">6%</td>
+  </tr>
+  <tr>
+    <td><code>expensive-runner</code></td>
+    <td class="right">12</td>
+    <td class="right">3%</td>
+  </tr>
+  <tr>
+    <td><code>wide-trigger</code></td>
+    <td class="right">4</td>
+    <td class="right">1%</td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>What the data shows</h2>
+<ul>
+  <li><strong>Missing job timeout</strong> is the #1 finding by a wide margin (364 hits).
+    A stuck job runs to GitHub's default 6-hour cap. One stuck job at <code>macos-latest</code> = $28.80 from a single bad PR.</li>
+  <li><strong>Missing cache</strong> hits 113 times. Setup-node/setup-python/setup-java without
+    <code>cache:</code> reinstalls every run; for a busy repo this is dollars/day.</li>
+  <li><strong>Unpinned action SHAs</strong> hit 91 times. Not a cost issue;
+    a supply-chain issue. Run <a href="https://www.npmjs.com/package/pin-actions"><code>npx pin-actions</code></a> to fix everything in place.</li>
+  <li>159 jobs (29% of total) ran on
+    self-hosted, large, or non-standard runners. These are excluded from cost totals - the real spend is higher than the table.</li>
+</ul>
+
+<h2>Try the same analysis on your repo</h2>
+<p>The fastest way: <a href="/audit.html">audit a workflow in your browser</a> or
+  <a href="/budget.html">price a workflow in your browser</a>. Both run client-side,
+  same engines, no upload. To run across the whole repo:</p>
+<pre><code>npx ci-doctor              # find the smells
+npx ci-doctor --fix        # auto-apply the safe fixes
+npx gha-budget             # price the workflows
+npx pin-actions            # pin every uses: ref to a SHA</code></pre>
+
+<div class="cta">
+  <div class="text">
+    <h3>Want the patterns that fix all 11 of these?</h3>
+    <p>The <strong>Cut Your CI Bill</strong> cookbook ships 30 paste-ready
+    GitHub Actions patterns and 5 hardened workflow templates that target
+    exactly the rules above. $19, one-time, MIT-licensed templates.</p>
+  </div>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD" rel="noopener">Get the cookbook</a>
+</div>
+
+<p class="small">
+  Generated 2026-04-27T08:36:18.614Z from real public workflow YAML.
+  Pricing model: ubuntu $0.008/min, windows $0.016/min, macos $0.08/min.
+  This is a snapshot; workflows change. Numbers are conservative.
+  Methodology: <a href="https://github.com/depmedicdev-byte/depmedicdev-byte.github.io/blob/main/blog/oss-ci-cost-benchmarks.html">blog post</a>.
+</p>
+</main>
+</body>
+</html>

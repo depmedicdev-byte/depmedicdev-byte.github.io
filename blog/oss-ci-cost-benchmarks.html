@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What 20 popular OSS projects pay for GitHub Actions - depmedic</title>
+<meta name="description" content="Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 902 CI smells, $50k combined monthly spend. Public dataset." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="What 20 popular OSS projects pay for GitHub Actions" />
+<meta property="og:description" content="229 workflows, 902 CI smells, $50k combined monthly spend. Real data from public workflow YAML." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #9aa3ad; margin: 0 0 28px; font-size: 14px; }
+  h2 { font-size: 20px; margin: 36px 0 10px; color: #c9d1d9; }
+  p { margin: 0 0 16px; }
+  code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; font-size: 13.5px; background: #11151b; padding: 1px 5px; border-radius: 4px; }
+  pre { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 13.5px; line-height: 1.5; }
+  pre code { background: transparent; padding: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 16px 0; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+  td.right, th.right { text-align: right; }
+  .nav { font-size: 13.5px; color: #9aa3ad; margin-bottom: 28px; }
+  .nav a { color: #9aa3ad; }
+  .promo {
+    background: linear-gradient(135deg, #11151b, #16202b);
+    border: 1px solid #2a3744; border-radius: 10px;
+    padding: 16px 20px; margin: 24px 0;
+  }
+  .promo h3 { margin: 0 0 6px; font-size: 16px; color: #e6e8eb; }
+  .promo p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+  .promo .btn { display: inline-block; padding: 8px 14px; border-radius: 6px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .promo .btn:hover { text-decoration: none; background: #3a4754; }
+  .promo .price { color: #9aa3ad; font-size: 13px; margin-left: 8px; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>What 20 popular open-source projects pay for GitHub Actions</h1>
+<p class="meta">2026-04-27 - benchmarks</p>
+
+<p>
+  This is real data, not a survey. I pulled the live <code>.github/workflows</code>
+  directory from 20 widely-used open-source repos via the GitHub API, ran every
+  workflow through <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>
+  to price each job at GitHub's published per-runner rates, and ran
+  <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a> against the
+  same files to count CI smells.
+</p>
+
+<p>
+  <strong>The headline:</strong> 229 workflows, 388 priced jobs, 902 CI smells,
+  about <strong>$51,000 of combined monthly spend</strong> assuming each job runs
+  ~30 times a day for ~8 minutes. That is a deliberately conservative estimate
+  - 159 jobs ran on self-hosted or large runners and could not be priced from
+  the YAML alone, so the true combined number is higher.
+</p>
+
+<p>
+  The full sortable table is on
+  <a href="/benchmarks.html">/benchmarks.html</a>. The interesting parts are
+  below.
+</p>
+
+<h2>Top 10 by monthly spend</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Repo</th>
+      <th class="right">Per run</th>
+      <th class="right">Monthly @ 30/day</th>
+      <th class="right">CI smells</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>denoland/deno</td><td class="right">$18.30</td><td class="right">$16,473.60</td><td class="right">84</td></tr>
+    <tr><td>facebook/react</td><td class="right">$16.19</td><td class="right">$14,572.80</td><td class="right">87</td></tr>
+    <tr><td>vercel/next.js</td><td class="right">$4.10</td><td class="right">$3,686.40</td><td class="right">164</td></tr>
+    <tr><td>axios/axios</td><td class="right">$2.62</td><td class="right">$2,361.60</td><td class="right">40</td></tr>
+    <tr><td>storybookjs/storybook</td><td class="right">$2.05</td><td class="right">$1,843.20</td><td class="right">66</td></tr>
+    <tr><td>microsoft/TypeScript</td><td class="right">$1.92</td><td class="right">$1,728.00</td><td class="right">75</td></tr>
+    <tr><td>eslint/eslint</td><td class="right">$1.54</td><td class="right">$1,382.40</td><td class="right">40</td></tr>
+    <tr><td>remix-run/react-router</td><td class="right">$1.22</td><td class="right">$1,094.40</td><td class="right">52</td></tr>
+    <tr><td>webpack/webpack</td><td class="right">$1.15</td><td class="right">$1,036.80</td><td class="right">25</td></tr>
+    <tr><td>vitejs/vite</td><td class="right">$1.09</td><td class="right">$979.20</td><td class="right">25</td></tr>
+  </tbody>
+</table>
+
+<p>
+  Deno and React lead because their workflows lean heavily on macOS and
+  larger Linux runners for cross-platform builds. macOS minutes are 10x
+  Ubuntu minutes; one matrix expansion of 5x macOS jobs at 8 minutes each is
+  $32 per push.
+</p>
+
+<h2>The CI smells, ranked</h2>
+
+<p>
+  ci-doctor recorded 902 findings across all 229 workflows. The distribution
+  is not even. One rule alone accounts for 40% of all findings:
+</p>
+
+<table>
+  <thead>
+    <tr><th>Rule</th><th class="right">Hits</th><th class="right">Per priced job</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>missing-timeout</code></td><td class="right">364</td><td class="right">94%</td></tr>
+    <tr><td><code>missing-cache</code></td><td class="right">113</td><td class="right">29%</td></tr>
+    <tr><td><code>pinned-action-sha</code></td><td class="right">91</td><td class="right">23%</td></tr>
+    <tr><td><code>missing-permissions</code></td><td class="right">80</td><td class="right">21%</td></tr>
+    <tr><td><code>artifact-no-retention</code></td><td class="right">73</td><td class="right">19%</td></tr>
+    <tr><td><code>missing-concurrency</code></td><td class="right">52</td><td class="right">13%</td></tr>
+    <tr><td><code>matrix-overcommit</code></td><td class="right">52</td><td class="right">13%</td></tr>
+    <tr><td><code>deprecated-action</code></td><td class="right">39</td><td class="right">10%</td></tr>
+    <tr><td><code>fetch-depth-zero</code></td><td class="right">22</td><td class="right">6%</td></tr>
+    <tr><td><code>expensive-runner</code></td><td class="right">12</td><td class="right">3%</td></tr>
+    <tr><td><code>wide-trigger</code></td><td class="right">4</td><td class="right">1%</td></tr>
+  </tbody>
+</table>
+
+<h2>Three observations that matter for your bill</h2>
+
+<p>
+  <strong>1. Almost nobody sets a <code>timeout-minutes</code>.</strong> 94% of
+  priced jobs have no timeout. GitHub's default is 6 hours. One stuck job at
+  <code>macos-latest</code> burns $28.80 before it gives up. One in 1,000 PRs hits
+  this; in a busy repo that is a real line on the invoice.
+</p>
+
+<p>
+  <strong>2. Setup actions are missing <code>cache:</code> 29% of the time.</strong>
+  <code>actions/setup-node</code>, <code>setup-python</code>, <code>setup-java</code> all support
+  <code>cache: npm</code>, <code>cache: pip</code>, <code>cache: gradle</code> as a one-line
+  addition. Re-resolving and re-downloading dependencies per run typically
+  adds 1-3 minutes per job. At 30 runs a day across a 9-job matrix, that is
+  the better part of an hour of paid runner time, every day.
+</p>
+
+<p>
+  <strong>3. <code>concurrency:</code> blocks are rare and worth a lot.</strong> 13% of
+  priced jobs hit <code>missing-concurrency</code>. The pattern is six lines:
+</p>
+
+<pre><code>concurrency:
+  group: ${'{{ github.workflow }}-${{ github.ref }}'}
+  cancel-in-progress: true</code></pre>
+
+<p>
+  In an active PR with 8 pushes, this turns 8 full runs into 1. On a busy
+  repo it is one of the largest single levers available.
+</p>
+
+<h2>The supply-chain side</h2>
+
+<p>
+  91 of the workflows used at least one third-party action pinned by tag
+  (<code>actions/checkout@v4</code>) instead of by full commit SHA. That is not a
+  cost issue; it is the exact pattern that the
+  <a href="https://www.stepsecurity.io/blog/tj-actions-changed-files-tj-actions-eslint-changed-files">tj-actions/changed-files compromise</a>
+  exploited in 2025. <a href="/blog/pin-github-actions-to-sha.html">Pinning to SHA</a>
+  with a one-line CI policy fixes it. <a href="https://www.npmjs.com/package/pin-actions"><code>npx pin-actions</code></a>
+  rewrites every <code>uses:</code> line in place.
+</p>
+
+<h2>Reproduce this locally</h2>
+
+<p>
+  Everything above ran on a laptop in under a minute. The recipe:
+</p>
+
+<pre><code># 1. Audit any repo's workflows for the same 11 rules:
+npx ci-doctor
+
+# 2. Price the same workflows in dollars:
+npx gha-budget --runs-per-day 30 --minutes 8
+
+# 3. Pin every uses: ref to a SHA in place:
+npx pin-actions
+
+# 4. Don't want to install? Paste a single workflow into:
+#    https://depmedicdev-byte.github.io/audit.html
+#    https://depmedicdev-byte.github.io/budget.html</code></pre>
+
+<p>
+  All four CLIs are MIT-licensed, free, and listed on the
+  <a href="/">homepage</a>.
+</p>
+
+<div class="promo">
+  <h3>Want the patterns that fix all 11 of these rules?</h3>
+  <p>The <strong>Cut Your CI Bill</strong> cookbook is the companion to
+  ci-doctor. 30 paste-ready GitHub Actions patterns and 5 hardened workflow
+  templates - including the concurrency, cache, timeout, and matrix
+  patterns this benchmark surfaced as most violated.
+  <span class="price">$19, one-time, MIT-licensed templates.</span></p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD" rel="noopener">Get the cookbook</a>
+</div>
+
+<h2>Methodology and caveats</h2>
+
+<ul>
+  <li><strong>Repos:</strong> 20 widely-used JS/TS-leaning OSS repos. Selection bias is real; this is not a representative sample of all OSS.</li>
+  <li><strong>Pricing:</strong> ubuntu $0.008/min, windows $0.016/min, macos $0.08/min, self-hosted $0. Larger runners (e.g. <code>ubuntu-latest-16-core</code>) are unpriced and excluded.</li>
+  <li><strong>Assumptions:</strong> 8 min/job, 30 runs/day. Both are deliberately conservative; real-world numbers for active repos are typically higher.</li>
+  <li><strong>Matrix expansion:</strong> products of every list dimension, plus <code>include</code>, minus <code>exclude</code>. <code>fail-fast</code> not modeled.</li>
+  <li><strong>Reproducible:</strong> see <code>tools/benchmark-fetch.mjs</code> + <code>benchmark-analyze.mjs</code> in the workspace.</li>
+</ul>
+
+<p>
+  <a href="/benchmarks.html">Full sortable table -&gt;</a>
+</p>
+
+<footer>
+  <p>
+    depmedic ships small, focused tooling for the boring expensive parts of
+    CI. <a href="/">All projects on the homepage</a>.
+  </p>
+</footer>
+
+</main>
+</body>
+</html>
