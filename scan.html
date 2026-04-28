@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free GitHub Actions cost + smell scan for any public repo - depmedic</title>
+<meta name="description" content="Paste a GitHub repo URL, get a free per-workflow report: cost in dollars, ci-doctor findings, severity breakdown. Runs in your browser using the GitHub public API. No signup, no upload, shareable URL." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/scan.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Free GitHub Actions cost + smell scan for any public repo" />
+<meta property="og:description" content="Paste a GitHub URL. Get cost + smell report per workflow. No signup. Shareable result URL." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/scan.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+  h2 { font-size: 16px; color: #c9d1d9; margin: 28px 0 10px; letter-spacing: 0.03em; text-transform: uppercase; }
+  h3 { font-size: 16px; color: #e6e8eb; margin: 12px 0 4px; }
+
+  .input-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  input[type=text] { flex: 1 1 320px; min-width: 0; padding: 11px 14px;
+    background: #11151b; border: 1px solid #2a3744; border-radius: 8px; color: #e6e8eb;
+    font: 14px/1.4 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; }
+  input[type=text]:focus { outline: none; border-color: #6cb6ff; }
+  button { background: #2a3744; color: #e6e8eb; border: 1px solid #3a4754;
+    padding: 10px 18px; border-radius: 8px; font: inherit; cursor: pointer; }
+  button.primary { background: #2d5a7a; border-color: #3a6e94; }
+  button:hover { filter: brightness(1.12); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .examples { margin-top: 8px; color: #6f7882; font-size: 13px; }
+  .examples a { color: #6cb6ff; }
+
+  .meta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 18px 0 10px; color: #9aa3ad; font-size: 14px; }
+  .meta-row label { color: #9aa3ad; }
+  .meta-row input[type=number] { width: 80px; padding: 6px 8px; background: #11151b; border: 1px solid #2a3744;
+    color: #e6e8eb; border-radius: 6px; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  .progress { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 18px;
+    margin: 14px 0; color: #b6bec7; font-size: 14px; display: none; }
+  .progress.show { display: block; }
+  .progress .line { margin: 2px 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #9aa3ad; }
+  .progress .ok { color: #9ce29c; }
+  .progress .err { color: #ff8a8a; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+  .stat { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 16px; }
+  .stat .label { color: #9aa3ad; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .val { font-size: 22px; font-weight: 600; margin-top: 2px; }
+  .stat .val.green { color: #9ce29c; } .stat .val.amber { color: #ffb86c; } .stat .val.blue { color: #6cb6ff; }
+  .stat .sub { color: #6f7882; font-size: 12px; margin-top: 2px; }
+
+  .results { display: none; }
+  .results.show { display: block; }
+
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  td code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+
+  .wf { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; margin: 0 0 12px; }
+  .wf h3 { margin: 0 0 4px; }
+  .wf .wfmeta { color: #9aa3ad; font-size: 13px; margin-bottom: 8px; }
+  .wf .wfmeta a { color: #6cb6ff; }
+  .wf .findings { margin-top: 8px; }
+  .wf .finding { font-size: 13px; color: #b6bec7; padding: 4px 0; border-bottom: 1px dashed #1e242c; }
+  .wf .finding:last-child { border-bottom: none; }
+  .wf .sev { font-size: 10.5px; padding: 1px 7px; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase; margin-right: 6px; }
+  .wf .sev.error { background: #4a1e1e; color: #ffb8b8; }
+  .wf .sev.warn { background: #4a3a1e; color: #ffd9a3; }
+  .wf .sev.info { background: #1e3a4a; color: #a3d4ff; }
+  .wf .sev.clean { background: #1d3b22; color: #9ce29c; }
+  .wf .ruleid { color: #9aa3ad; font-family: ui-monospace, monospace; font-size: 12.5px; margin-right: 6px; }
+
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 18px; }
+
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 20px 22px; margin: 26px 0;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .cta .text { flex: 1 1 320px; }
+  .cta h3 { margin: 0 0 4px; font-size: 17px; color: #e6e8eb; }
+  .cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+
+  .disclaimer { background: #11151b; border-left: 3px solid #2a3744; padding: 10px 16px;
+    color: #9aa3ad; font-size: 13px; border-radius: 4px; margin: 16px 0; }
+
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / scan</p>
+
+<h1>Scan any GitHub repo's workflows</h1>
+<p class="lead">
+  Paste a public GitHub repo URL. Get a per-workflow cost estimate (using
+  <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>) and a 14-rule
+  smell audit (using <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>).
+  Runs in your browser via GitHub's public API. No signup, nothing uploaded
+  anywhere. The result URL is shareable.
+</p>
+
+<div class="input-row">
+  <input id="repo" type="text" placeholder="https://github.com/facebook/react   (or just facebook/react)" />
+  <button id="run" class="primary">Scan</button>
+</div>
+<p class="examples">
+  Try: <a href="#" data-eg="facebook/react">facebook/react</a> &middot;
+  <a href="#" data-eg="vercel/next.js">vercel/next.js</a> &middot;
+  <a href="#" data-eg="vitejs/vite">vitejs/vite</a> &middot;
+  <a href="#" data-eg="denoland/deno">denoland/deno</a>
+</p>
+
+<div class="meta-row">
+  <label for="minutes">assumed min/job</label>
+  <input id="minutes" type="number" min="1" max="60" value="8" />
+  <label for="rpd">runs/day</label>
+  <input id="rpd" type="number" min="1" max="500" value="30" />
+  <span style="color:#6f7882;font-size:13px;">used to estimate monthly $</span>
+</div>
+
+<div id="progress" class="progress"></div>
+
+<section id="results" class="results">
+
+  <div class="toolbar">
+    <button id="copyShare">Copy share link</button>
+    <a id="ghLink" class="" href="" target="_blank" rel="noopener" style="align-self:center; font-size:14px;"></a>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <h2>Per-rule findings</h2>
+  <div id="ruleTable"></div>
+
+  <h2>Per-workflow breakdown</h2>
+  <div id="workflows"></div>
+
+  <div class="cta">
+    <div class="text">
+      <h3>Want all 14 rules + auto-fix on your CI?</h3>
+      <p>Run ci-doctor locally or as a GitHub Action. Auto-applies the 4 safe fixes (concurrency, timeout, paths-filter, retention).</p>
+    </div>
+    <a class="btn" href="https://www.npmjs.com/package/ci-doctor">View on npm</a>
+    <a class="btn" href="https://github.com/depmedicdev-byte/ci-doctor">Source</a>
+  </div>
+
+  <div class="cta">
+    <div class="text">
+      <h3>Cookbook: the why behind every default</h3>
+      <p>30 paste-ready GitHub Actions patterns. The long-form version of every rule above. $19 one-time, MIT-licensed templates.</p>
+    </div>
+    <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Get the cookbook</a>
+    <a class="btn" href="/patterns.html">5 free preview patterns</a>
+  </div>
+
+  <div class="disclaimer" id="disclaimer"></div>
+</section>
+
+<footer>
+  This page uses GitHub's public unauthenticated API (60 requests/hour per IP).
+  Big repos with many workflows may hit the limit; if so, wait an hour or
+  pass a token (not implemented here for privacy).
+  See also: <a href="/audit.html">paste-and-audit your own YAML</a> &middot;
+  <a href="/budget.html">price your own YAML</a> &middot;
+  <a href="/rules.html">all 14 rules explained</a> &middot;
+  <a href="/examples/">pre-scanned dataset for 20 popular repos</a>.
+</footer>
+
+</main>
+
+<script src="./ci-doctor.bundle.js"></script>
+<script src="./gha-budget.bundle.js"></script>
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const repoEl = $('repo');
+  const runEl = $('run');
+  const progEl = $('progress');
+  const resultsEl = $('results');
+  const statsEl = $('stats');
+  const ruleTableEl = $('ruleTable');
+  const wfEl = $('workflows');
+  const minutesEl = $('minutes');
+  const rpdEl = $('rpd');
+  const copyShareEl = $('copyShare');
+  const ghLinkEl = $('ghLink');
+  const disclaimerEl = $('disclaimer');
+
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function logLine(msg, cls) {
+    const d = document.createElement('div');
+    d.className = 'line ' + (cls || '');
+    d.textContent = msg;
+    progEl.appendChild(d);
+    progEl.scrollTop = progEl.scrollHeight;
+  }
+  function showProgress() { progEl.innerHTML = ''; progEl.classList.add('show'); }
+  function setRunning(on) {
+    runEl.disabled = on;
+    runEl.textContent = on ? 'Scanning...' : 'Scan';
+  }
+  function parseRepo(input) {
+    if (!input) return null;
+    let s = input.trim().replace(/\.git$/, '').replace(/\/$/, '');
+    s = s.replace(/^https?:\/\/github\.com\//, '');
+    const m = s.match(/^([^\/\s]+)\/([^\/\s]+)/);
+    if (!m) return null;
+    return { owner: m[1], repo: m[2] };
+  }
+  function setHash(repo) {
+    const m = parseFloat(minutesEl.value) || 8;
+    const r = parseFloat(rpdEl.value) || 30;
+    const h = '#r=' + encodeURIComponent(repo) + '&m=' + m + '&d=' + r;
+    if (location.hash !== h) history.replaceState(null, '', h);
+  }
+  function readHash() {
+    const h = location.hash.replace(/^#/, '');
+    if (!h) return null;
+    const params = new URLSearchParams(h);
+    return {
+      r: params.get('r'),
+      m: parseFloat(params.get('m')) || 8,
+      d: parseFloat(params.get('d')) || 30,
+    };
+  }
+
+  async function fetchJson(url) {
+    const r = await fetch(url);
+    if (r.status === 403) {
+      const remaining = r.headers.get('x-ratelimit-remaining');
+      if (remaining === '0') throw new Error('GitHub API rate limit hit (60/hr unauth). Try again in an hour.');
+    }
+    if (!r.ok) throw new Error('GitHub ' + r.status + ' on ' + url);
+    return r.json();
+  }
+  async function fetchText(url) {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error('fetch ' + r.status + ' on ' + url);
+    return r.text();
+  }
+
+  async function scan(owner, repo) {
+    showProgress();
+    setRunning(true);
+    resultsEl.classList.remove('show');
+    statsEl.innerHTML = ''; ruleTableEl.innerHTML = ''; wfEl.innerHTML = '';
+
+    logLine('repo: ' + owner + '/' + repo);
+    let listing;
+    try {
+      logLine('fetching .github/workflows/ listing...');
+      listing = await fetchJson('https://api.github.com/repos/' + owner + '/' + repo + '/contents/.github/workflows');
+    } catch (e) {
+      if (/404/.test(e.message)) {
+        logLine('no .github/workflows/ directory found in this repo (or repo is private/missing).', 'err');
+      } else {
+        logLine('error: ' + e.message, 'err');
+      }
+      setRunning(false);
+      return;
+    }
+
+    const ymls = (Array.isArray(listing) ? listing : [])
+      .filter(f => f.type === 'file' && /\.ya?ml$/i.test(f.name))
+      .sort((a, b) => a.name.localeCompare(b.name));
+    logLine('found ' + ymls.length + ' workflow file(s).', 'ok');
+    if (!ymls.length) { setRunning(false); return; }
+
+    const minutes = parseFloat(minutesEl.value) || 8;
+    const runsPerDay = parseFloat(rpdEl.value) || 30;
+    const ASSUMED_DAYS = 30;
+
+    const workflows = [];
+    const ruleCounts = {};
+    let totalErr = 0, totalWarn = 0, totalInfo = 0, totalFindings = 0;
+    let totalPerRun = 0, pricedJobs = 0, unpricedJobs = 0;
+    let networkErrors = 0;
+
+    for (let i = 0; i < ymls.length; i++) {
+      const f = ymls[i];
+      logLine('[' + (i + 1) + '/' + ymls.length + '] ' + f.name + ' ...');
+      let yaml;
+      try { yaml = await fetchText(f.download_url); }
+      catch (e) {
+        logLine('  fetch failed: ' + e.message, 'err');
+        networkErrors++;
+        continue;
+      }
+      const findings = window.ciDoctor.auditWorkflow(yaml, f.path);
+      for (const fd of findings) {
+        if (fd.severity === 'error') totalErr++;
+        else if (fd.severity === 'warn' || fd.severity === 'warning') totalWarn++;
+        else totalInfo++;
+        ruleCounts[fd.ruleId] = (ruleCounts[fd.ruleId] || 0) + 1;
+      }
+      totalFindings += findings.length;
+
+      let cost = null, jobs = [];
+      try {
+        const r = window.ghaBudget.analyzeWorkflow(f.path, yaml, { minutes });
+        if (!r.error) {
+          cost = r.totalCostPerRunUsd || 0;
+          jobs = r.jobs || [];
+          for (const j of jobs) { if (j.costPerRunUsd != null) pricedJobs++; else unpricedJobs++; }
+          totalPerRun += cost;
+        }
+      } catch (_) {}
+
+      workflows.push({
+        name: f.name, path: f.path, html_url: f.html_url,
+        cost, jobsCount: jobs.length, findingsCount: findings.length,
+        findings: findings.slice(0, 8),
+      });
+    }
+
+    const monthly = +(totalPerRun * runsPerDay * ASSUMED_DAYS).toFixed(2);
+    logLine('done. ' + totalFindings + ' findings across ' + workflows.length + ' workflows. modeled $' + monthly.toLocaleString() + '/mo.', 'ok');
+
+    // Render stats
+    statsEl.innerHTML = '' +
+      stat('Workflows', String(workflows.length)) +
+      stat('Per-run $', '$' + totalPerRun.toFixed(2), 'blue') +
+      stat('Monthly $ @ ' + runsPerDay + '/day', '$' + monthly.toLocaleString(), 'green') +
+      stat('Findings', String(totalFindings), totalFindings > 0 ? 'amber' : 'green',
+           totalErr + ' err / ' + totalWarn + ' warn / ' + totalInfo + ' info');
+
+    // Per-rule table
+    const rules = Object.entries(ruleCounts).sort((a, b) => b[1] - a[1]);
+    if (rules.length) {
+      ruleTableEl.innerHTML = '<table><thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead><tbody>' +
+        rules.map(([r, n]) => '<tr><td><code>' + esc(r) + '</code></td><td class="right">' + n + '</td></tr>').join('') +
+        '</tbody></table>';
+    } else {
+      ruleTableEl.innerHTML = '<p style="color:#9ce29c;">No findings - this repo passes all 14 ci-doctor rules.</p>';
+    }
+
+    // Per-workflow
+    workflows.sort((a, b) => (b.cost || 0) - (a.cost || 0));
+    wfEl.innerHTML = workflows.map(w => {
+      const sevs = w.findings.length
+        ? w.findings.map(f => '<div class="finding"><span class="sev ' + esc(f.severity) + '">' + esc(f.severity) + '</span>' +
+            '<span class="ruleid">' + esc(f.ruleId) + '</span>' + esc(f.message) + '</div>').join('')
+        : '<div class="finding"><span class="sev clean">clean</span>no findings</div>';
+      const more = w.findingsCount > w.findings.length ? '<div class="finding" style="color:#6f7882;">... and ' + (w.findingsCount - w.findings.length) + ' more</div>' : '';
+      return '<div class="wf"><h3>' + esc(w.name) + '</h3>' +
+        '<div class="wfmeta">' + (w.cost == null ? '<em>self-hosted / unpriced</em>' : 'per-run cost: $' + w.cost.toFixed(2)) +
+        ' &middot; ' + w.jobsCount + ' job(s) &middot; ' + w.findingsCount + ' finding(s) &middot; ' +
+        '<a href="' + esc(w.html_url) + '" target="_blank" rel="noopener">view on GitHub</a></div>' +
+        '<div class="findings">' + sevs + more + '</div></div>';
+    }).join('');
+
+    disclaimerEl.innerHTML = '<strong>Numbers are modeled.</strong> Costs assume ' + minutes + ' min/job, ' + runsPerDay + ' runs/day, GitHub-hosted runner rate sheet. Real-world cost depends on actual run frequency and runner choices. ' +
+      'Self-hosted and large-runner jobs are not priced (shown as <em>unpriced</em>). ' +
+      (networkErrors ? '<br /><strong>Note:</strong> ' + networkErrors + ' workflow(s) failed to download and were skipped.' : '');
+
+    ghLinkEl.href = 'https://github.com/' + owner + '/' + repo + '/tree/HEAD/.github/workflows';
+    ghLinkEl.textContent = 'view ' + owner + '/' + repo + '/.github/workflows on GitHub';
+
+    resultsEl.classList.add('show');
+    setHash(owner + '/' + repo);
+    setRunning(false);
+  }
+
+  function stat(label, val, color, sub) {
+    const c = color ? ' ' + color : '';
+    return '<div class="stat"><div class="label">' + esc(label) + '</div>' +
+      '<div class="val' + c + '">' + esc(val) + '</div>' +
+      (sub ? '<div class="sub">' + esc(sub) + '</div>' : '') + '</div>';
+  }
+
+  function startScan() {
+    const parsed = parseRepo(repoEl.value);
+    if (!parsed) {
+      alert('Please paste a GitHub repo URL or owner/repo.');
+      return;
+    }
+    scan(parsed.owner, parsed.repo);
+  }
+  runEl.addEventListener('click', startScan);
+  repoEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') startScan(); });
+  document.querySelectorAll('.examples a[data-eg]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      repoEl.value = a.dataset.eg;
+      startScan();
+    });
+  });
+  copyShareEl.addEventListener('click', () => {
+    navigator.clipboard.writeText(location.href).then(() => {
+      copyShareEl.textContent = 'Copied!';
+      setTimeout(() => copyShareEl.textContent = 'Copy share link', 1400);
+    });
+  });
+
+  // load from hash if present
+  const h = readHash();
+  if (h && h.r) {
+    const p = parseRepo(h.r);
+    if (p) {
+      repoEl.value = h.r;
+      minutesEl.value = h.m;
+      rpdEl.value = h.d;
+      // wait for bundles to be ready
+      const ready = () => (window.ciDoctor && window.ghaBudget);
+      if (ready()) scan(p.owner, p.repo);
+      else {
+        let tries = 0;
+        const t = setInterval(() => {
+          tries++;
+          if (ready() || tries > 50) {
+            clearInterval(t);
+            if (ready()) scan(p.owner, p.repo);
+          }
+        }, 100);
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>

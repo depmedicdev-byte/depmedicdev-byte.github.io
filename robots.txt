@@ -6,3 +6,5 @@ Sitemap: https://depmedicdev-byte.github.io/sitemap.xml
 # AI / LLM crawlers: there are dedicated, machine-readable indexes for you.
 # Short overview:    https://depmedicdev-byte.github.io/llms.txt
 # Full content dump: https://depmedicdev-byte.github.io/llms-full.txt
+# Plain-markdown rule reference:   https://depmedicdev-byte.github.io/rules.md
+# Plain-markdown benchmark report: https://depmedicdev-byte.github.io/benchmarks.md
