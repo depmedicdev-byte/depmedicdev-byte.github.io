@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy - depmedic</title>
+<meta name="description" content="What depmedic collects, what it does not, and where your data goes." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/privacy.html" />
+<style>
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  a { color: #6cb6ff; } a:hover { text-decoration: underline; }
+  h1 { font-size: 28px; letter-spacing: -0.01em; margin: 0 0 8px; }
+  h2 { font-size: 18px; color: #c9d1d9; margin: 28px 0 6px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  .meta { color: #6f7882; font-size: 13px; margin: 0 0 24px; }
+  code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<p class="nav"><a href="/">depmedic</a> / privacy</p>
+<h1>Privacy Policy</h1>
+<p class="meta">Effective 2026-04-27. Plain English. Last updated 2026-04-27.</p>
+
+<h2>Short version</h2>
+<p>The CLIs run locally and collect nothing. The website has no analytics and no cookies set by us. The in-browser tools never upload your YAML. Paid checkout goes through Polar.sh, which collects what it needs to charge your card. The X account is a publishing channel, not a tracking surface.</p>
+
+<h2>1. The CLIs (npm packages)</h2>
+<p>Every CLI we publish - <code>depmedic</code>, <code>ci-doctor</code>, <code>cursor-rules-init</code>, <code>gha-budget</code>, <code>pin-actions</code> - runs entirely on your machine. They do not phone home, do not collect telemetry, and have no analytics endpoints. Their network traffic is limited to the upstream package ecosystems they explicitly need (e.g. <code>depmedic</code> queries the npm registry to evaluate vulnerability data).</p>
+
+<h2>2. The website (depmedicdev-byte.github.io)</h2>
+<p>Static HTML hosted on GitHub Pages. We do not include analytics scripts, advertising trackers, or social pixels. We do not set cookies. GitHub may collect standard server logs (IP, user agent, timestamp) as part of operating GitHub Pages - see the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub privacy statement</a> for what GitHub does with that.</p>
+
+<h2>3. The in-browser tools</h2>
+<p><a href="/audit.html">/audit</a>, <a href="/budget.html">/budget</a>, and <a href="/calculator.html">/calculator</a> run entirely in your browser. The YAML you paste, the inputs you type, and the results you see never leave your browser. There is no upload. The "share link" feature on /audit and /budget encodes your YAML into a URL hash (which only travels to people you send the link to).</p>
+
+<h2>4. Paid products</h2>
+<p>Checkout, billing, tax handling, and customer accounts are handled by <a href="https://polar.sh">Polar.sh</a>. Polar collects what it needs to process payment (name, email, card details, country for tax). We see the order metadata - order ID, product, amount, customer email - so that we can deliver the file and respond to support requests. We do not see your card details. Polar's privacy policy: <a href="https://polar.sh/legal/privacy">polar.sh/legal/privacy</a>.</p>
+
+<h2>5. Email</h2>
+<p>If you email <a href="mailto:depmedic.dev@gmail.com">depmedic.dev@gmail.com</a>, we keep the email for as long as it takes to handle the conversation. We do not add you to a marketing list.</p>
+
+<h2>6. X (Twitter)</h2>
+<p>The <a href="https://x.com/depmedic">@depmedic</a> account uses X's API to publish posts. The depmedic poster does not collect data about anyone reading or interacting with those posts. Whatever data X itself collects is governed by <a href="https://x.com/en/privacy">X's privacy policy</a>.</p>
+
+<h2>7. Data we do not collect</h2>
+<ul>
+  <li>No analytics.</li>
+  <li>No cookies set by us.</li>
+  <li>No advertising trackers.</li>
+  <li>No fingerprinting.</li>
+  <li>No telemetry from the CLIs.</li>
+  <li>No copies of YAML pasted into the browser tools.</li>
+</ul>
+
+<h2>8. Your rights</h2>
+<p>If you have ever bought a product, you can email <a href="mailto:depmedic.dev@gmail.com">depmedic.dev@gmail.com</a> and ask for a copy of your order data, or ask us to delete it. (Polar will retain its own records to comply with tax law - that is on them, not us.)</p>
+
+<h2>9. Changes</h2>
+<p>If this policy changes in any meaningful way, the change will be announced on the <a href="/">homepage</a> and the date above will be updated.</p>
+
+<h2>10. Contact</h2>
+<p><a href="mailto:depmedic.dev@gmail.com">depmedic.dev@gmail.com</a>.</p>
+</body>
+</html>
