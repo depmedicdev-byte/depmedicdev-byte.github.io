@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free GitLab CI cost + smell scan for any repo - depmedic</title>
+<meta name="description" content="Paste a GitLab project URL (or a GitHub repo with a .gitlab-ci.yml). Get a 12-rule cost and security audit of the pipeline. Runs in your browser using public APIs. No signup, no upload, shareable URL." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/scan-gitlab.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Free GitLab CI cost + smell scan for any repo" />
+<meta property="og:description" content="Paste a GitLab URL. Get cost + smell report. No signup. Shareable result URL." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/scan-gitlab.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+  h2 { font-size: 16px; color: #c9d1d9; margin: 28px 0 10px; letter-spacing: 0.03em; text-transform: uppercase; }
+  h3 { font-size: 16px; color: #e6e8eb; margin: 12px 0 4px; }
+  .input-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  input[type=text] { flex: 1 1 320px; min-width: 0; padding: 11px 14px;
+    background: #11151b; border: 1px solid #2a3744; border-radius: 8px; color: #e6e8eb;
+    font: 14px/1.4 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; }
+  input[type=text]:focus { outline: none; border-color: #6cb6ff; }
+  button { background: #2a3744; color: #e6e8eb; border: 1px solid #3a4754;
+    padding: 10px 18px; border-radius: 8px; font: inherit; cursor: pointer; }
+  button.primary { background: #2d5a7a; border-color: #3a6e94; }
+  button:hover { filter: brightness(1.12); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .examples { margin-top: 8px; color: #6f7882; font-size: 13px; }
+  .examples a { color: #6cb6ff; }
+  .progress { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 18px;
+    margin: 14px 0; color: #b6bec7; font-size: 14px; display: none; }
+  .progress.show { display: block; }
+  .progress .line { margin: 2px 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #9aa3ad; }
+  .progress .ok { color: #9ce29c; }
+  .progress .err { color: #ff8a8a; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+  .stat { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 16px; }
+  .stat .label { color: #9aa3ad; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .val { font-size: 22px; font-weight: 600; margin-top: 2px; }
+  .stat .val.green { color: #9ce29c; } .stat .val.amber { color: #ffb86c; } .stat .val.blue { color: #6cb6ff; }
+  .stat .sub { color: #6f7882; font-size: 12px; margin-top: 2px; }
+  .results { display: none; } .results.show { display: block; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  td code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+  .finding { font-size: 13px; color: #b6bec7; padding: 6px 0; border-bottom: 1px dashed #1e242c; }
+  .finding:last-child { border-bottom: none; }
+  .sev { font-size: 10.5px; padding: 1px 7px; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase; margin-right: 6px; }
+  .sev.error { background: #4a1e1e; color: #ffb8b8; }
+  .sev.warn { background: #4a3a1e; color: #ffd9a3; }
+  .sev.info { background: #1e3a4a; color: #a3d4ff; }
+  .sev.clean { background: #1d3b22; color: #9ce29c; }
+  .ruleid { color: #9aa3ad; font-family: ui-monospace, monospace; font-size: 12.5px; margin-right: 6px; }
+  .loc { color: #6f7882; font-family: ui-monospace, monospace; font-size: 11.5px; margin-left: 4px; }
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0 18px; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 20px 22px; margin: 26px 0;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .cta .text { flex: 1 1 320px; }
+  .cta h3 { margin: 0 0 4px; font-size: 17px; color: #e6e8eb; }
+  .cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+  .paste-block { display: none; margin: 14px 0; }
+  .paste-block.show { display: block; }
+  textarea { width: 100%; min-height: 220px; padding: 12px 14px;
+    background: #11151b; border: 1px solid #2a3744; border-radius: 8px; color: #e6e8eb;
+    font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; resize: vertical; }
+  .disclaimer { background: #11151b; border-left: 3px solid #2a3744; padding: 10px 16px;
+    color: #9aa3ad; font-size: 13px; border-radius: 4px; margin: 16px 0; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / scan-gitlab</p>
+
+<h1>Scan any GitLab CI pipeline</h1>
+<p class="lead">
+  Paste a public GitLab project URL <em>or</em> a GitHub repo URL with a
+  <code>.gitlab-ci.yml</code>. Get a 12-rule audit (cost, security, hygiene)
+  using <a href="https://www.npmjs.com/package/gitlab-ci-doctor"><code>gitlab-ci-doctor</code></a>.
+  Runs in your browser. No signup, nothing uploaded.
+</p>
+
+<div class="input-row">
+  <input id="repo" type="text" placeholder="https://gitlab.com/gitlab-org/gitlab   (or github owner/repo, or gitlab.com/group/sub/project)" />
+  <button id="run" class="primary">Scan</button>
+  <button id="togglePaste" type="button">Paste YAML instead</button>
+</div>
+<div id="sponsor-strip"></div>
+<script src="/sponsors.js" defer></script>
+<p class="examples">
+  Try: <a href="#" data-eg="gitlab.com/gitlab-org/gitlab-runner">gitlab-org/gitlab-runner</a> &middot;
+  <a href="#" data-eg="gitlab.com/gitlab-org/gitaly">gitlab-org/gitaly</a> &middot;
+  <a href="#" data-eg="github.com/depmedicdev-byte/gitlab-ci-doctor">a github repo</a>
+</p>
+
+<div id="pasteBlock" class="paste-block">
+  <textarea id="yaml" placeholder="paste your .gitlab-ci.yml here"></textarea>
+  <div style="margin-top:10px;">
+    <button id="runPaste" class="primary">Audit pasted YAML</button>
+  </div>
+</div>
+
+<div id="progress" class="progress"></div>
+
+<section id="results" class="results">
+  <div class="toolbar">
+    <button id="copyShare">Copy share link</button>
+    <a id="srcLink" href="" target="_blank" rel="noopener" style="align-self:center; font-size:14px;"></a>
+  </div>
+  <div class="stats" id="stats"></div>
+
+  <h2>Per-rule findings</h2>
+  <div id="ruleTable"></div>
+
+  <h2>All findings</h2>
+  <div id="findingsList"></div>
+
+  <div class="cta">
+    <div class="text">
+      <h3>Want this in your pipeline?</h3>
+      <p>Drop <code>npx gitlab-ci-doctor --markdown</code> into a lint stage. MR-comment friendly output, exit code 1 on errors.</p>
+    </div>
+    <a class="btn" href="https://www.npmjs.com/package/gitlab-ci-doctor">View on npm</a>
+    <a class="btn" href="https://github.com/depmedicdev-byte/gitlab-ci-doctor">Source</a>
+  </div>
+
+  <div class="cta">
+    <div class="text">
+      <h3>Migrating away from GitLab CI?</h3>
+      <p>The Migration Pack walks you through Travis / CircleCI / Jenkins / GitLab CI to GitHub Actions with mapping tables, before/after, and a 4-phase runbook.</p>
+    </div>
+    <a class="btn" href="https://buy.polar.sh/" id="migration-cta">$29 Migration Pack</a>
+    <a class="btn" href="/">More products</a>
+  </div>
+
+  <div class="disclaimer" id="disclaimer"></div>
+</section>
+
+<footer>
+  Sister page to <a href="/scan.html">/scan.html</a> for GitHub Actions.
+  Both run entirely in your browser using public APIs.
+  Bundles: <a href="https://www.npmjs.com/package/gitlab-ci-doctor"><code>gitlab-ci-doctor</code></a>.
+</footer>
+
+</main>
+
+<script src="./gitlab-ci-doctor.bundle.js"></script>
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const repoEl = $('repo');
+  const runEl = $('run');
+  const togglePasteEl = $('togglePaste');
+  const pasteBlockEl = $('pasteBlock');
+  const yamlEl = $('yaml');
+  const runPasteEl = $('runPaste');
+  const progEl = $('progress');
+  const resultsEl = $('results');
+  const statsEl = $('stats');
+  const ruleTableEl = $('ruleTable');
+  const findingsListEl = $('findingsList');
+  const copyShareEl = $('copyShare');
+  const srcLinkEl = $('srcLink');
+  const disclaimerEl = $('disclaimer');
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function logLine(msg, cls) {
+    const d = document.createElement('div');
+    d.className = 'line ' + (cls || '');
+    d.textContent = msg;
+    progEl.appendChild(d);
+    progEl.scrollTop = progEl.scrollHeight;
+  }
+  function showProgress() { progEl.innerHTML = ''; progEl.classList.add('show'); }
+  function setRunning(on, btn) {
+    (btn || runEl).disabled = on;
+    if (btn) btn.textContent = on ? 'Working...' : btn.dataset.label || 'Run';
+    else runEl.textContent = on ? 'Scanning...' : 'Scan';
+  }
+
+  function parseInput(input) {
+    if (!input) return null;
+    let s = input.trim().replace(/\.git$/, '').replace(/\/$/, '');
+    s = s.replace(/^https?:\/\//, '');
+    if (s.startsWith('gitlab.com/')) {
+      const projectPath = s.slice('gitlab.com/'.length);
+      if (!projectPath.includes('/')) return null;
+      return { kind: 'gitlab', projectPath };
+    }
+    if (s.startsWith('github.com/')) {
+      const m = s.slice('github.com/'.length).match(/^([^\/\s]+)\/([^\/\s]+)/);
+      if (!m) return null;
+      return { kind: 'github', owner: m[1], repo: m[2] };
+    }
+    if (/^[^\/\s]+\/[^\/\s]+$/.test(s)) return { kind: 'github', owner: s.split('/')[0], repo: s.split('/')[1] };
+    if (s.includes('/')) return { kind: 'gitlab', projectPath: s };
+    return null;
+  }
+
+  async function fetchRaw(url) {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' on ' + url);
+    return r.text();
+  }
+  async function fetchJson(url) {
+    const r = await fetch(url);
+    if (r.status === 403) {
+      const remaining = r.headers.get('x-ratelimit-remaining');
+      if (remaining === '0') throw new Error('GitHub API rate limit hit (60/hr unauth). Try again in an hour.');
+    }
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' on ' + url);
+    return r.json();
+  }
+
+  async function fetchPipelineYaml(parsed) {
+    if (parsed.kind === 'github') {
+      logLine('checking github.com/' + parsed.owner + '/' + parsed.repo + ' for .gitlab-ci.yml ...');
+      const meta = await fetchJson('https://api.github.com/repos/' + parsed.owner + '/' + parsed.repo + '/contents/.gitlab-ci.yml');
+      const txt = await fetchRaw(meta.download_url);
+      return { yaml: txt, sourceUrl: meta.html_url, label: parsed.owner + '/' + parsed.repo };
+    }
+    if (parsed.kind === 'gitlab') {
+      const enc = encodeURIComponent(parsed.projectPath);
+      logLine('checking gitlab.com/' + parsed.projectPath + ' for .gitlab-ci.yml ...');
+      const refs = ['main', 'master'];
+      let lastErr;
+      for (const ref of refs) {
+        try {
+          const url = 'https://gitlab.com/api/v4/projects/' + enc + '/repository/files/.gitlab-ci.yml/raw?ref=' + ref;
+          const txt = await fetchRaw(url);
+          return {
+            yaml: txt,
+            sourceUrl: 'https://gitlab.com/' + parsed.projectPath + '/-/blob/' + ref + '/.gitlab-ci.yml',
+            label: parsed.projectPath + ' (' + ref + ')',
+          };
+        } catch (e) { lastErr = e; }
+      }
+      throw lastErr || new Error('no .gitlab-ci.yml found on main or master');
+    }
+    throw new Error('unsupported source');
+  }
+
+  function audit(yamlText, label) {
+    if (!window.gitlabCiDoctor) throw new Error('bundle not loaded');
+    return window.gitlabCiDoctor.auditPipeline(yamlText, label || '.gitlab-ci.yml');
+  }
+
+  function renderResults(findings, label, sourceUrl) {
+    const counts = { error: 0, warn: 0, info: 0 };
+    const byRule = {};
+    for (const f of findings) {
+      counts[f.severity] = (counts[f.severity] || 0) + 1;
+      byRule[f.ruleId] = (byRule[f.ruleId] || 0) + 1;
+    }
+    statsEl.innerHTML = '' +
+      stat('Findings', String(findings.length), findings.length ? 'amber' : 'green',
+           counts.error + ' err / ' + counts.warn + ' warn / ' + counts.info + ' info') +
+      stat('Rules tripped', String(Object.keys(byRule).length), 'blue') +
+      stat('Pipeline', label || '.gitlab-ci.yml', '', sourceUrl ? 'click results below to see context' : '');
+
+    const rules = Object.entries(byRule).sort((a, b) => b[1] - a[1]);
+    if (rules.length) {
+      ruleTableEl.innerHTML = '<table><thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead><tbody>' +
+        rules.map(([r, n]) => '<tr><td><code>' + esc(r) + '</code></td><td class="right">' + n + '</td></tr>').join('') +
+        '</tbody></table>';
+    } else {
+      ruleTableEl.innerHTML = '<p style="color:#9ce29c;">No findings - this pipeline passes all 12 gitlab-ci-doctor rules.</p>';
+    }
+
+    if (findings.length) {
+      findings.sort((a, b) => (b.severity === 'error') - (a.severity === 'error') || a.line - b.line);
+      findingsListEl.innerHTML = findings.map(f => {
+        const sevCls = f.severity === 'warn' ? 'warn' : f.severity === 'error' ? 'error' : 'info';
+        return '<div class="finding">' +
+          '<span class="sev ' + sevCls + '">' + esc(f.severity) + '</span>' +
+          '<span class="ruleid">' + esc(f.ruleId) + '</span>' +
+          esc(f.message) +
+          '<span class="loc">' + esc(f.filename) + ':' + f.line + '</span>' +
+          (f.suggestion ? '<pre style="margin:6px 0 0; padding:8px 10px; background:#0e1217; border:1px solid #1e242c; border-radius:6px; font-size:12px; color:#9aa3ad; white-space:pre-wrap;">' + esc(String(f.suggestion)) + '</pre>' : '') +
+          '</div>';
+      }).join('');
+    } else {
+      findingsListEl.innerHTML = '<div class="finding"><span class="sev clean">clean</span>No issues found.</div>';
+    }
+    if (sourceUrl) {
+      srcLinkEl.href = sourceUrl;
+      srcLinkEl.textContent = 'view source on ' + (sourceUrl.includes('gitlab.com') ? 'GitLab' : 'GitHub');
+    } else {
+      srcLinkEl.removeAttribute('href');
+      srcLinkEl.textContent = '';
+    }
+    disclaimerEl.innerHTML = 'Audit was performed entirely in your browser using <a href="https://www.npmjs.com/package/gitlab-ci-doctor"><code>gitlab-ci-doctor@0.1.0</code></a>. The pipeline YAML was not sent to any depmedic server.';
+    resultsEl.classList.add('show');
+  }
+
+  function stat(label, val, color, sub) {
+    const c = color ? ' ' + color : '';
+    return '<div class="stat"><div class="label">' + esc(label) + '</div>' +
+      '<div class="val' + c + '">' + esc(val) + '</div>' +
+      (sub ? '<div class="sub">' + esc(sub) + '</div>' : '') + '</div>';
+  }
+
+  async function startScan() {
+    const parsed = parseInput(repoEl.value);
+    if (!parsed) {
+      alert('Paste a GitLab project URL (gitlab.com/group/project) or a GitHub repo (owner/repo) with a .gitlab-ci.yml.');
+      return;
+    }
+    showProgress();
+    setRunning(true);
+    resultsEl.classList.remove('show');
+    statsEl.innerHTML = ''; ruleTableEl.innerHTML = ''; findingsListEl.innerHTML = '';
+    try {
+      const fetched = await fetchPipelineYaml(parsed);
+      logLine('fetched ' + fetched.yaml.length + ' bytes. running audit...', 'ok');
+      const findings = audit(fetched.yaml, '.gitlab-ci.yml');
+      logLine('done. ' + findings.length + ' finding(s).', 'ok');
+      renderResults(findings, fetched.label, fetched.sourceUrl);
+      const h = '#r=' + encodeURIComponent(repoEl.value.trim());
+      if (location.hash !== h) history.replaceState(null, '', h);
+    } catch (e) {
+      logLine('error: ' + e.message, 'err');
+    } finally {
+      setRunning(false);
+    }
+  }
+
+  function startPaste() {
+    const txt = (yamlEl.value || '').trim();
+    if (!txt) { alert('Paste some YAML first.'); return; }
+    showProgress();
+    runPasteEl.disabled = true;
+    resultsEl.classList.remove('show');
+    try {
+      const findings = audit(txt, '.gitlab-ci.yml');
+      logLine('done. ' + findings.length + ' finding(s).', 'ok');
+      renderResults(findings, 'pasted YAML');
+    } catch (e) {
+      logLine('error: ' + e.message, 'err');
+    } finally {
+      runPasteEl.disabled = false;
+    }
+  }
+
+  runEl.addEventListener('click', startScan);
+  repoEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') startScan(); });
+  runPasteEl.addEventListener('click', startPaste);
+  togglePasteEl.addEventListener('click', () => {
+    pasteBlockEl.classList.toggle('show');
+    togglePasteEl.textContent = pasteBlockEl.classList.contains('show') ? 'Hide paste box' : 'Paste YAML instead';
+  });
+  document.querySelectorAll('.examples a[data-eg]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      repoEl.value = a.dataset.eg;
+      startScan();
+    });
+  });
+  copyShareEl.addEventListener('click', () => {
+    navigator.clipboard.writeText(location.href).then(() => {
+      copyShareEl.textContent = 'Copied!';
+      setTimeout(() => copyShareEl.textContent = 'Copy share link', 1400);
+    });
+  });
+
+  const h = location.hash.replace(/^#/, '');
+  if (h) {
+    const params = new URLSearchParams(h);
+    const r = params.get('r');
+    if (r) {
+      repoEl.value = r;
+      const ready = () => !!window.gitlabCiDoctor;
+      if (ready()) startScan();
+      else {
+        let tries = 0;
+        const t = setInterval(() => {
+          tries++;
+          if (ready() || tries > 50) { clearInterval(t); if (ready()) startScan(); }
+        }, 100);
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>

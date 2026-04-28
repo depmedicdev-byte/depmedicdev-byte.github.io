@@ -167,8 +167,10 @@
     Actions patterns. Companion to ci-doctor. $19, one-time.
     Just want the 5 production-grade workflow templates? Grab the
     <a href="https://buy.polar.sh/polar_cl_0B3rGUBRJTdwvZRv7UYRoFcaznHfDrsywfXMH2ichbn">Hardened Workflows Pack</a> for $9.
-    <br />Try first: <a href="/scan.html">scan any public GitHub repo</a>
+    <br />    Try first: <a href="/scan.html">scan any public GitHub repo</a>
     (paste URL, get full report) &middot;
+    <a href="/scan-gitlab.html">or scan a GitLab CI pipeline</a>
+    (12-rule audit, runs in your browser) &middot;
     <a href="/ask.html">ask AI about a workflow</a> (free 5/day) &middot;
     <a href="/audit.html">audit a workflow</a>,
     <a href="/budget.html">price a workflow</a>, or
@@ -209,6 +211,11 @@
     <h3><a href="https://www.npmjs.com/package/gha-budget">gha-budget</a></h3>
     <p>Estimate the dollar cost of a GHA workflow before you commit it. Per-runner pricing, matrix expansion, monthly projection.</p>
     <div class="cmd">$ npx gha-budget</div>
+  </div>
+  <div class="card">
+    <h3><a href="https://www.npmjs.com/package/gitlab-ci-doctor">gitlab-ci-doctor</a></h3>
+    <p>Audit <code>.gitlab-ci.yml</code> for waste, cost leaks, security gaps. 12 rules. Drop-in MR comment via <code>--markdown</code>. <a href="/scan-gitlab.html">in-browser scanner</a>.</p>
+    <div class="cmd">$ npx gitlab-ci-doctor</div>
   </div>
   <div class="card">
     <h3><a href="https://www.npmjs.com/package/cursor-rules-init">cursor-rules-init</a></h3>

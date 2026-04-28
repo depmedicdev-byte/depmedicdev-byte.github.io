@@ -37,6 +37,12 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/scan-gitlab.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/ask.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
