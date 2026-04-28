@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ci-doctor alternatives - the honest comparison (zizmor, actionlint, super-linter, octoscan) - depmedic</title>
+<meta name="description" content="Honest, head-to-head comparison of ci-doctor with every other GitHub Actions auditor: zizmor, actionlint, super-linter, octoscan, poutine. What each one is good at, what it misses, and how to combine them." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/alternatives.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="ci-doctor alternatives - the honest comparison" />
+<meta property="og:description" content="Side-by-side: zizmor vs actionlint vs super-linter vs octoscan vs ci-doctor. What each one catches, what it misses, when to use which, and the smallest combo that covers everything." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/alternatives.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/alternatives.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/alternatives.png" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ci-doctor alternatives - the honest comparison",
+  "description": "Head-to-head comparison of every GitHub Actions auditor.",
+  "author": { "@type": "Organization", "name": "depmedic" },
+  "publisher": { "@type": "Organization", "name": "depmedic", "url": "https://depmedicdev-byte.github.io/" },
+  "url": "https://depmedicdev-byte.github.io/alternatives.html",
+  "mainEntityOfPage": "https://depmedicdev-byte.github.io/alternatives.html"
+}</script>
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 32px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.lead { color: #b6bec7; max-width: 70ch; margin: 0 0 22px; font-size: 17px; }
+h2 { font-size: 22px; margin: 36px 0 8px; letter-spacing: -0.005em; }
+h3 { font-size: 17px; margin: 16px 0 4px; }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px;
+  background: #1d3b4b; color: #9ec9ff; margin-right: 6px; }
+pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.yes { color: #9ce29c; } .no { color: #ff8b8b; } .maybe { color: #ffd9a3; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 32px 0 16px; }
+.cta h3 { margin: 0 0 6px; font-size: 17px; }
+.cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+.cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+  background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; }
+.cta .btn:hover { text-decoration: none; background: #3a4754; }
+.tool-card { border: 1px solid #1e242c; border-radius: 8px; padding: 16px 18px; margin: 14px 0; background: #0f1318; }
+.tool-card h3 { margin: 0 0 6px; font-size: 16px; }
+.tool-card .meta { color: #9aa3ad; font-size: 13px; margin: 0 0 8px; }
+.tool-card p { margin: 6px 0; font-size: 14px; }
+footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / alternatives</p>
+
+<h1>ci-doctor alternatives: the honest comparison</h1>
+<p class="lead">
+  If you're picking a GitHub Actions auditor, you have five real options:
+  <strong>actionlint</strong>, <strong>zizmor</strong>,
+  <strong>octoscan</strong>, <strong>super-linter</strong>, and
+  <strong>ci-doctor</strong>. They cover different problem spaces and
+  partially overlap. Here is the honest, side-by-side comparison so you
+  can pick the smallest combo that covers your real risks.
+</p>
+
+<p>
+  <span class="pill">last updated</span> 2026-04-28 &middot;
+  <span class="pill">scope</span> GitHub Actions only &middot;
+  <span class="pill">format</span> head-to-head feature matrix
+</p>
+
+<h2>TL;DR - the smallest combo that covers everything</h2>
+<p>
+  If you only have time for one PR, run <strong>actionlint</strong> +
+  <strong>ci-doctor</strong>:
+</p>
+<pre class="good"># in your workflow
+- uses: rhysd/actionlint@v1
+- uses: depmedicdev-byte/ci-doctor-action@v1
+  with:
+    severity-threshold: warn
+    comment-on-pr: true
+    upload-sarif: true</pre>
+<p>
+  That covers schema correctness (actionlint) + cost waste, security gaps
+  beyond schema, and reliability (ci-doctor). If you handle secrets or
+  forked PRs, add <strong>zizmor</strong> or <strong>octoscan</strong>
+  as a third pass for deep workflow security.
+</p>
+
+<h2>The 5 tools at a glance</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Primary focus</th>
+      <th>Cost rules</th>
+      <th>Security rules</th>
+      <th>Reliability</th>
+      <th>SARIF</th>
+      <th>Setup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/rhysd/actionlint">actionlint</a></td>
+      <td>YAML schema + shellcheck</td>
+      <td><span class="no">no</span></td>
+      <td><span class="maybe">partial</span></td>
+      <td><span class="no">no</span></td>
+      <td><span class="maybe">via wrapper</span></td>
+      <td>1 step</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/woodruffw/zizmor">zizmor</a></td>
+      <td>Workflow security</td>
+      <td><span class="no">no</span></td>
+      <td><span class="yes">deep</span></td>
+      <td><span class="no">no</span></td>
+      <td><span class="yes">yes</span></td>
+      <td>1 step</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/synacktiv/octoscan">octoscan</a></td>
+      <td>Workflow security (red-team)</td>
+      <td><span class="no">no</span></td>
+      <td><span class="yes">deep</span></td>
+      <td><span class="no">no</span></td>
+      <td><span class="yes">yes</span></td>
+      <td>1 step</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/super-linter/super-linter">super-linter</a></td>
+      <td>Multi-language linter aggregator</td>
+      <td><span class="no">no</span></td>
+      <td><span class="maybe">depends on bundled linters</span></td>
+      <td><span class="no">no</span></td>
+      <td><span class="maybe">per-linter</span></td>
+      <td>1 step (heavy)</td>
+    </tr>
+    <tr>
+      <td><strong><a href="/index.html">ci-doctor</a></strong></td>
+      <td>Cost + security + reliability</td>
+      <td><span class="yes">yes</span></td>
+      <td><span class="yes">yes</span></td>
+      <td><span class="yes">yes</span></td>
+      <td><span class="yes">yes</span></td>
+      <td>1 step (Action)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Detailed breakdown</h2>
+
+<div class="tool-card">
+  <h3>actionlint</h3>
+  <p class="meta">~2k stars &middot; Go &middot; MIT</p>
+  <p><strong>What it does:</strong> Validates the workflow YAML schema,
+  catches expression syntax errors, runs shellcheck on inline
+  <code>run:</code> blocks, validates referenced action inputs.</p>
+  <p><strong>Where it shines:</strong> Catches typos and broken
+  references that would cause your workflow to fail at runtime. Fast,
+  zero-config, extremely well-maintained.</p>
+  <p><strong>Where it misses:</strong> Will not flag a workflow that
+  runs on every branch, has no <code>timeout-minutes</code>, uses
+  <code>GITHUB_TOKEN: write-all</code>, or burns 8 cores when 2 would
+  do. Schema-correct can still be expensive and insecure.</p>
+  <p><strong>Verdict:</strong> Required. Run this. It is not a
+  substitute for ci-doctor; it complements it.
+  <a href="/blog/ci-doctor-vs-actionlint.html">Full comparison &rarr;</a></p>
+</div>
+
+<div class="tool-card">
+  <h3>zizmor</h3>
+  <p class="meta">~3k stars &middot; Rust &middot; MIT</p>
+  <p><strong>What it does:</strong> Deep workflow security analysis.
+  Catches dangerous triggers (<code>pull_request_target</code> with
+  forked checkout), template injection, persisted credentials,
+  artifact poisoning, and many more workflow-specific attack
+  patterns.</p>
+  <p><strong>Where it shines:</strong> The single best tool for
+  catching the workflow-security stuff that has caused the famous
+  GitHub Actions supply-chain incidents. Excellent ruleset.</p>
+  <p><strong>Where it misses:</strong> Not a cost tool. Won't tell
+  you that <code>ubuntu-latest</code> when <code>ubuntu-22.04</code>
+  would be deterministic, or that your matrix is exploding.</p>
+  <p><strong>Verdict:</strong> Strongly recommended if you accept
+  PRs from forks or handle secrets in CI. Pair with ci-doctor.
+  <a href="/blog/ci-doctor-vs-zizmor.html">Full comparison &rarr;</a></p>
+</div>
+
+<div class="tool-card">
+  <h3>octoscan</h3>
+  <p class="meta">~1k stars &middot; Go &middot; MIT</p>
+  <p><strong>What it does:</strong> Static analysis from a red-team
+  perspective. Hunts the same class of bugs as zizmor but with a
+  different ruleset and different false-positive profile.</p>
+  <p><strong>Where it shines:</strong> Finds attack chains in
+  multi-step workflows. Excellent for security audits of large
+  monorepos.</p>
+  <p><strong>Where it misses:</strong> Same blind spots as zizmor on
+  cost / reliability. Slower than ci-doctor / actionlint on small
+  repos.</p>
+  <p><strong>Verdict:</strong> Add it if you already have a security
+  team running it; otherwise zizmor + ci-doctor cover most teams.
+  <a href="/blog/ci-doctor-vs-octoscan.html">Full comparison &rarr;</a></p>
+</div>
+
+<div class="tool-card">
+  <h3>super-linter</h3>
+  <p class="meta">GitHub project &middot; Bash + Docker &middot; MIT</p>
+  <p><strong>What it does:</strong> Aggregates ~50 linters into a
+  single Docker image. Runs them all on every push.</p>
+  <p><strong>Where it shines:</strong> If you have a polyglot
+  monorepo and want one Action to lint Python + JS + YAML + Markdown
+  + 10 more languages.</p>
+  <p><strong>Where it misses:</strong> Not designed to audit the
+  workflow itself. Slow (Docker pull + 50 linters). Hard to scope
+  down.</p>
+  <p><strong>Verdict:</strong> Pick this for source-code linting
+  diversity, not for workflow auditing. ci-doctor is the missing
+  workflow-audit half.
+  <a href="/blog/ci-doctor-vs-super-linter.html">Full comparison &rarr;</a></p>
+</div>
+
+<div class="tool-card">
+  <h3>ci-doctor</h3>
+  <p class="meta">depmedic &middot; Node &middot; MIT</p>
+  <p><strong>What it does:</strong> Audits GitHub Actions workflows
+  for <em>cost waste</em> (oversized runners, exploding matrix,
+  missing concurrency, unused caches), <em>security gaps</em>
+  (unpinned actions, write-all <code>GITHUB_TOKEN</code>, secrets
+  in env), and <em>reliability</em> (no timeout-minutes, missing
+  <code>concurrency:</code>, hang-prone steps).</p>
+  <p><strong>Where it shines:</strong> The only tool that combines
+  all three. Single <code>npx</code> invocation, &lt;1s on most
+  repos, ships a companion Action with sticky PR comment + SARIF
+  upload, plus sister CLIs for GitLab CI, Bitbucket Pipelines,
+  Azure Pipelines, CircleCI.</p>
+  <p><strong>Where it misses:</strong> Not a YAML schema validator;
+  use actionlint alongside. Doesn't go as deep as zizmor on a few
+  exotic security patterns; pair with zizmor for paranoid
+  environments.</p>
+  <p><strong>Verdict:</strong> The "cost + reliability" half of any
+  serious CI audit story. Free, MIT, no telemetry.</p>
+</div>
+
+<h2>What about the cost side?</h2>
+<p>
+  The other four tools are <em>security/correctness</em> tools. They
+  do not flag waste. ci-doctor was built specifically because no
+  one in the existing tooling answered "is my CI burning money?"
+</p>
+<p>Cost rules ci-doctor checks that nothing else does:</p>
+<ul>
+  <li>Matrix explosion (catches <code>os x version x node</code> grids
+      that compile to 27 jobs)</li>
+  <li>Missing <code>concurrency:</code> (lets every push to a PR start
+      a fresh run, leaving N stale ones in the queue)</li>
+  <li>Missing <code>timeout-minutes</code> (a hung job runs for the
+      6-hour default ceiling and bills every minute)</li>
+  <li>Oversized runners (<code>ubuntu-22.04-arm64-32core</code> when
+      <code>ubuntu-latest</code> would do)</li>
+  <li>Unused caches (<code>actions/cache</code> declared but the path
+      is wrong, so every run is a cold build)</li>
+  <li>Wide path triggers (<code>**/*</code> on a docs change re-runs
+      the full test suite)</li>
+</ul>
+<p>
+  These are the rules that pay back in dollars per month, not just
+  "passes lint."
+</p>
+
+<h2>Beyond GitHub Actions</h2>
+<p>
+  If your team uses multiple CI providers, ci-doctor has sister CLIs
+  for each. Same rule philosophy, same output format:
+</p>
+<ul>
+  <li><a href="/gitlab-ci-doctor.html">gitlab-ci-doctor</a> -
+      <code>.gitlab-ci.yml</code> (14 rules)</li>
+  <li><a href="/bitbucket-ci-doctor.html">bitbucket-ci-doctor</a> -
+      <code>bitbucket-pipelines.yml</code> (8 rules)</li>
+  <li><a href="/azure-pipelines-ci-doctor.html">azure-pipelines-ci-doctor</a> -
+      <code>azure-pipelines.yml</code> (8 rules)</li>
+  <li><a href="/circleci-ci-doctor.html">circleci-ci-doctor</a> -
+      <code>.circleci/config.yml</code> (8 rules)</li>
+</ul>
+<p>
+  None of the other tools in this comparison cover non-GitHub CI
+  providers.
+</p>
+
+<h2>Pricing</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>License</th>
+      <th>Self-host</th>
+      <th>Hosted SaaS?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>actionlint</td><td>MIT</td><td>yes</td><td>no</td></tr>
+    <tr><td>zizmor</td><td>MIT</td><td>yes</td><td>no</td></tr>
+    <tr><td>octoscan</td><td>MIT</td><td>yes</td><td>no</td></tr>
+    <tr><td>super-linter</td><td>MIT</td><td>yes</td><td>no</td></tr>
+    <tr><td>ci-doctor</td><td>MIT</td><td>yes</td><td>via <a href="/depmedic-bot.html">GitHub App</a> + <a href="/sponsor.html">Pro tier</a></td></tr>
+  </tbody>
+</table>
+
+<p>
+  Every tool here is free and open-source. ci-doctor optionally has a
+  <strong>Pro tier</strong> ($5/mo) that adds: per-org rule
+  customization, Slack/Webhook delivery of weekly digests, priority
+  support, and the GitHub App turnkey install.
+</p>
+
+<div class="cta">
+  <h3>Try ci-doctor on your repo right now</h3>
+  <p>The in-browser scanner takes a paste, runs all 16 rules, and shows the report inline. Nothing leaves your browser.</p>
+  <a class="btn" href="/scan.html">Open the scanner</a>
+  <a class="btn" href="https://github.com/depmedicdev-byte/ci-doctor">View source</a>
+  <a class="btn" href="/sponsor.html">Pro tier ($5/mo)</a>
+</div>
+
+<h2>FAQ</h2>
+
+<h3>Do I need ci-doctor if I already use actionlint?</h3>
+<p>
+  Yes. actionlint validates your workflow YAML <em>schema</em>;
+  ci-doctor audits its <em>cost</em>, <em>security</em>, and
+  <em>reliability</em>. They don't overlap meaningfully.
+</p>
+
+<h3>Do I need ci-doctor if I already use zizmor?</h3>
+<p>
+  Yes if you care about cost or reliability. zizmor catches
+  workflow-security flaws (and is excellent at it). ci-doctor catches
+  cost waste, missing timeouts, exploding matrices, etc. Run both;
+  they share zero rules.
+</p>
+
+<h3>Why a separate Action when ci-doctor is just a CLI?</h3>
+<p>
+  The Action wraps <code>npx ci-doctor</code> with a sticky PR comment
+  (so a re-run replaces the old comment instead of stacking),
+  optional SARIF upload to GitHub Code Scanning, and a configurable
+  severity gate that fails the check on errors but not warnings.
+</p>
+
+<h3>What does the Pro tier add?</h3>
+<p>
+  Per-org rule overrides (mute a noisy rule across all repos),
+  Slack/Webhook delivery of the weekly leaderboard digest, the
+  hosted GitHub App with one-click install, and priority response
+  on issues. The free CLI never expires and is feature-complete on
+  its own.
+</p>
+
+<h3>Is the data sent anywhere?</h3>
+<p>
+  No. Both the CLI and the in-browser scanner run locally. The
+  optional GitHub App processes your workflows in a Cloudflare
+  Worker that never persists workflow content; only aggregate
+  counts are kept for the leaderboard.
+</p>
+
+<footer>
+  <a href="/">depmedic</a> &middot; built and maintained by depmedic.
+  See also: <a href="/leaderboard.html">leaderboard</a> &middot;
+  <a href="/scan-badge.html">badge service</a> &middot;
+  <a href="/blog/">blog</a>.
+</footer>
+
+</main>
+</body>
+</html>
