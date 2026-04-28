@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cheaper GitHub Actions runners compared - BuildJet, Namespace, Ubicloud, RunsOn, WarpBuild, Blacksmith - depmedic</title>
+<meta name="description" content="Side-by-side comparison of GitHub Actions-compatible runner providers that claim to cut your CI bill 30-90% vs GitHub-hosted runners. Updated pricing, OS support, OIDC, cache size, region count. No fluff." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/runners.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Cheaper GitHub Actions runners compared (2026)" />
+<meta property="og:description" content="BuildJet, Namespace, Ubicloud, RunsOn, WarpBuild, Blacksmith. Side-by-side pricing + features. Drop-in replacement for runs-on: ubuntu-latest." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/runners.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+  h2 { font-size: 16px; color: #c9d1d9; margin: 28px 0 10px; letter-spacing: 0.03em; text-transform: uppercase; }
+  h3 { font-size: 17px; color: #e6e8eb; margin: 18px 0 4px; }
+  p { color: #c9d1d9; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 14px 0 18px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; background: #11151b; }
+  td.price { color: #9ce29c; font-family: ui-monospace, Menlo, monospace; white-space: nowrap; }
+  td.gh { color: #ffb86c; font-family: ui-monospace, Menlo, monospace; white-space: nowrap; }
+  td .cta { display: inline-block; margin-top: 4px; color: #6cb6ff; font-size: 13px; }
+  .calc { background: #11151b; border: 1px solid #1e242c; border-radius: 10px;
+    padding: 16px 20px; margin: 22px 0; }
+  .calc h3 { margin-top: 0; color: #c9d1d9; }
+  .calc label { display: inline-block; color: #9aa3ad; margin-right: 8px; font-size: 14px; }
+  .calc input { padding: 6px 10px; background: #0b0d10; border: 1px solid #2a3744; color: #e6e8eb;
+    border-radius: 6px; font: 13px ui-monospace, Menlo, monospace; width: 120px; }
+  .calc .row { margin: 8px 0; }
+  .calc .out { margin-top: 12px; padding-top: 12px; border-top: 1px solid #1e242c;
+    font-size: 14px; color: #c9d1d9; }
+  .calc .out .savings { color: #9ce29c; font-weight: 500; }
+  .disclosure { background: #1a1410; border: 1px solid #5a4a1f; padding: 10px 14px;
+    border-radius: 8px; color: #ffe9b3; font-size: 13px; margin: 14px 0 22px; }
+  details summary { cursor: pointer; color: #9aa3ad; padding: 6px 0; }
+  details { margin: 12px 0; }
+  footer { margin-top: 36px; color: #6f7882; font-size: 13px; }
+  footer a { color: #9aa3ad; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px;
+    background: #1e242c; color: #9aa3ad; font-size: 12px; margin-left: 6px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav">
+  <a href="/">depmedic</a> &middot;
+  <a href="/scan.html">scan a repo</a> &middot;
+  <a href="/ask.html">ask AI</a> &middot;
+  <a href="/calculator.html">cost calculator</a> &middot;
+  <a href="/leaderboard.html">leaderboard</a>
+</p>
+
+<h1>Cheaper GitHub Actions runners <span class="pill">2026 edition</span></h1>
+<p class="lead">
+  GitHub-hosted Linux runners are billed at $0.008/min for 2 vCPU, $0.016/min for
+  4 vCPU, and so on - private repos only; public repos are free. Once your team
+  starts pushing past <strong>~50,000 minutes/month</strong>, third-party runner
+  providers can drop the per-minute cost by 50-90% with a one-line
+  <code>runs-on:</code> change. This page compares six of them. Pricing was
+  pulled from each provider's public docs as of <strong>April 2026</strong>;
+  always verify on the provider's site before signing.
+</p>
+
+<div class="disclosure">
+  <strong>Affiliate disclosure:</strong> some links below pass through
+  <code>/r/&lt;provider&gt;</code> redirects. If you sign up after clicking,
+  depmedic may receive a small referral fee at no cost to you. Pricing rows below
+  are objective and not influenced by referral terms; runner picks are based on
+  what genuinely cuts your bill the most for the workload type. We do not list
+  providers we have not personally audited the docs of.
+</div>
+
+<h2>Side-by-side</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th>2-vCPU/min</th>
+      <th>4-vCPU/min</th>
+      <th>vs GH-hosted</th>
+      <th>OIDC</th>
+      <th>Cache</th>
+      <th>Self-host needed?</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/r/buildjet"><strong>BuildJet</strong></a><br/><a class="cta" href="/r/buildjet">Sign up</a></td>
+      <td class="price">~$0.004</td>
+      <td class="price">~$0.008</td>
+      <td>~50% cheaper</td>
+      <td>Yes</td>
+      <td>Faster cache</td>
+      <td>No - their cloud</td>
+      <td>Drop-in <code>runs-on: buildjet-2vcpu-ubuntu-2204</code>. AWS-backed. Most mature alt.</td>
+    </tr>
+    <tr>
+      <td><a href="/r/namespace"><strong>Namespace</strong></a><br/><a class="cta" href="/r/namespace">Sign up</a></td>
+      <td class="price">~$0.005</td>
+      <td class="price">~$0.010</td>
+      <td>~40% cheaper</td>
+      <td>Yes</td>
+      <td>Snapshot cache (very fast)</td>
+      <td>No - their cloud</td>
+      <td>Best for cold starts and very fast caching. Used by Linear, Vercel, others.</td>
+    </tr>
+    <tr>
+      <td><a href="/r/ubicloud"><strong>Ubicloud</strong></a><br/><a class="cta" href="/r/ubicloud">Sign up</a></td>
+      <td class="price">~$0.0008</td>
+      <td class="price">~$0.0016</td>
+      <td>~10x cheaper</td>
+      <td>Yes</td>
+      <td>Standard</td>
+      <td>No - open-source cloud</td>
+      <td>Lowest sticker price. Open-source control plane. Drop-in <code>runs-on: ubicloud-standard-2</code>.</td>
+    </tr>
+    <tr>
+      <td><a href="/r/runson"><strong>RunsOn</strong></a><br/><a class="cta" href="/r/runson">Sign up</a></td>
+      <td class="price">your AWS</td>
+      <td class="price">your AWS</td>
+      <td>~10x cheaper</td>
+      <td>Yes</td>
+      <td>S3-backed</td>
+      <td>Runs in your AWS</td>
+      <td>EC2 Spot in your AWS account; you pay AWS directly. Best for >200k min/mo.</td>
+    </tr>
+    <tr>
+      <td><a href="/r/warpbuild"><strong>WarpBuild</strong></a><br/><a class="cta" href="/r/warpbuild">Sign up</a></td>
+      <td class="price">~$0.004</td>
+      <td class="price">~$0.008</td>
+      <td>~50% cheaper</td>
+      <td>Yes</td>
+      <td>Distributed (very fast)</td>
+      <td>No - their cloud</td>
+      <td>Distributed cache layer is the standout. Good Docker layer reuse.</td>
+    </tr>
+    <tr>
+      <td><a href="/r/blacksmith"><strong>Blacksmith</strong></a><br/><a class="cta" href="/r/blacksmith">Sign up</a></td>
+      <td class="price">~$0.004</td>
+      <td class="price">~$0.008</td>
+      <td>~50% cheaper</td>
+      <td>Yes</td>
+      <td>Standard, fast</td>
+      <td>No - their cloud</td>
+      <td>Y Combinator-backed. "2x faster, 50% cheaper" is their claim. Drop-in.</td>
+    </tr>
+    <tr>
+      <td><strong>GitHub-hosted</strong> <span class="pill">baseline</span></td>
+      <td class="gh">$0.008</td>
+      <td class="gh">$0.016</td>
+      <td>baseline</td>
+      <td>Yes</td>
+      <td>10 GB free / repo</td>
+      <td>No</td>
+      <td>Free for public repos. <code>ubuntu-latest</code>, <code>windows-latest</code> ($0.016+), <code>macos-latest</code> ($0.08+, 10x).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Quick savings calculator</h2>
+<div class="calc">
+  <h3>What would you save?</h3>
+  <div class="row">
+    <label>Minutes/month on GH-hosted Linux:</label>
+    <input id="gmin" type="number" value="100000" min="0" />
+  </div>
+  <div class="row">
+    <label>Avg vCPU per job:</label>
+    <input id="vcpu" type="number" value="2" min="1" max="32" />
+  </div>
+  <div class="out" id="out"></div>
+</div>
+
+<h2>How to switch (the one-line change)</h2>
+<p>Most third-party runners are drop-in: change <code>runs-on:</code> in your
+workflow file, sign up for the provider, install their GitHub App on your repo
+or org, and you're done. No code changes, no Dockerfile, no scripts.</p>
+
+<details>
+<summary>Show example: BuildJet</summary>
+<pre><code># before
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+# after (BuildJet)
+jobs:
+  test:
+    runs-on: buildjet-2vcpu-ubuntu-2204</code></pre>
+</details>
+
+<details>
+<summary>Show example: Ubicloud</summary>
+<pre><code>jobs:
+  test:
+    runs-on: ubicloud-standard-2  # 2 vCPU
+    # or: ubicloud-standard-4, ubicloud-standard-8, etc.</code></pre>
+</details>
+
+<details>
+<summary>Show example: Namespace</summary>
+<pre><code>jobs:
+  test:
+    runs-on: namespace-profile-default
+    # profile defined in your Namespace dashboard</code></pre>
+</details>
+
+<h2>Which one for which workload?</h2>
+<ul>
+  <li><strong>You just want a one-line cheaper Linux runner</strong>: BuildJet
+  or Blacksmith. Both are drop-in, both are mature, both halve the cost.</li>
+  <li><strong>You're hitting cold-cache pain</strong>: Namespace (snapshot cache)
+  or WarpBuild (distributed cache). Restored caches in 1-3 sec instead of 20+.</li>
+  <li><strong>You want the absolute lowest per-minute number</strong>: Ubicloud.
+  Trades some maturity for ~10x lower price.</li>
+  <li><strong>You're an AWS shop already</strong>: RunsOn. Spot instances, you
+  pay AWS directly, pure cost savings, but you take on the ops. Worth it past
+  ~200k min/month.</li>
+  <li><strong>You're on macOS-latest because you build iOS apps</strong>: stuck on
+  GitHub-hosted or self-hosted Macs - none of the third-party providers above
+  offer Mac runners (yet).</li>
+</ul>
+
+<h2>Pair this with the rest of depmedic</h2>
+<ul>
+  <li><a href="/scan.html">/scan.html</a> - find the workflows in your repo
+  that are using <code>macos-latest</code> when Linux would do (the single
+  biggest waste source per <a href="/leaderboard.html">our daily leaderboard</a>).</li>
+  <li><a href="/ask.html">/ask.html</a> - paste a workflow, get an AI-suggested
+  conversion to any of the runners above.</li>
+  <li><a href="https://www.npmjs.com/package/gha-budget">npx gha-budget</a> -
+  estimate the dollar cost of any GHA workflow before you commit it.</li>
+  <li><a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Cut Your CI Bill cookbook</a>
+  ($19) - 30 paste-ready cost optimization patterns.</li>
+</ul>
+
+<footer>
+  Last reviewed: April 2026. Pricing changes constantly; verify on the provider's
+  site. Spot a number that's wrong? File an issue at
+  <a href="https://github.com/depmedicdev-byte/depmedicdev-byte.github.io">github.com/depmedicdev-byte</a>.
+  &middot; Tip jar: <a href="https://buy.polar.sh/polar_cl_BGcLSOeiHg1yFfq5kOIayEcTgvSGqCLa6LnBU4PyHIJ">buy depmedic a coffee</a>.
+</footer>
+
+<script>
+const GH_PER_MIN_2VCPU = 0.008;
+const ALT = {
+  buildjet:  { label: 'BuildJet',  perMin: 0.004 },
+  namespace: { label: 'Namespace', perMin: 0.005 },
+  ubicloud:  { label: 'Ubicloud',  perMin: 0.0008 },
+  warpbuild: { label: 'WarpBuild', perMin: 0.004 },
+  blacksmith:{ label: 'Blacksmith',perMin: 0.004 },
+};
+function recalc() {
+  const min = Math.max(0, Number(document.getElementById('gmin').value) || 0);
+  const vcpu = Math.max(1, Number(document.getElementById('vcpu').value) || 1);
+  const ghPer = GH_PER_MIN_2VCPU * (vcpu / 2);
+  const ghMonthly = min * ghPer;
+  const lines = ['<strong>GitHub-hosted baseline:</strong> $' + ghMonthly.toFixed(0) + '/mo'];
+  const rows = Object.values(ALT)
+    .map(a => ({ label: a.label, monthly: min * a.perMin * (vcpu / 2) }))
+    .sort((a, b) => a.monthly - b.monthly);
+  for (const r of rows) {
+    const saved = ghMonthly - r.monthly;
+    lines.push(r.label + ': $' + r.monthly.toFixed(0) + '/mo &nbsp; <span class="savings">save $' + saved.toFixed(0) + '/mo (' + (100 * saved / Math.max(ghMonthly, 1)).toFixed(0) + '%)</span>');
+  }
+  document.getElementById('out').innerHTML = lines.join('<br/>');
+}
+document.getElementById('gmin').addEventListener('input', recalc);
+document.getElementById('vcpu').addEventListener('input', recalc);
+recalc();
+</script>
+
+</main>
+</body>
+</html>
