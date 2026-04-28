@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>gitlab-ci-doctor - audit .gitlab-ci.yml for waste, cost, security gaps - depmedic</title>
+<meta name="description" content="gitlab-ci-doctor is a free, MIT, opinionated CLI that audits any .gitlab-ci.yml for cost leaks (cache, interruptible, expensive runners, parallel overcommit) and security gaps (image pin, include pin). Drop into a lint stage. Try the in-browser scanner with no signup." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/gitlab-ci-doctor.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="gitlab-ci-doctor - audit .gitlab-ci.yml for waste, cost, security gaps" />
+<meta property="og:description" content="12 rules. MR-comment friendly. Drops into a lint stage with one line. Try it in-browser, no signup." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/gitlab-ci-doctor.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "gitlab-ci-doctor",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "any",
+  "description": "Audit GitLab CI pipelines for waste, cost leaks, and security gaps. Fast, opinionated, CI-friendly. MIT.",
+  "url": "https://www.npmjs.com/package/gitlab-ci-doctor",
+  "license": "https://opensource.org/licenses/MIT",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}</script>
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 32px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; font-size: 17px; }
+  h2 { font-size: 22px; margin: 36px 0 8px; letter-spacing: -0.005em; }
+  h3 { font-size: 17px; margin: 16px 0 4px; }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px;
+    background: #1d3b4b; color: #9ec9ff; margin-right: 6px; }
+  pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+    font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+  pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+  pre.bad { border-left: 3px solid #ff6b6b; }
+  pre.good { border-left: 3px solid #9ce29c; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.sev { white-space: nowrap; }
+  .sev-error { color: #ffb8b8; } .sev-warn { color: #ffd9a3; } .sev-info { color: #a3d4ff; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 32px 0 16px; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; }
+  .cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+  .compare { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 18px; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / gitlab-ci-doctor</p>
+
+<h1>gitlab-ci-doctor</h1>
+<p class="lead">
+  Audit any <code>.gitlab-ci.yml</code> for waste, cost leaks, and security gaps.
+  Twelve rules. One command. MIT. Sister project to
+  <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
+  (which does the same job for GitHub Actions).
+</p>
+
+<p>
+  <span class="pill">npm</span>
+  <a href="https://www.npmjs.com/package/gitlab-ci-doctor">npmjs.com/package/gitlab-ci-doctor</a>
+  &nbsp;|&nbsp;
+  <span class="pill">source</span>
+  <a href="https://github.com/depmedicdev-byte/gitlab-ci-doctor">github.com/depmedicdev-byte/gitlab-ci-doctor</a>
+  &nbsp;|&nbsp;
+  <span class="pill">try it</span>
+  <a href="/scan-gitlab.html">in-browser scanner</a>
+</p>
+
+<h2>Try it in 5 seconds</h2>
+
+<pre class="good">$ npx gitlab-ci-doctor                  # audit current repo
+$ npx gitlab-ci-doctor --markdown       # MR-comment friendly output
+$ npx gitlab-ci-doctor --json           # machine-readable
+$ npx gitlab-ci-doctor --severity=warn  # warn + error only
+$ npx gitlab-ci-doctor --rules          # list checks
+$ npx gitlab-ci-doctor --demo           # smoke-test against bundled bad pipeline</pre>
+
+<p>Exit code is <code>1</code> when there are error-level findings, so it drops into a GitLab CI <code>lint</code> stage (or a pre-commit hook) without ceremony.</p>
+
+<h2>What it catches</h2>
+
+<table>
+  <thead>
+    <tr><th>Rule</th><th class="sev">Severity</th><th>What it catches</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>image-no-pin</code></td><td class="sev sev-warn">warn</td><td><code>:latest</code> and bare image names are mutable; pin a digest.</td></tr>
+    <tr><td><code>missing-cache</code></td><td class="sev sev-warn">warn</td><td>npm/pip/gradle/cargo etc. without <code>cache:</code> re-download every run.</td></tr>
+    <tr><td><code>missing-interruptible</code></td><td class="sev sev-warn">warn</td><td>Stale pipelines on superseded MR commits keep burning minutes.</td></tr>
+    <tr><td><code>missing-timeout</code></td><td class="sev sev-warn">warn</td><td>A hung job runs to the project default (often 1h, max 24h).</td></tr>
+    <tr><td><code>expensive-runner</code></td><td class="sev sev-warn">warn</td><td><code>saas-linux-large/2xlarge</code>, <code>saas-windows</code>, <code>saas-macos</code> cost 2x to 10x.</td></tr>
+    <tr><td><code>artifact-no-expiration</code></td><td class="sev sev-warn">warn</td><td><code>artifacts:</code> without <code>expire_in:</code> accumulate storage cost.</td></tr>
+    <tr><td><code>deprecated-only-except</code></td><td class="sev sev-info">info</td><td>Migrate to <code>rules:</code> (composes with <code>workflow:rules</code>).</td></tr>
+    <tr><td><code>git-strategy-clone</code></td><td class="sev sev-warn">warn</td><td><code>clone</code> re-fetches full history every job; prefer <code>fetch</code> + <code>GIT_DEPTH</code>.</td></tr>
+    <tr><td><code>parallel-overcommit</code></td><td class="sev sev-warn">warn</td><td><code>parallel: &gt; 8</code> multiplies job minutes; sanity-check the matrix.</td></tr>
+    <tr><td><code>missing-needs</code></td><td class="sev sev-info">info</td><td>Stages without <code>needs:</code> block on the entire previous stage.</td></tr>
+    <tr><td><code>wide-rules</code></td><td class="sev sev-info">info</td><td>No <code>rules:</code> and no <code>workflow:rules</code> runs on every push and every MR.</td></tr>
+    <tr><td><code>include-no-pin</code></td><td class="sev sev-warn">warn</td><td>Remote/project includes without an immutable ref give upstream control of your pipeline.</td></tr>
+  </tbody>
+</table>
+
+<h2>Drop it into a GitLab pipeline</h2>
+
+<pre class="good">ci-doctor:
+  stage: lint
+  image: node:22-alpine
+  interruptible: true
+  cache:
+    key: "$CI_COMMIT_REF_SLUG-npx"
+    paths:
+      - .npm/
+  script:
+    - npx --yes gitlab-ci-doctor --markdown &gt; ci-doctor.md
+    - cat ci-doctor.md
+  artifacts:
+    when: always
+    paths:
+      - ci-doctor.md
+    expire_in: 1 week
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"</pre>
+
+<p>That job posts the audit as an artifact on every MR pipeline, with a tiny cache so the npx fetch is one-off per branch. Add a <code>before_script</code> that comments back to the MR if you want, but the artifact alone is usually enough.</p>
+
+<h2>One bad example, one fix</h2>
+
+<h3>Before</h3>
+<pre class="bad">image: node:latest
+
+stages: [build, test]
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths: [dist/]
+
+test:
+  stage: test
+  tags: [saas-linux-2xlarge-amd64]
+  script:
+    - npm test
+  parallel: 16</pre>
+
+<h3>After</h3>
+<pre class="good">image: node@sha256:&lt;digest&gt;
+
+stages: [build, test]
+
+default:
+  interruptible: true
+  cache:
+    key: "$CI_COMMIT_REF_SLUG"
+    paths: [node_modules/, .npm/]
+  timeout: 15 minutes
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths: [dist/]
+    expire_in: 1 week
+
+test:
+  stage: test
+  needs: [build]
+  script:
+    - npm test
+  parallel: 4
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"</pre>
+
+<p>That's roughly a 5x cost reduction on the test stage (4-way parallel on medium runners vs 16-way on 2xlarge), plus reproducible builds, plus stale pipelines auto-cancel.</p>
+
+<h2>Programmatic use</h2>
+
+<pre class="good">const { auditPipeline, summarize } = require('gitlab-ci-doctor');
+const fs = require('node:fs');
+const findings = auditPipeline(fs.readFileSync('.gitlab-ci.yml', 'utf8'), '.gitlab-ci.yml');
+console.log(summarize(findings));</pre>
+
+<h2>Compared to other tools</h2>
+<div class="compare">
+  <p><strong>vs <code>gitlab-ci-lint</code> (GitLab's official):</strong> validates syntax and merges <code>extends:</code>; doesn't check cost or security hygiene.</p>
+  <p><strong>vs <code>yamllint</code>:</strong> checks YAML formatting; doesn't understand GitLab's job model.</p>
+  <p><strong>vs <code>gcl</code> / local runners:</strong> they execute the pipeline; <code>gitlab-ci-doctor</code> reads it and tells you what to fix without running anything.</p>
+</div>
+
+<div class="cta">
+  <h3>Try it now without installing</h3>
+  <p>The same engine runs in your browser. Paste a project path or a URL.</p>
+  <a class="btn" href="/scan-gitlab.html">Open the in-browser scanner</a>
+  <a class="btn" href="https://www.npmjs.com/package/gitlab-ci-doctor">npm install</a>
+</div>
+
+<div class="cta">
+  <h3>Already on GitHub Actions? See the sister project.</h3>
+  <p><code>ci-doctor</code> ships 14 rules + auto-fix for <code>.github/workflows/*.yml</code>. Same engine, same opinions.</p>
+  <a class="btn" href="/">depmedic home</a>
+  <a class="btn" href="https://www.npmjs.com/package/ci-doctor">ci-doctor on npm</a>
+</div>
+
+<footer>
+  Free and MIT. Source on <a href="https://github.com/depmedicdev-byte/gitlab-ci-doctor">GitHub</a>.
+  Sister page: <a href="/scan-gitlab.html">in-browser scanner</a>.
+  See also: <a href="/scan.html">scan a GitHub repo</a> &middot;
+  <a href="/blog/audit-10-gitlab-projects.html">blog: 10 famous GitLab projects audited</a> &middot;
+  <a href="/runners.html">runner cost comparison</a>.
+</footer>
+
+</main>
+</body>
+</html>

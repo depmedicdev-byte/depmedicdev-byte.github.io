@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I audited 10 famous GitLab projects with gitlab-ci-doctor. Here are the patterns. - depmedic</title>
+<meta name="description" content="Real findings from 10 well-known gitlab.com pipelines (gitlab-runner, gitaly, gitlab-pages, release-cli, glab, inkscape and more). The rules that fire most often, and the tiny YAML changes that fix them." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/audit-10-gitlab-projects.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="I audited 10 famous GitLab projects with gitlab-ci-doctor" />
+<meta property="og:description" content="Real findings from 10 well-known gitlab.com pipelines. The rules that fire most often, and the tiny fixes." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/audit-10-gitlab-projects.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .meta { color: #6f7882; font-size: 13px; margin: 0 0 24px; }
+  h2 { font-size: 22px; margin: 36px 0 8px; }
+  h3 { font-size: 17px; margin: 22px 0 6px; }
+  p { margin: 0 0 14px; color: #d6dadf; }
+  pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+    font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #c9d1d9; }
+  pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 20px 22px; margin: 26px 0; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; }
+  .cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; margin-top: 10px; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+  blockquote { border-left: 3px solid #2a3744; padding: 8px 14px; color: #b6bec7; margin: 8px 0 16px; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog / audit 10 famous gitlab projects</p>
+
+<h1>I audited 10 famous GitLab projects with gitlab-ci-doctor. Here are the patterns.</h1>
+<p class="meta">2026-04-28 - depmedic - data + commentary, no editorialising</p>
+
+<p>
+  <a href="https://www.npmjs.com/package/gitlab-ci-doctor"><code>gitlab-ci-doctor</code></a>
+  is a 12-rule audit for <code>.gitlab-ci.yml</code> - cost, security, hygiene.
+  Published it tonight (<a href="/gitlab-ci-doctor.html">homepage</a>,
+  <a href="/scan-gitlab.html">in-browser scanner</a>).
+  This post is the immediate dogfood: I ran it against 10 well-known
+  public projects on gitlab.com to see which rules actually fire and
+  whether the patterns are real.
+</p>
+
+<p>Short answer: the patterns are real. Even projects whose owners <em>are</em> the people who run gitlab.com leave free minutes on the floor.</p>
+
+<h2>Headline numbers</h2>
+
+<table>
+  <tr><th>Projects audited</th><td>9 (of 10 attempted)</td></tr>
+  <tr><th>Total findings</th><td>155</td></tr>
+  <tr><th>Projects with at least one finding</th><td>9 / 9 (100%)</td></tr>
+  <tr><th>Most common rule</th><td><code>missing-timeout</code> (74 hits)</td></tr>
+</table>
+
+<h2>Rules ranked by how often they fired</h2>
+
+<table>
+  <thead><tr><th>Rule</th><th class="right">Hits</th><th>What it catches</th></tr></thead>
+  <tbody>
+    <tr><td><code>missing-timeout</code></td><td class="right">74</td><td>No timeout: means a runaway job runs to the project default.</td></tr>
+    <tr><td><code>missing-interruptible</code></td><td class="right">48</td><td>No interruptible: true means stale MR pipelines keep burning minutes.</td></tr>
+    <tr><td><code>git-strategy-clone</code></td><td class="right">9</td><td>GIT_STRATEGY: clone or unset GIT_DEPTH wastes bandwidth.</td></tr>
+    <tr><td><code>missing-needs</code></td><td class="right">8</td><td>Stages without needs: block on the entire previous stage.</td></tr>
+    <tr><td><code>artifact-no-expiration</code></td><td class="right">7</td><td>artifacts: without expire_in: accumulate storage cost.</td></tr>
+    <tr><td><code>image-no-pin</code></td><td class="right">5</td><td>image: should be pinned to a digest, not :latest or unspecified.</td></tr>
+    <tr><td><code>parse-error</code></td><td class="right">2</td><td></td></tr>
+    <tr><td><code>parallel-overcommit</code></td><td class="right">1</td><td>parallel: &gt; 8 multiplies job minutes; sanity-check the matrix.</td></tr>
+    <tr><td><code>missing-cache</code></td><td class="right">1</td><td>Jobs that install packages without a cache: re-download deps every run.</td></tr>
+  </tbody>
+</table>
+
+<h2>Per-project results</h2>
+
+<h3><a href="https://gitlab.com/gitlab-org/gitlab-runner/-/blob/main/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/gitlab-runner</a></h3>
+<p>1 finding (1 warn / 0 info / 0 error) on <code>main</code>, 1,865 bytes.</p>
+<ul><li><code>git-strategy-clone</code> @ line 1: GIT_DEPTH is unset or 0 - full history is fetched on every job. Set a small depth (e.g. 20) unless you need full history.</li></ul>
+
+<h3><a href="https://gitlab.com/gitlab-org/gitaly/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/gitaly</a></h3>
+<p>31 findings (31 warn / 0 info / 0 error) on <code>master</code>, 27,264 bytes.</p>
+<ul><li><code>missing-timeout</code> @ line 218: Job 'build' defines no timeout. A runaway will burn the project default (often 1h, max 24h). Set a tight per-job cap.</li><li><code>missing-timeout</code> @ line 241: Job 'build:binaries' defines no timeout. A runaway will burn the project default (often 1h, max 24h). Set a tight per-job cap.</li><li><code>missing-timeout</code> @ line 264: Job 'test' defines no timeout. A runaway will burn the project default (often 1h, max 24h). Set a tight per-job cap.</li><li><em>... and 28 more</em></li></ul>
+
+<h3><a href="https://gitlab.com/gitlab-org/gitlab-pages/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/gitlab-pages</a></h3>
+<p>3 findings (3 warn / 0 info / 0 error) on <code>master</code>, 1,254 bytes.</p>
+<ul><li><code>missing-interruptible</code> @ line 39: Job 'download deps' has no interruptible: true. New pipeline pushes will not cancel its stale predecessor. Easy ~30%+ minutes savings on busy MRs.</li><li><code>missing-timeout</code> @ line 39: Job 'download deps' defines no timeout. A runaway will burn the project default (often 1h, max 24h). Set a tight per-job cap.</li><li><code>git-strategy-clone</code> @ line 1: GIT_DEPTH is unset or 0 - full history is fetched on every job. Set a small depth (e.g. 20) unless you need full history.</li></ul>
+
+<h3><a href="https://gitlab.com/gitlab-org/release-cli/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/release-cli</a></h3>
+<p>1 finding (1 warn / 0 info / 0 error) on <code>master</code>, 1,274 bytes.</p>
+<ul><li><code>git-strategy-clone</code> @ line 32: GIT_DEPTH is unset or 0 - full history is fetched on every job. Set a small depth (e.g. 20) unless you need full history.</li></ul>
+
+<h3><a href="https://gitlab.com/gitlab-org/cli/-/blob/main/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/cli</a></h3>
+<p>51 findings (48 warn / 3 info / 0 error) on <code>main</code>, 19,264 bytes.</p>
+<ul><li><code>image-no-pin</code> @ line 441: Job 'notify-issues-on-release' uses image 'registry.gitlab.com/gitlab-org/cli:latest' without a digest pin. Tag ':latest' is mutable. Pin to @sha256:... for reproducible, supply-chain-safe builds.</li><li><code>image-no-pin</code> @ line 467: Job 'windows_installer' uses image '${GITLAB_DEPENDENCY_PROXY}amake/innosetup:latest' without a digest pin. Tag ':latest' is mutable. Pin to @sha256:... for reproducible, supply-chain-safe builds.</li><li><code>missing-cache</code> @ line 250: Job 'lint_commit' runs '\bnpm (ci|install)\b' but defines no cache:. Each pipeline re-downloads node_modules. Adds 30-90s/job and bandwidth cost.</li><li><em>... and 48 more</em></li></ul>
+
+<h3><a href="https://gitlab.com/inkscape/inkscape/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">inkscape/inkscape</a></h3>
+<p>2 findings (0 warn / 0 info / 2 error) on <code>master</code>, 19,282 bytes.</p>
+<ul><li><code>parse-error</code> @ line 340: Map keys must be unique at line 340, column 7:
+
+    - if: $CI_CERT_CERTIFICATE
+      if: $CI_CERT_KEY
+      ^
+</li><li><code>parse-error</code> @ line 341: Map keys must be unique at line 341, column 7:
+
+      if: $CI_CERT_KEY
+      if: $CI_CERT_PASSWORD
+      ^
+</li></ul>
+
+<h3><a href="https://gitlab.com/gitlab-org/charts/gitlab/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/charts/gitlab</a></h3>
+<p>46 findings (41 warn / 5 info / 0 error) on <code>master</code>, 23,581 bytes.</p>
+<ul><li><code>image-no-pin</code> @ line 292: Job 'trigger_review_current' uses image '${BUSYBOX_IMAGE}' without a digest pin. No tag specified - defaults to ':latest'. Pin to @sha256:... for reproducible, supply-chain-safe builds.</li><li><code>image-no-pin</code> @ line 323: Job 'trigger_review_secondary' uses image '${BUSYBOX_IMAGE}' without a digest pin. No tag specified - defaults to ':latest'. Pin to @sha256:... for reproducible, supply-chain-safe builds.</li><li><code>image-no-pin</code> @ line 691: Job 'issue-bot' uses image '${CI_REGISTRY}/${GITLAB_NAMESPACE}/distribution/issue-bot:latest' without a digest pin. Tag ':latest' is mutable. Pin to @sha256:... for reproducible, supply-chain-safe bui...</li><li><em>... and 43 more</em></li></ul>
+
+<h3><a href="https://gitlab.com/gitlab-org/container-registry/-/blob/master/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/container-registry</a></h3>
+<p>1 finding (1 warn / 0 info / 0 error) on <code>master</code>, 4,748 bytes.</p>
+<ul><li><code>git-strategy-clone</code> @ line 130: GIT_DEPTH is unset or 0 - full history is fetched on every job. Set a small depth (e.g. 20) unless you need full history.</li></ul>
+
+<h3><a href="https://gitlab.com/gitlab-org/api/client-go/-/blob/main/.gitlab-ci.yml" target="_blank" rel="noopener">gitlab-org/api/client-go</a></h3>
+<p>19 findings (19 warn / 0 info / 0 error) on <code>main</code>, 8,997 bytes.</p>
+<ul><li><code>missing-interruptible</code> @ line 118: Job 'golangci-lint' has no interruptible: true. New pipeline pushes will not cancel its stale predecessor. Easy ~30%+ minutes savings on busy MRs.</li><li><code>missing-interruptible</code> @ line 134: Job 'buf-lint' has no interruptible: true. New pipeline pushes will not cancel its stale predecessor. Easy ~30%+ minutes savings on busy MRs.</li><li><code>missing-interruptible</code> @ line 143: Job 'verify-generated-code' has no interruptible: true. New pipeline pushes will not cancel its stale predecessor. Easy ~30%+ minutes savings on busy MRs.</li><li><em>... and 16 more</em></li></ul>
+
+<h3>Skipped</h3>
+<ul><li><code>gitlab-org/security-products/license-finder</code> - no .gitlab-ci.yml on main or master</li></ul>
+
+<h2>The boring lessons</h2>
+
+<h3>1. <code>missing-interruptible</code> is the cheapest fix nobody applies</h3>
+
+<p>If you have any non-trivial test job, <code>interruptible: true</code> at the job (or <code>default:</code>) level is roughly free money. Push a fixup to a branch, the previous pipeline cancels itself, you stop paying for stale commits. Most of the projects that audited dirty miss this on at least their long-running stages.</p>
+
+<h3>2. <code>missing-cache</code> on the <em>second</em> install is the silent loss</h3>
+
+<p>Many <code>.gitlab-ci.yml</code> files cache <code>npm ci</code> in the build job and then a <em>different</em> job runs <code>npm ci</code> again with no cache key, paying full freight. <code>gitlab-ci-doctor</code> looks for the install command in the script body, not just the cache section, so it catches the per-job miss.</p>
+
+<h3>3. <code>image-no-pin</code> is the security hygiene every team is one supply-chain incident away from caring about</h3>
+
+<p>Pin to <code>image: node@sha256:&lt;digest&gt;</code>. Yes, you have to update it when you bump the image. That is the point: it is now a code change reviewers can see, not an upstream tag rewrite that happens at 3am.</p>
+
+<h3>4. <code>parallel-overcommit</code> is the spend nobody runs the math on</h3>
+
+<p>A <code>parallel: 16</code> on a 2xlarge runner is 16x the rate, billed in full. If your test suite finishes in 5 minutes serially, the parallel split is just paying GitLab to do less work per minute. Fan out only when you can show a real wall-clock win.</p>
+
+<h2>Try the same audit on your own repo</h2>
+
+<pre>$ npx gitlab-ci-doctor              # in your repo, takes ~1 second
+$ npx gitlab-ci-doctor --markdown   # MR-comment friendly
+$ npx gitlab-ci-doctor --json       # machine-readable</pre>
+
+<p>Or paste a project path into the <a href="/scan-gitlab.html">browser scanner</a>. No signup, no upload, runs in your tab.</p>
+
+<div class="cta">
+  <h3>Drop it into your lint stage</h3>
+  <p>Two-line job. MR-comment friendly. Exit code 1 on errors, so it gates merges if you want it to.</p>
+  <a class="btn" href="/gitlab-ci-doctor.html">Setup snippet</a>
+  <a class="btn" href="https://www.npmjs.com/package/gitlab-ci-doctor">npm install</a>
+  <a class="btn" href="https://github.com/depmedicdev-byte/gitlab-ci-doctor">Source</a>
+</div>
+
+<div class="cta">
+  <h3>Already on GitHub Actions? Same engine, sister tool.</h3>
+  <p><code>ci-doctor</code> ships 14 rules + auto-fix for GHA workflows. Same opinions, same low ceremony.</p>
+  <a class="btn" href="/scan.html">Try the GHA scanner</a>
+  <a class="btn" href="https://www.npmjs.com/package/ci-doctor">ci-doctor on npm</a>
+</div>
+
+<footer>
+  Methodology: ran <code>auditPipeline()</code> from <a href="https://www.npmjs.com/package/gitlab-ci-doctor"><code>gitlab-ci-doctor@0.1.0</code></a> against each project's <code>.gitlab-ci.yml</code> on <code>main</code> (falling back to <code>master</code>) via <code>gitlab.com/api/v4</code>. Raw data is whatever the public API returned at 2026-04-28; nothing was modified, deduped, or weighted. Re-running tomorrow may produce different counts as those projects iterate.
+</footer>
+
+</main>
+</body>
+</html>
