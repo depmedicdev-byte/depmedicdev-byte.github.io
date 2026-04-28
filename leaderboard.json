@@ -1,42 +1,6 @@
 {
-  "generatedAt": "2026-04-28 09:40 UTC",
+  "generatedAt": "2026-04-28 19:13 UTC",
   "rows": [
-    {
-      "repo": "mantinedev/mantine",
-      "workflows": 1,
-      "findings": 1,
-      "e": 0,
-      "w": 1,
-      "i": 0,
-      "ruleHits": {
-        "missing-timeout": 1
-      },
-      "perRun": 0.06,
-      "monthly": 58,
-      "score": 1
-    },
-    {
-      "repo": "facebook/docusaurus",
-      "workflows": 17,
-      "findings": 26,
-      "e": 0,
-      "w": 14,
-      "i": 12,
-      "ruleHits": {
-        "missing-timeout": 7,
-        "missing-permissions": 2,
-        "artifact-no-retention": 2,
-        "fail-fast-true": 7,
-        "always-run-on-pr": 2,
-        "missing-cache": 2,
-        "missing-concurrency": 1,
-        "fetch-depth-zero": 1,
-        "expensive-runner": 2
-      },
-      "perRun": 2.3,
-      "monthly": 2074,
-      "score": 1.18
-    },
     {
       "repo": "mui/material-ui",
       "workflows": 17,
@@ -56,43 +20,6 @@
       "score": 1.59
     },
     {
-      "repo": "vitest-dev/vitest",
-      "workflows": 8,
-      "findings": 15,
-      "e": 0,
-      "w": 13,
-      "i": 2,
-      "ruleHits": {
-        "missing-timeout": 9,
-        "expensive-runner": 1,
-        "fetch-depth-zero": 2,
-        "missing-concurrency": 3
-      },
-      "perRun": 1.28,
-      "monthly": 1152,
-      "score": 1.75
-    },
-    {
-      "repo": "webdriverio/webdriverio",
-      "workflows": 21,
-      "findings": 43,
-      "e": 0,
-      "w": 36,
-      "i": 7,
-      "ruleHits": {
-        "missing-timeout": 22,
-        "missing-concurrency": 3,
-        "pinned-action-sha": 2,
-        "missing-permissions": 4,
-        "fetch-depth-zero": 1,
-        "artifact-no-retention": 6,
-        "matrix-overcommit": 5
-      },
-      "perRun": 1.98,
-      "monthly": 1786,
-      "score": 1.88
-    },
-    {
       "repo": "gatsbyjs/gatsby",
       "workflows": 1,
       "findings": 2,
@@ -105,53 +32,6 @@
       },
       "perRun": 0.06,
       "monthly": 58,
-      "score": 2
-    },
-    {
-      "repo": "hapijs/hapi",
-      "workflows": 1,
-      "findings": 2,
-      "e": 0,
-      "w": 2,
-      "i": 0,
-      "ruleHits": {
-        "missing-concurrency": 1,
-        "missing-permissions": 1
-      },
-      "perRun": 0,
-      "monthly": 0,
-      "score": 2
-    },
-    {
-      "repo": "changesets/changesets",
-      "workflows": 2,
-      "findings": 4,
-      "e": 0,
-      "w": 4,
-      "i": 0,
-      "ruleHits": {
-        "pinned-action-sha": 2,
-        "missing-concurrency": 1,
-        "missing-timeout": 1
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 2
-    },
-    {
-      "repo": "cheeriojs/cheerio",
-      "workflows": 9,
-      "findings": 19,
-      "e": 0,
-      "w": 17,
-      "i": 2,
-      "ruleHits": {
-        "missing-concurrency": 7,
-        "missing-timeout": 10,
-        "always-run-on-pr": 2
-      },
-      "perRun": 0.77,
-      "monthly": 691,
       "score": 2
     },
     {
@@ -192,41 +72,6 @@
       "score": 2.13
     },
     {
-      "repo": "semantic-release/semantic-release",
-      "workflows": 3,
-      "findings": 7,
-      "e": 0,
-      "w": 6,
-      "i": 1,
-      "ruleHits": {
-        "missing-concurrency": 3,
-        "missing-timeout": 3,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.45,
-      "monthly": 403,
-      "score": 2.17
-    },
-    {
-      "repo": "withastro/astro",
-      "workflows": 20,
-      "findings": 47,
-      "e": 0,
-      "w": 40,
-      "i": 7,
-      "ruleHits": {
-        "missing-concurrency": 12,
-        "missing-timeout": 18,
-        "missing-permissions": 9,
-        "fetch-depth-zero": 4,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 3
-      },
-      "perRun": 1.6,
-      "monthly": 1440,
-      "score": 2.17
-    },
-    {
       "repo": "jestjs/jest",
       "workflows": 9,
       "findings": 20,
@@ -240,42 +85,6 @@
       "perRun": 0.9,
       "monthly": 806,
       "score": 2.22
-    },
-    {
-      "repo": "vuejs/vitepress",
-      "workflows": 6,
-      "findings": 14,
-      "e": 0,
-      "w": 13,
-      "i": 1,
-      "ruleHits": {
-        "missing-timeout": 6,
-        "pinned-action-sha": 4,
-        "missing-concurrency": 1,
-        "missing-permissions": 2,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.32,
-      "monthly": 288,
-      "score": 2.25
-    },
-    {
-      "repo": "mochajs/mocha",
-      "workflows": 7,
-      "findings": 16,
-      "e": 0,
-      "w": 16,
-      "i": 0,
-      "ruleHits": {
-        "missing-concurrency": 4,
-        "matrix-overcommit": 2,
-        "missing-timeout": 6,
-        "pinned-action-sha": 3,
-        "missing-cache": 1
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 2.29
     },
     {
       "repo": "sveltejs/svelte",
@@ -393,62 +202,24 @@
       "score": 2.66
     },
     {
-      "repo": "cypress-io/cypress",
-      "workflows": 11,
-      "findings": 33,
-      "e": 0,
-      "w": 27,
-      "i": 6,
+      "repo": "electron/electron",
+      "workflows": 42,
+      "findings": 110,
+      "e": 11,
+      "w": 70,
+      "i": 29,
       "ruleHits": {
-        "missing-concurrency": 4,
-        "missing-timeout": 12,
-        "pinned-action-sha": 2,
-        "missing-permissions": 6,
-        "fetch-depth-zero": 4,
-        "fail-fast-true": 2,
-        "missing-cache": 3
+        "missing-timeout": 55,
+        "artifact-no-retention": 3,
+        "fetch-depth-zero": 26,
+        "missing-cache": 4,
+        "missing-concurrency": 10,
+        "deprecated-action": 11,
+        "stale-cache-key": 1
       },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 2.73
-    },
-    {
-      "repo": "oven-sh/bun",
-      "workflows": 28,
-      "findings": 77,
-      "e": 1,
-      "w": 74,
-      "i": 2,
-      "ruleHits": {
-        "missing-timeout": 31,
-        "missing-concurrency": 8,
-        "pinned-action-sha": 27,
-        "missing-permissions": 5,
-        "missing-cache": 2,
-        "deprecated-action": 1,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 1,
-        "artifact-no-retention": 1
-      },
-      "perRun": 2.62,
-      "monthly": 2362,
-      "score": 2.79
-    },
-    {
-      "repo": "ai/nanoid",
-      "workflows": 3,
-      "findings": 9,
-      "e": 0,
-      "w": 8,
-      "i": 1,
-      "ruleHits": {
-        "missing-concurrency": 3,
-        "missing-timeout": 5,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.51,
-      "monthly": 461,
-      "score": 2.83
+      "perRun": 2.3,
+      "monthly": 2074,
+      "score": 2.8
     },
     {
       "repo": "fastify/fastify",
@@ -470,23 +241,6 @@
       "perRun": 1.41,
       "monthly": 1267,
       "score": 2.85
-    },
-    {
-      "repo": "pmndrs/zustand",
-      "workflows": 8,
-      "findings": 23,
-      "e": 0,
-      "w": 23,
-      "i": 0,
-      "ruleHits": {
-        "missing-concurrency": 6,
-        "missing-timeout": 8,
-        "missing-permissions": 7,
-        "matrix-overcommit": 2
-      },
-      "perRun": 1.98,
-      "monthly": 1786,
-      "score": 2.88
     },
     {
       "repo": "nodejs/node",
@@ -527,86 +281,6 @@
       "score": 3
     },
     {
-      "repo": "unjs/nitro",
-      "workflows": 4,
-      "findings": 15,
-      "e": 0,
-      "w": 9,
-      "i": 6,
-      "ruleHits": {
-        "missing-concurrency": 3,
-        "pinned-action-sha": 4,
-        "missing-permissions": 1,
-        "fetch-depth-zero": 3,
-        "fail-fast-true": 3,
-        "missing-timeout": 1
-      },
-      "perRun": 0.32,
-      "monthly": 288,
-      "score": 3
-    },
-    {
-      "repo": "electron/electron",
-      "workflows": 42,
-      "findings": 119,
-      "e": 11,
-      "w": 79,
-      "i": 29,
-      "ruleHits": {
-        "missing-timeout": 55,
-        "artifact-no-retention": 3,
-        "fetch-depth-zero": 26,
-        "missing-cache": 4,
-        "missing-concurrency": 10,
-        "docker-no-pin": 9,
-        "deprecated-action": 11,
-        "stale-cache-key": 1
-      },
-      "perRun": 2.3,
-      "monthly": 2074,
-      "score": 3.01
-    },
-    {
-      "repo": "auth0/node-jsonwebtoken",
-      "workflows": 5,
-      "findings": 17,
-      "e": 0,
-      "w": 14,
-      "i": 3,
-      "ruleHits": {
-        "missing-cache": 5,
-        "missing-concurrency": 3,
-        "missing-timeout": 4,
-        "missing-permissions": 2,
-        "fetch-depth-zero": 3
-      },
-      "perRun": 0.51,
-      "monthly": 461,
-      "score": 3.1
-    },
-    {
-      "repo": "yarnpkg/berry",
-      "workflows": 35,
-      "findings": 118,
-      "e": 0,
-      "w": 110,
-      "i": 8,
-      "ruleHits": {
-        "missing-timeout": 41,
-        "missing-permissions": 32,
-        "matrix-overcommit": 2,
-        "missing-concurrency": 27,
-        "expensive-runner": 1,
-        "fail-fast-true": 3,
-        "missing-cache": 7,
-        "artifact-no-retention": 3,
-        "fetch-depth-zero": 2
-      },
-      "perRun": 3.84,
-      "monthly": 3456,
-      "score": 3.26
-    },
-    {
       "repo": "lodash/lodash",
       "workflows": 8,
       "findings": 28,
@@ -625,41 +299,6 @@
       "perRun": 0.64,
       "monthly": 576,
       "score": 3.31
-    },
-    {
-      "repo": "react-hook-form/react-hook-form",
-      "workflows": 6,
-      "findings": 22,
-      "e": 0,
-      "w": 18,
-      "i": 4,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 6,
-        "missing-permissions": 4,
-        "pinned-action-sha": 3,
-        "always-run-on-pr": 4
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 3.33
-    },
-    {
-      "repo": "radix-ui/primitives",
-      "workflows": 4,
-      "findings": 14,
-      "e": 0,
-      "w": 13,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 6,
-        "missing-timeout": 3,
-        "missing-permissions": 4,
-        "fetch-depth-zero": 1
-      },
-      "perRun": 0.26,
-      "monthly": 230,
-      "score": 3.38
     },
     {
       "repo": "facebook/react",
@@ -699,50 +338,6 @@
       "score": 3.44
     },
     {
-      "repo": "release-drafter/release-drafter",
-      "workflows": 8,
-      "findings": 30,
-      "e": 0,
-      "w": 25,
-      "i": 5,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 12,
-        "artifact-no-retention": 1,
-        "pinned-action-sha": 5,
-        "always-run-on-pr": 3,
-        "missing-permissions": 2,
-        "missing-cache": 1,
-        "fetch-depth-zero": 1
-      },
-      "perRun": 0.77,
-      "monthly": 691,
-      "score": 3.44
-    },
-    {
-      "repo": "nrwl/nx",
-      "workflows": 13,
-      "findings": 52,
-      "e": 0,
-      "w": 38,
-      "i": 14,
-      "ruleHits": {
-        "missing-timeout": 17,
-        "missing-concurrency": 5,
-        "missing-permissions": 4,
-        "fetch-depth-zero": 6,
-        "stale-cache-key": 7,
-        "always-run-on-pr": 2,
-        "artifact-no-retention": 4,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "missing-cache": 3
-      },
-      "perRun": 1.98,
-      "monthly": 1786,
-      "score": 3.46
-    },
-    {
       "repo": "nestjs/nest",
       "workflows": 1,
       "findings": 5,
@@ -757,40 +352,6 @@
       "perRun": 0.06,
       "monthly": 58,
       "score": 3.5
-    },
-    {
-      "repo": "expressjs/expressjs.com",
-      "workflows": 6,
-      "findings": 23,
-      "e": 0,
-      "w": 20,
-      "i": 3,
-      "ruleHits": {
-        "missing-cache": 4,
-        "missing-concurrency": 4,
-        "missing-timeout": 10,
-        "always-run-on-pr": 3,
-        "pinned-action-sha": 2
-      },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 3.58
-    },
-    {
-      "repo": "TanStack/table",
-      "workflows": 3,
-      "findings": 13,
-      "e": 0,
-      "w": 9,
-      "i": 4,
-      "ruleHits": {
-        "pinned-action-sha": 5,
-        "missing-timeout": 4,
-        "fetch-depth-zero": 4
-      },
-      "perRun": 0.26,
-      "monthly": 230,
-      "score": 3.67
     },
     {
       "repo": "storybookjs/storybook",
@@ -816,41 +377,6 @@
       "score": 3.69
     },
     {
-      "repo": "serverless/serverless",
-      "workflows": 7,
-      "findings": 22,
-      "e": 2,
-      "w": 20,
-      "i": 0,
-      "ruleHits": {
-        "missing-concurrency": 6,
-        "missing-timeout": 13,
-        "deprecated-action": 2,
-        "missing-cache": 1
-      },
-      "perRun": 0.77,
-      "monthly": 691,
-      "score": 3.71
-    },
-    {
-      "repo": "nextui-org/nextui",
-      "workflows": 4,
-      "findings": 16,
-      "e": 0,
-      "w": 14,
-      "i": 2,
-      "ruleHits": {
-        "missing-concurrency": 2,
-        "missing-timeout": 6,
-        "missing-permissions": 3,
-        "fetch-depth-zero": 2,
-        "pinned-action-sha": 3
-      },
-      "perRun": 0.45,
-      "monthly": 403,
-      "score": 3.75
-    },
-    {
       "repo": "TanStack/query",
       "workflows": 5,
       "findings": 20,
@@ -866,90 +392,6 @@
       "perRun": 0.45,
       "monthly": 403,
       "score": 3.8
-    },
-    {
-      "repo": "highlightjs/highlight.js",
-      "workflows": 5,
-      "findings": 20,
-      "e": 0,
-      "w": 18,
-      "i": 2,
-      "ruleHits": {
-        "missing-cache": 3,
-        "missing-concurrency": 4,
-        "missing-timeout": 5,
-        "pinned-action-sha": 3,
-        "missing-permissions": 2,
-        "artifact-no-retention": 1,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 1
-      },
-      "perRun": 1.28,
-      "monthly": 1152,
-      "score": 3.8
-    },
-    {
-      "repo": "nodejs/undici",
-      "workflows": 13,
-      "findings": 51,
-      "e": 0,
-      "w": 48,
-      "i": 3,
-      "ruleHits": {
-        "missing-cache": 16,
-        "missing-concurrency": 8,
-        "missing-timeout": 19,
-        "docker-no-pin": 3,
-        "matrix-overcommit": 1,
-        "always-run-on-pr": 3,
-        "missing-permissions": 1
-      },
-      "perRun": 1.79,
-      "monthly": 1613,
-      "score": 3.81
-    },
-    {
-      "repo": "vercel/turborepo",
-      "workflows": 12,
-      "findings": 48,
-      "e": 2,
-      "w": 37,
-      "i": 9,
-      "ruleHits": {
-        "pinned-action-sha": 14,
-        "missing-timeout": 3,
-        "missing-permissions": 5,
-        "missing-concurrency": 1,
-        "artifact-no-retention": 5,
-        "matrix-overcommit": 7,
-        "docker-no-pin": 2,
-        "wide-trigger": 1,
-        "fail-fast-true": 1,
-        "deprecated-action": 2,
-        "fetch-depth-zero": 2,
-        "missing-cache": 1,
-        "expensive-runner": 4
-      },
-      "perRun": 7.23,
-      "monthly": 6509,
-      "score": 3.96
-    },
-    {
-      "repo": "sindresorhus/p-queue",
-      "workflows": 1,
-      "findings": 4,
-      "e": 0,
-      "w": 4,
-      "i": 0,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "missing-timeout": 1,
-        "missing-permissions": 1
-      },
-      "perRun": 0.13,
-      "monthly": 115,
-      "score": 4
     },
     {
       "repo": "microsoft/TypeScript",
@@ -974,48 +416,6 @@
       "score": 4.06
     },
     {
-      "repo": "microsoft/vscode",
-      "workflows": 16,
-      "findings": 73,
-      "e": 0,
-      "w": 59,
-      "i": 14,
-      "ruleHits": {
-        "missing-timeout": 20,
-        "fetch-depth-zero": 1,
-        "matrix-overcommit": 1,
-        "missing-cache": 23,
-        "artifact-no-retention": 12,
-        "missing-concurrency": 5,
-        "wide-trigger": 1,
-        "stale-cache-key": 2,
-        "expensive-runner": 4,
-        "missing-permissions": 4
-      },
-      "perRun": 4.03,
-      "monthly": 3629,
-      "score": 4.13
-    },
-    {
-      "repo": "puppeteer/puppeteer",
-      "workflows": 12,
-      "findings": 50,
-      "e": 1,
-      "w": 44,
-      "i": 5,
-      "ruleHits": {
-        "missing-timeout": 31,
-        "artifact-no-retention": 5,
-        "matrix-overcommit": 7,
-        "missing-concurrency": 5,
-        "deprecated-action": 1,
-        "pinned-action-sha": 1
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 4.13
-    },
-    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -1032,44 +432,6 @@
       "perRun": 0.51,
       "monthly": 461,
       "score": 4.17
-    },
-    {
-      "repo": "koajs/koa",
-      "workflows": 2,
-      "findings": 9,
-      "e": 0,
-      "w": 8,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 1,
-        "missing-cache": 2,
-        "missing-concurrency": 2,
-        "missing-timeout": 2,
-        "missing-permissions": 1,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.26,
-      "monthly": 230,
-      "score": 4.25
-    },
-    {
-      "repo": "h3js/h3",
-      "workflows": 2,
-      "findings": 10,
-      "e": 0,
-      "w": 7,
-      "i": 3,
-      "ruleHits": {
-        "missing-concurrency": 2,
-        "wide-trigger": 1,
-        "missing-timeout": 3,
-        "pinned-action-sha": 1,
-        "missing-permissions": 1,
-        "fetch-depth-zero": 2
-      },
-      "perRun": 0.26,
-      "monthly": 230,
-      "score": 4.25
     },
     {
       "repo": "vuejs/core",
@@ -1089,129 +451,6 @@
       "perRun": 0.83,
       "monthly": 749,
       "score": 4.28
-    },
-    {
-      "repo": "TanStack/router",
-      "workflows": 7,
-      "findings": 35,
-      "e": 0,
-      "w": 28,
-      "i": 7,
-      "ruleHits": {
-        "pinned-action-sha": 11,
-        "missing-timeout": 12,
-        "fetch-depth-zero": 7,
-        "missing-cache": 2,
-        "missing-concurrency": 2,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.09,
-      "monthly": 979,
-      "score": 4.5
-    },
-    {
-      "repo": "colinhacks/zod",
-      "workflows": 6,
-      "findings": 29,
-      "e": 0,
-      "w": 26,
-      "i": 3,
-      "ruleHits": {
-        "pinned-action-sha": 10,
-        "missing-concurrency": 3,
-        "missing-timeout": 8,
-        "missing-cache": 4,
-        "fetch-depth-zero": 1,
-        "missing-permissions": 1,
-        "fail-fast-true": 2
-      },
-      "perRun": 0.45,
-      "monthly": 403,
-      "score": 4.58
-    },
-    {
-      "repo": "knex/knex",
-      "workflows": 9,
-      "findings": 43,
-      "e": 1,
-      "w": 36,
-      "i": 6,
-      "ruleHits": {
-        "missing-concurrency": 8,
-        "missing-timeout": 12,
-        "always-run-on-pr": 2,
-        "pinned-action-sha": 5,
-        "missing-cache": 7,
-        "deprecated-action": 1,
-        "missing-permissions": 2,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 3,
-        "artifact-no-retention": 1
-      },
-      "perRun": 2.88,
-      "monthly": 2592,
-      "score": 4.67
-    },
-    {
-      "repo": "mobxjs/mobx",
-      "workflows": 3,
-      "findings": 15,
-      "e": 0,
-      "w": 13,
-      "i": 2,
-      "ruleHits": {
-        "missing-cache": 3,
-        "missing-concurrency": 3,
-        "missing-timeout": 3,
-        "missing-permissions": 3,
-        "fetch-depth-zero": 2,
-        "pinned-action-sha": 1
-      },
-      "perRun": 0.19,
-      "monthly": 173,
-      "score": 4.67
-    },
-    {
-      "repo": "rolldown/rolldown",
-      "workflows": 22,
-      "findings": 74,
-      "e": 18,
-      "w": 44,
-      "i": 12,
-      "ruleHits": {
-        "missing-concurrency": 4,
-        "missing-timeout": 38,
-        "deprecated-action": 18,
-        "expensive-runner": 1,
-        "fail-fast-true": 1,
-        "fetch-depth-zero": 3,
-        "artifact-no-retention": 8,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.6,
-      "monthly": 1440,
-      "score": 4.73
-    },
-    {
-      "repo": "getsentry/sentry-javascript",
-      "workflows": 20,
-      "findings": 96,
-      "e": 0,
-      "w": 94,
-      "i": 2,
-      "ruleHits": {
-        "pinned-action-sha": 25,
-        "missing-cache": 30,
-        "missing-concurrency": 7,
-        "missing-timeout": 20,
-        "fetch-depth-zero": 2,
-        "missing-permissions": 8,
-        "matrix-overcommit": 3,
-        "stale-cache-key": 1
-      },
-      "perRun": 6.4,
-      "monthly": 5760,
-      "score": 4.75
     },
     {
       "repo": "eslint/eslint",
@@ -1234,27 +473,6 @@
       "score": 4.8
     },
     {
-      "repo": "mdx-js/mdx",
-      "workflows": 3,
-      "findings": 16,
-      "e": 0,
-      "w": 13,
-      "i": 3,
-      "ruleHits": {
-        "pinned-action-sha": 2,
-        "missing-concurrency": 3,
-        "missing-timeout": 4,
-        "missing-permissions": 2,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 1,
-        "missing-cache": 1
-      },
-      "perRun": 0.19,
-      "monthly": 173,
-      "score": 4.83
-    },
-    {
       "repo": "microsoft/playwright",
       "workflows": 19,
       "findings": 94,
@@ -1273,42 +491,6 @@
       "perRun": 1.79,
       "monthly": 1613,
       "score": 4.95
-    },
-    {
-      "repo": "sindresorhus/ky",
-      "workflows": 1,
-      "findings": 5,
-      "e": 0,
-      "w": 5,
-      "i": 0,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "missing-timeout": 1,
-        "expensive-runner": 1,
-        "missing-permissions": 1
-      },
-      "perRun": 1.92,
-      "monthly": 1728,
-      "score": 5
-    },
-    {
-      "repo": "PostCSS/postcss",
-      "workflows": 2,
-      "findings": 11,
-      "e": 0,
-      "w": 9,
-      "i": 2,
-      "ruleHits": {
-        "missing-concurrency": 2,
-        "missing-timeout": 5,
-        "missing-cache": 1,
-        "expensive-runner": 1,
-        "fail-fast-true": 2
-      },
-      "perRun": 0.77,
-      "monthly": 691,
-      "score": 5
     },
     {
       "repo": "npm/cli",
@@ -1397,47 +579,6 @@
       "score": 5.32
     },
     {
-      "repo": "reduxjs/redux",
-      "workflows": 3,
-      "findings": 17,
-      "e": 0,
-      "w": 15,
-      "i": 2,
-      "ruleHits": {
-        "missing-timeout": 8,
-        "missing-concurrency": 2,
-        "missing-permissions": 2,
-        "artifact-no-retention": 1,
-        "matrix-overcommit": 2,
-        "stale-cache-key": 1,
-        "fail-fast-true": 1
-      },
-      "perRun": 1.47,
-      "monthly": 1325,
-      "score": 5.33
-    },
-    {
-      "repo": "nextauthjs/next-auth",
-      "workflows": 6,
-      "findings": 30,
-      "e": 2,
-      "w": 24,
-      "i": 4,
-      "ruleHits": {
-        "pinned-action-sha": 9,
-        "missing-cache": 1,
-        "missing-timeout": 7,
-        "missing-concurrency": 4,
-        "deprecated-action": 2,
-        "missing-permissions": 3,
-        "always-run-on-pr": 2,
-        "fetch-depth-zero": 2
-      },
-      "perRun": 0.58,
-      "monthly": 518,
-      "score": 5.33
-    },
-    {
       "repo": "date-fns/date-fns",
       "workflows": 7,
       "findings": 34,
@@ -1458,26 +599,6 @@
       "score": 5.36
     },
     {
-      "repo": "lerna/lerna",
-      "workflows": 4,
-      "findings": 24,
-      "e": 0,
-      "w": 19,
-      "i": 5,
-      "ruleHits": {
-        "missing-timeout": 11,
-        "expensive-runner": 2,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "missing-cache": 3,
-        "missing-concurrency": 1
-      },
-      "perRun": 2.37,
-      "monthly": 2131,
-      "score": 5.38
-    },
-    {
       "repo": "biomejs/biome",
       "workflows": 23,
       "findings": 143,
@@ -1496,41 +617,6 @@
       "perRun": 0.51,
       "monthly": 461,
       "score": 5.39
-    },
-    {
-      "repo": "solidjs/solid",
-      "workflows": 1,
-      "findings": 6,
-      "e": 0,
-      "w": 5,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 2,
-        "missing-concurrency": 1,
-        "missing-timeout": 1,
-        "missing-permissions": 1,
-        "artifact-no-retention": 1
-      },
-      "perRun": 0.06,
-      "monthly": 58,
-      "score": 5.5
-    },
-    {
-      "repo": "jsdom/jsdom",
-      "workflows": 2,
-      "findings": 11,
-      "e": 0,
-      "w": 11,
-      "i": 0,
-      "ruleHits": {
-        "missing-cache": 4,
-        "missing-concurrency": 2,
-        "missing-timeout": 4,
-        "matrix-overcommit": 1
-      },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 5.5
     },
     {
       "repo": "swc-project/swc",
@@ -1557,105 +643,26 @@
       "score": 5.56
     },
     {
-      "repo": "typeorm/typeorm",
-      "workflows": 10,
-      "findings": 58,
+      "repo": "remix-run/remix",
+      "workflows": 11,
+      "findings": 70,
       "e": 0,
-      "w": 54,
-      "i": 4,
+      "w": 67,
+      "i": 3,
       "ruleHits": {
-        "missing-concurrency": 1,
-        "missing-timeout": 29,
-        "pinned-action-sha": 7,
-        "missing-permissions": 6,
-        "artifact-no-retention": 1,
-        "service-no-healthcheck": 7,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 1,
-        "docker-no-pin": 1,
+        "pinned-action-sha": 24,
+        "missing-timeout": 23,
+        "missing-permissions": 10,
+        "fail-fast-true": 1,
+        "missing-cache": 1,
+        "missing-concurrency": 3,
+        "fetch-depth-zero": 2,
+        "stale-cache-key": 4,
         "expensive-runner": 2
       },
-      "perRun": 2.43,
-      "monthly": 2189,
-      "score": 5.6
-    },
-    {
-      "repo": "remarkjs/remark",
-      "workflows": 2,
-      "findings": 12,
-      "e": 0,
-      "w": 11,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 2,
-        "missing-concurrency": 2,
-        "missing-timeout": 3,
-        "missing-permissions": 2,
-        "missing-cache": 2,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.32,
-      "monthly": 288,
-      "score": 5.75
-    },
-    {
-      "repo": "tauri-apps/tauri",
-      "workflows": 21,
-      "findings": 125,
-      "e": 1,
-      "w": 114,
-      "i": 10,
-      "ruleHits": {
-        "pinned-action-sha": 46,
-        "missing-cache": 4,
-        "missing-timeout": 36,
-        "missing-permissions": 19,
-        "missing-concurrency": 5,
-        "fetch-depth-zero": 3,
-        "artifact-no-retention": 6,
-        "matrix-overcommit": 3,
-        "stale-cache-key": 1,
-        "deprecated-action": 1,
-        "fail-fast-true": 1
-      },
-      "perRun": 1.98,
-      "monthly": 1786,
-      "score": 5.81
-    },
-    {
-      "repo": "jaredpalmer/formik",
-      "workflows": 3,
-      "findings": 18,
-      "e": 0,
-      "w": 17,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 4,
-        "missing-concurrency": 2,
-        "missing-timeout": 6,
-        "missing-permissions": 3,
-        "stale-cache-key": 2,
-        "fetch-depth-zero": 1
-      },
-      "perRun": 0.45,
-      "monthly": 403,
-      "score": 5.83
-    },
-    {
-      "repo": "TanStack/form",
-      "workflows": 3,
-      "findings": 19,
-      "e": 0,
-      "w": 17,
-      "i": 2,
-      "ruleHits": {
-        "pinned-action-sha": 11,
-        "missing-timeout": 6,
-        "fetch-depth-zero": 2
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 6
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 6.23
     },
     {
       "repo": "rollup/rollup",
@@ -1682,9 +689,9 @@
     {
       "repo": "sequelize/sequelize",
       "workflows": 9,
-      "findings": 42,
+      "findings": 41,
       "e": 9,
-      "w": 31,
+      "w": 30,
       "i": 2,
       "ruleHits": {
         "missing-timeout": 20,
@@ -1693,12 +700,11 @@
         "missing-concurrency": 2,
         "deprecated-action": 9,
         "expensive-runner": 1,
-        "matrix-overcommit": 2,
-        "docker-no-pin": 1
+        "matrix-overcommit": 2
       },
       "perRun": 5.25,
       "monthly": 4723,
-      "score": 6.56
+      "score": 6.44
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -1718,109 +724,6 @@
       "perRun": 1.54,
       "monthly": 1382,
       "score": 6.63
-    },
-    {
-      "repo": "parse-community/parse-server",
-      "workflows": 7,
-      "findings": 43,
-      "e": 2,
-      "w": 40,
-      "i": 1,
-      "ruleHits": {
-        "deprecated-action": 2,
-        "missing-permissions": 3,
-        "pinned-action-sha": 15,
-        "missing-cache": 10,
-        "missing-timeout": 5,
-        "matrix-overcommit": 1,
-        "docker-no-pin": 3,
-        "service-no-healthcheck": 2,
-        "missing-concurrency": 1,
-        "fetch-depth-zero": 1
-      },
-      "perRun": 1.79,
-      "monthly": 1613,
-      "score": 6.64
-    },
-    {
-      "repo": "remix-run/remix",
-      "workflows": 11,
-      "findings": 75,
-      "e": 0,
-      "w": 72,
-      "i": 3,
-      "ruleHits": {
-        "pinned-action-sha": 24,
-        "missing-timeout": 23,
-        "missing-permissions": 10,
-        "fail-fast-true": 1,
-        "missing-cache": 1,
-        "missing-concurrency": 3,
-        "docker-no-pin": 4,
-        "fetch-depth-zero": 2,
-        "stale-cache-key": 4,
-        "service-no-healthcheck": 1,
-        "expensive-runner": 2
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 6.68
-    },
-    {
-      "repo": "sass/dart-sass",
-      "workflows": 8,
-      "findings": 58,
-      "e": 0,
-      "w": 55,
-      "i": 3,
-      "ruleHits": {
-        "missing-timeout": 31,
-        "artifact-no-retention": 3,
-        "matrix-overcommit": 5,
-        "missing-concurrency": 2,
-        "missing-permissions": 5,
-        "pinned-action-sha": 9,
-        "missing-cache": 3
-      },
-      "perRun": 2.75,
-      "monthly": 2477,
-      "score": 7.06
-    },
-    {
-      "repo": "markedjs/marked",
-      "workflows": 1,
-      "findings": 8,
-      "e": 0,
-      "w": 7,
-      "i": 1,
-      "ruleHits": {
-        "missing-cache": 3,
-        "missing-concurrency": 1,
-        "missing-timeout": 3,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.32,
-      "monthly": 288,
-      "score": 7.5
-    },
-    {
-      "repo": "qwikdev/qwik",
-      "workflows": 6,
-      "findings": 52,
-      "e": 0,
-      "w": 40,
-      "i": 12,
-      "ruleHits": {
-        "missing-timeout": 18,
-        "missing-concurrency": 2,
-        "pinned-action-sha": 18,
-        "artifact-no-retention": 9,
-        "fail-fast-true": 3,
-        "missing-permissions": 2
-      },
-      "perRun": 1.02,
-      "monthly": 922,
-      "score": 7.67
     },
     {
       "repo": "axios/axios",
@@ -1883,203 +786,6 @@
       "perRun": 0.9,
       "monthly": 806,
       "score": 8.25
-    },
-    {
-      "repo": "honojs/hono",
-      "workflows": 5,
-      "findings": 49,
-      "e": 0,
-      "w": 44,
-      "i": 5,
-      "ruleHits": {
-        "pinned-action-sha": 17,
-        "missing-timeout": 18,
-        "missing-cache": 4,
-        "missing-concurrency": 2,
-        "expensive-runner": 1,
-        "missing-permissions": 2,
-        "artifact-no-retention": 3,
-        "fail-fast-true": 1,
-        "fetch-depth-zero": 1
-      },
-      "perRun": 1.34,
-      "monthly": 1210,
-      "score": 9.3
-    },
-    {
-      "repo": "kentcdodds/mdx-bundler",
-      "workflows": 1,
-      "findings": 10,
-      "e": 0,
-      "w": 9,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 4,
-        "missing-cache": 2,
-        "missing-timeout": 2,
-        "missing-permissions": 1,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.26,
-      "monthly": 230,
-      "score": 9.5
-    },
-    {
-      "repo": "PrismJS/prism",
-      "workflows": 3,
-      "findings": 22,
-      "e": 4,
-      "w": 15,
-      "i": 3,
-      "ruleHits": {
-        "missing-concurrency": 3,
-        "missing-timeout": 6,
-        "missing-permissions": 2,
-        "fetch-depth-zero": 1,
-        "missing-cache": 4,
-        "deprecated-action": 4,
-        "fail-fast-true": 2
-      },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 9.5
-    },
-    {
-      "repo": "jquense/yup",
-      "workflows": 1,
-      "findings": 6,
-      "e": 2,
-      "w": 4,
-      "i": 0,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "missing-timeout": 1,
-        "deprecated-action": 2,
-        "missing-permissions": 1
-      },
-      "perRun": 0.06,
-      "monthly": 58,
-      "score": 10
-    },
-    {
-      "repo": "moment/moment",
-      "workflows": 1,
-      "findings": 7,
-      "e": 2,
-      "w": 4,
-      "i": 1,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "missing-timeout": 1,
-        "deprecated-action": 2,
-        "missing-permissions": 1,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.19,
-      "monthly": 173,
-      "score": 10.5
-    },
-    {
-      "repo": "lit/lit",
-      "workflows": 9,
-      "findings": 59,
-      "e": 20,
-      "w": 30,
-      "i": 9,
-      "ruleHits": {
-        "pinned-action-sha": 10,
-        "missing-timeout": 12,
-        "missing-concurrency": 7,
-        "deprecated-action": 20,
-        "artifact-no-retention": 3,
-        "fetch-depth-zero": 5,
-        "wide-trigger": 1,
-        "expensive-runner": 1
-      },
-      "perRun": 0.83,
-      "monthly": 749,
-      "score": 10.5
-    },
-    {
-      "repo": "lukeed/clsx",
-      "workflows": 1,
-      "findings": 8,
-      "e": 2,
-      "w": 5,
-      "i": 1,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "missing-timeout": 1,
-        "deprecated-action": 2,
-        "missing-permissions": 1,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 11.5
-    },
-    {
-      "repo": "shadcn-ui/ui",
-      "workflows": 7,
-      "findings": 59,
-      "e": 14,
-      "w": 37,
-      "i": 8,
-      "ruleHits": {
-        "pinned-action-sha": 12,
-        "missing-cache": 5,
-        "missing-concurrency": 5,
-        "missing-timeout": 11,
-        "deprecated-action": 14,
-        "missing-permissions": 4,
-        "fetch-depth-zero": 7,
-        "artifact-no-retention": 1
-      },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 11.86
-    },
-    {
-      "repo": "stripe/stripe-node",
-      "workflows": 2,
-      "findings": 20,
-      "e": 5,
-      "w": 15,
-      "i": 0,
-      "ruleHits": {
-        "pinned-action-sha": 6,
-        "missing-cache": 3,
-        "missing-concurrency": 2,
-        "missing-timeout": 4,
-        "deprecated-action": 5
-      },
-      "perRun": 0.19,
-      "monthly": 173,
-      "score": 15
-    },
-    {
-      "repo": "evanw/esbuild",
-      "workflows": 4,
-      "findings": 51,
-      "e": 21,
-      "w": 28,
-      "i": 2,
-      "ruleHits": {
-        "pinned-action-sha": 3,
-        "missing-cache": 13,
-        "missing-concurrency": 3,
-        "missing-timeout": 8,
-        "deprecated-action": 21,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 2
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 23
     }
   ]
 }

@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSS GitHub Actions hygiene leaderboard (live, daily) - depmedic</title>
-<meta name="description" content="Live ranking of 107 popular OSS repositories by GitHub Actions hygiene. Updated daily. Powered by ci-doctor (14 rules) and gha-budget. Lower score is better." />
+<meta name="description" content="Live ranking of 40 popular OSS repositories by GitHub Actions hygiene. Updated daily. Powered by ci-doctor (14 rules) and gha-budget. Lower score is better." />
 <link rel="canonical" href="https://depmedicdev-byte.github.io/leaderboard.html" />
 <meta name="theme-color" content="#0b0d10" />
 <meta property="og:title" content="OSS GitHub Actions hygiene leaderboard - live, daily" />
-<meta property="og:description" content="Live ranking of 107 popular OSS repositories by CI hygiene. Updated daily. Real numbers, with week-over-week deltas." />
+<meta property="og:description" content="Live ranking of 40 popular OSS repositories by CI hygiene. Updated daily. Real numbers, with day-over-day deltas." />
 <meta property="og:url" content="https://depmedicdev-byte.github.io/leaderboard.html" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
@@ -71,41 +71,50 @@
 
 <h1>OSS GitHub Actions hygiene leaderboard</h1>
 <p class="lead">
-  Live ranking of <strong>107</strong> popular OSS repositories by their
+  Live ranking of <strong>40</strong> popular OSS repositories by their
   GitHub Actions workflow hygiene. Lower score = better. Powered by
   <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
   (14 rules) and <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-04-28 09:40 UTC</strong> &middot;
+  Last updated <strong>2026-04-28 19:13 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
 </p>
 
+<div style="background:#11151b;border:1px solid #2a3744;border-radius:8px;padding:14px 18px;margin:8px 0 18px;">
+  <div style="color:#9ce29c;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;">New report</div>
+  <div style="margin:6px 0 4px;"><strong>State of OSS CI Hygiene 2026 (Edition 1)</strong> &middot; the data on this page, packaged as a 12-page PDF + raw JSON snapshot for $14.</div>
+  <a href="https://buy.polar.sh/polar_cl_hp9SCOpmklXMRrcQKJGVhoPvIB2JitmY9OAG80Ngqv4" style="color:#6cb6ff;">Get the report &rarr;</a>
+</div>
+
+<div id="sponsor-strip"></div>
+<script src="/sponsors.js" defer></script>
+
 <div class="stats">
-  <div class="stat"><div class="label">Repos ranked</div><div class="val">107</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">1020</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">4,180</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$167,278</div></div>
+  <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">533</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,126</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$96,021</div></div>
 </div>
 
 <div class="toplist">
   <div class="card best">
     <h3>Cleanest 5 (lowest score)</h3>
-    <ol><li>mantinedev/mantine <code>1.00</code></li><li>facebook/docusaurus <code>1.18</code></li><li>mui/material-ui <code>1.59</code></li><li>vitest-dev/vitest <code>1.75</code></li><li>webdriverio/webdriverio <code>1.88</code></li></ol>
+    <ol><li>mui/material-ui <code>1.59</code></li><li>gatsbyjs/gatsby <code>2.00</code></li><li>pnpm/pnpm <code>2.11</code></li><li>vitejs/vite <code>2.13</code></li><li>jestjs/jest <code>2.22</code></li></ol>
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
-    <ol><li>evanw/esbuild <code>23.00</code></li><li>stripe/stripe-node <code>15.00</code></li><li>shadcn-ui/ui <code>11.86</code></li><li>lukeed/clsx <code>11.50</code></li><li>moment/moment <code>10.50</code></li></ol>
+    <ol><li>parcel-bundler/parcel <code>8.25</code></li><li>denoland/deno <code>8.18</code></li><li>axios/axios <code>7.94</code></li><li>tailwindlabs/tailwindcss <code>6.63</code></li><li>sequelize/sequelize <code>6.44</code></li></ol>
   </div>
 </div>
 
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1525</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">572</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">405</td></tr><tr><td><code>missing-cache</code></td><td class="right">378</td></tr><tr><td><code>missing-permissions</code></td><td class="right">331</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">850</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">255</td></tr><tr><td><code>missing-cache</code></td><td class="right">190</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">176</td></tr><tr><td><code>missing-permissions</code></td><td class="right">153</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -123,29 +132,7 @@
   </tr></thead>
   <tbody><tr>
       <td class="right">1</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/mantinedev/mantine" rel="noopener">mantinedev/mantine</a>
-          &middot; <a href="/scan.html#r=mantinedev%2Fmantine&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>1.00</strong></td>
-      <td class="right">1</td>
-      <td class="right">1</td>
-      <td class="right">0/1/0</td>
-      <td class="right">$0.06</td>
-      <td class="right">$58</td>
-    </tr><tr>
-      <td class="right">2</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/facebook/docusaurus" rel="noopener">facebook/docusaurus</a>
-          &middot; <a href="/scan.html#r=facebook%2Fdocusaurus&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>1.18</strong></td>
-      <td class="right">17</td>
-      <td class="right">26</td>
-      <td class="right">0/14/12</td>
-      <td class="right">$2.30</td>
-      <td class="right">$2,074</td>
-    </tr><tr>
-      <td class="right">3</td>
-      <td><span class="trend down">&darr;2</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/mui/material-ui" rel="noopener">mui/material-ui</a>
           &middot; <a href="/scan.html#r=mui%2Fmaterial-ui&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>1.59</strong></td>
@@ -155,30 +142,8 @@
       <td class="right">$0.90</td>
       <td class="right">$806</td>
     </tr><tr>
-      <td class="right">4</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/vitest-dev/vitest" rel="noopener">vitest-dev/vitest</a>
-          &middot; <a href="/scan.html#r=vitest-dev%2Fvitest&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>1.75</strong></td>
-      <td class="right">8</td>
-      <td class="right">15</td>
-      <td class="right">0/13/2</td>
-      <td class="right">$1.28</td>
-      <td class="right">$1,152</td>
-    </tr><tr>
-      <td class="right">5</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/webdriverio/webdriverio" rel="noopener">webdriverio/webdriverio</a>
-          &middot; <a href="/scan.html#r=webdriverio%2Fwebdriverio&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>1.88</strong></td>
-      <td class="right">21</td>
-      <td class="right">43</td>
-      <td class="right">0/36/7</td>
-      <td class="right">$1.98</td>
-      <td class="right">$1,786</td>
-    </tr><tr>
-      <td class="right">6</td>
-      <td><span class="trend down">&darr;4</span></td>
+      <td class="right">2</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/gatsbyjs/gatsby" rel="noopener">gatsbyjs/gatsby</a>
           &middot; <a href="/scan.html#r=gatsbyjs%2Fgatsby&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.00</strong></td>
@@ -188,41 +153,8 @@
       <td class="right">$0.06</td>
       <td class="right">$58</td>
     </tr><tr>
-      <td class="right">7</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/hapijs/hapi" rel="noopener">hapijs/hapi</a>
-          &middot; <a href="/scan.html#r=hapijs%2Fhapi&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.00</strong></td>
-      <td class="right">1</td>
-      <td class="right">2</td>
-      <td class="right">0/2/0</td>
-      <td class="right">$0.00</td>
-      <td class="right">$0</td>
-    </tr><tr>
-      <td class="right">8</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/changesets/changesets" rel="noopener">changesets/changesets</a>
-          &middot; <a href="/scan.html#r=changesets%2Fchangesets&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.00</strong></td>
-      <td class="right">2</td>
-      <td class="right">4</td>
-      <td class="right">0/4/0</td>
-      <td class="right">$0.38</td>
-      <td class="right">$346</td>
-    </tr><tr>
-      <td class="right">9</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/cheeriojs/cheerio" rel="noopener">cheeriojs/cheerio</a>
-          &middot; <a href="/scan.html#r=cheeriojs%2Fcheerio&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.00</strong></td>
-      <td class="right">9</td>
-      <td class="right">19</td>
-      <td class="right">0/17/2</td>
-      <td class="right">$0.77</td>
-      <td class="right">$691</td>
-    </tr><tr>
-      <td class="right">10</td>
-      <td><span class="trend down">&darr;7</span></td>
+      <td class="right">3</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
           &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.11</strong></td>
@@ -232,8 +164,8 @@
       <td class="right">$0.70</td>
       <td class="right">$634</td>
     </tr><tr>
-      <td class="right">11</td>
-      <td><span class="trend down">&darr;7</span></td>
+      <td class="right">4</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a>
           &middot; <a href="/scan.html#r=vitejs%2Fvite&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.13</strong></td>
@@ -243,30 +175,8 @@
       <td class="right">$1.09</td>
       <td class="right">$979</td>
     </tr><tr>
-      <td class="right">12</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/semantic-release/semantic-release" rel="noopener">semantic-release/semantic-release</a>
-          &middot; <a href="/scan.html#r=semantic-release%2Fsemantic-release&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.17</strong></td>
-      <td class="right">3</td>
-      <td class="right">7</td>
-      <td class="right">0/6/1</td>
-      <td class="right">$0.45</td>
-      <td class="right">$403</td>
-    </tr><tr>
-      <td class="right">13</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/withastro/astro" rel="noopener">withastro/astro</a>
-          &middot; <a href="/scan.html#r=withastro%2Fastro&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.17</strong></td>
-      <td class="right">20</td>
-      <td class="right">47</td>
-      <td class="right">0/40/7</td>
-      <td class="right">$1.60</td>
-      <td class="right">$1,440</td>
-    </tr><tr>
-      <td class="right">14</td>
-      <td><span class="trend down">&darr;9</span></td>
+      <td class="right">5</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/jestjs/jest" rel="noopener">jestjs/jest</a>
           &middot; <a href="/scan.html#r=jestjs%2Fjest&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.22</strong></td>
@@ -276,30 +186,8 @@
       <td class="right">$0.90</td>
       <td class="right">$806</td>
     </tr><tr>
-      <td class="right">15</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/vuejs/vitepress" rel="noopener">vuejs/vitepress</a>
-          &middot; <a href="/scan.html#r=vuejs%2Fvitepress&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.25</strong></td>
       <td class="right">6</td>
-      <td class="right">14</td>
-      <td class="right">0/13/1</td>
-      <td class="right">$0.32</td>
-      <td class="right">$288</td>
-    </tr><tr>
-      <td class="right">16</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/mochajs/mocha" rel="noopener">mochajs/mocha</a>
-          &middot; <a href="/scan.html#r=mochajs%2Fmocha&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.29</strong></td>
-      <td class="right">7</td>
-      <td class="right">16</td>
-      <td class="right">0/16/0</td>
-      <td class="right">$0.38</td>
-      <td class="right">$346</td>
-    </tr><tr>
-      <td class="right">17</td>
-      <td><span class="trend down">&darr;11</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/sveltejs/svelte" rel="noopener">sveltejs/svelte</a>
           &middot; <a href="/scan.html#r=sveltejs%2Fsvelte&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.40</strong></td>
@@ -309,8 +197,8 @@
       <td class="right">$0.70</td>
       <td class="right">$634</td>
     </tr><tr>
-      <td class="right">18</td>
-      <td><span class="trend down">&darr;11</span></td>
+      <td class="right">7</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/prettier/prettier" rel="noopener">prettier/prettier</a>
           &middot; <a href="/scan.html#r=prettier%2Fprettier&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.50</strong></td>
@@ -320,8 +208,8 @@
       <td class="right">$1.02</td>
       <td class="right">$922</td>
     </tr><tr>
-      <td class="right">19</td>
-      <td><span class="trend down">&darr;11</span></td>
+      <td class="right">8</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/ReactiveX/rxjs" rel="noopener">ReactiveX/rxjs</a>
           &middot; <a href="/scan.html#r=ReactiveX%2Frxjs&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.50</strong></td>
@@ -331,8 +219,8 @@
       <td class="right">$0.38</td>
       <td class="right">$346</td>
     </tr><tr>
-      <td class="right">20</td>
-      <td><span class="trend down">&darr;11</span></td>
+      <td class="right">9</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
           &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.56</strong></td>
@@ -342,8 +230,8 @@
       <td class="right">$1.15</td>
       <td class="right">$1,037</td>
     </tr><tr>
-      <td class="right">21</td>
-      <td><span class="trend down">&darr;11</span></td>
+      <td class="right">10</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/nuxt/nuxt" rel="noopener">nuxt/nuxt</a>
           &middot; <a href="/scan.html#r=nuxt%2Fnuxt&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.63</strong></td>
@@ -353,8 +241,8 @@
       <td class="right">$2.11</td>
       <td class="right">$1,901</td>
     </tr><tr>
-      <td class="right">22</td>
-      <td><span class="trend down">&darr;11</span></td>
+      <td class="right">11</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/remix-run/react-router" rel="noopener">remix-run/react-router</a>
           &middot; <a href="/scan.html#r=remix-run%2Freact-router&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.66</strong></td>
@@ -364,41 +252,19 @@
       <td class="right">$1.22</td>
       <td class="right">$1,094</td>
     </tr><tr>
-      <td class="right">23</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/cypress-io/cypress" rel="noopener">cypress-io/cypress</a>
-          &middot; <a href="/scan.html#r=cypress-io%2Fcypress&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.73</strong></td>
-      <td class="right">11</td>
-      <td class="right">33</td>
-      <td class="right">0/27/6</td>
-      <td class="right">$0.70</td>
-      <td class="right">$634</td>
+      <td class="right">12</td>
+      <td><span class="trend same">-</span></td>
+      <td><a href="https://github.com/electron/electron" rel="noopener">electron/electron</a>
+          &middot; <a href="/scan.html#r=electron%2Felectron&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.80</strong></td>
+      <td class="right">42</td>
+      <td class="right">110</td>
+      <td class="right">11/70/29</td>
+      <td class="right">$2.30</td>
+      <td class="right">$2,074</td>
     </tr><tr>
-      <td class="right">24</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/oven-sh/bun" rel="noopener">oven-sh/bun</a>
-          &middot; <a href="/scan.html#r=oven-sh%2Fbun&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.79</strong></td>
-      <td class="right">28</td>
-      <td class="right">77</td>
-      <td class="right">1/74/2</td>
-      <td class="right">$2.62</td>
-      <td class="right">$2,362</td>
-    </tr><tr>
-      <td class="right">25</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/ai/nanoid" rel="noopener">ai/nanoid</a>
-          &middot; <a href="/scan.html#r=ai%2Fnanoid&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.83</strong></td>
-      <td class="right">3</td>
-      <td class="right">9</td>
-      <td class="right">0/8/1</td>
-      <td class="right">$0.51</td>
-      <td class="right">$461</td>
-    </tr><tr>
-      <td class="right">26</td>
-      <td><span class="trend down">&darr;13</span></td>
+      <td class="right">13</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/fastify/fastify" rel="noopener">fastify/fastify</a>
           &middot; <a href="/scan.html#r=fastify%2Ffastify&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.85</strong></td>
@@ -408,19 +274,8 @@
       <td class="right">$1.41</td>
       <td class="right">$1,267</td>
     </tr><tr>
-      <td class="right">27</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/pmndrs/zustand" rel="noopener">pmndrs/zustand</a>
-          &middot; <a href="/scan.html#r=pmndrs%2Fzustand&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.88</strong></td>
-      <td class="right">8</td>
-      <td class="right">23</td>
-      <td class="right">0/23/0</td>
-      <td class="right">$1.98</td>
-      <td class="right">$1,786</td>
-    </tr><tr>
-      <td class="right">28</td>
-      <td><span class="trend down">&darr;14</span></td>
+      <td class="right">14</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/nodejs/node" rel="noopener">nodejs/node</a>
           &middot; <a href="/scan.html#r=nodejs%2Fnode&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.89</strong></td>
@@ -430,8 +285,8 @@
       <td class="right">$6.27</td>
       <td class="right">$5,645</td>
     </tr><tr>
-      <td class="right">29</td>
-      <td><span class="trend down">&darr;14</span></td>
+      <td class="right">15</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/sindresorhus/got" rel="noopener">sindresorhus/got</a>
           &middot; <a href="/scan.html#r=sindresorhus%2Fgot&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.00</strong></td>
@@ -441,52 +296,8 @@
       <td class="right">$0.00</td>
       <td class="right">$0</td>
     </tr><tr>
-      <td class="right">30</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/unjs/nitro" rel="noopener">unjs/nitro</a>
-          &middot; <a href="/scan.html#r=unjs%2Fnitro&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.00</strong></td>
-      <td class="right">4</td>
-      <td class="right">15</td>
-      <td class="right">0/9/6</td>
-      <td class="right">$0.32</td>
-      <td class="right">$288</td>
-    </tr><tr>
-      <td class="right">31</td>
-      <td><span class="trend down">&darr;19</span></td>
-      <td><a href="https://github.com/electron/electron" rel="noopener">electron/electron</a>
-          &middot; <a href="/scan.html#r=electron%2Felectron&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.01</strong></td>
-      <td class="right">42</td>
-      <td class="right">119</td>
-      <td class="right">11/79/29</td>
-      <td class="right">$2.30</td>
-      <td class="right">$2,074</td>
-    </tr><tr>
-      <td class="right">32</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/auth0/node-jsonwebtoken" rel="noopener">auth0/node-jsonwebtoken</a>
-          &middot; <a href="/scan.html#r=auth0%2Fnode-jsonwebtoken&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.10</strong></td>
-      <td class="right">5</td>
-      <td class="right">17</td>
-      <td class="right">0/14/3</td>
-      <td class="right">$0.51</td>
-      <td class="right">$461</td>
-    </tr><tr>
-      <td class="right">33</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/yarnpkg/berry" rel="noopener">yarnpkg/berry</a>
-          &middot; <a href="/scan.html#r=yarnpkg%2Fberry&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.26</strong></td>
-      <td class="right">35</td>
-      <td class="right">118</td>
-      <td class="right">0/110/8</td>
-      <td class="right">$3.84</td>
-      <td class="right">$3,456</td>
-    </tr><tr>
-      <td class="right">34</td>
-      <td><span class="trend down">&darr;18</span></td>
+      <td class="right">16</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/lodash/lodash" rel="noopener">lodash/lodash</a>
           &middot; <a href="/scan.html#r=lodash%2Flodash&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.31</strong></td>
@@ -496,30 +307,8 @@
       <td class="right">$0.64</td>
       <td class="right">$576</td>
     </tr><tr>
-      <td class="right">35</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/react-hook-form/react-hook-form" rel="noopener">react-hook-form/react-hook-form</a>
-          &middot; <a href="/scan.html#r=react-hook-form%2Freact-hook-form&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.33</strong></td>
-      <td class="right">6</td>
-      <td class="right">22</td>
-      <td class="right">0/18/4</td>
-      <td class="right">$0.38</td>
-      <td class="right">$346</td>
-    </tr><tr>
-      <td class="right">36</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/radix-ui/primitives" rel="noopener">radix-ui/primitives</a>
-          &middot; <a href="/scan.html#r=radix-ui%2Fprimitives&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.38</strong></td>
-      <td class="right">4</td>
-      <td class="right">14</td>
-      <td class="right">0/13/1</td>
-      <td class="right">$0.26</td>
-      <td class="right">$230</td>
-    </tr><tr>
-      <td class="right">37</td>
-      <td><span class="trend down">&darr;20</span></td>
+      <td class="right">17</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/facebook/react" rel="noopener">facebook/react</a>
           &middot; <a href="/scan.html#r=facebook%2Freact&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.42</strong></td>
@@ -529,8 +318,8 @@
       <td class="right">$16.19</td>
       <td class="right">$14,573</td>
     </tr><tr>
-      <td class="right">38</td>
-      <td><span class="trend down">&darr;20</span></td>
+      <td class="right">18</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/preactjs/preact" rel="noopener">preactjs/preact</a>
           &middot; <a href="/scan.html#r=preactjs%2Fpreact&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.44</strong></td>
@@ -540,30 +329,8 @@
       <td class="right">$0.64</td>
       <td class="right">$576</td>
     </tr><tr>
-      <td class="right">39</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/release-drafter/release-drafter" rel="noopener">release-drafter/release-drafter</a>
-          &middot; <a href="/scan.html#r=release-drafter%2Frelease-drafter&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.44</strong></td>
-      <td class="right">8</td>
-      <td class="right">30</td>
-      <td class="right">0/25/5</td>
-      <td class="right">$0.77</td>
-      <td class="right">$691</td>
-    </tr><tr>
-      <td class="right">40</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/nrwl/nx" rel="noopener">nrwl/nx</a>
-          &middot; <a href="/scan.html#r=nrwl%2Fnx&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.46</strong></td>
-      <td class="right">13</td>
-      <td class="right">52</td>
-      <td class="right">0/38/14</td>
-      <td class="right">$1.98</td>
-      <td class="right">$1,786</td>
-    </tr><tr>
-      <td class="right">41</td>
-      <td><span class="trend down">&darr;22</span></td>
+      <td class="right">19</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/nestjs/nest" rel="noopener">nestjs/nest</a>
           &middot; <a href="/scan.html#r=nestjs%2Fnest&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.50</strong></td>
@@ -573,30 +340,8 @@
       <td class="right">$0.06</td>
       <td class="right">$58</td>
     </tr><tr>
-      <td class="right">42</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/expressjs/expressjs.com" rel="noopener">expressjs/expressjs.com</a>
-          &middot; <a href="/scan.html#r=expressjs%2Fexpressjs.com&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.58</strong></td>
-      <td class="right">6</td>
-      <td class="right">23</td>
-      <td class="right">0/20/3</td>
-      <td class="right">$0.70</td>
-      <td class="right">$634</td>
-    </tr><tr>
-      <td class="right">43</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/TanStack/table" rel="noopener">TanStack/table</a>
-          &middot; <a href="/scan.html#r=TanStack%2Ftable&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.67</strong></td>
-      <td class="right">3</td>
-      <td class="right">13</td>
-      <td class="right">0/9/4</td>
-      <td class="right">$0.26</td>
-      <td class="right">$230</td>
-    </tr><tr>
-      <td class="right">44</td>
-      <td><span class="trend down">&darr;24</span></td>
+      <td class="right">20</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/storybookjs/storybook" rel="noopener">storybookjs/storybook</a>
           &middot; <a href="/scan.html#r=storybookjs%2Fstorybook&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.69</strong></td>
@@ -606,30 +351,8 @@
       <td class="right">$2.11</td>
       <td class="right">$1,901</td>
     </tr><tr>
-      <td class="right">45</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/serverless/serverless" rel="noopener">serverless/serverless</a>
-          &middot; <a href="/scan.html#r=serverless%2Fserverless&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.71</strong></td>
-      <td class="right">7</td>
-      <td class="right">22</td>
-      <td class="right">2/20/0</td>
-      <td class="right">$0.77</td>
-      <td class="right">$691</td>
-    </tr><tr>
-      <td class="right">46</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/nextui-org/nextui" rel="noopener">nextui-org/nextui</a>
-          &middot; <a href="/scan.html#r=nextui-org%2Fnextui&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.75</strong></td>
-      <td class="right">4</td>
-      <td class="right">16</td>
-      <td class="right">0/14/2</td>
-      <td class="right">$0.45</td>
-      <td class="right">$403</td>
-    </tr><tr>
-      <td class="right">47</td>
-      <td><span class="trend down">&darr;26</span></td>
+      <td class="right">21</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/TanStack/query" rel="noopener">TanStack/query</a>
           &middot; <a href="/scan.html#r=TanStack%2Fquery&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.80</strong></td>
@@ -639,52 +362,8 @@
       <td class="right">$0.45</td>
       <td class="right">$403</td>
     </tr><tr>
-      <td class="right">48</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/highlightjs/highlight.js" rel="noopener">highlightjs/highlight.js</a>
-          &middot; <a href="/scan.html#r=highlightjs%2Fhighlight.js&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.80</strong></td>
-      <td class="right">5</td>
-      <td class="right">20</td>
-      <td class="right">0/18/2</td>
-      <td class="right">$1.28</td>
-      <td class="right">$1,152</td>
-    </tr><tr>
-      <td class="right">49</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/nodejs/undici" rel="noopener">nodejs/undici</a>
-          &middot; <a href="/scan.html#r=nodejs%2Fundici&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.81</strong></td>
-      <td class="right">13</td>
-      <td class="right">51</td>
-      <td class="right">0/48/3</td>
-      <td class="right">$1.79</td>
-      <td class="right">$1,613</td>
-    </tr><tr>
-      <td class="right">50</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/vercel/turborepo" rel="noopener">vercel/turborepo</a>
-          &middot; <a href="/scan.html#r=vercel%2Fturborepo&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.96</strong></td>
-      <td class="right">12</td>
-      <td class="right">48</td>
-      <td class="right">2/37/9</td>
-      <td class="right">$7.23</td>
-      <td class="right">$6,509</td>
-    </tr><tr>
-      <td class="right">51</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/sindresorhus/p-queue" rel="noopener">sindresorhus/p-queue</a>
-          &middot; <a href="/scan.html#r=sindresorhus%2Fp-queue&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.00</strong></td>
-      <td class="right">1</td>
-      <td class="right">4</td>
-      <td class="right">0/4/0</td>
-      <td class="right">$0.13</td>
-      <td class="right">$115</td>
-    </tr><tr>
-      <td class="right">52</td>
-      <td><span class="trend down">&darr;30</span></td>
+      <td class="right">22</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/microsoft/TypeScript" rel="noopener">microsoft/TypeScript</a>
           &middot; <a href="/scan.html#r=microsoft%2FTypeScript&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.06</strong></td>
@@ -694,30 +373,8 @@
       <td class="right">$1.92</td>
       <td class="right">$1,728</td>
     </tr><tr>
-      <td class="right">53</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/microsoft/vscode" rel="noopener">microsoft/vscode</a>
-          &middot; <a href="/scan.html#r=microsoft%2Fvscode&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.13</strong></td>
-      <td class="right">16</td>
-      <td class="right">73</td>
-      <td class="right">0/59/14</td>
-      <td class="right">$4.03</td>
-      <td class="right">$3,629</td>
-    </tr><tr>
-      <td class="right">54</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/puppeteer/puppeteer" rel="noopener">puppeteer/puppeteer</a>
-          &middot; <a href="/scan.html#r=puppeteer%2Fpuppeteer&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.13</strong></td>
-      <td class="right">12</td>
-      <td class="right">50</td>
-      <td class="right">1/44/5</td>
-      <td class="right">$1.54</td>
-      <td class="right">$1,382</td>
-    </tr><tr>
-      <td class="right">55</td>
-      <td><span class="trend down">&darr;32</span></td>
+      <td class="right">23</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/chakra-ui/chakra-ui" rel="noopener">chakra-ui/chakra-ui</a>
           &middot; <a href="/scan.html#r=chakra-ui%2Fchakra-ui&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.17</strong></td>
@@ -727,30 +384,8 @@
       <td class="right">$0.51</td>
       <td class="right">$461</td>
     </tr><tr>
-      <td class="right">56</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/koajs/koa" rel="noopener">koajs/koa</a>
-          &middot; <a href="/scan.html#r=koajs%2Fkoa&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.25</strong></td>
-      <td class="right">2</td>
-      <td class="right">9</td>
-      <td class="right">0/8/1</td>
-      <td class="right">$0.26</td>
-      <td class="right">$230</td>
-    </tr><tr>
-      <td class="right">57</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/h3js/h3" rel="noopener">h3js/h3</a>
-          &middot; <a href="/scan.html#r=h3js%2Fh3&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.25</strong></td>
-      <td class="right">2</td>
-      <td class="right">10</td>
-      <td class="right">0/7/3</td>
-      <td class="right">$0.26</td>
-      <td class="right">$230</td>
-    </tr><tr>
-      <td class="right">58</td>
-      <td><span class="trend down">&darr;34</span></td>
+      <td class="right">24</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/vuejs/core" rel="noopener">vuejs/core</a>
           &middot; <a href="/scan.html#r=vuejs%2Fcore&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.28</strong></td>
@@ -760,74 +395,8 @@
       <td class="right">$0.83</td>
       <td class="right">$749</td>
     </tr><tr>
-      <td class="right">59</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/TanStack/router" rel="noopener">TanStack/router</a>
-          &middot; <a href="/scan.html#r=TanStack%2Frouter&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.50</strong></td>
-      <td class="right">7</td>
-      <td class="right">35</td>
-      <td class="right">0/28/7</td>
-      <td class="right">$1.09</td>
-      <td class="right">$979</td>
-    </tr><tr>
-      <td class="right">60</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/colinhacks/zod" rel="noopener">colinhacks/zod</a>
-          &middot; <a href="/scan.html#r=colinhacks%2Fzod&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.58</strong></td>
-      <td class="right">6</td>
-      <td class="right">29</td>
-      <td class="right">0/26/3</td>
-      <td class="right">$0.45</td>
-      <td class="right">$403</td>
-    </tr><tr>
-      <td class="right">61</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/knex/knex" rel="noopener">knex/knex</a>
-          &middot; <a href="/scan.html#r=knex%2Fknex&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.67</strong></td>
-      <td class="right">9</td>
-      <td class="right">43</td>
-      <td class="right">1/36/6</td>
-      <td class="right">$2.88</td>
-      <td class="right">$2,592</td>
-    </tr><tr>
-      <td class="right">62</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/mobxjs/mobx" rel="noopener">mobxjs/mobx</a>
-          &middot; <a href="/scan.html#r=mobxjs%2Fmobx&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.67</strong></td>
-      <td class="right">3</td>
-      <td class="right">15</td>
-      <td class="right">0/13/2</td>
-      <td class="right">$0.19</td>
-      <td class="right">$173</td>
-    </tr><tr>
-      <td class="right">63</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/rolldown/rolldown" rel="noopener">rolldown/rolldown</a>
-          &middot; <a href="/scan.html#r=rolldown%2Frolldown&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.73</strong></td>
-      <td class="right">22</td>
-      <td class="right">74</td>
-      <td class="right">18/44/12</td>
-      <td class="right">$1.60</td>
-      <td class="right">$1,440</td>
-    </tr><tr>
-      <td class="right">64</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/getsentry/sentry-javascript" rel="noopener">getsentry/sentry-javascript</a>
-          &middot; <a href="/scan.html#r=getsentry%2Fsentry-javascript&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.75</strong></td>
-      <td class="right">20</td>
-      <td class="right">96</td>
-      <td class="right">0/94/2</td>
-      <td class="right">$6.40</td>
-      <td class="right">$5,760</td>
-    </tr><tr>
-      <td class="right">65</td>
-      <td><span class="trend down">&darr;40</span></td>
+      <td class="right">25</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/eslint/eslint" rel="noopener">eslint/eslint</a>
           &middot; <a href="/scan.html#r=eslint%2Feslint&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.80</strong></td>
@@ -837,19 +406,8 @@
       <td class="right">$1.66</td>
       <td class="right">$1,498</td>
     </tr><tr>
-      <td class="right">66</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/mdx-js/mdx" rel="noopener">mdx-js/mdx</a>
-          &middot; <a href="/scan.html#r=mdx-js%2Fmdx&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.83</strong></td>
-      <td class="right">3</td>
-      <td class="right">16</td>
-      <td class="right">0/13/3</td>
-      <td class="right">$0.19</td>
-      <td class="right">$173</td>
-    </tr><tr>
-      <td class="right">67</td>
-      <td><span class="trend down">&darr;41</span></td>
+      <td class="right">26</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
           &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.95</strong></td>
@@ -859,30 +417,8 @@
       <td class="right">$1.79</td>
       <td class="right">$1,613</td>
     </tr><tr>
-      <td class="right">68</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/sindresorhus/ky" rel="noopener">sindresorhus/ky</a>
-          &middot; <a href="/scan.html#r=sindresorhus%2Fky&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.00</strong></td>
-      <td class="right">1</td>
-      <td class="right">5</td>
-      <td class="right">0/5/0</td>
-      <td class="right">$1.92</td>
-      <td class="right">$1,728</td>
-    </tr><tr>
-      <td class="right">69</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/PostCSS/postcss" rel="noopener">PostCSS/postcss</a>
-          &middot; <a href="/scan.html#r=PostCSS%2Fpostcss&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.00</strong></td>
-      <td class="right">2</td>
-      <td class="right">11</td>
-      <td class="right">0/9/2</td>
-      <td class="right">$0.77</td>
-      <td class="right">$691</td>
-    </tr><tr>
-      <td class="right">70</td>
-      <td><span class="trend down">&darr;43</span></td>
+      <td class="right">27</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/npm/cli" rel="noopener">npm/cli</a>
           &middot; <a href="/scan.html#r=npm%2Fcli&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.15</strong></td>
@@ -892,8 +428,8 @@
       <td class="right">$2.56</td>
       <td class="right">$2,304</td>
     </tr><tr>
-      <td class="right">71</td>
-      <td><span class="trend down">&darr;43</span></td>
+      <td class="right">28</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/vercel/next.js" rel="noopener">vercel/next.js</a>
           &middot; <a href="/scan.html#r=vercel%2Fnext.js&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.24</strong></td>
@@ -903,8 +439,8 @@
       <td class="right">$4.10</td>
       <td class="right">$3,686</td>
     </tr><tr>
-      <td class="right">72</td>
-      <td><span class="trend down">&darr;43</span></td>
+      <td class="right">29</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/expressjs/express" rel="noopener">expressjs/express</a>
           &middot; <a href="/scan.html#r=expressjs%2Fexpress&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.25</strong></td>
@@ -914,8 +450,8 @@
       <td class="right">$0.38</td>
       <td class="right">$346</td>
     </tr><tr>
-      <td class="right">73</td>
-      <td><span class="trend down">&darr;43</span></td>
+      <td class="right">30</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/prisma/prisma" rel="noopener">prisma/prisma</a>
           &middot; <a href="/scan.html#r=prisma%2Fprisma&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.32</strong></td>
@@ -925,30 +461,8 @@
       <td class="right">$14.59</td>
       <td class="right">$13,133</td>
     </tr><tr>
-      <td class="right">74</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/reduxjs/redux" rel="noopener">reduxjs/redux</a>
-          &middot; <a href="/scan.html#r=reduxjs%2Fredux&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.33</strong></td>
-      <td class="right">3</td>
-      <td class="right">17</td>
-      <td class="right">0/15/2</td>
-      <td class="right">$1.47</td>
-      <td class="right">$1,325</td>
-    </tr><tr>
-      <td class="right">75</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/nextauthjs/next-auth" rel="noopener">nextauthjs/next-auth</a>
-          &middot; <a href="/scan.html#r=nextauthjs%2Fnext-auth&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.33</strong></td>
-      <td class="right">6</td>
-      <td class="right">30</td>
-      <td class="right">2/24/4</td>
-      <td class="right">$0.58</td>
-      <td class="right">$518</td>
-    </tr><tr>
-      <td class="right">76</td>
-      <td><span class="trend down">&darr;45</span></td>
+      <td class="right">31</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/date-fns/date-fns" rel="noopener">date-fns/date-fns</a>
           &middot; <a href="/scan.html#r=date-fns%2Fdate-fns&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.36</strong></td>
@@ -958,19 +472,8 @@
       <td class="right">$0.58</td>
       <td class="right">$518</td>
     </tr><tr>
-      <td class="right">77</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/lerna/lerna" rel="noopener">lerna/lerna</a>
-          &middot; <a href="/scan.html#r=lerna%2Flerna&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.38</strong></td>
-      <td class="right">4</td>
-      <td class="right">24</td>
-      <td class="right">0/19/5</td>
-      <td class="right">$2.37</td>
-      <td class="right">$2,131</td>
-    </tr><tr>
-      <td class="right">78</td>
-      <td><span class="trend down">&darr;46</span></td>
+      <td class="right">32</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/biomejs/biome" rel="noopener">biomejs/biome</a>
           &middot; <a href="/scan.html#r=biomejs%2Fbiome&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.39</strong></td>
@@ -980,30 +483,8 @@
       <td class="right">$0.51</td>
       <td class="right">$461</td>
     </tr><tr>
-      <td class="right">79</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/solidjs/solid" rel="noopener">solidjs/solid</a>
-          &middot; <a href="/scan.html#r=solidjs%2Fsolid&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.50</strong></td>
-      <td class="right">1</td>
-      <td class="right">6</td>
-      <td class="right">0/5/1</td>
-      <td class="right">$0.06</td>
-      <td class="right">$58</td>
-    </tr><tr>
-      <td class="right">80</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/jsdom/jsdom" rel="noopener">jsdom/jsdom</a>
-          &middot; <a href="/scan.html#r=jsdom%2Fjsdom&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.50</strong></td>
-      <td class="right">2</td>
-      <td class="right">11</td>
-      <td class="right">0/11/0</td>
-      <td class="right">$0.64</td>
-      <td class="right">$576</td>
-    </tr><tr>
-      <td class="right">81</td>
-      <td><span class="trend down">&darr;48</span></td>
+      <td class="right">33</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/swc-project/swc" rel="noopener">swc-project/swc</a>
           &middot; <a href="/scan.html#r=swc-project%2Fswc&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.56</strong></td>
@@ -1013,63 +494,19 @@
       <td class="right">$2.69</td>
       <td class="right">$2,419</td>
     </tr><tr>
-      <td class="right">82</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/typeorm/typeorm" rel="noopener">typeorm/typeorm</a>
-          &middot; <a href="/scan.html#r=typeorm%2Ftypeorm&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.60</strong></td>
-      <td class="right">10</td>
-      <td class="right">58</td>
-      <td class="right">0/54/4</td>
-      <td class="right">$2.43</td>
-      <td class="right">$2,189</td>
+      <td class="right">34</td>
+      <td><span class="trend same">-</span></td>
+      <td><a href="https://github.com/remix-run/remix" rel="noopener">remix-run/remix</a>
+          &middot; <a href="/scan.html#r=remix-run%2Fremix&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>6.23</strong></td>
+      <td class="right">11</td>
+      <td class="right">70</td>
+      <td class="right">0/67/3</td>
+      <td class="right">$1.54</td>
+      <td class="right">$1,382</td>
     </tr><tr>
-      <td class="right">83</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/remarkjs/remark" rel="noopener">remarkjs/remark</a>
-          &middot; <a href="/scan.html#r=remarkjs%2Fremark&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.75</strong></td>
-      <td class="right">2</td>
-      <td class="right">12</td>
-      <td class="right">0/11/1</td>
-      <td class="right">$0.32</td>
-      <td class="right">$288</td>
-    </tr><tr>
-      <td class="right">84</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/tauri-apps/tauri" rel="noopener">tauri-apps/tauri</a>
-          &middot; <a href="/scan.html#r=tauri-apps%2Ftauri&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.81</strong></td>
-      <td class="right">21</td>
-      <td class="right">125</td>
-      <td class="right">1/114/10</td>
-      <td class="right">$1.98</td>
-      <td class="right">$1,786</td>
-    </tr><tr>
-      <td class="right">85</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/jaredpalmer/formik" rel="noopener">jaredpalmer/formik</a>
-          &middot; <a href="/scan.html#r=jaredpalmer%2Fformik&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.83</strong></td>
-      <td class="right">3</td>
-      <td class="right">18</td>
-      <td class="right">0/17/1</td>
-      <td class="right">$0.45</td>
-      <td class="right">$403</td>
-    </tr><tr>
-      <td class="right">86</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/TanStack/form" rel="noopener">TanStack/form</a>
-          &middot; <a href="/scan.html#r=TanStack%2Fform&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>6.00</strong></td>
-      <td class="right">3</td>
-      <td class="right">19</td>
-      <td class="right">0/17/2</td>
-      <td class="right">$0.38</td>
-      <td class="right">$346</td>
-    </tr><tr>
-      <td class="right">87</td>
-      <td><span class="trend down">&darr;52</span></td>
+      <td class="right">35</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/rollup/rollup" rel="noopener">rollup/rollup</a>
           &middot; <a href="/scan.html#r=rollup%2Frollup&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>6.38</strong></td>
@@ -1079,19 +516,19 @@
       <td class="right">$0.64</td>
       <td class="right">$576</td>
     </tr><tr>
-      <td class="right">88</td>
-      <td><span class="trend down">&darr;52</span></td>
+      <td class="right">36</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/sequelize/sequelize" rel="noopener">sequelize/sequelize</a>
           &middot; <a href="/scan.html#r=sequelize%2Fsequelize&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>6.56</strong></td>
+      <td class="right"><strong>6.44</strong></td>
       <td class="right">9</td>
-      <td class="right">42</td>
-      <td class="right">9/31/2</td>
+      <td class="right">41</td>
+      <td class="right">9/30/2</td>
       <td class="right">$5.25</td>
       <td class="right">$4,723</td>
     </tr><tr>
-      <td class="right">89</td>
-      <td><span class="trend down">&darr;52</span></td>
+      <td class="right">37</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/tailwindlabs/tailwindcss" rel="noopener">tailwindlabs/tailwindcss</a>
           &middot; <a href="/scan.html#r=tailwindlabs%2Ftailwindcss&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>6.63</strong></td>
@@ -1101,63 +538,8 @@
       <td class="right">$1.54</td>
       <td class="right">$1,382</td>
     </tr><tr>
-      <td class="right">90</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/parse-community/parse-server" rel="noopener">parse-community/parse-server</a>
-          &middot; <a href="/scan.html#r=parse-community%2Fparse-server&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>6.64</strong></td>
-      <td class="right">7</td>
-      <td class="right">43</td>
-      <td class="right">2/40/1</td>
-      <td class="right">$1.79</td>
-      <td class="right">$1,613</td>
-    </tr><tr>
-      <td class="right">91</td>
-      <td><span class="trend down">&darr;57</span></td>
-      <td><a href="https://github.com/remix-run/remix" rel="noopener">remix-run/remix</a>
-          &middot; <a href="/scan.html#r=remix-run%2Fremix&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>6.68</strong></td>
-      <td class="right">11</td>
-      <td class="right">75</td>
-      <td class="right">0/72/3</td>
-      <td class="right">$1.54</td>
-      <td class="right">$1,382</td>
-    </tr><tr>
-      <td class="right">92</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/sass/dart-sass" rel="noopener">sass/dart-sass</a>
-          &middot; <a href="/scan.html#r=sass%2Fdart-sass&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>7.06</strong></td>
-      <td class="right">8</td>
-      <td class="right">58</td>
-      <td class="right">0/55/3</td>
-      <td class="right">$2.75</td>
-      <td class="right">$2,477</td>
-    </tr><tr>
-      <td class="right">93</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/markedjs/marked" rel="noopener">markedjs/marked</a>
-          &middot; <a href="/scan.html#r=markedjs%2Fmarked&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>7.50</strong></td>
-      <td class="right">1</td>
-      <td class="right">8</td>
-      <td class="right">0/7/1</td>
-      <td class="right">$0.32</td>
-      <td class="right">$288</td>
-    </tr><tr>
-      <td class="right">94</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/qwikdev/qwik" rel="noopener">qwikdev/qwik</a>
-          &middot; <a href="/scan.html#r=qwikdev%2Fqwik&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>7.67</strong></td>
-      <td class="right">6</td>
-      <td class="right">52</td>
-      <td class="right">0/40/12</td>
-      <td class="right">$1.02</td>
-      <td class="right">$922</td>
-    </tr><tr>
-      <td class="right">95</td>
-      <td><span class="trend down">&darr;57</span></td>
+      <td class="right">38</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/axios/axios" rel="noopener">axios/axios</a>
           &middot; <a href="/scan.html#r=axios%2Faxios&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>7.94</strong></td>
@@ -1167,8 +549,8 @@
       <td class="right">$2.62</td>
       <td class="right">$2,362</td>
     </tr><tr>
-      <td class="right">96</td>
-      <td><span class="trend down">&darr;57</span></td>
+      <td class="right">39</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/denoland/deno" rel="noopener">denoland/deno</a>
           &middot; <a href="/scan.html#r=denoland%2Fdeno&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>8.18</strong></td>
@@ -1178,8 +560,8 @@
       <td class="right">$21.76</td>
       <td class="right">$19,584</td>
     </tr><tr>
-      <td class="right">97</td>
-      <td><span class="trend down">&darr;57</span></td>
+      <td class="right">40</td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/parcel-bundler/parcel" rel="noopener">parcel-bundler/parcel</a>
           &middot; <a href="/scan.html#r=parcel-bundler%2Fparcel&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>8.25</strong></td>
@@ -1188,116 +570,6 @@
       <td class="right">0/47/5</td>
       <td class="right">$0.90</td>
       <td class="right">$806</td>
-    </tr><tr>
-      <td class="right">98</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/honojs/hono" rel="noopener">honojs/hono</a>
-          &middot; <a href="/scan.html#r=honojs%2Fhono&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>9.30</strong></td>
-      <td class="right">5</td>
-      <td class="right">49</td>
-      <td class="right">0/44/5</td>
-      <td class="right">$1.34</td>
-      <td class="right">$1,210</td>
-    </tr><tr>
-      <td class="right">99</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/kentcdodds/mdx-bundler" rel="noopener">kentcdodds/mdx-bundler</a>
-          &middot; <a href="/scan.html#r=kentcdodds%2Fmdx-bundler&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>9.50</strong></td>
-      <td class="right">1</td>
-      <td class="right">10</td>
-      <td class="right">0/9/1</td>
-      <td class="right">$0.26</td>
-      <td class="right">$230</td>
-    </tr><tr>
-      <td class="right">100</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/PrismJS/prism" rel="noopener">PrismJS/prism</a>
-          &middot; <a href="/scan.html#r=PrismJS%2Fprism&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>9.50</strong></td>
-      <td class="right">3</td>
-      <td class="right">22</td>
-      <td class="right">4/15/3</td>
-      <td class="right">$0.64</td>
-      <td class="right">$576</td>
-    </tr><tr>
-      <td class="right">101</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/jquense/yup" rel="noopener">jquense/yup</a>
-          &middot; <a href="/scan.html#r=jquense%2Fyup&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>10.00</strong></td>
-      <td class="right">1</td>
-      <td class="right">6</td>
-      <td class="right">2/4/0</td>
-      <td class="right">$0.06</td>
-      <td class="right">$58</td>
-    </tr><tr>
-      <td class="right">102</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/moment/moment" rel="noopener">moment/moment</a>
-          &middot; <a href="/scan.html#r=moment%2Fmoment&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>10.50</strong></td>
-      <td class="right">1</td>
-      <td class="right">7</td>
-      <td class="right">2/4/1</td>
-      <td class="right">$0.19</td>
-      <td class="right">$173</td>
-    </tr><tr>
-      <td class="right">103</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/lit/lit" rel="noopener">lit/lit</a>
-          &middot; <a href="/scan.html#r=lit%2Flit&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>10.50</strong></td>
-      <td class="right">9</td>
-      <td class="right">59</td>
-      <td class="right">20/30/9</td>
-      <td class="right">$0.83</td>
-      <td class="right">$749</td>
-    </tr><tr>
-      <td class="right">104</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/lukeed/clsx" rel="noopener">lukeed/clsx</a>
-          &middot; <a href="/scan.html#r=lukeed%2Fclsx&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>11.50</strong></td>
-      <td class="right">1</td>
-      <td class="right">8</td>
-      <td class="right">2/5/1</td>
-      <td class="right">$0.38</td>
-      <td class="right">$346</td>
-    </tr><tr>
-      <td class="right">105</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/shadcn-ui/ui" rel="noopener">shadcn-ui/ui</a>
-          &middot; <a href="/scan.html#r=shadcn-ui%2Fui&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>11.86</strong></td>
-      <td class="right">7</td>
-      <td class="right">59</td>
-      <td class="right">14/37/8</td>
-      <td class="right">$0.70</td>
-      <td class="right">$634</td>
-    </tr><tr>
-      <td class="right">106</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/stripe/stripe-node" rel="noopener">stripe/stripe-node</a>
-          &middot; <a href="/scan.html#r=stripe%2Fstripe-node&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>15.00</strong></td>
-      <td class="right">2</td>
-      <td class="right">20</td>
-      <td class="right">5/15/0</td>
-      <td class="right">$0.19</td>
-      <td class="right">$173</td>
-    </tr><tr>
-      <td class="right">107</td>
-      <td><span class="trend new">new</span></td>
-      <td><a href="https://github.com/evanw/esbuild" rel="noopener">evanw/esbuild</a>
-          &middot; <a href="/scan.html#r=evanw%2Fesbuild&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>23.00</strong></td>
-      <td class="right">4</td>
-      <td class="right">51</td>
-      <td class="right">21/28/2</td>
-      <td class="right">$0.38</td>
-      <td class="right">$346</td>
     </tr></tbody>
 </table>
 
