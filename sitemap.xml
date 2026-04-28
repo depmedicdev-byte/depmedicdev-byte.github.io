@@ -163,6 +163,18 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/depmedic-bot.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://depmedicdev-byte.github.io/depmedic-bot-installed.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/blog/audit-10-gitlab-projects.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>

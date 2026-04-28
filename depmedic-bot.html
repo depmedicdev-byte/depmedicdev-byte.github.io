@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>depmedic-bot - PR-time CI hygiene from the depmedic GitHub App</title>
+<meta name="description" content="Install the depmedic-bot GitHub App. Every PR that touches .github/workflows gets a single comment with 14 cost / security / hygiene findings from ci-doctor, with fix suggestions. Free for public repos." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/depmedic-bot.html" />
+<link rel="icon" href="/favicon.ico" />
+<style>
+:root { color-scheme: dark; }
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:#0b0d10;color:#e6e8eb}
+a{color:#7cc4ff;text-decoration:none}
+a:hover{text-decoration:underline}
+header,footer{padding:18px 24px;border-bottom:1px solid #1e242c}
+footer{border-top:1px solid #1e242c;border-bottom:0;color:#8a929c;font-size:14px;text-align:center}
+header nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;max-width:1080px;margin:0 auto}
+header nav .brand{font-weight:700}
+main{max-width:880px;margin:0 auto;padding:32px 24px 64px}
+h1{font-size:34px;margin:0 0 12px;line-height:1.2}
+h2{font-size:22px;margin:36px 0 12px}
+h3{font-size:17px;margin:24px 0 8px}
+.lede{color:#b6bec7;font-size:18px;margin:0 0 28px}
+.cta{display:inline-block;background:#3b82f6;color:#fff;padding:12px 22px;border-radius:8px;font-weight:600;margin:8px 12px 8px 0}
+.cta.secondary{background:#1e242c;color:#cdd5de}
+.cta:hover{text-decoration:none;filter:brightness(1.1)}
+.box{background:#11151b;border:1px solid #1e242c;border-radius:10px;padding:18px 22px;margin:18px 0}
+pre{background:#0a0e13;border:1px solid #1e242c;padding:14px;border-radius:8px;overflow:auto;font-size:13px;color:#cdd5de}
+code{font:13px/1.5 ui-monospace,Consolas,Menlo,monospace}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:720px){.row{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:4px;background:#1f3b5b;color:#9ec5ff;margin-right:6px}
+.tag.green{background:#163b27;color:#7be0a3}
+.tag.amber{background:#3d2c0a;color:#f0c14b}
+ul{padding-left:22px}
+li{margin:6px 0}
+</style>
+</head>
+<body>
+<header><nav>
+  <a href="/" class="brand">depmedic</a>
+  <a href="/scan.html">scan.html</a>
+  <a href="/scan-gitlab.html">scan-gitlab</a>
+  <a href="/leaderboard.html">leaderboard</a>
+  <a href="/health/">health</a>
+  <a href="/depmedic-bot.html"><strong>bot</strong></a>
+  <a href="/sponsor.html">sponsor</a>
+</nav></header>
+
+<main>
+<h1>depmedic-bot</h1>
+<p class="lede">A GitHub App that audits every PR touching <code>.github/workflows/*.yml</code> with 14 cost, security, and hygiene rules from <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a>. One PR comment, updated as you push.</p>
+
+<p>
+  <a class="cta" href="https://github.com/apps/depmedic-bot">Install on GitHub</a>
+  <a class="cta secondary" href="https://github.com/depmedicdev-byte/ci-doctor">CLI source</a>
+  <a class="cta secondary" href="/scan.html">Scan without installing</a>
+</p>
+
+<p>
+  <span class="tag green">Public repos: free</span>
+  <span class="tag amber">Private repos: $7/mo per repo (Marketplace, coming)</span>
+  <span class="tag">Cloudflare Workers backed</span>
+</p>
+
+<h2>What you get on every PR</h2>
+<div class="box">
+  <p>When a PR opens or you push a new commit, the bot:</p>
+  <ol>
+    <li>Lists changed files. If none touch <code>.github/workflows/</code>, it stays silent.</li>
+    <li>Fetches the changed workflow files at the PR's head SHA.</li>
+    <li>Runs <code>ci-doctor</code> against each YAML.</li>
+    <li>Posts (or updates) a single PR comment with a markdown table: file, line, severity, rule id, message.</li>
+  </ol>
+  <p>No diff or repo content ever leaves Cloudflare; only your own YAML strings ride through. The findings are extracted lines from your config and a rule id - that's it.</p>
+</div>
+
+<h2>What it catches (the 14 rules)</h2>
+<div class="row">
+<div class="box">
+<h3>Cost</h3>
+<ul>
+<li><code>missing-timeout</code> - jobs without <code>timeout-minutes</code> can burn hours.</li>
+<li><code>missing-cache</code> - <code>npm ci</code> / <code>pip install</code> without cache.</li>
+<li><code>missing-concurrency</code> - duplicate runs from rapid pushes.</li>
+<li><code>expensive-runner</code> - large/macos runners w/o platform-only commands.</li>
+<li><code>matrix-overcommit</code> - matrix that fans out beyond a sane bound.</li>
+<li><code>e2e-on-every-push</code> - heavy e2e jobs without a path filter or label gate.</li>
+</ul>
+</div>
+<div class="box">
+<h3>Security &amp; hygiene</h3>
+<ul>
+<li><code>action-no-pin</code> - actions pinned to <code>@v4</code> instead of a SHA.</li>
+<li><code>script-injection</code> - <code>github.event.*</code> interpolation into <code>run:</code> blocks.</li>
+<li><code>token-permissions</code> - missing <code>permissions:</code> block (defaults to write).</li>
+<li><code>cache-key-fragile</code> - cache keys without lockfile hashes.</li>
+<li><code>missing-fetch-depth</code> - blame / signed commits broken by shallow clones.</li>
+<li><code>artifact-no-expiration</code> - artifacts default to 90 days, racking up storage.</li>
+<li><code>setup-no-pin</code> - <code>setup-node@v4</code> with no node-version lock.</li>
+<li><code>workflow-dispatch-only</code> - workflows that never run automatically (smoke test for dead config).</li>
+</ul>
+</div>
+</div>
+
+<h2>Sample comment</h2>
+<pre>## depmedic-bot
+
+**3 findings** across 1 workflow file: 1 error / 2 warn / 0 info.
+
+| File | Line | Severity | Rule | Message |
+| --- | --- | --- | --- | --- |
+| `.github/workflows/ci.yml` | 14 | error | `script-injection` | github.event.head_commit.message interpolated directly into run: |
+| `.github/workflows/ci.yml` | 22 | warn  | `action-no-pin`     | actions/checkout@v4 -> pin to a commit SHA |
+| `.github/workflows/ci.yml` | 31 | warn  | `missing-timeout`   | job 'test' has no timeout-minutes (default: 360) |
+
+&lt;sub&gt;Audited by depmedic-bot using ci-doctor. Run `npx ci-doctor --fix` to auto-apply the safe fixes.&lt;/sub&gt;
+</pre>
+
+<h2>Install</h2>
+<ol>
+<li>Click <a href="https://github.com/apps/depmedic-bot"><strong>Install on GitHub</strong></a>.</li>
+<li>Pick the org or user. Pick "all repos" or just a few.</li>
+<li>Open or push to a PR that touches a workflow. Comment appears within ~10 seconds.</li>
+</ol>
+
+<h2>Privacy</h2>
+<ul>
+<li>Webhook deliveries are HMAC-SHA256 verified before any work runs.</li>
+<li>The Worker never persists workflow contents; only the install id + account login (so the bot knows who to authenticate as).</li>
+<li>Findings reference your own YAML lines and rule ids. Nothing else.</li>
+<li>The Worker is open source and lives in <a href="https://github.com/depmedicdev-byte/depmedic-bot-worker">depmedic-bot-worker</a>.</li>
+</ul>
+
+<h2>Pricing</h2>
+<p><strong>Public repos: free, forever.</strong> The whole reason this thing exists is to push the OSS ecosystem toward sane CI defaults.</p>
+<p><strong>Private repos: $7/mo per repo</strong> via GitHub Marketplace (listing pending). Same engine, same rules, billed by GitHub.</p>
+<p>Need org-wide rollout, custom rules, or SSO? Email <a href="mailto:depmedicdev@gmail.com">depmedicdev@gmail.com</a> - depmedic Org plan is $99/mo flat for unlimited private repos and includes <a href="/org-monitor.html">Org Dep Health Monitor</a>.</p>
+
+<h2>FAQ</h2>
+<h3>Will this comment on every commit?</h3>
+<p>No. One comment per PR, updated in place as you push. Closed PRs are never touched.</p>
+
+<h3>What about non-workflow files?</h3>
+<p>The bot stays silent. It only fires when a file under <code>.github/workflows/</code> changes.</p>
+
+<h3>Does it block merges?</h3>
+<p>No. It posts a comment. You decide whether the findings are blocking. (If you want a check, run <code>ci-doctor</code> in your existing CI pipeline.)</p>
+
+<h3>Can I get the same audit without installing the App?</h3>
+<p>Yes - either <a href="/scan.html">scan in the browser</a> (paste YAML or repo URL) or <code>npx ci-doctor</code> locally.</p>
+
+<h3>What about GitLab?</h3>
+<p>Use <a href="/scan-gitlab.html">scan-gitlab.html</a> or <code>npx gitlab-ci-doctor</code>. The GitLab equivalent of the bot is on the roadmap.</p>
+
+</main>
+<footer>depmedic - keeping CI honest. <a href="/">home</a> &middot; <a href="/sponsor.html">sponsor</a> &middot; <a href="https://github.com/depmedicdev-byte">github</a></footer>
+</body>
+</html>
