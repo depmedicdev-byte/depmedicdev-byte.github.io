@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I shipped 3 new ci-doctor rules. Then I ran them on my own repos. - depmedic</title>
+<meta name="description" content="ci-doctor 0.4.0 added stale-cache-key, fail-fast-true, and always-run-on-pr. The first thing I did was run them on my own 6 repos. fail-fast-true caught real waste. The CLI also crashed on a single-file argument. 0.4.1 fixes both." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/dogfood-found-real-bug.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="I shipped 3 new ci-doctor rules. Then I ran them on my own repos." />
+<meta property="og:description" content="ci-doctor 0.4.0 ships 3 new rules. Dogfooding them surfaced one real waste finding and one CLI bug. 0.4.1 fixes both." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/dogfood-found-real-bug.html" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; }
+  .nav a { color: #9aa3ad; }
+  h1 { font-size: 32px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 22px; color: #c9d1d9; margin: 36px 0 6px; }
+  .meta { color: #6f7882; font-size: 14px; margin: 0 0 20px; }
+  pre { background: #0d1117; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; }
+  code { font: 13.5px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+  p code, li code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  .promo { margin: 28px 0; padding: 18px 22px; border-radius: 10px; background: linear-gradient(135deg, #11151b, #0e1b1c); border: 1px solid #2a4732; }
+  .promo h3 { margin-top: 0; color: #e6e8eb; font-size: 17px; }
+  .promo .price { color: #9aa3ad; font-size: 13px; margin-left: 8px; }
+  .btn { display: inline-block; padding: 9px 16px; border-radius: 6px; margin-top: 6px; background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .btn:hover { text-decoration: none; background: #3a4754; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog</p>
+
+<h1>I shipped 3 new <code>ci-doctor</code> rules. Then I ran them on my own repos.</h1>
+<p class="meta">2026-04-27 - ci-doctor 0.4.0 -> 0.4.1</p>
+
+<p>
+  <code>ci-doctor</code> is a free MIT linter for GitHub Actions
+  workflows. I shipped <code>ci-doctor</code> 0.4.0 with three new rules:
+</p>
+
+<ul>
+  <li><code>stale-cache-key</code> - flags <code>actions/cache</code> steps whose key has no <code>hashFiles()</code>, so the cache never invalidates when deps change.</li>
+  <li><code>fail-fast-true</code> - flags matrix jobs that don't explicitly set <code>fail-fast: false</code>, so the first cell that fails cancels every paid sibling.</li>
+  <li><code>always-run-on-pr</code> - flags heavy steps (docker build+push, cypress, playwright, codeql) that run on every PR with no path filter or label gate.</li>
+</ul>
+
+<p>
+  The first thing I did after publishing 0.4.0 was run it against the
+  six repositories I maintain. Two real things came out of that, both in
+  the next 30 minutes.
+</p>
+
+<h2>Finding 1: my own matrix had the smell I just shipped a rule for</h2>
+
+<p>
+  Each of the five tool repos (<code>depmedic</code>,
+  <code>ci-doctor</code>, <code>cursor-rules-init</code>,
+  <code>gha-budget</code>, <code>pin-actions</code>) has the same test
+  workflow: matrix Node 18, 20, 22 on Ubuntu. None of them set
+  <code>fail-fast: false</code>.
+</p>
+
+<p>
+  This was not a bug. It was the default. But it is exactly the cost smell
+  I was about to ship a rule for, and shipping a CLI to other people that
+  scolds them about something my own repos do is the kind of thing that
+  costs you trust the first time someone notices.
+</p>
+
+<p>
+  Five-line patch on each repo:
+</p>
+
+<pre><code>jobs:
+  test:
+    strategy:
++     fail-fast: false
+      matrix:
+        node: [18, 20, 22]</code></pre>
+
+<p>
+  After: <code>npx ci-doctor projects/depmedic</code> -> <em>No findings.</em>
+  All five tool repos. Verified.
+</p>
+
+<h2>Finding 2: the CLI itself crashed on a single-file argument</h2>
+
+<p>
+  To dogfood, my first instinct was:
+</p>
+
+<pre><code>node bin/ci-doctor.js projects/depmedic/.github/workflows/test.yml</code></pre>
+
+<p>
+  And it crashed:
+</p>
+
+<pre><code>Error: ENOTDIR: not a directory, scandir
+  '.../projects/depmedic/.github/workflows/test.yml'</code></pre>
+
+<p>
+  Two things wrong here. First, the obvious one: a CLI with the word
+  "doctor" in its name should not give you a stack trace because you
+  passed it a single file. Second, the documentation in the README and
+  the blog posts shows examples like <code>npx ci-doctor</code> and
+  <code>npx ci-doctor --fix</code>, which both default to scanning a
+  directory. Nobody had ever exercised the single-file path because the
+  CLI didn't advertise it.
+</p>
+
+<p>
+  The fix was a four-line stat-and-branch in <code>bin/ci-doctor.js</code>:
+</p>
+
+<pre><code>const target = args.positional[0] || process.cwd();
+const stat = fs.existsSync(target) ? fs.statSync(target) : null;
+if (stat &amp;&amp; stat.isFile()) {
+  const src = fs.readFileSync(target, 'utf8');
+  findings = auditWorkflow(src, ...);
+} else {
+  findings = auditDirectory(target, args);
+}</code></pre>
+
+<p>
+  Shipped as <code>ci-doctor</code> 0.4.1.
+</p>
+
+<h2>What this is and isn't</h2>
+
+<p>
+  This isn't an exciting bug. It's a small one. The reason I'm writing
+  about it is that the entire conceit of <code>ci-doctor</code> is
+  "small CLIs that catch the kind of thing nobody schedules time to
+  notice." If I don't run my own tools against my own work, the rules I
+  ship will drift away from reality. So this is going to be a habit:
+  every time a new rule lands, dogfood it the same day, fix anything it
+  surfaces, write down what happened.
+</p>
+
+<p>
+  The new aggregate dataset (across 20 popular OSS projects) shows
+  the three new rules find 42 additional smells beyond what 0.3.x
+  caught - mostly from <code>stale-cache-key</code> (19 hits across the
+  20 repos) and <code>fail-fast-true</code> (13 hits). The
+  <a href="/benchmarks.html">benchmarks page</a> is updated.
+</p>
+
+<h2>Run it yourself</h2>
+
+<pre><code>npx ci-doctor                  # audit a directory
+npx ci-doctor path/to/file.yml # audit a single file (now works)
+npx ci-doctor --fix            # auto-apply the four safe fixes</code></pre>
+
+<p>
+  Or paste a workflow at <a href="/audit.html">depmedicdev-byte.github.io/audit.html</a>
+  for the same audit in your browser, no install.
+</p>
+
+<div class="promo">
+  <h3>Want the full pattern set, not just what the CLI lints?</h3>
+  <p>
+    The <strong>Cut Your CI Bill</strong> cookbook is 30 paste-ready
+    patterns plus 5 hardened workflow templates. Pairs with
+    <code>ci-doctor</code> directly.
+    <span class="price">$19, one-time, MIT-licensed templates.</span>
+  </p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD" rel="noopener">Get the cookbook</a>
+</div>
+
+<footer>
+  <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>

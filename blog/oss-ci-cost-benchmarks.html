@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What 20 popular OSS projects pay for GitHub Actions - depmedic</title>
-<meta name="description" content="Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 902 real CI smells, modeled ~$51k/mo combined spend at 30 runs/day. Public methodology and dataset." />
+<meta name="description" content="Pulled the live workflow YAML from React, Next.js, Deno, TypeScript, Vite and 15 more, priced every job, ran ci-doctor against all of them. 229 workflows, 944 real CI smells, modeled ~$51k/mo combined spend at 30 runs/day. Public methodology and dataset." />
 <link rel="canonical" href="https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html" />
 <meta name="theme-color" content="#0b0d10" />
 <meta property="og:title" content="What 20 popular OSS projects pay for GitHub Actions" />
-<meta property="og:description" content="229 workflows, 902 real CI smells. Modeled ~$51k/mo combined spend at 30 runs/day. Public methodology, raw data linked." />
+<meta property="og:description" content="229 workflows, 944 real CI smells. Modeled ~$51k/mo combined spend at 30 runs/day. Public methodology, raw data linked." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html" />
 <meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
@@ -70,9 +70,9 @@
 </p>
 
 <p>
-  <strong>The headline:</strong> 229 workflows, 388 priced jobs, 902 CI smells.
+  <strong>The headline:</strong> 229 workflows, 388 priced jobs, 944 CI smells.
   Modeled at 30 runs/day and ~8 minutes per job, the combined spend works out
-  to <strong>about $51,000/month</strong>. The 902 smells are real and counted
+  to <strong>about $51,000/month</strong>. The 944 smells are real and counted
   from the YAML; the dollar number is a model, and your number depends entirely
   on your real run frequency. 159 additional jobs ran on self-hosted or
   large runners and could not be priced from the YAML alone, so the modeled
@@ -119,7 +119,7 @@
 <h2>The CI smells, ranked</h2>
 
 <p>
-  ci-doctor recorded 902 findings across all 229 workflows. The distribution
+  ci-doctor recorded 944 findings across all 229 workflows. The distribution
   is not even. One rule alone accounts for 40% of all findings:
 </p>
 
@@ -137,7 +137,10 @@
     <tr><td><code>matrix-overcommit</code></td><td class="right">52</td><td class="right">13%</td></tr>
     <tr><td><code>deprecated-action</code></td><td class="right">39</td><td class="right">10%</td></tr>
     <tr><td><code>fetch-depth-zero</code></td><td class="right">22</td><td class="right">6%</td></tr>
+    <tr><td><code>stale-cache-key</code></td><td class="right">19</td><td class="right">5%</td></tr>
+    <tr><td><code>fail-fast-true</code></td><td class="right">13</td><td class="right">3%</td></tr>
     <tr><td><code>expensive-runner</code></td><td class="right">12</td><td class="right">3%</td></tr>
+    <tr><td><code>always-run-on-pr</code></td><td class="right">10</td><td class="right">3%</td></tr>
     <tr><td><code>wide-trigger</code></td><td class="right">4</td><td class="right">1%</td></tr>
   </tbody>
 </table>

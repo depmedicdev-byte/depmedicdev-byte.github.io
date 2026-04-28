@@ -13,6 +13,12 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/blog/dogfood-found-real-bug.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/blog/stop-linting-github-actions.html</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
