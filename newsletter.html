@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Subscribe to depmedic weekly</title>
+<meta name="description" content="One short email per week on cheaper, safer GitHub Actions: new patterns, the OSS hygiene leaderboard delta, the cost-cutting wins of the week. Free." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/newsletter.html" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: #b6bec7; margin: 0 0 22px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  .card { background: #11151b; border: 1px solid #2a3744; border-radius: 10px; padding: 22px; }
+  label { display: block; color: #9aa3ad; font-size: 13px; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  input[type=email] { width: 100%; background: #0b0d10; color: #e6e8eb; border: 1px solid #2a3744; border-radius: 8px; padding: 10px 12px; font: inherit; }
+  input[type=email]:focus { outline: 2px solid #3a6e94; outline-offset: 1px; }
+  button { background: #2d5a7a; color: #fff; border: 0; border-radius: 8px; padding: 10px 18px; font: inherit; font-weight: 600; cursor: pointer; margin-top: 12px; }
+  button:hover { background: #3a6e94; }
+  button:disabled { opacity: 0.6; cursor: progress; }
+  #msg { margin-top: 12px; font-size: 14px; }
+  #msg.ok { color: #9ce29c; }
+  #msg.err { color: #ffb8b8; }
+  ul { color: #b6bec7; padding-left: 22px; }
+  li { margin: 4px 0; }
+  a { color: #6cb6ff; }
+  small { color: #6f7882; }
+</style>
+</head>
+<body>
+<main>
+  <p class="nav"><a href="/">depmedic</a> &middot; <a href="/leaderboard.html">leaderboard</a> &middot; <a href="/scan.html">scan</a> &middot; <a href="/ask.html">ask</a></p>
+
+  <h1>depmedic weekly</h1>
+  <p class="lead">One short email every Wednesday: cheaper, safer GitHub Actions
+  patterns, the leaderboard delta, the cost-cutting wins of the week. Free.
+  Unsubscribe link in every issue. No spam, ever.</p>
+
+  <div class="card">
+    <form id="f">
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="you@example.com" autocomplete="email" />
+      <button type="submit" id="btn">Subscribe</button>
+    </form>
+    <div id="msg"></div>
+    <small>You'll get one confirmation email immediately. Click the link inside to confirm.</small>
+  </div>
+
+  <h2 style="margin-top:32px;font-size:16px;color:#c9d1d9;text-transform:uppercase;letter-spacing:0.04em;">What you can expect</h2>
+  <ul>
+    <li>Last week's CI hygiene leaderboard biggest movers (winners + losers)</li>
+    <li>One pattern from the cookbook, rewritten for paste-ready use</li>
+    <li>Tooling delta: new ci-doctor / gha-budget rules, Action Marketplace listings</li>
+    <li>Anything time-sensitive (Sigstore changes, deprecated actions, etc.)</li>
+  </ul>
+
+  <p style="color:#6f7882;font-size:13px;margin-top:32px">
+    Powered by Cloudflare Workers + Resend. Your address is stored in
+    Cloudflare KV and only used to send this newsletter; never shared,
+    never sold. Privacy: <a href="/privacy.html">/privacy.html</a>.
+  </p>
+</main>
+
+<script src="/newsletter-config.js"></script>
+<script>
+(async function(){
+  const f = document.getElementById('f');
+  const msg = document.getElementById('msg');
+  const btn = document.getElementById('btn');
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.textContent = ''; msg.className = '';
+    const email = document.getElementById('email').value.trim();
+    if (!email) return;
+    btn.disabled = true; btn.textContent = 'sending...';
+    try {
+      const base = (window.NEWSLETTER_API || '').replace(/\/$/, '');
+      if (!base) throw new Error('newsletter endpoint not configured yet');
+      const r = await fetch(base + '/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok) {
+        msg.className = 'ok';
+        msg.textContent = j.already
+          ? 'You are already subscribed - thanks.'
+          : 'Check your inbox for a confirmation link (also worth checking spam).';
+        f.reset();
+      } else {
+        msg.className = 'err';
+        msg.textContent = 'Could not subscribe: ' + r.status + ' ' + (j.message || j.error || '');
+      }
+    } catch (err) {
+      msg.className = 'err';
+      msg.textContent = 'Network error: ' + (err.message || err);
+    } finally {
+      btn.disabled = false; btn.textContent = 'Subscribe';
+    }
+  });
+})();
+</script>
+</body>
+</html>

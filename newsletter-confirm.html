@@ -1,0 +1,10 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Confirm subscription - depmedic</title>
+<style>:root{color-scheme:dark}body{background:#0b0d10;color:#e6e8eb;font:16px/1.5 ui-sans-serif,system-ui,sans-serif;margin:0;padding:48px 24px;display:flex;justify-content:center}.box{max-width:560px;background:#11151b;border:1px solid #2a3744;border-radius:10px;padding:24px}h1{margin:0 0 8px}p{margin:8px 0;color:#b6bec7}a{color:#6cb6ff}</style>
+</head><body>
+<div class="box" id="box"><p>Confirming...</p></div>
+<script src="/newsletter-config.js"></script>
+<script>
+(async()=>{const u=new URL(location.href);const t=u.searchParams.get('t');const box=document.getElementById('box');if(!t){box.innerHTML='<h1>Missing token.</h1><p>Open the link in your confirm email exactly as it was sent.</p>';return;}const base=(window.NEWSLETTER_API||'').replace(/\/$/,'');if(!base){box.innerHTML='<h1>Endpoint not configured.</h1><p>The newsletter worker has not been deployed yet. Try again in a few minutes.</p>';return;}try{const r=await fetch(base+'/api/confirm?t='+encodeURIComponent(t));if(r.ok){box.innerHTML='<h1>You are subscribed.</h1><p>Welcome to depmedic weekly. Next issue lands on the upcoming Wednesday.</p><p><a href="/">back to depmedic</a></p>';}else{box.innerHTML='<h1>Could not confirm.</h1><p>The link may have expired or already been used. <a href="/newsletter.html">try again</a>.</p>';}}catch(e){box.innerHTML='<h1>Network error.</h1><p>'+(e.message||e)+'</p>';}})();
+</script>
+</body></html>
