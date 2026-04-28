@@ -246,6 +246,9 @@ function renderHtml(rows, generatedAt, prevSnapshot) {
   <a href="/benchmarks.html">original 20-repo report</a>
 </p>
 
+<div id="sponsor-strip"></div>
+<script src="/sponsors.js" defer></script>
+
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">${rows.length}</div></div>
   <div class="stat"><div class="label">Workflows scanned</div><div class="val">${totalWf}</div></div>

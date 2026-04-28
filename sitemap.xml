@@ -79,6 +79,12 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/sponsor.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/compare/</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
