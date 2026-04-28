@@ -125,6 +125,29 @@ npx pin-actions         # pins every action ref to a SHA</code></pre>
 </div>
 
 <div class="block">
+  <h3>If you bought the <em>Hardened Workflows Pack</em></h3>
+  <p>
+    The ZIP unpacks into one folder with five drop-in workflow templates:
+  </p>
+  <ul>
+    <li><code>node-library.yml</code> - npm packages with OIDC publishing.</li>
+    <li><code>node-app.yml</code> - web apps with build/deploy split.</li>
+    <li><code>python-library.yml</code> - PyPI publish via Trusted Publishing.</li>
+    <li><code>monorepo-affected.yml</code> - pnpm + turbo with affected detection.</li>
+    <li><code>release-please.yml</code> - Conventional Commits to semver releases.</li>
+  </ul>
+  <p>
+    Each template has 4 <code># CUSTOMIZE</code> markers - find them, edit
+    them, commit. Then read <code>permissions-cheatsheet.md</code> and
+    <code>oidc-setup.md</code> to understand the security defaults.
+  </p>
+  <p>
+    Verify your edits didn't introduce any smells:
+  </p>
+<pre><code>npx ci-doctor .github/workflows/your-template.yml</code></pre>
+</div>
+
+<div class="block">
   <h3>If you preordered <em>depmedic Pro</em></h3>
   <p>
     Polar emailed your license key with the receipt. Hold onto it - the
@@ -156,7 +179,8 @@ npx pin-actions         # pins every action ref to a SHA</code></pre>
     If one of these makes sense for you. No urgency.
   </p>
   <ul>
-    <li><a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Cut Your CI Bill cookbook</a> <span class="price">$19, one-time</span> - 30 GHA patterns + 5 templates.</li>
+    <li><a href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Cut Your CI Bill cookbook</a> <span class="price">$19, one-time</span> - 30 GHA patterns explaining every default.</li>
+    <li><a href="https://buy.polar.sh/polar_cl_0B3rGUBRJTdwvZRv7UYRoFcaznHfDrsywfXMH2ichbn">Hardened Workflows Pack</a> <span class="price">$9, one-time</span> - 5 drop-in templates + permissions + OIDC guides.</li>
     <li><a href="https://buy.polar.sh/polar_cl_jxM0uITjh3WOQYgLnrVfRgN3yLjhvCCB8iItg3PHmOy">Senior Dev Cursor Rules pack</a> <span class="price">$7, one-time</span> - 24 .cursorrules + 3 prompts.</li>
     <li><a href="https://buy.polar.sh/polar_cl_uB8vltMstgTufNMgUCEslCJXYrJdKh7IiaV4X40HCoS">Senior Dev System Prompt</a> <span class="price">$3, one-time</span> - one hand-tuned system prompt.</li>
   </ul>
