@@ -228,6 +228,11 @@
     <div class="cmd">$ npx bitbucket-ci-doctor</div>
   </div>
   <div class="card">
+    <h3><a href="https://www.npmjs.com/package/azure-pipelines-ci-doctor">azure-pipelines-ci-doctor</a></h3>
+    <p>Audit <code>azure-pipelines.yml</code> for waste, cost, security gaps. 8 rules including <code>expensive-vm-image</code> (catches macOS-latest at 10x cost), <code>container-no-pin</code>, <code>inline-secret-leak</code>, <code>missing-cache</code>. <a href="/scan-azure.html">in-browser scanner</a> &middot; <a href="/azure-pipelines-ci-doctor.html">docs</a>.</p>
+    <div class="cmd">$ npx azure-pipelines-ci-doctor</div>
+  </div>
+  <div class="card">
     <h3><a href="https://www.npmjs.com/package/cursor-rules-init">cursor-rules-init</a></h3>
     <p>Scaffold an opinionated <code>.cursorrules</code> starter for Cursor, Claude, ChatGPT. Stack overlays for TS, React, Next.js, Python, Node.</p>
     <div class="cmd">$ npx cursor-rules-init typescript</div>
@@ -236,6 +241,11 @@
     <h3><a href="https://www.npmjs.com/package/pin-actions">pin-actions</a></h3>
     <p>Pin every <code>uses: owner/repo@ref</code> in your workflows to a full commit SHA. Supply-chain-safe, in-place rewrite, comment-preserving.</p>
     <div class="cmd">$ npx pin-actions --check</div>
+  </div>
+  <div class="card">
+    <h3><a href="/ci-doctor-action.html">ci-doctor-action</a></h3>
+    <p>The <code>ci-doctor</code> CLI as a GitHub Action. Three lines &mdash; sticky PR comment + SARIF to Code Scanning on every PR. 16 rules. <a href="https://github.com/depmedicdev-byte/ci-doctor-action">source</a>.</p>
+    <div class="cmd">uses: depmedicdev-byte/ci-doctor-action@v1</div>
   </div>
   <div class="card">
     <h3><a href="/depmedic-bot.html">depmedic-bot</a></h3>

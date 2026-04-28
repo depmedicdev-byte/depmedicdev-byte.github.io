@@ -211,6 +211,24 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/azure-pipelines-ci-doctor.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://depmedicdev-byte.github.io/scan-azure.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://depmedicdev-byte.github.io/ci-doctor-action.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/perf-patterns.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>

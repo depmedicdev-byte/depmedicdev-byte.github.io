@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>azure-pipelines-ci-doctor - audit azure-pipelines.yml for waste, cost, security gaps - depmedic</title>
+<meta name="description" content="azure-pipelines-ci-doctor is a free, MIT, opinionated CLI that audits any azure-pipelines.yml for cost leaks (expensive-vm-image, missing-cache, missing-timeout-in-minutes, wide-trigger, unbounded-parallelism), security gaps (container-no-pin, inline-secret-leak), and reliability (legacy-task-version). Drop into a pipeline. Try the in-browser scanner." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/azure-pipelines-ci-doctor.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="azure-pipelines-ci-doctor - audit azure-pipelines.yml for waste, cost, security gaps" />
+<meta property="og:description" content="8 rules. PR-comment friendly. Drops into a pipeline with one task. Try it in-browser, no signup." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/azure-pipelines-ci-doctor.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "azure-pipelines-ci-doctor",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "any",
+  "description": "Audit Azure Pipelines for waste, cost leaks, and security gaps. Fast, opinionated, CI-friendly. MIT.",
+  "url": "https://www.npmjs.com/package/azure-pipelines-ci-doctor",
+  "license": "https://opensource.org/licenses/MIT",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}</script>
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 32px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; font-size: 17px; }
+h2 { font-size: 22px; margin: 36px 0 8px; letter-spacing: -0.005em; }
+h3 { font-size: 17px; margin: 16px 0 4px; }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px;
+  background: #1d3b4b; color: #9ec9ff; margin-right: 6px; }
+pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+pre.bad { border-left: 3px solid #ff6b6b; }
+pre.good { border-left: 3px solid #9ce29c; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+td.sev { white-space: nowrap; }
+.sev-warn { color: #ffd9a3; } .sev-info { color: #a3d4ff; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 32px 0 16px; }
+.cta h3 { margin: 0 0 6px; font-size: 17px; }
+.cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+.cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+  background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; }
+.cta .btn:hover { text-decoration: none; background: #3a4754; }
+footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / azure-pipelines-ci-doctor</p>
+
+<h1>azure-pipelines-ci-doctor</h1>
+<p class="lead">
+  Audit any <code>azure-pipelines.yml</code> for waste, cost leaks, and
+  security gaps. Eight rules. One command. MIT. Sister project to
+  <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
+  (GitHub Actions),
+  <a href="https://www.npmjs.com/package/gitlab-ci-doctor"><code>gitlab-ci-doctor</code></a>
+  (GitLab CI), and
+  <a href="https://www.npmjs.com/package/bitbucket-ci-doctor"><code>bitbucket-ci-doctor</code></a>
+  (Bitbucket Pipelines).
+</p>
+
+<p>
+  <span class="pill">npm</span>
+  <a href="https://www.npmjs.com/package/azure-pipelines-ci-doctor">npmjs.com/package/azure-pipelines-ci-doctor</a>
+  &nbsp;|&nbsp;
+  <span class="pill">source</span>
+  <a href="https://github.com/depmedicdev-byte/azure-pipelines-ci-doctor">github.com/depmedicdev-byte/azure-pipelines-ci-doctor</a>
+  &nbsp;|&nbsp;
+  <span class="pill">try it</span>
+  <a href="/scan-azure.html">in-browser scanner</a>
+</p>
+
+<h2>Try it in 5 seconds</h2>
+
+<pre class="good">$ npx azure-pipelines-ci-doctor                  # audit current repo
+$ npx azure-pipelines-ci-doctor --markdown       # PR-comment friendly output
+$ npx azure-pipelines-ci-doctor --json           # machine-readable
+$ npx azure-pipelines-ci-doctor --severity=warn  # warn + error only
+$ npx azure-pipelines-ci-doctor --rules          # list checks
+$ npx azure-pipelines-ci-doctor --demo           # smoke-test against bundled bad pipeline</pre>
+
+<p>Exit code is <code>1</code> when there are error-level findings, so it drops into an Azure DevOps pipeline (or a pre-commit hook) without ceremony.</p>
+
+<h2>The 8 rules</h2>
+
+<table>
+  <thead><tr><th>Rule</th><th class="sev">Severity</th><th>What it catches</th></tr></thead>
+  <tbody>
+    <tr><td><code>expensive-vm-image</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td><code>pool.vmImage</code> = <code>macOS-latest</code> (~10x) or <code>windows-latest</code> (~2x) without commands that need it. Move to <code>ubuntu-latest</code>.</td></tr>
+    <tr><td><code>container-no-pin</code></td><td class="sev"><span class="sev-warn">warn / security</span></td><td>Job <code>container.image</code> is not pinned to <code>image@sha256:&lt;digest&gt;</code> &mdash; floating tags break reproducibility and are a supply-chain risk.</td></tr>
+    <tr><td><code>missing-timeout-in-minutes</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td>Job has no <code>timeoutInMinutes</code>. Default is <strong>60 min</strong> on Microsoft-hosted, <strong>360 min</strong> on self-hosted &mdash; a hang can burn the whole window.</td></tr>
+    <tr><td><code>missing-cache</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td>Job runs <code>npm</code>/<code>pip</code>/<code>maven</code>/<code>gradle</code>/<code>cargo</code>/<code>go</code>/<code>bundler</code> install but no <code>Cache@2</code> task &mdash; redownloads everything every run.</td></tr>
+    <tr><td><code>wide-trigger</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td><code>trigger:</code> or <code>pr:</code> is unscoped (no branch / path filter). Pipeline runs on every push including draft PRs and doc-only changes.</td></tr>
+    <tr><td><code>inline-secret-leak</code></td><td class="sev"><span class="sev-warn">warn / security</span></td><td>Step uses <code>$(SECRET_NAME)</code> macro that expands inline in build logs. Pass via <code>env:</code> mapping and reference <code>$env:NAME</code> / <code>$NAME</code> instead.</td></tr>
+    <tr><td><code>legacy-task-version</code></td><td class="sev"><span class="sev-warn">warn / reliability</span></td><td>Built-in task pinned to outdated major version (e.g. <code>UseNode@1</code>). Loses Node 20 runtime + current bug fixes.</td></tr>
+    <tr><td><code>unbounded-parallelism</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td><code>strategy.parallel &gt;= 5</code> or matrix &gt;= 5 legs without <code>maxParallel</code>. Will starve other pipelines on shared agent pools.</td></tr>
+  </tbody>
+</table>
+
+<h2>Drop into a pipeline</h2>
+
+<pre class="good">- stage: AuditPipeline
+  jobs:
+    - job: cidoctor
+      timeoutInMinutes: 5
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - task: UseNode@2
+          inputs:
+            version: '20.x'
+        - script: npx --yes azure-pipelines-ci-doctor --markdown &gt; $(Build.ArtifactStagingDirectory)/ci-doctor.md
+        - publish: $(Build.ArtifactStagingDirectory)/ci-doctor.md
+          artifact: ci-doctor-report
+</pre>
+
+<h2>Why a fourth one?</h2>
+<p>
+  Azure DevOps Pipelines have their own quirks: free Microsoft-hosted parallelism
+  is limited (1 free job for new orgs) and the
+  <code>macOS-latest</code> image bills at <strong>10x</strong> the
+  <code>ubuntu-latest</code> rate. Every minute spent on the wrong image, every
+  hour spent on a missing timeout, eats your budget directly.
+</p>
+<p>
+  And: the <code>$(SECRET_NAME)</code> macro syntax is famously easy to leak into
+  logs &mdash; even Microsoft's own docs flag this as the #1 secret-handling
+  mistake. The same hygiene the other three CIs have, applied here.
+</p>
+
+<div class="cta">
+  <h3>Audit one repo right now</h3>
+  <p>The in-browser scanner takes a paste, runs all 8 rules, and shows the report inline. Nothing leaves your browser.</p>
+  <a class="btn" href="/scan-azure.html">Open the scanner</a>
+  <a class="btn" href="https://github.com/depmedicdev-byte/azure-pipelines-ci-doctor">View source</a>
+</div>
+
+<footer>
+  <a href="/">depmedic</a> &middot; built and maintained by depmedic.
+  Sisters: <a href="/index.html">ci-doctor</a> (GitHub) &middot; <a href="/gitlab-ci-doctor.html">gitlab-ci-doctor</a> &middot; <a href="/bitbucket-ci-doctor.html">bitbucket-ci-doctor</a>.
+</footer>
+
+</main>
+</body>
+</html>

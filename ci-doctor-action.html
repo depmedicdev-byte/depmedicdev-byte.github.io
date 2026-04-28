@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ci-doctor-action - audit GitHub Actions on every PR - depmedic</title>
+<meta name="description" content="A GitHub Action that audits your workflows for waste, cost leaks, and security gaps. 16 rules. Sticky PR comment + SARIF upload to Code Scanning. MIT, no telemetry." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/ci-doctor-action.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="ci-doctor-action - audit GitHub Actions on every PR" />
+<meta property="og:description" content="16 rules. Sticky PR comment. SARIF to Code Scanning. Three lines in any workflow." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/ci-doctor-action.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ci-doctor-action",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "GitHub Actions",
+  "description": "GitHub Action that audits workflows for waste, cost, and security gaps. 16 rules. SARIF + sticky PR comment.",
+  "url": "https://github.com/depmedicdev-byte/ci-doctor-action",
+  "license": "https://opensource.org/licenses/MIT",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}</script>
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 32px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; font-size: 17px; }
+h2 { font-size: 22px; margin: 36px 0 8px; letter-spacing: -0.005em; }
+h3 { font-size: 17px; margin: 16px 0 4px; }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px;
+  background: #1d3b4b; color: #9ec9ff; margin-right: 6px; }
+pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 32px 0 16px; }
+.cta h3 { margin: 0 0 6px; font-size: 17px; }
+.cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+.cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+  background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; }
+.cta .btn:hover { text-decoration: none; background: #3a4754; }
+footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+<p class="nav"><a href="/">depmedic</a> &rarr; ci-doctor-action</p>
+<h1>ci-doctor-action</h1>
+<p class="lead">A GitHub Action that audits your workflows for <strong>waste, cost leaks, and security gaps</strong> on every pull request. 16 rules. Sticky PR comment. SARIF upload to Code Scanning. MIT, no telemetry, no auth.</p>
+
+<p>
+  <span class="pill">Action</span>
+  <span class="pill">v1.0.0</span>
+  <span class="pill">16 rules</span>
+  <span class="pill">SARIF</span>
+  <span class="pill">PR comment</span>
+</p>
+
+<div class="cta">
+  <h3>Three lines, every PR audited</h3>
+  <p>Drop into any repo. Reads <code>.github/workflows/</code>. Posts a sticky markdown comment. Uploads SARIF to your Security tab.</p>
+  <a class="btn" href="https://github.com/marketplace/actions/ci-doctor">GitHub Marketplace</a>
+  <a class="btn" href="https://github.com/depmedicdev-byte/ci-doctor-action">Source on GitHub</a>
+</div>
+
+<h2>Quick start</h2>
+<p>Save as <code>.github/workflows/ci-doctor.yml</code>:</p>
+<pre><code>name: ci-doctor
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: depmedicdev-byte/ci-doctor-action@v1
+</code></pre>
+
+<h2>What you get</h2>
+<ul>
+  <li><strong>Sticky PR comment</strong> &mdash; one comment per PR, updated in place when you push fixes.</li>
+  <li><strong>SARIF upload</strong> &mdash; findings appear under the Security &rarr; Code scanning tab.</li>
+  <li><strong>Severity gating</strong> &mdash; default is fail-on-error; set to <code>warn</code> for stricter teams, <code>info</code> for fanatics.</li>
+  <li><strong>Pinnable</strong> &mdash; pin the action to <code>@v1.0.0</code> or <code>@&lt;sha&gt;</code> and pin <code>ci-doctor-version: '0.5.0'</code> for fully reproducible audits.</li>
+  <li><strong>Self-hosted-runner safe</strong> &mdash; no Docker required, just Node.</li>
+</ul>
+
+<h2>Inputs</h2>
+<table>
+<thead><tr><th>input</th><th>default</th><th>what it does</th></tr></thead>
+<tbody>
+<tr><td><code>path</code></td><td><code>.</code></td><td>Path to scan; auto-discovers <code>.github/workflows</code>.</td></tr>
+<tr><td><code>fail-on</code></td><td><code>error</code></td><td>Severity threshold for non-zero exit: <code>info</code> | <code>warn</code> | <code>error</code>.</td></tr>
+<tr><td><code>upload-sarif</code></td><td><code>true</code></td><td>Upload SARIF to Code Scanning. Needs <code>security-events: write</code>.</td></tr>
+<tr><td><code>comment-on-pr</code></td><td><code>true</code></td><td>Post a sticky markdown comment. Needs <code>pull-requests: write</code>.</td></tr>
+<tr><td><code>ci-doctor-version</code></td><td><code>latest</code></td><td>Pin to a specific npm version of <code>ci-doctor</code>.</td></tr>
+<tr><td><code>only</code></td><td><em>empty</em></td><td>Comma-separated rule IDs to run exclusively.</td></tr>
+<tr><td><code>disable</code></td><td><em>empty</em></td><td>Comma-separated rule IDs to skip.</td></tr>
+</tbody>
+</table>
+
+<h2>Outputs</h2>
+<ul>
+  <li><code>sarif-path</code> &mdash; <code>ci-doctor.sarif</code></li>
+  <li><code>markdown-path</code> &mdash; <code>ci-doctor.md</code></li>
+  <li><code>finding-count</code> &mdash; total findings (integer)</li>
+</ul>
+
+<h2>What it checks</h2>
+<p>16 rules &mdash; full descriptions on the <a href="/rules.html">rules page</a>.</p>
+<table>
+<thead><tr><th>category</th><th>rules</th></tr></thead>
+<tbody>
+<tr><td>security</td><td><code>no-pin-actions</code>, <code>pull-request-target-checkout</code>, <code>script-injection-context</code>, <code>insecure-checkout-token</code>, <code>docker-no-pin</code>, <code>after-script-leaks</code></td></tr>
+<tr><td>cost</td><td><code>expensive-runner</code>, <code>missing-concurrency</code>, <code>missing-cache</code>, <code>wide-paths</code>, <code>cron-storm</code>, <code>service-no-healthcheck</code></td></tr>
+<tr><td>reliability</td><td><code>flaky-retries</code>, <code>missing-timeout-minutes</code>, <code>legacy-actions-version</code></td></tr>
+<tr><td>hygiene</td><td><code>actions-floating-tag</code></td></tr>
+</tbody>
+</table>
+
+<h2>Recipes</h2>
+
+<h3>Block PRs only on errors (default)</h3>
+<pre><code>- uses: depmedicdev-byte/ci-doctor-action@v1
+  with:
+    fail-on: error
+</code></pre>
+
+<h3>Hard mode: block any warning</h3>
+<pre><code>- uses: depmedicdev-byte/ci-doctor-action@v1
+  with:
+    fail-on: warn
+</code></pre>
+
+<h3>Disable a noisy rule</h3>
+<pre><code>- uses: depmedicdev-byte/ci-doctor-action@v1
+  with:
+    disable: missing-concurrency,no-pin-actions
+</code></pre>
+
+<h3>Pin everything (recommended for prod)</h3>
+<pre><code>- uses: depmedicdev-byte/ci-doctor-action@1bd71901bbe5b1630ceea73d27597364c9af683 # v1.0.0
+  with:
+    ci-doctor-version: '0.5.0'
+</code></pre>
+
+<h2>Family</h2>
+<ul>
+  <li><a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a> &mdash; the underlying CLI (16 rules)</li>
+  <li><a href="/vscode.html">depmedic-vscode</a> &mdash; same 16 rules, inline in your editor</li>
+  <li><a href="/depmedic-bot.html">depmedic-bot</a> &mdash; zero-config GitHub App version</li>
+  <li><a href="/gitlab-ci-doctor.html">gitlab-ci-doctor</a> &mdash; GitLab CI port</li>
+  <li><a href="/bitbucket-ci-doctor.html">bitbucket-ci-doctor</a> &mdash; Bitbucket Pipelines port</li>
+  <li><a href="/scan.html">/scan.html</a> &mdash; in-browser scanner</li>
+</ul>
+
+<footer>
+<p>MIT &middot; <a href="/">depmedic</a> &middot; <a href="https://github.com/depmedicdev-byte/ci-doctor-action">GitHub</a> &middot; <a href="https://www.npmjs.com/package/ci-doctor">npm</a></p>
+</footer>
+</main>
+</body>
+</html>

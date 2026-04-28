@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free Azure Pipelines cost + smell scan - depmedic</title>
+<meta name="description" content="Paste your azure-pipelines.yml. Get an 8-rule cost + security audit (expensive-vm-image, container-no-pin, missing-cache, missing-timeout-in-minutes, inline-secret-leak, ...). Runs entirely in your browser. No upload, no signup, instant." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/scan-azure.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Free Azure Pipelines audit - paste YAML, get a cost + security report" />
+<meta property="og:description" content="8 rules. Runs in your browser. No upload." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/scan-azure.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+.lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+h2 { font-size: 16px; color: #c9d1d9; margin: 28px 0 10px; letter-spacing: 0.03em; text-transform: uppercase; }
+textarea { width: 100%; min-height: 280px; background: #11151b; border: 1px solid #2a3744;
+  border-radius: 8px; padding: 12px 14px; color: #e6e8eb;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; resize: vertical; }
+textarea:focus { outline: none; border-color: #6cb6ff; }
+button { background: #2d5a7a; color: #fff; border: 1px solid #3a6e94;
+  padding: 10px 18px; border-radius: 8px; font: inherit; cursor: pointer; margin-top: 10px; font-weight: 600; }
+button.secondary { background: #2a3744; border-color: #3a4754; }
+button:hover { filter: brightness(1.12); }
+.toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+.stat { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 16px; }
+.stat .label { color: #9aa3ad; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.stat .val { font-size: 22px; font-weight: 600; margin-top: 2px; }
+.stat .val.green { color: #9ce29c; } .stat .val.amber { color: #ffb86c; } .stat .val.red { color: #ff8a8a; }
+.results { display: none; } .results.show { display: block; }
+.finding { font-size: 13px; color: #b6bec7; padding: 8px 0; border-bottom: 1px dashed #1e242c; }
+.finding:last-child { border-bottom: none; }
+.sev { font-size: 10.5px; padding: 1px 7px; border-radius: 999px; letter-spacing: 0.04em; text-transform: uppercase; margin-right: 6px; }
+.sev.error { background: #4a1e1e; color: #ffb8b8; }
+.sev.warn { background: #4a3a1e; color: #ffd9a3; }
+.sev.info { background: #1e3a4a; color: #a3d4ff; }
+.sev.clean { background: #1d3b22; color: #9ce29c; }
+.ruleid { color: #9aa3ad; font-family: ui-monospace, monospace; font-size: 12.5px; margin-right: 6px; }
+.loc { color: #6f7882; font-family: ui-monospace, monospace; font-size: 11.5px; margin-left: 4px; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 20px 22px; margin: 26px 0; }
+.cta h3 { margin: 0 0 6px; font-size: 17px; }
+.cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+.cta a { color: #6cb6ff; }
+footer { color: #6f7882; font-size: 13px; margin-top: 40px; border-top: 1px solid #1e242c; padding-top: 14px; }
+</style>
+</head>
+<body>
+<main>
+<p class="nav"><a href="/">depmedic</a> &middot; <a href="/scan.html">scan github</a> &middot; <a href="/scan-gitlab.html">scan gitlab</a> &middot; <a href="/scan-bitbucket.html">scan bitbucket</a> &middot; <a href="/azure-pipelines-ci-doctor.html">azure-pipelines-ci-doctor docs</a></p>
+
+<h1>Azure Pipelines: cost + smell scan</h1>
+<p class="lead">
+  Paste your <code>azure-pipelines.yml</code>. The browser runs all 8 rules from
+  <a href="https://www.npmjs.com/package/azure-pipelines-ci-doctor"><code>azure-pipelines-ci-doctor</code></a>
+  and lists every cost / security finding with line numbers and a fix.
+  Nothing is uploaded. Nothing leaves your machine.
+</p>
+
+<h2>Paste YAML</h2>
+<div class="toolbar">
+  <button class="secondary" id="loadDemo">Load demo (intentionally bad)</button>
+  <button class="secondary" id="clearBtn">Clear</button>
+</div>
+<textarea id="yaml" placeholder="trigger:&#10;  - main&#10;pool:&#10;  vmImage: 'ubuntu-latest'&#10;steps:&#10;  - script: npm ci && npm test&#10;"></textarea>
+<button class="primary" id="scanBtn">Scan pipeline</button>
+
+<div id="results" class="results">
+  <div class="stats">
+    <div class="stat"><div class="label">Findings</div><div class="val" id="fTotal">0</div></div>
+    <div class="stat"><div class="label">Errors</div><div class="val red" id="fErr">0</div></div>
+    <div class="stat"><div class="label">Warnings</div><div class="val amber" id="fWarn">0</div></div>
+    <div class="stat"><div class="label">Info</div><div class="val green" id="fInfo">0</div></div>
+  </div>
+  <div id="findings"></div>
+</div>
+
+<div class="cta">
+  <h3>Drop the same audit into your pipeline</h3>
+  <p>Run <code>npx azure-pipelines-ci-doctor</code> on every PR. The free CLI exits non-zero when error-level findings appear, so you can gate merges on it.</p>
+  <p style="margin-top:8px;">
+    <a href="https://www.npmjs.com/package/azure-pipelines-ci-doctor">npm</a> &middot;
+    <a href="https://github.com/depmedicdev-byte/azure-pipelines-ci-doctor">GitHub</a> &middot;
+    <a href="/azure-pipelines-ci-doctor.html">docs + rules</a>
+  </p>
+</div>
+
+<footer>
+  Built with the same engine as <a href="/scan.html">/scan.html</a> (GitHub Actions), <a href="/scan-gitlab.html">/scan-gitlab.html</a> (GitLab CI), and <a href="/scan-bitbucket.html">/scan-bitbucket.html</a> (Bitbucket Pipelines). 117KB of JS, parses YAML in your browser.
+</footer>
+</main>
+
+<script src="/azure-pipelines-ci-doctor.bundle.js"></script>
+<script>
+const DEMO = `trigger:
+
+pr:
+
+stages:
+  - stage: Build
+    jobs:
+      - job: macSlow
+        pool:
+          vmImage: 'macOS-latest'
+        steps:
+          - task: UseNode@1
+            inputs:
+              version: '18.x'
+          - script: |
+              npm ci
+              npm test
+            env:
+              TOKEN: $(API_SECRET_TOKEN)
+          - script: |
+              echo "deploying with $(GITHUB_TOKEN)"
+
+      - job: windowsBuild
+        pool:
+          vmImage: 'windows-latest'
+        container:
+          image: 'node:22'
+        timeoutInMinutes: 360
+        strategy:
+          parallel: 8
+        steps:
+          - script: pip install -r requirements.txt
+          - script: pytest
+
+      - job: noTimeoutNoCache
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - script: yarn install
+          - script: yarn build
+`;
+
+const $ = (id) => document.getElementById(id);
+
+$('loadDemo').addEventListener('click', () => { $('yaml').value = DEMO; });
+$('clearBtn').addEventListener('click', () => { $('yaml').value = ''; $('results').classList.remove('show'); });
+
+$('scanBtn').addEventListener('click', () => {
+  const src = $('yaml').value;
+  if (!src.trim()) { alert('paste an azure-pipelines.yml first'); return; }
+  let findings;
+  try {
+    findings = azureCiDoctor.auditPipeline(src, 'azure-pipelines.yml');
+  } catch (e) {
+    alert('scan failed: ' + (e && e.message));
+    return;
+  }
+  render(findings);
+});
+
+function render(findings) {
+  const counts = { error: 0, warn: 0, info: 0 };
+  for (const f of findings) counts[f.severity] = (counts[f.severity] || 0) + 1;
+  $('fTotal').textContent = findings.length;
+  $('fErr').textContent = counts.error;
+  $('fWarn').textContent = counts.warn;
+  $('fInfo').textContent = counts.info;
+
+  const container = $('findings');
+  container.innerHTML = '';
+  if (findings.length === 0) {
+    const el = document.createElement('div');
+    el.className = 'finding';
+    el.innerHTML = '<span class="sev clean">clean</span>No issues found across all 8 rules. Nice pipeline.';
+    container.appendChild(el);
+  } else {
+    findings.sort((a, b) => (a.line || 0) - (b.line || 0));
+    for (const f of findings) {
+      const el = document.createElement('div');
+      el.className = 'finding';
+      const sev = String(f.severity || 'info');
+      let html = `<span class="sev ${sev}">${sev}</span>`;
+      html += `<span class="ruleid">${escapeHtml(f.ruleId)}</span>`;
+      html += escapeHtml(f.message);
+      if (f.line) html += `<span class="loc">L${f.line}:${f.column || 1}</span>`;
+      el.innerHTML = html;
+      container.appendChild(el);
+    }
+  }
+  $('results').classList.add('show');
+}
+
+function escapeHtml(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+</script>
+</body>
+</html>
