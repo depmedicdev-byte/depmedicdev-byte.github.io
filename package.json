@@ -1,0 +1,14 @@
+{
+  "name": "depmedic-site",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Static site for depmedicdev-byte.github.io. Dependencies are only used by the daily-leaderboard GitHub Actions workflow (.github/workflows/daily-leaderboard.yml).",
+  "license": "MIT",
+  "scripts": {
+    "leaderboard": "node .scripts/build-leaderboard.mjs"
+  },
+  "dependencies": {
+    "ci-doctor": "^0.4.1",
+    "gha-budget": "^0.1.0"
+  }
+}

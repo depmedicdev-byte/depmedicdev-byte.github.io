@@ -1,0 +1,56 @@
+name: daily-leaderboard
+
+on:
+  schedule:
+    # 14:00 UTC daily = 09:00 America/Chicago
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-leaderboard
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install ci-doctor + gha-budget
+        run: npm ci --no-fund --no-audit
+
+      - name: Build leaderboard
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .scripts/build-leaderboard.mjs
+
+      - name: Commit + push if changed
+        run: |
+          git config user.name "depmedic-bot"
+          git config user.email "depmedic.dev@gmail.com"
+          git add leaderboard.html leaderboard.json .scripts/leaderboard-history.jsonl 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no changes"
+            exit 0
+          fi
+          git commit -m "leaderboard: daily refresh"
+          git push
+
+      - name: Ping IndexNow
+        if: always()
+        run: |
+          curl -fsS -X POST -H 'Content-Type: application/json' \
+            --data '{"host":"depmedicdev-byte.github.io","key":"3974f3b9671f8328b2e065e0fd2a21f6","keyLocation":"https://depmedicdev-byte.github.io/3974f3b9671f8328b2e065e0fd2a21f6.txt","urlList":["https://depmedicdev-byte.github.io/leaderboard.html","https://depmedicdev-byte.github.io/leaderboard.json"]}' \
+            https://api.indexnow.org/indexnow || true

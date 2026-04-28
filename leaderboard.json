@@ -1,0 +1,791 @@
+{
+  "generatedAt": "2026-04-28 03:34 UTC",
+  "rows": [
+    {
+      "repo": "mui/material-ui",
+      "workflows": 17,
+      "findings": 30,
+      "e": 0,
+      "w": 24,
+      "i": 6,
+      "ruleHits": {
+        "missing-concurrency": 6,
+        "missing-timeout": 16,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 2,
+        "fetch-depth-zero": 4
+      },
+      "perRun": 0.9,
+      "monthly": 806,
+      "score": 1.59
+    },
+    {
+      "repo": "gatsbyjs/gatsby",
+      "workflows": 1,
+      "findings": 2,
+      "e": 0,
+      "w": 2,
+      "i": 0,
+      "ruleHits": {
+        "pinned-action-sha": 1,
+        "missing-timeout": 1
+      },
+      "perRun": 0.06,
+      "monthly": 58,
+      "score": 2
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 9,
+      "findings": 21,
+      "e": 0,
+      "w": 17,
+      "i": 4,
+      "ruleHits": {
+        "missing-concurrency": 4,
+        "missing-timeout": 11,
+        "fetch-depth-zero": 1,
+        "matrix-overcommit": 1,
+        "always-run-on-pr": 3,
+        "missing-cache": 1
+      },
+      "perRun": 0.7,
+      "monthly": 634,
+      "score": 2.11
+    },
+    {
+      "repo": "vitejs/vite",
+      "workflows": 12,
+      "findings": 26,
+      "e": 0,
+      "w": 25,
+      "i": 1,
+      "ruleHits": {
+        "missing-timeout": 16,
+        "stale-cache-key": 1,
+        "missing-concurrency": 6,
+        "wide-trigger": 1,
+        "missing-cache": 2
+      },
+      "perRun": 1.09,
+      "monthly": 979,
+      "score": 2.13
+    },
+    {
+      "repo": "jestjs/jest",
+      "workflows": 9,
+      "findings": 20,
+      "e": 0,
+      "w": 20,
+      "i": 0,
+      "ruleHits": {
+        "missing-timeout": 16,
+        "missing-permissions": 4
+      },
+      "perRun": 0.9,
+      "monthly": 806,
+      "score": 2.22
+    },
+    {
+      "repo": "sveltejs/svelte",
+      "workflows": 5,
+      "findings": 14,
+      "e": 0,
+      "w": 10,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 7,
+        "missing-concurrency": 2,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 1,
+        "artifact-no-retention": 2,
+        "fetch-depth-zero": 1
+      },
+      "perRun": 0.7,
+      "monthly": 634,
+      "score": 2.4
+    },
+    {
+      "repo": "prettier/prettier",
+      "workflows": 17,
+      "findings": 32,
+      "e": 6,
+      "w": 23,
+      "i": 3,
+      "ruleHits": {
+        "missing-timeout": 16,
+        "artifact-no-retention": 1,
+        "deprecated-action": 6,
+        "always-run-on-pr": 2,
+        "matrix-overcommit": 3,
+        "missing-cache": 3,
+        "stale-cache-key": 1
+      },
+      "perRun": 1.02,
+      "monthly": 922,
+      "score": 2.5
+    },
+    {
+      "repo": "ReactiveX/rxjs",
+      "workflows": 4,
+      "findings": 12,
+      "e": 0,
+      "w": 8,
+      "i": 4,
+      "ruleHits": {
+        "missing-concurrency": 2,
+        "missing-timeout": 5,
+        "fail-fast-true": 2,
+        "fetch-depth-zero": 2,
+        "pinned-action-sha": 1
+      },
+      "perRun": 0.38,
+      "monthly": 346,
+      "score": 2.5
+    },
+    {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 25,
+      "e": 0,
+      "w": 21,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 15,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "missing-permissions": 1,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.15,
+      "monthly": 1037,
+      "score": 2.56
+    },
+    {
+      "repo": "nuxt/nuxt",
+      "workflows": 28,
+      "findings": 64,
+      "e": 7,
+      "w": 48,
+      "i": 9,
+      "ruleHits": {
+        "missing-timeout": 26,
+        "stale-cache-key": 1,
+        "missing-concurrency": 18,
+        "fetch-depth-zero": 4,
+        "deprecated-action": 7,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 5,
+        "missing-permissions": 1,
+        "missing-cache": 1
+      },
+      "perRun": 2.11,
+      "monthly": 1901,
+      "score": 2.63
+    },
+    {
+      "repo": "remix-run/react-router",
+      "workflows": 19,
+      "findings": 52,
+      "e": 0,
+      "w": 49,
+      "i": 3,
+      "ruleHits": {
+        "pinned-action-sha": 15,
+        "missing-timeout": 19,
+        "missing-concurrency": 2,
+        "missing-permissions": 13,
+        "fetch-depth-zero": 3
+      },
+      "perRun": 1.22,
+      "monthly": 1094,
+      "score": 2.66
+    },
+    {
+      "repo": "electron/electron",
+      "workflows": 42,
+      "findings": 110,
+      "e": 11,
+      "w": 70,
+      "i": 29,
+      "ruleHits": {
+        "missing-timeout": 55,
+        "artifact-no-retention": 3,
+        "fetch-depth-zero": 26,
+        "missing-cache": 4,
+        "missing-concurrency": 10,
+        "deprecated-action": 11,
+        "stale-cache-key": 1
+      },
+      "perRun": 2.3,
+      "monthly": 2074,
+      "score": 2.8
+    },
+    {
+      "repo": "fastify/fastify",
+      "workflows": 20,
+      "findings": 61,
+      "e": 0,
+      "w": 53,
+      "i": 8,
+      "ruleHits": {
+        "missing-concurrency": 13,
+        "missing-timeout": 27,
+        "matrix-overcommit": 3,
+        "fail-fast-true": 7,
+        "pinned-action-sha": 4,
+        "expensive-runner": 1,
+        "missing-cache": 5,
+        "fetch-depth-zero": 1
+      },
+      "perRun": 1.41,
+      "monthly": 1267,
+      "score": 2.85
+    },
+    {
+      "repo": "nodejs/node",
+      "workflows": 36,
+      "findings": 104,
+      "e": 2,
+      "w": 94,
+      "i": 8,
+      "ruleHits": {
+        "missing-cache": 28,
+        "missing-timeout": 57,
+        "deprecated-action": 2,
+        "artifact-no-retention": 4,
+        "missing-concurrency": 6,
+        "fetch-depth-zero": 4,
+        "expensive-runner": 1,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 1
+      },
+      "perRun": 6.27,
+      "monthly": 5645,
+      "score": 2.89
+    },
+    {
+      "repo": "sindresorhus/got",
+      "workflows": 1,
+      "findings": 3,
+      "e": 0,
+      "w": 3,
+      "i": 0,
+      "ruleHits": {
+        "missing-cache": 1,
+        "missing-concurrency": 1,
+        "missing-timeout": 1
+      },
+      "perRun": 0,
+      "monthly": 0,
+      "score": 3
+    },
+    {
+      "repo": "lodash/lodash",
+      "workflows": 8,
+      "findings": 28,
+      "e": 0,
+      "w": 25,
+      "i": 3,
+      "ruleHits": {
+        "missing-cache": 1,
+        "missing-concurrency": 7,
+        "missing-timeout": 8,
+        "missing-permissions": 6,
+        "pinned-action-sha": 2,
+        "matrix-overcommit": 1,
+        "always-run-on-pr": 3
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 3.31
+    },
+    {
+      "repo": "facebook/react",
+      "workflows": 24,
+      "findings": 91,
+      "e": 0,
+      "w": 73,
+      "i": 18,
+      "ruleHits": {
+        "missing-concurrency": 7,
+        "missing-timeout": 57,
+        "artifact-no-retention": 18,
+        "stale-cache-key": 4,
+        "matrix-overcommit": 4,
+        "missing-cache": 1
+      },
+      "perRun": 16.19,
+      "monthly": 14573,
+      "score": 3.42
+    },
+    {
+      "repo": "preactjs/preact",
+      "workflows": 8,
+      "findings": 30,
+      "e": 0,
+      "w": 25,
+      "i": 5,
+      "ruleHits": {
+        "pinned-action-sha": 9,
+        "missing-permissions": 8,
+        "artifact-no-retention": 5,
+        "missing-timeout": 7,
+        "missing-concurrency": 1
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 3.44
+    },
+    {
+      "repo": "nestjs/nest",
+      "workflows": 1,
+      "findings": 5,
+      "e": 0,
+      "w": 2,
+      "i": 3,
+      "ruleHits": {
+        "missing-concurrency": 1,
+        "missing-timeout": 1,
+        "always-run-on-pr": 3
+      },
+      "perRun": 0.06,
+      "monthly": 58,
+      "score": 3.5
+    },
+    {
+      "repo": "storybookjs/storybook",
+      "workflows": 16,
+      "findings": 68,
+      "e": 0,
+      "w": 50,
+      "i": 18,
+      "ruleHits": {
+        "missing-timeout": 32,
+        "stale-cache-key": 1,
+        "artifact-no-retention": 12,
+        "missing-concurrency": 3,
+        "wide-trigger": 3,
+        "pinned-action-sha": 6,
+        "missing-permissions": 7,
+        "fail-fast-true": 1,
+        "missing-cache": 1,
+        "fetch-depth-zero": 2
+      },
+      "perRun": 2.11,
+      "monthly": 1901,
+      "score": 3.69
+    },
+    {
+      "repo": "TanStack/query",
+      "workflows": 5,
+      "findings": 20,
+      "e": 0,
+      "w": 18,
+      "i": 2,
+      "ruleHits": {
+        "pinned-action-sha": 9,
+        "missing-timeout": 7,
+        "missing-concurrency": 2,
+        "fetch-depth-zero": 2
+      },
+      "perRun": 0.45,
+      "monthly": 403,
+      "score": 3.8
+    },
+    {
+      "repo": "microsoft/TypeScript",
+      "workflows": 18,
+      "findings": 79,
+      "e": 0,
+      "w": 67,
+      "i": 12,
+      "ruleHits": {
+        "missing-cache": 25,
+        "missing-timeout": 32,
+        "missing-concurrency": 4,
+        "artifact-no-retention": 3,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 1,
+        "always-run-on-pr": 3,
+        "pinned-action-sha": 5,
+        "fetch-depth-zero": 5
+      },
+      "perRun": 1.92,
+      "monthly": 1728,
+      "score": 4.06
+    },
+    {
+      "repo": "chakra-ui/chakra-ui",
+      "workflows": 3,
+      "findings": 13,
+      "e": 0,
+      "w": 12,
+      "i": 1,
+      "ruleHits": {
+        "missing-timeout": 8,
+        "missing-concurrency": 1,
+        "missing-permissions": 2,
+        "pinned-action-sha": 1,
+        "fetch-depth-zero": 1
+      },
+      "perRun": 0.51,
+      "monthly": 461,
+      "score": 4.17
+    },
+    {
+      "repo": "vuejs/core",
+      "workflows": 9,
+      "findings": 39,
+      "e": 0,
+      "w": 38,
+      "i": 1,
+      "ruleHits": {
+        "pinned-action-sha": 18,
+        "missing-concurrency": 4,
+        "missing-timeout": 12,
+        "missing-permissions": 3,
+        "artifact-no-retention": 1,
+        "expensive-runner": 1
+      },
+      "perRun": 0.83,
+      "monthly": 749,
+      "score": 4.28
+    },
+    {
+      "repo": "eslint/eslint",
+      "workflows": 10,
+      "findings": 51,
+      "e": 0,
+      "w": 45,
+      "i": 6,
+      "ruleHits": {
+        "missing-cache": 16,
+        "missing-concurrency": 7,
+        "missing-timeout": 18,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 3,
+        "always-run-on-pr": 3,
+        "missing-permissions": 2
+      },
+      "perRun": 1.66,
+      "monthly": 1498,
+      "score": 4.8
+    },
+    {
+      "repo": "microsoft/playwright",
+      "workflows": 19,
+      "findings": 94,
+      "e": 0,
+      "w": 94,
+      "i": 0,
+      "ruleHits": {
+        "missing-cache": 19,
+        "missing-timeout": 38,
+        "pinned-action-sha": 5,
+        "missing-concurrency": 9,
+        "missing-permissions": 9,
+        "matrix-overcommit": 13,
+        "expensive-runner": 1
+      },
+      "perRun": 1.79,
+      "monthly": 1613,
+      "score": 4.95
+    },
+    {
+      "repo": "npm/cli",
+      "workflows": 26,
+      "findings": 133,
+      "e": 3,
+      "w": 120,
+      "i": 10,
+      "ruleHits": {
+        "missing-timeout": 59,
+        "missing-concurrency": 21,
+        "fetch-depth-zero": 7,
+        "matrix-overcommit": 17,
+        "pinned-action-sha": 19,
+        "expensive-runner": 1,
+        "always-run-on-pr": 2,
+        "deprecated-action": 3,
+        "missing-permissions": 1,
+        "artifact-no-retention": 1,
+        "stale-cache-key": 2
+      },
+      "perRun": 2.56,
+      "monthly": 2304,
+      "score": 5.15
+    },
+    {
+      "repo": "vercel/next.js",
+      "workflows": 37,
+      "findings": 166,
+      "e": 17,
+      "w": 137,
+      "i": 12,
+      "ruleHits": {
+        "missing-cache": 30,
+        "missing-timeout": 56,
+        "deprecated-action": 17,
+        "missing-permissions": 28,
+        "artifact-no-retention": 11,
+        "fail-fast-true": 1,
+        "matrix-overcommit": 20,
+        "pinned-action-sha": 1,
+        "stale-cache-key": 1,
+        "missing-concurrency": 1
+      },
+      "perRun": 4.1,
+      "monthly": 3686,
+      "score": 5.24
+    },
+    {
+      "repo": "expressjs/express",
+      "workflows": 4,
+      "findings": 18,
+      "e": 2,
+      "w": 14,
+      "i": 2,
+      "ruleHits": {
+        "missing-cache": 3,
+        "missing-timeout": 7,
+        "deprecated-action": 2,
+        "matrix-overcommit": 2,
+        "missing-concurrency": 2,
+        "always-run-on-pr": 2
+      },
+      "perRun": 0.38,
+      "monthly": 346,
+      "score": 5.25
+    },
+    {
+      "repo": "prisma/prisma",
+      "workflows": 17,
+      "findings": 91,
+      "e": 0,
+      "w": 90,
+      "i": 1,
+      "ruleHits": {
+        "pinned-action-sha": 47,
+        "missing-timeout": 15,
+        "missing-permissions": 15,
+        "matrix-overcommit": 7,
+        "stale-cache-key": 1,
+        "fail-fast-true": 1,
+        "missing-concurrency": 5
+      },
+      "perRun": 14.59,
+      "monthly": 13133,
+      "score": 5.32
+    },
+    {
+      "repo": "date-fns/date-fns",
+      "workflows": 7,
+      "findings": 34,
+      "e": 2,
+      "w": 31,
+      "i": 1,
+      "ruleHits": {
+        "pinned-action-sha": 10,
+        "missing-concurrency": 6,
+        "missing-timeout": 7,
+        "missing-permissions": 7,
+        "missing-cache": 1,
+        "deprecated-action": 2,
+        "fail-fast-true": 1
+      },
+      "perRun": 0.58,
+      "monthly": 518,
+      "score": 5.36
+    },
+    {
+      "repo": "biomejs/biome",
+      "workflows": 23,
+      "findings": 143,
+      "e": 0,
+      "w": 105,
+      "i": 38,
+      "ruleHits": {
+        "missing-concurrency": 7,
+        "missing-timeout": 69,
+        "fail-fast-true": 23,
+        "missing-cache": 13,
+        "missing-permissions": 12,
+        "artifact-no-retention": 15,
+        "matrix-overcommit": 4
+      },
+      "perRun": 0.51,
+      "monthly": 461,
+      "score": 5.39
+    },
+    {
+      "repo": "swc-project/swc",
+      "workflows": 16,
+      "findings": 89,
+      "e": 1,
+      "w": 84,
+      "i": 4,
+      "ruleHits": {
+        "pinned-action-sha": 35,
+        "missing-timeout": 35,
+        "deprecated-action": 1,
+        "missing-permissions": 5,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 1,
+        "missing-concurrency": 2,
+        "missing-cache": 2,
+        "artifact-no-retention": 1,
+        "stale-cache-key": 3
+      },
+      "perRun": 2.69,
+      "monthly": 2419,
+      "score": 5.56
+    },
+    {
+      "repo": "remix-run/remix",
+      "workflows": 11,
+      "findings": 70,
+      "e": 0,
+      "w": 67,
+      "i": 3,
+      "ruleHits": {
+        "pinned-action-sha": 24,
+        "missing-timeout": 23,
+        "missing-permissions": 10,
+        "fail-fast-true": 1,
+        "missing-cache": 1,
+        "missing-concurrency": 3,
+        "fetch-depth-zero": 2,
+        "stale-cache-key": 4,
+        "expensive-runner": 2
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 6.23
+    },
+    {
+      "repo": "rollup/rollup",
+      "workflows": 4,
+      "findings": 25,
+      "e": 2,
+      "w": 16,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 7,
+        "missing-timeout": 5,
+        "deprecated-action": 2,
+        "artifact-no-retention": 4,
+        "fetch-depth-zero": 1,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 2,
+        "missing-concurrency": 1,
+        "missing-permissions": 1
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 6.38
+    },
+    {
+      "repo": "sequelize/sequelize",
+      "workflows": 9,
+      "findings": 41,
+      "e": 9,
+      "w": 30,
+      "i": 2,
+      "ruleHits": {
+        "missing-timeout": 20,
+        "fetch-depth-zero": 2,
+        "missing-permissions": 5,
+        "missing-concurrency": 2,
+        "deprecated-action": 9,
+        "expensive-runner": 1,
+        "matrix-overcommit": 2
+      },
+      "perRun": 5.25,
+      "monthly": 4723,
+      "score": 6.44
+    },
+    {
+      "repo": "tailwindlabs/tailwindcss",
+      "workflows": 4,
+      "findings": 31,
+      "e": 0,
+      "w": 22,
+      "i": 9,
+      "ruleHits": {
+        "pinned-action-sha": 15,
+        "missing-timeout": 2,
+        "matrix-overcommit": 3,
+        "expensive-runner": 2,
+        "artifact-no-retention": 7,
+        "fail-fast-true": 2
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 6.63
+    },
+    {
+      "repo": "axios/axios",
+      "workflows": 8,
+      "findings": 40,
+      "e": 12,
+      "w": 27,
+      "i": 1,
+      "ruleHits": {
+        "missing-cache": 2,
+        "missing-concurrency": 4,
+        "missing-timeout": 21,
+        "deprecated-action": 12,
+        "fetch-depth-zero": 1
+      },
+      "perRun": 2.62,
+      "monthly": 2362,
+      "score": 7.94
+    },
+    {
+      "repo": "denoland/deno",
+      "workflows": 11,
+      "findings": 99,
+      "e": 0,
+      "w": 81,
+      "i": 18,
+      "ruleHits": {
+        "missing-permissions": 10,
+        "fetch-depth-zero": 2,
+        "missing-cache": 23,
+        "missing-timeout": 11,
+        "expensive-runner": 11,
+        "artifact-no-retention": 13,
+        "matrix-overcommit": 13,
+        "stale-cache-key": 12,
+        "fail-fast-true": 3,
+        "missing-concurrency": 1
+      },
+      "perRun": 21.76,
+      "monthly": 19584,
+      "score": 8.18
+    },
+    {
+      "repo": "parcel-bundler/parcel",
+      "workflows": 6,
+      "findings": 52,
+      "e": 0,
+      "w": 47,
+      "i": 5,
+      "ruleHits": {
+        "missing-permissions": 3,
+        "pinned-action-sha": 28,
+        "missing-concurrency": 1,
+        "missing-timeout": 12,
+        "artifact-no-retention": 3,
+        "matrix-overcommit": 3,
+        "fail-fast-true": 1,
+        "fetch-depth-zero": 1
+      },
+      "perRun": 0.9,
+      "monthly": 806,
+      "score": 8.25
+    }
+  ]
+}

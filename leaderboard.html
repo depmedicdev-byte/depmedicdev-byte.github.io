@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OSS GitHub Actions hygiene leaderboard (live, daily) - depmedic</title>
+<meta name="description" content="Live ranking of 40 popular OSS repositories by GitHub Actions hygiene. Updated daily. Powered by ci-doctor (14 rules) and gha-budget. Lower score is better." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/leaderboard.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="OSS GitHub Actions hygiene leaderboard - live, daily" />
+<meta property="og:description" content="Live ranking of 40 popular OSS repositories by CI hygiene. Updated daily. Real numbers, with day-over-day deltas." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/leaderboard.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 1040px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 16px; color: #c9d1d9; margin: 28px 0 10px; letter-spacing: 0.03em; text-transform: uppercase; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 18px; }
+  .meta { color: #6f7882; font-size: 13px; margin: 0 0 22px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+  .stat { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 16px; }
+  .stat .label { color: #9aa3ad; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .val { font-size: 22px; font-weight: 600; margin-top: 2px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  .trend { font-family: ui-monospace, monospace; font-size: 12.5px; padding: 1px 5px; border-radius: 4px; }
+  .trend.up { color: #9ce29c; background: #1d3b22; }
+  .trend.down { color: #ffb8b8; background: #4a1e1e; }
+  .trend.same { color: #6f7882; }
+  .trend.new { color: #a3d4ff; background: #1e3a4a; }
+  td code, p code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font: 12.5px ui-monospace, monospace; color: #c9d1d9; }
+  .toplist { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0 22px; }
+  .toplist .card { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; }
+  .toplist .card.best { border-color: #2a4732; }
+  .toplist .card.worst { border-color: #4a2a2a; }
+  .toplist h3 { margin: 0 0 8px; font-size: 14px; color: #c9d1d9; text-transform: uppercase; letter-spacing: 0.04em; }
+  .toplist ol { margin: 0; padding-left: 22px; color: #b6bec7; font-size: 14px; }
+  .toplist li { padding: 2px 0; }
+  .disclaimer { background: #11151b; border-left: 3px solid #2a3744; padding: 10px 16px; color: #9aa3ad; font-size: 13px; border-radius: 4px; margin: 16px 0; }
+  footer { margin-top: 32px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+  @media (max-width: 700px) { .toplist { grid-template-columns: 1fr; } table { font-size: 13px; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "OSS GitHub Actions hygiene leaderboard",
+  "description": "Daily-updated ranking of popular OSS repositories by GitHub Actions workflow hygiene, audited with ci-doctor (14 rules).",
+  "url": "https://depmedicdev-byte.github.io/leaderboard.html",
+  "creator": { "@type": "Organization", "name": "depmedic" },
+  "license": "https://opensource.org/licenses/MIT",
+  "dateModified": "2026-04-28"
+}
+</script>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / leaderboard</p>
+
+<h1>OSS GitHub Actions hygiene leaderboard</h1>
+<p class="lead">
+  Live ranking of <strong>40</strong> popular OSS repositories by their
+  GitHub Actions workflow hygiene. Lower score = better. Powered by
+  <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
+  (14 rules) and <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>
+  (per-job pricing). Workflow YAML re-fetched from each repo every day.
+</p>
+<p class="meta">
+  Last updated <strong>2026-04-28 03:34 UTC</strong> &middot;
+  <a href="/leaderboard.json">raw data (JSON)</a> &middot;
+  <a href="/scan.html">scan your own repo</a> &middot;
+  <a href="/benchmarks.html">original 20-repo report</a>
+</p>
+
+<div class="stats">
+  <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">533</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,126</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$96,021</div></div>
+</div>
+
+<div class="toplist">
+  <div class="card best">
+    <h3>Cleanest 5 (lowest score)</h3>
+    <ol><li>mui/material-ui <code>1.59</code></li><li>gatsbyjs/gatsby <code>2.00</code></li><li>pnpm/pnpm <code>2.11</code></li><li>vitejs/vite <code>2.13</code></li><li>jestjs/jest <code>2.22</code></li></ol>
+  </div>
+  <div class="card worst">
+    <h3>Most findings per workflow (highest score)</h3>
+    <ol><li>parcel-bundler/parcel <code>8.25</code></li><li>denoland/deno <code>8.18</code></li><li>axios/axios <code>7.94</code></li><li>tailwindlabs/tailwindcss <code>6.63</code></li><li>sequelize/sequelize <code>6.44</code></li></ol>
+  </div>
+</div>
+
+<h2>Top rules across all repos</h2>
+<table>
+  <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">850</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">255</td></tr><tr><td><code>missing-cache</code></td><td class="right">190</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">176</td></tr><tr><td><code>missing-permissions</code></td><td class="right">153</td></tr></tbody>
+</table>
+
+<h2>Full ranking (sorted by hygiene score)</h2>
+<table>
+  <thead><tr>
+    <th class="right">#</th>
+    <th>Trend</th>
+    <th>Repo</th>
+    <th class="right" title="(errors*3 + warns*1 + info*0.5) / workflows. Lower is better.">Score</th>
+    <th class="right">WFs</th>
+    <th class="right">Findings</th>
+    <th class="right">E/W/I</th>
+    <th class="right">$/run</th>
+    <th class="right">$/mo*</th>
+  </tr></thead>
+  <tbody><tr>
+      <td class="right">1</td>
+      <td></td>
+      <td><a href="https://github.com/mui/material-ui" rel="noopener">mui/material-ui</a>
+          &middot; <a href="/scan.html#r=mui%2Fmaterial-ui&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>1.59</strong></td>
+      <td class="right">17</td>
+      <td class="right">30</td>
+      <td class="right">0/24/6</td>
+      <td class="right">$0.90</td>
+      <td class="right">$806</td>
+    </tr><tr>
+      <td class="right">2</td>
+      <td></td>
+      <td><a href="https://github.com/gatsbyjs/gatsby" rel="noopener">gatsbyjs/gatsby</a>
+          &middot; <a href="/scan.html#r=gatsbyjs%2Fgatsby&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.00</strong></td>
+      <td class="right">1</td>
+      <td class="right">2</td>
+      <td class="right">0/2/0</td>
+      <td class="right">$0.06</td>
+      <td class="right">$58</td>
+    </tr><tr>
+      <td class="right">3</td>
+      <td></td>
+      <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
+          &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.11</strong></td>
+      <td class="right">9</td>
+      <td class="right">21</td>
+      <td class="right">0/17/4</td>
+      <td class="right">$0.70</td>
+      <td class="right">$634</td>
+    </tr><tr>
+      <td class="right">4</td>
+      <td></td>
+      <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a>
+          &middot; <a href="/scan.html#r=vitejs%2Fvite&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.13</strong></td>
+      <td class="right">12</td>
+      <td class="right">26</td>
+      <td class="right">0/25/1</td>
+      <td class="right">$1.09</td>
+      <td class="right">$979</td>
+    </tr><tr>
+      <td class="right">5</td>
+      <td></td>
+      <td><a href="https://github.com/jestjs/jest" rel="noopener">jestjs/jest</a>
+          &middot; <a href="/scan.html#r=jestjs%2Fjest&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.22</strong></td>
+      <td class="right">9</td>
+      <td class="right">20</td>
+      <td class="right">0/20/0</td>
+      <td class="right">$0.90</td>
+      <td class="right">$806</td>
+    </tr><tr>
+      <td class="right">6</td>
+      <td></td>
+      <td><a href="https://github.com/sveltejs/svelte" rel="noopener">sveltejs/svelte</a>
+          &middot; <a href="/scan.html#r=sveltejs%2Fsvelte&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.40</strong></td>
+      <td class="right">5</td>
+      <td class="right">14</td>
+      <td class="right">0/10/4</td>
+      <td class="right">$0.70</td>
+      <td class="right">$634</td>
+    </tr><tr>
+      <td class="right">7</td>
+      <td></td>
+      <td><a href="https://github.com/prettier/prettier" rel="noopener">prettier/prettier</a>
+          &middot; <a href="/scan.html#r=prettier%2Fprettier&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.50</strong></td>
+      <td class="right">17</td>
+      <td class="right">32</td>
+      <td class="right">6/23/3</td>
+      <td class="right">$1.02</td>
+      <td class="right">$922</td>
+    </tr><tr>
+      <td class="right">8</td>
+      <td></td>
+      <td><a href="https://github.com/ReactiveX/rxjs" rel="noopener">ReactiveX/rxjs</a>
+          &middot; <a href="/scan.html#r=ReactiveX%2Frxjs&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.50</strong></td>
+      <td class="right">4</td>
+      <td class="right">12</td>
+      <td class="right">0/8/4</td>
+      <td class="right">$0.38</td>
+      <td class="right">$346</td>
+    </tr><tr>
+      <td class="right">9</td>
+      <td></td>
+      <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
+          &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.56</strong></td>
+      <td class="right">9</td>
+      <td class="right">25</td>
+      <td class="right">0/21/4</td>
+      <td class="right">$1.15</td>
+      <td class="right">$1,037</td>
+    </tr><tr>
+      <td class="right">10</td>
+      <td></td>
+      <td><a href="https://github.com/nuxt/nuxt" rel="noopener">nuxt/nuxt</a>
+          &middot; <a href="/scan.html#r=nuxt%2Fnuxt&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.63</strong></td>
+      <td class="right">28</td>
+      <td class="right">64</td>
+      <td class="right">7/48/9</td>
+      <td class="right">$2.11</td>
+      <td class="right">$1,901</td>
+    </tr><tr>
+      <td class="right">11</td>
+      <td></td>
+      <td><a href="https://github.com/remix-run/react-router" rel="noopener">remix-run/react-router</a>
+          &middot; <a href="/scan.html#r=remix-run%2Freact-router&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.66</strong></td>
+      <td class="right">19</td>
+      <td class="right">52</td>
+      <td class="right">0/49/3</td>
+      <td class="right">$1.22</td>
+      <td class="right">$1,094</td>
+    </tr><tr>
+      <td class="right">12</td>
+      <td></td>
+      <td><a href="https://github.com/electron/electron" rel="noopener">electron/electron</a>
+          &middot; <a href="/scan.html#r=electron%2Felectron&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.80</strong></td>
+      <td class="right">42</td>
+      <td class="right">110</td>
+      <td class="right">11/70/29</td>
+      <td class="right">$2.30</td>
+      <td class="right">$2,074</td>
+    </tr><tr>
+      <td class="right">13</td>
+      <td></td>
+      <td><a href="https://github.com/fastify/fastify" rel="noopener">fastify/fastify</a>
+          &middot; <a href="/scan.html#r=fastify%2Ffastify&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.85</strong></td>
+      <td class="right">20</td>
+      <td class="right">61</td>
+      <td class="right">0/53/8</td>
+      <td class="right">$1.41</td>
+      <td class="right">$1,267</td>
+    </tr><tr>
+      <td class="right">14</td>
+      <td></td>
+      <td><a href="https://github.com/nodejs/node" rel="noopener">nodejs/node</a>
+          &middot; <a href="/scan.html#r=nodejs%2Fnode&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.89</strong></td>
+      <td class="right">36</td>
+      <td class="right">104</td>
+      <td class="right">2/94/8</td>
+      <td class="right">$6.27</td>
+      <td class="right">$5,645</td>
+    </tr><tr>
+      <td class="right">15</td>
+      <td></td>
+      <td><a href="https://github.com/sindresorhus/got" rel="noopener">sindresorhus/got</a>
+          &middot; <a href="/scan.html#r=sindresorhus%2Fgot&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.00</strong></td>
+      <td class="right">1</td>
+      <td class="right">3</td>
+      <td class="right">0/3/0</td>
+      <td class="right">$0.00</td>
+      <td class="right">$0</td>
+    </tr><tr>
+      <td class="right">16</td>
+      <td></td>
+      <td><a href="https://github.com/lodash/lodash" rel="noopener">lodash/lodash</a>
+          &middot; <a href="/scan.html#r=lodash%2Flodash&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.31</strong></td>
+      <td class="right">8</td>
+      <td class="right">28</td>
+      <td class="right">0/25/3</td>
+      <td class="right">$0.64</td>
+      <td class="right">$576</td>
+    </tr><tr>
+      <td class="right">17</td>
+      <td></td>
+      <td><a href="https://github.com/facebook/react" rel="noopener">facebook/react</a>
+          &middot; <a href="/scan.html#r=facebook%2Freact&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.42</strong></td>
+      <td class="right">24</td>
+      <td class="right">91</td>
+      <td class="right">0/73/18</td>
+      <td class="right">$16.19</td>
+      <td class="right">$14,573</td>
+    </tr><tr>
+      <td class="right">18</td>
+      <td></td>
+      <td><a href="https://github.com/preactjs/preact" rel="noopener">preactjs/preact</a>
+          &middot; <a href="/scan.html#r=preactjs%2Fpreact&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.44</strong></td>
+      <td class="right">8</td>
+      <td class="right">30</td>
+      <td class="right">0/25/5</td>
+      <td class="right">$0.64</td>
+      <td class="right">$576</td>
+    </tr><tr>
+      <td class="right">19</td>
+      <td></td>
+      <td><a href="https://github.com/nestjs/nest" rel="noopener">nestjs/nest</a>
+          &middot; <a href="/scan.html#r=nestjs%2Fnest&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.50</strong></td>
+      <td class="right">1</td>
+      <td class="right">5</td>
+      <td class="right">0/2/3</td>
+      <td class="right">$0.06</td>
+      <td class="right">$58</td>
+    </tr><tr>
+      <td class="right">20</td>
+      <td></td>
+      <td><a href="https://github.com/storybookjs/storybook" rel="noopener">storybookjs/storybook</a>
+          &middot; <a href="/scan.html#r=storybookjs%2Fstorybook&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.69</strong></td>
+      <td class="right">16</td>
+      <td class="right">68</td>
+      <td class="right">0/50/18</td>
+      <td class="right">$2.11</td>
+      <td class="right">$1,901</td>
+    </tr><tr>
+      <td class="right">21</td>
+      <td></td>
+      <td><a href="https://github.com/TanStack/query" rel="noopener">TanStack/query</a>
+          &middot; <a href="/scan.html#r=TanStack%2Fquery&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.80</strong></td>
+      <td class="right">5</td>
+      <td class="right">20</td>
+      <td class="right">0/18/2</td>
+      <td class="right">$0.45</td>
+      <td class="right">$403</td>
+    </tr><tr>
+      <td class="right">22</td>
+      <td></td>
+      <td><a href="https://github.com/microsoft/TypeScript" rel="noopener">microsoft/TypeScript</a>
+          &middot; <a href="/scan.html#r=microsoft%2FTypeScript&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>4.06</strong></td>
+      <td class="right">18</td>
+      <td class="right">79</td>
+      <td class="right">0/67/12</td>
+      <td class="right">$1.92</td>
+      <td class="right">$1,728</td>
+    </tr><tr>
+      <td class="right">23</td>
+      <td></td>
+      <td><a href="https://github.com/chakra-ui/chakra-ui" rel="noopener">chakra-ui/chakra-ui</a>
+          &middot; <a href="/scan.html#r=chakra-ui%2Fchakra-ui&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>4.17</strong></td>
+      <td class="right">3</td>
+      <td class="right">13</td>
+      <td class="right">0/12/1</td>
+      <td class="right">$0.51</td>
+      <td class="right">$461</td>
+    </tr><tr>
+      <td class="right">24</td>
+      <td></td>
+      <td><a href="https://github.com/vuejs/core" rel="noopener">vuejs/core</a>
+          &middot; <a href="/scan.html#r=vuejs%2Fcore&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>4.28</strong></td>
+      <td class="right">9</td>
+      <td class="right">39</td>
+      <td class="right">0/38/1</td>
+      <td class="right">$0.83</td>
+      <td class="right">$749</td>
+    </tr><tr>
+      <td class="right">25</td>
+      <td></td>
+      <td><a href="https://github.com/eslint/eslint" rel="noopener">eslint/eslint</a>
+          &middot; <a href="/scan.html#r=eslint%2Feslint&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>4.80</strong></td>
+      <td class="right">10</td>
+      <td class="right">51</td>
+      <td class="right">0/45/6</td>
+      <td class="right">$1.66</td>
+      <td class="right">$1,498</td>
+    </tr><tr>
+      <td class="right">26</td>
+      <td></td>
+      <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
+          &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>4.95</strong></td>
+      <td class="right">19</td>
+      <td class="right">94</td>
+      <td class="right">0/94/0</td>
+      <td class="right">$1.79</td>
+      <td class="right">$1,613</td>
+    </tr><tr>
+      <td class="right">27</td>
+      <td></td>
+      <td><a href="https://github.com/npm/cli" rel="noopener">npm/cli</a>
+          &middot; <a href="/scan.html#r=npm%2Fcli&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.15</strong></td>
+      <td class="right">26</td>
+      <td class="right">133</td>
+      <td class="right">3/120/10</td>
+      <td class="right">$2.56</td>
+      <td class="right">$2,304</td>
+    </tr><tr>
+      <td class="right">28</td>
+      <td></td>
+      <td><a href="https://github.com/vercel/next.js" rel="noopener">vercel/next.js</a>
+          &middot; <a href="/scan.html#r=vercel%2Fnext.js&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.24</strong></td>
+      <td class="right">37</td>
+      <td class="right">166</td>
+      <td class="right">17/137/12</td>
+      <td class="right">$4.10</td>
+      <td class="right">$3,686</td>
+    </tr><tr>
+      <td class="right">29</td>
+      <td></td>
+      <td><a href="https://github.com/expressjs/express" rel="noopener">expressjs/express</a>
+          &middot; <a href="/scan.html#r=expressjs%2Fexpress&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.25</strong></td>
+      <td class="right">4</td>
+      <td class="right">18</td>
+      <td class="right">2/14/2</td>
+      <td class="right">$0.38</td>
+      <td class="right">$346</td>
+    </tr><tr>
+      <td class="right">30</td>
+      <td></td>
+      <td><a href="https://github.com/prisma/prisma" rel="noopener">prisma/prisma</a>
+          &middot; <a href="/scan.html#r=prisma%2Fprisma&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.32</strong></td>
+      <td class="right">17</td>
+      <td class="right">91</td>
+      <td class="right">0/90/1</td>
+      <td class="right">$14.59</td>
+      <td class="right">$13,133</td>
+    </tr><tr>
+      <td class="right">31</td>
+      <td></td>
+      <td><a href="https://github.com/date-fns/date-fns" rel="noopener">date-fns/date-fns</a>
+          &middot; <a href="/scan.html#r=date-fns%2Fdate-fns&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.36</strong></td>
+      <td class="right">7</td>
+      <td class="right">34</td>
+      <td class="right">2/31/1</td>
+      <td class="right">$0.58</td>
+      <td class="right">$518</td>
+    </tr><tr>
+      <td class="right">32</td>
+      <td></td>
+      <td><a href="https://github.com/biomejs/biome" rel="noopener">biomejs/biome</a>
+          &middot; <a href="/scan.html#r=biomejs%2Fbiome&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.39</strong></td>
+      <td class="right">23</td>
+      <td class="right">143</td>
+      <td class="right">0/105/38</td>
+      <td class="right">$0.51</td>
+      <td class="right">$461</td>
+    </tr><tr>
+      <td class="right">33</td>
+      <td></td>
+      <td><a href="https://github.com/swc-project/swc" rel="noopener">swc-project/swc</a>
+          &middot; <a href="/scan.html#r=swc-project%2Fswc&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.56</strong></td>
+      <td class="right">16</td>
+      <td class="right">89</td>
+      <td class="right">1/84/4</td>
+      <td class="right">$2.69</td>
+      <td class="right">$2,419</td>
+    </tr><tr>
+      <td class="right">34</td>
+      <td></td>
+      <td><a href="https://github.com/remix-run/remix" rel="noopener">remix-run/remix</a>
+          &middot; <a href="/scan.html#r=remix-run%2Fremix&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>6.23</strong></td>
+      <td class="right">11</td>
+      <td class="right">70</td>
+      <td class="right">0/67/3</td>
+      <td class="right">$1.54</td>
+      <td class="right">$1,382</td>
+    </tr><tr>
+      <td class="right">35</td>
+      <td></td>
+      <td><a href="https://github.com/rollup/rollup" rel="noopener">rollup/rollup</a>
+          &middot; <a href="/scan.html#r=rollup%2Frollup&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>6.38</strong></td>
+      <td class="right">4</td>
+      <td class="right">25</td>
+      <td class="right">2/16/7</td>
+      <td class="right">$0.64</td>
+      <td class="right">$576</td>
+    </tr><tr>
+      <td class="right">36</td>
+      <td></td>
+      <td><a href="https://github.com/sequelize/sequelize" rel="noopener">sequelize/sequelize</a>
+          &middot; <a href="/scan.html#r=sequelize%2Fsequelize&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>6.44</strong></td>
+      <td class="right">9</td>
+      <td class="right">41</td>
+      <td class="right">9/30/2</td>
+      <td class="right">$5.25</td>
+      <td class="right">$4,723</td>
+    </tr><tr>
+      <td class="right">37</td>
+      <td></td>
+      <td><a href="https://github.com/tailwindlabs/tailwindcss" rel="noopener">tailwindlabs/tailwindcss</a>
+          &middot; <a href="/scan.html#r=tailwindlabs%2Ftailwindcss&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>6.63</strong></td>
+      <td class="right">4</td>
+      <td class="right">31</td>
+      <td class="right">0/22/9</td>
+      <td class="right">$1.54</td>
+      <td class="right">$1,382</td>
+    </tr><tr>
+      <td class="right">38</td>
+      <td></td>
+      <td><a href="https://github.com/axios/axios" rel="noopener">axios/axios</a>
+          &middot; <a href="/scan.html#r=axios%2Faxios&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>7.94</strong></td>
+      <td class="right">8</td>
+      <td class="right">40</td>
+      <td class="right">12/27/1</td>
+      <td class="right">$2.62</td>
+      <td class="right">$2,362</td>
+    </tr><tr>
+      <td class="right">39</td>
+      <td></td>
+      <td><a href="https://github.com/denoland/deno" rel="noopener">denoland/deno</a>
+          &middot; <a href="/scan.html#r=denoland%2Fdeno&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>8.18</strong></td>
+      <td class="right">11</td>
+      <td class="right">99</td>
+      <td class="right">0/81/18</td>
+      <td class="right">$21.76</td>
+      <td class="right">$19,584</td>
+    </tr><tr>
+      <td class="right">40</td>
+      <td></td>
+      <td><a href="https://github.com/parcel-bundler/parcel" rel="noopener">parcel-bundler/parcel</a>
+          &middot; <a href="/scan.html#r=parcel-bundler%2Fparcel&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>8.25</strong></td>
+      <td class="right">6</td>
+      <td class="right">52</td>
+      <td class="right">0/47/5</td>
+      <td class="right">$0.90</td>
+      <td class="right">$806</td>
+    </tr></tbody>
+</table>
+
+<div class="disclaimer">
+  <strong>Methodology.</strong> Each repo's <code>.github/workflows/*.yml</code>
+  is fetched fresh from the GitHub public API daily. <code>ci-doctor</code>
+  emits findings against 14 rules. Score = (errors&times;3 + warns&times;1 +
+  info&times;0.5) / workflow_count. Cost columns assume 8 min/job, 30
+  runs/day, GitHub-hosted standard <code>ubuntu-latest</code> pricing.
+  Trend column compares to the previous day's snapshot. Self-hosted and
+  large-runner jobs are not priced.
+</div>
+
+<div class="disclaimer">
+  This is not an attack on any of these projects. They all ship excellent
+  software. The point of a public, ranked, daily-updated leaderboard is
+  that the <em>same patterns</em> show up everywhere, and seeing real
+  numbers is more useful than abstract advice. To request removal from
+  the list, open an issue on
+  <a href="https://github.com/depmedicdev-byte/depmedicdev-byte.github.io/issues">depmedicdev-byte/depmedicdev-byte.github.io</a>.
+</div>
+
+<footer>
+  Built with <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a>
+  + <a href="https://www.npmjs.com/package/gha-budget">gha-budget</a>.
+  Both MIT. See also: <a href="/scan.html">scan a single repo</a> -
+  <a href="/rules.html">all 14 rules explained</a> -
+  <a href="/badge.html">add a "scanned with ci-doctor" badge to your README</a>.
+</footer>
+
+</main>
+</body>
+</html>
