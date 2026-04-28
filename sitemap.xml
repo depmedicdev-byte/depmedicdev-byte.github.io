@@ -271,6 +271,12 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/start.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.98</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/perf-patterns.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
