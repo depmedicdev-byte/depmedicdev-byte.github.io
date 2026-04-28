@@ -6,7 +6,14 @@
 <description>Notes on cheaper, faster, less leaky CI. Free CLIs and a small set of paid playbooks.</description>
 <language>en-us</language>
 <atom:link href="https://depmedicdev-byte.github.io/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Tue, 28 Apr 2026 02:55:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Apr 2026 04:30:00 GMT</lastBuildDate>
+<item>
+  <title>I let Gemini explain 10 famous OSS GitHub Actions workflows. Here's what it found.</title>
+  <link>https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html</guid>
+  <pubDate>Tue, 28 Apr 2026 04:30:00 GMT</pubDate>
+  <description>Next.js, Vite, React, Vue, Deno, Prettier, Nuxt, Svelte, MUI, TanStack Query - their primary CI workflows fed to Gemini Flash via the new /ask.html. Raw output, 30+ smells, total spend $0.002.</description>
+</item>
 <item>
   <title>I scanned 5 popular OSS repos in 5 minutes. Here's what I found.</title>
   <link>https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html</link>

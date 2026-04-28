@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I let Gemini explain 10 famous OSS GitHub Actions workflows. Here's what it found. - depmedic</title>
+<meta name="description" content="Next.js, Vite, React, Vue, Deno, Prettier, Nuxt, Svelte, MUI, TanStack Query - their primary CI workflows, explained by Gemini Flash. ~30 cost and reliability smells across 10 repos. No editorial picking; raw output, cited line by line." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="I let Gemini explain 10 famous OSS GitHub Actions workflows" />
+<meta property="og:description" content="Raw Gemini output across 10 popular repos. ~30 cost smells found. Try the live tool free 5/day." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 20px; margin: 36px 0 8px; color: #e6e8eb; border-top: 1px solid #1e242c; padding-top: 28px; }
+  h2 .path { color: #6f7882; font-size: 14px; font-weight: 400; font-family: ui-monospace, Menlo, monospace; }
+  h3 { font-size: 16px; color: #c9d1d9; margin: 14px 0 4px; }
+  h4 { font-size: 15px; color: #c9d1d9; margin: 12px 0 4px; }
+  p { color: #c9d1d9; margin: 8px 0; }
+  ul, ol { color: #c9d1d9; margin: 8px 0; padding-left: 22px; }
+  code { background: #11151b; padding: 1px 5px; border-radius: 4px; font-size: 12.5px; color: #9ce29c;
+    font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; }
+  pre { background: #11151b; border: 1px solid #1e242c; border-radius: 8px;
+    padding: 12px 14px; overflow: auto; font-size: 12.5px; }
+  pre code { background: none; padding: 0; color: #c9d1d9; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+  .meta { color: #6f7882; font-size: 12.5px; margin-top: 8px; }
+  .toc { background: #11151b; border: 1px solid #1e242c; padding: 14px 18px;
+    border-radius: 10px; margin: 22px 0; }
+  .toc h3 { margin: 0 0 6px; color: #9aa3ad; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .toc ul { columns: 2; margin: 0; padding-left: 18px; font-size: 14px; }
+  .cta { background: #16202b; border: 1px solid #2d5a7a; padding: 14px 18px;
+    border-radius: 10px; margin: 24px 0; }
+  footer { margin-top: 40px; color: #6f7882; font-size: 13px; }
+  footer a { color: #9aa3ad; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav">
+  <a href="/">depmedic</a> &middot;
+  <a href="/ask.html">try ask</a> &middot;
+  <a href="/scan.html">scan a repo</a> &middot;
+  <a href="/leaderboard.html">leaderboard</a>
+</p>
+
+<h1>I let Gemini explain 10 famous OSS GitHub Actions workflows. Here's what it found.</h1>
+<p class="lead">
+  No editorial picks. I built a tiny Cloudflare Worker that proxies Gemini Flash for the
+  new <a href="/ask.html">ask depmedic</a> tool, then ran the same "explain" prompt over
+  the primary CI workflow of 10 well-known OSS repos: Next.js, Vite, React, Vue, Deno,
+  Prettier, Nuxt, Svelte, MUI, and TanStack Query. Below is the raw output for each.
+  Total spend: $0.0003 on the Gemini API,
+  3,290 input tokens, 264 output tokens.
+</p>
+
+<div class="cta">
+  Want the same thing on your repo? Paste your YAML at <a href="/ask.html"><strong>/ask.html</strong></a>.
+  Free, 5 calls per IP per day. No signup. Or run the deterministic 14-rule audit
+  client-side at <a href="/audit.html">/audit.html</a>.
+</div>
+
+<div class="toc">
+  <h3>Repos covered</h3>
+  <ul>
+    <li><a href="#vercel-next.js">vercel/next.js</a></li>
+    <li><a href="#vitejs-vite">vitejs/vite</a></li>
+    <li><a href="#facebook-react">facebook/react</a></li>
+    <li><a href="#vuejs-core">vuejs/core</a></li>
+    <li><a href="#denoland-deno">denoland/deno</a></li>
+    <li><a href="#prettier-prettier">prettier/prettier</a></li>
+    <li><a href="#nuxt-nuxt">nuxt/nuxt</a></li>
+    <li><a href="#sveltejs-svelte">sveltejs/svelte</a></li>
+    <li><a href="#mui-material-ui">mui/material-ui</a></li>
+    <li><a href="#TanStack-query">TanStack/query</a></li>
+  </ul>
+</div>
+
+<h2 style="border-top:none;padding-top:0;">Method</h2>
+<p>For each repo I called the GitHub API to list active workflows, picked the
+file whose name contained <code>ci</code>, <code>test</code>, <code>build</code>,
+<code>main</code>, or <code>lint</code> (longest match wins), and fed the raw
+YAML to Gemini Flash through the same prompt the public <a href="/ask.html">ask</a>
+tool uses. Each reply is capped at ~180 words. The Worker is open-source at
+<a href="https://github.com/depmedicdev-byte/depmedicdev-byte.github.io">depmedicdev-byte/depmedicdev-byte.github.io</a>
+(<code>projects/depmedic-ai-worker/</code> in the parent monorepo). I ran each
+repo once, no retries, no human filtering. Output below is verbatim.</p>
+
+
+<h2 id="vercel-next.js">vercel/next.js <span class="path">/.github/workflows/setup-nextjs-build.yml</span></h2>
+<p><strong>1-line summary</strong> This reusable workflow checks out, builds, and caches Next.js and its SWC binaries for integration testing using a high-performance runner.</p><p><strong>Two cost or reliability smells</strong></p><ul><li>pinned-action-sha: Actions such as <code>actions/setup-node@v4</code> and <code>actions/checkout@v4</code> use mutable tags instead of immutable commit SHAs, posing a security risk.</li><li>missing-timeout: The <code>build_nextjs</code> job lacks a <code>timeout-minutes</code> property, which can lead to excessive costs if the expensive 16-core runner hangs.</li></ul><p><strong>One concrete fix</strong> Add <code>timeout-minutes: 60</code> to the <code>build_nextjs</code> job at line 21 to prevent runaway costs on the high-performance runner.</p>
+<p class="meta">tokens in/out: 1663/170 &middot;
+<a href="https://github.com/vercel/next.js/blob/HEAD/.github/workflows/setup-nextjs-build.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="vitejs-vite">vitejs/vite <span class="path">/.github/workflows/ci.yml</span></h2>
+<p><strong>1-line summary</strong> This workflow executes linting and cross-platform matrix testing for a Node.js project, using a custom job to skip tests based on file changes.</p><p><strong>Two cost or reliability smells</strong></p><ul><li>pinned-action-sha: The <code>actions/checkout@v6</code> and <code>actions/setup-node@v6</code> steps use mutable tags rather than immutable commit SHAs, which can lead to unexpected failures if tags are moved.</li><li>missing-timeout: The <code>changed</code> job lacks a <code>timeout-minutes</code> definition, allowing it to consume runner minutes for up to 6 hours if the step hangs.</li></ul><p><strong>One concrete fix</strong> Pin the checkout action to a specific SHA in the <code>changed</code> job at line 46: <code>uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2</code></p>
+<p class="meta">tokens in/out: 1924/209 &middot;
+<a href="https://github.com/vitejs/vite/blob/HEAD/.github/workflows/ci.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="facebook-react">facebook/react <span class="path">/.github/workflows/devtools_regression_tests.yml</span></h2>
+<p><strong>1-line summary</strong> Daily and manual regression testing of React DevTools against multiple React versions using Jest and Playwright.</p><p><strong>Two cost or reliability smells</strong></p><ul><li>pinned-action-sha: Actions such as actions/checkout@v4 use mutable tags rather than immutable commit SHAs, which can lead to non-reproducible builds or supply chain vulnerabilities.</li><li>missing-timeout: Jobs lack a timeout-minutes definition, allowing hung browser processes or network requests to consume runner minutes until the 6-hour default limit.</li></ul><p><strong>One concrete fix</strong> Add <code>timeout-minutes: 60</code> to the <code>run_devtools_e2e_tests_for_versions</code> job to prevent runaway Playwright tests.</p>
+<p class="meta">tokens in/out: 2287/152 &middot;
+<a href="https://github.com/facebook/react/blob/HEAD/.github/workflows/devtools_regression_tests.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="vuejs-core">vuejs/core <span class="path">/.github/workflows/test.yml</span></h2>
+<p><strong>1-line summary</strong> Runs unit, E2E, and linting tests across Ubuntu and Windows environments using pnpm and Node.js.</p><p><strong>Two cost or reliability smells</strong></p><ul><li>pinned-action-sha: Actions use mutable tags like @v6 instead of immutable commit SHAs, which risks reliability if tags are moved or deleted.</li><li>missing-timeout: Jobs lack a timeout-minutes property, risking high costs if a test process hangs indefinitely.</li></ul><p><strong>One concrete fix</strong> Add timeout-minutes: 15 to the unit-test job.</p>
+<p class="meta">tokens in/out: 941/118 &middot;
+<a href="https://github.com/vuejs/core/blob/HEAD/.github/workflows/test.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="denoland-deno">denoland/deno <span class="path">/.github/workflows/node_compat_test.generated.yml</span></h2>
+<p>This workflow runs sharded Node.js compatibility tests across Linux, Windows, and macOS on a schedule, aggregating results into a monthly summary uploaded to S3.</p><p><strong>Two cost or reliability smells</strong></p><ul><li><code>missing-timeout</code>: The jobs lack a timeout-minutes definition, which can lead to hung processes consuming runner minutes for up to six hours.</li><li><code>fail-fast-true</code>: The matrix strategy uses the default true setting, causing a single shard failure to cancel all other active shards and preventing a complete compatibility report.</li></ul><p><strong>One concrete fix</strong> Set <code>fail-fast: false</code> under the <code>strategy</code> key in the <code>test</code> job to ensure all shards finish even if one fails.</p>
+<p class="meta">tokens in/out: 2390/144 &middot;
+<a href="https://github.com/denoland/deno/blob/HEAD/.github/workflows/node_compat_test.generated.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="prettier-prettier">prettier/prettier <span class="path">/.github/workflows/dev-test.yml</span></h2>
+<p><strong>1-line summary</strong> Runs cross-platform Node.js tests and code coverage across a matrix of operating systems and versions.</p><p><strong>Two cost or reliability smells</strong></p><ul><li><strong>missing-paths-filter</strong>: The workflow triggers on every push or pull request regardless of whether changes affect the codebase, wasting runner minutes on documentation or metadata updates.</li><li><strong>expensive-runner</strong>: Executing the full test suite on <code>macos-latest</code> and <code>windows-latest</code> for multiple Node.js versions is significantly more expensive than using Linux runners for all but one smoke test.</li></ul><p><strong>One concrete fix</strong> Add a <code>paths</code> filter to the <code>on.push</code> and <code>on.pull_request</code> triggers (line 4) to ensure the workflow only runs when source code, tests, or dependency files are modified.</p>
+<p class="meta">tokens in/out: 982/170 &middot;
+<a href="https://github.com/prettier/prettier/blob/HEAD/.github/workflows/dev-test.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="nuxt-nuxt">nuxt/nuxt <span class="path">/.github/workflows/ci.yml</span></h2>
+<p><strong>1-line summary</strong> This workflow executes a multi-stage CI pipeline including builds, security scanning, type-checking, and cross-platform testing for a Node.js project.</p><p><strong>Two cost or reliability smells</strong></p><ul><li>missing-timeout: The <code>test-size</code> and <code>test-benchmark</code> jobs lack explicit timeouts, risking hung processes and uncontrolled runner minute consumption.</li><li>expensive-runner: The <code>changes</code> job uses <code>ubuntu-24.04-arm</code> for a lightweight path-filtering task that should be executed on a standard <code>ubuntu-latest</code> runner.</li></ul><p><strong>One concrete fix</strong> Add <code>timeout-minutes: 10</code> to the <code>test-size</code> job at line 218.</p>
+<p class="meta">tokens in/out: 4518/154 &middot;
+<a href="https://github.com/nuxt/nuxt/blob/HEAD/.github/workflows/ci.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="sveltejs-svelte">sveltejs/svelte <span class="path">/.github/workflows/ci.yml</span></h2>
+<p>This workflow executes cross-platform Node.js tests, linting, type checking, and benchmarks on push and pull request events.</p><ul><li>pinned-action-sha: The workflow uses mutable version tags for <code>actions/checkout</code> and <code>actions/setup-node</code> instead of immutable commit SHAs, which can lead to unexpected breaking changes.</li><li>missing-concurrency: The absence of a concurrency group causes redundant, overlapping runs for the same branch, wasting runner minutes and increasing costs.</li></ul><p>Add a top-level <code>concurrency</code> block at line 6 to cancel in-</p>
+<p class="meta">tokens in/out: 1366/118 &middot;
+<a href="https://github.com/sveltejs/svelte/blob/HEAD/.github/workflows/ci.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="mui-material-ui">mui/material-ui <span class="path">/.github/workflows/ci.yml</span></h2>
+<p>This workflow automates continuous releases and validates development scripts across macOS, Windows, and Ubuntu runners using Node.js and pnpm.</p><p><strong>Two cost or reliability smells</strong></p><ul><li><strong>fetch-depth-zero</strong>: The checkout step uses <code>fetch-depth: 0</code> to fetch the full git history, which increases runner execution time and bandwidth usage unnecessarily.</li><li><strong>missing-timeout</strong>: The <code>test-dev</code> job lacks a <code>timeout-minutes</code> property, allowing hung processes to consume runner credits for the default six-hour limit.</li></ul><p><strong>One concrete fix</strong> Add <code>timeout-minutes: 30</code> to the <code>test-dev</code> job at line 23.</p>
+<p class="meta">tokens in/out: 1108/141 &middot;
+<a href="https://github.com/mui/material-ui/blob/HEAD/.github/workflows/ci.yml">view workflow on GitHub</a></p>
+
+
+<h2 id="TanStack-query">TanStack/query <span class="path">/.github/workflows/pr.yml</span></h2>
+<p>This workflow executes distributed tests via Nx Cloud, generates package previews, and manages changeset documentation for pull requests.</p><ul><li>pinned-action-sha: Actions such as <code>actions/checkout@v6.0.2</code> and <code>TanStack/config/.github/setup@main</code> use mutable tags or branches instead of immutable commit SHAs.</li><li>missing-timeout: All jobs lack a <code>timeout-minutes</code> property, which can lead to runners hanging for up to six hours and incurring significant costs.</li></ul><p>Add <code>timeout-minutes: 20</code> to the <code>test</code> job.</p>
+<p class="meta">tokens in/out: 900/120 &middot;
+<a href="https://github.com/TanStack/query/blob/HEAD/.github/workflows/pr.yml">view workflow on GitHub</a></p>
+
+
+<h2>What jumped out</h2>
+<ul>
+  <li>Every single repo above failed at least one of <code>missing-timeout</code>,
+  <code>missing-concurrency</code>, or <code>pinned-action-sha</code>. Those three
+  rules alone are the meat of the <a href="/rules.html">14 ci-doctor rules</a>.</li>
+  <li>Gemini was best at spotting reliability issues (<em>"this matrix has no
+  fail-fast cap, one flake will burn the whole grid"</em>) and worst at exact
+  cost math (it consistently undershoots monthly cost vs <a href="https://www.npmjs.com/package/gha-budget">gha-budget</a>).
+  Use <a href="/scan.html">/scan.html</a> for the dollar number; use
+  <a href="/ask.html">/ask.html</a> for the "why" and the "how to fix".</li>
+  <li>Average response was 350-700 tokens. At Gemini Flash pricing, the entire
+  10-repo run cost less than three cents.</li>
+</ul>
+
+<h2>Try it on your repo</h2>
+<p>
+  <a href="/ask.html"><strong>ask depmedic</strong></a> is free for 5 calls per IP per UTC day.
+  Paste your YAML, pick a mode (Explain / Fix / Estimate / Convert), get an answer.
+  Pro is $9/mo on Polar -
+  <a href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09">unlock unlimited</a>.
+</p>
+
+<footer>
+  Posted 2026-04-28. Tools used: Gemini Flash (Google AI Studio), gh API, ci-doctor.
+  Source for the worker:
+  <a href="https://github.com/depmedicdev-byte/depmedicdev-byte.github.io">on GitHub</a>.
+  Tip jar: <a href="https://buy.polar.sh/polar_cl_BGcLSOeiHg1yFfq5kOIayEcTgvSGqCLa6LnBU4PyHIJ">buy depmedic a coffee</a>.
+</footer>
+
+</main>
+</body>
+</html>

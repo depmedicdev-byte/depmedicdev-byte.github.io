@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ask depmedic - AI for GitHub Actions, free 5/day</title>
+<meta name="description" content="Paste a workflow YAML or a CI failure log. Get an AI explanation, a unified-diff fix, a cost estimate, or a conversion from Travis/CircleCI/Jenkins. Free 5 calls/day. Powered by Gemini, scoped to a single domain by depmedic." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/ask.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Ask depmedic - AI for GitHub Actions" />
+<meta property="og:description" content="Paste workflow YAML or a CI failure log; get an AI explain/fix/estimate/convert. Free 5/day." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/ask.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+  h2 { font-size: 16px; color: #c9d1d9; margin: 28px 0 10px; letter-spacing: 0.03em; text-transform: uppercase; }
+  .modebar { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0 14px; }
+  .modebar button { background: #11151b; color: #c9d1d9; border: 1px solid #1e242c;
+    padding: 8px 14px; border-radius: 8px; font: inherit; cursor: pointer; font-size: 14px; }
+  .modebar button.active { background: #1f3140; border-color: #2d5a7a; color: #e6e8eb; }
+  .modebar button:hover { filter: brightness(1.12); }
+  textarea { width: 100%; padding: 12px 14px; background: #11151b; border: 1px solid #1e242c;
+    border-radius: 8px; color: #e6e8eb; font: 13px/1.5 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace;
+    resize: vertical; }
+  textarea:focus { outline: none; border-color: #6cb6ff; }
+  input[type=text] { width: 100%; padding: 10px 14px; background: #11151b; border: 1px solid #1e242c;
+    border-radius: 8px; color: #e6e8eb; font: 14px ui-sans-serif, system-ui, sans-serif; }
+  input[type=text]:focus { outline: none; border-color: #6cb6ff; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+  button.primary { background: #2d5a7a; color: #e6e8eb; border: 1px solid #3a6e94;
+    padding: 10px 22px; border-radius: 8px; font: inherit; cursor: pointer; font-weight: 500; }
+  button.primary:hover { filter: brightness(1.12); }
+  button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .examples { color: #6f7882; font-size: 13px; }
+  .examples a { color: #6cb6ff; cursor: pointer; }
+  details summary { cursor: pointer; color: #9aa3ad; font-size: 13.5px; padding: 4px 0; }
+  details[open] summary { margin-bottom: 6px; }
+  .result { background: #11151b; border: 1px solid #1e242c; border-radius: 10px;
+    padding: 18px 22px; margin-top: 14px; min-height: 60px; display: none; }
+  .result.show { display: block; }
+  .result h1, .result h2, .result h3 { font-size: 17px; margin: 18px 0 6px; color: #e6e8eb; text-transform: none; letter-spacing: 0; }
+  .result h1 { font-size: 19px; } .result p { color: #c9d1d9; margin: 8px 0; }
+  .result ul, .result ol { color: #c9d1d9; margin: 8px 0; padding-left: 22px; }
+  .result li { margin: 3px 0; }
+  .result code { background: #0b0d10; padding: 1px 5px; border-radius: 4px; font-size: 12.5px; color: #9ce29c; }
+  .result pre { background: #0b0d10; border: 1px solid #1e242c; border-radius: 8px;
+    padding: 12px 14px; overflow: auto; font-size: 12.5px; }
+  .result pre code { background: none; padding: 0; color: #c9d1d9; }
+  .meta { color: #6f7882; font-size: 12.5px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #1e242c; }
+  .err { background: #2a1a1a; border-color: #5a2a2a; color: #ffd2d2; }
+  .quota-pill { display: inline-block; background: #1e242c; color: #9aa3ad;
+    padding: 2px 9px; border-radius: 999px; font-size: 12px; margin-left: 8px; vertical-align: middle; }
+  .upsell { margin-top: 10px; padding: 10px 14px; background: #16202b; border: 1px solid #2d5a7a;
+    border-radius: 8px; font-size: 13.5px; color: #c9d1d9; }
+  .footer { margin-top: 36px; color: #6f7882; font-size: 13px; }
+  .deploy-note { background: #1e1a0e; border: 1px solid #5a4a1f; padding: 10px 14px;
+    border-radius: 8px; color: #ffe9b3; font-size: 13.5px; margin: 12px 0; display: none; }
+  .deploy-note.show { display: block; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav">
+  <a href="/">depmedic</a> &middot;
+  <a href="/scan.html">scan a repo</a> &middot;
+  <a href="/audit.html">audit YAML</a> &middot;
+  <a href="/budget.html">price YAML</a> &middot;
+  <a href="/leaderboard.html">leaderboard</a>
+</p>
+
+<h1>Ask depmedic <span class="quota-pill" id="quotaPill">free 5/day</span></h1>
+<p class="lead">
+  Paste a GitHub Actions workflow YAML <em>or</em> a CI failure log, pick a mode,
+  get an answer in seconds. Powered by Gemini behind a tiny Cloudflare Worker; the
+  worker only accepts requests from this site, so your input never goes anywhere
+  else. Five free calls per day; Pro lifts the limit.
+</p>
+
+<div class="modebar" id="modebar">
+  <button data-mode="explain" class="active">Explain</button>
+  <button data-mode="fix">Fix (diff)</button>
+  <button data-mode="estimate">Estimate cost</button>
+  <button data-mode="convert">Convert from Travis/CircleCI/Jenkins</button>
+</div>
+
+<textarea id="input" rows="14" placeholder="Paste your workflow YAML or your CI failure log here..." spellcheck="false"></textarea>
+
+<p class="examples">
+  No YAML on hand? Try
+  <a id="ex-pin">a workflow with floating action tags</a> &middot;
+  <a id="ex-cache">a workflow with no cache</a> &middot;
+  <a id="ex-mac">a Mac runner where Linux would do</a>.
+</p>
+
+<div class="row">
+  <input type="text" id="question" placeholder="(Optional) Additional question or instruction" />
+</div>
+
+<details>
+  <summary>Have a Pro license? Paste it for unlimited calls.</summary>
+  <div class="row">
+    <input type="text" id="license" placeholder="polar_..." autocomplete="off" />
+  </div>
+</details>
+
+<div class="row">
+  <button class="primary" id="submit">Ask</button>
+  <span id="status" style="color:#9aa3ad;font-size:13.5px;"></span>
+</div>
+
+<div class="deploy-note" id="deployNote">
+  AI endpoint is still being deployed (one-time wrangler login pending). In the
+  meantime, you can run the deterministic 14-rule audit on the same input
+  client-side: <a href="/audit.html">/audit.html</a>, or scan a whole public repo
+  at <a href="/scan.html">/scan.html</a>.
+</div>
+
+<div class="result" id="result"></div>
+
+<p class="footer">
+  Free tier: 5 calls per IP per UTC day. Pro: unlimited, priority queue, runs
+  against a larger model.
+  <a href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09">Get a Pro license ($9/mo)</a>.
+  &middot; <a href="https://buy.polar.sh/polar_cl_BGcLSOeiHg1yFfq5kOIayEcTgvSGqCLa6LnBU4PyHIJ">Tip jar</a>.
+</p>
+
+</main>
+
+<script>
+const ENDPOINT_DEFAULT = 'https://depmedic-ai.depmedicdev.workers.dev/api/ask';
+const params = new URLSearchParams(location.search);
+const ENDPOINT = params.get('endpoint') || ENDPOINT_DEFAULT;
+
+let mode = 'explain';
+const modebar = document.getElementById('modebar');
+modebar.addEventListener('click', e => {
+  if (e.target.tagName !== 'BUTTON') return;
+  for (const b of modebar.querySelectorAll('button')) b.classList.remove('active');
+  e.target.classList.add('active');
+  mode = e.target.dataset.mode;
+});
+
+const samples = {
+  pin: `name: ci\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n      - run: npm ci\n      - run: npm test\n`,
+  cache: `name: ci\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: { node-version: '20' }\n      - run: npm install\n      - run: npm run build\n`,
+  mac: `name: build\non: [push]\njobs:\n  build:\n    runs-on: macos-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: echo "just running tests, no Apple toolchain needed"\n      - run: npm test\n`,
+};
+document.getElementById('ex-pin').addEventListener('click', () => { document.getElementById('input').value = samples.pin; });
+document.getElementById('ex-cache').addEventListener('click', () => { document.getElementById('input').value = samples.cache; });
+document.getElementById('ex-mac').addEventListener('click', () => { document.getElementById('input').value = samples.mac; });
+
+function isLikelyYaml(s) {
+  return /^\s*(name:|on:|jobs:)\s/m.test(s);
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+
+// Tiny markdown-to-HTML for headings, bold, code, lists, links, fenced code.
+function md(s) {
+  s = s.replace(/\r\n/g, '\n');
+  const blocks = s.split(/\n```/);
+  let out = '';
+  for (let i = 0; i < blocks.length; i++) {
+    if (i % 2 === 1) {
+      const nl = blocks[i].indexOf('\n');
+      const code = nl >= 0 ? blocks[i].slice(nl + 1) : blocks[i];
+      out += '<pre><code>' + escapeHtml(code) + '</code></pre>';
+    } else {
+      out += renderInline(blocks[i]);
+    }
+  }
+  return out;
+}
+function renderInline(s) {
+  const lines = s.split('\n');
+  let html = '', listType = null, paraBuf = [];
+  function flushPara() { if (paraBuf.length) { html += '<p>' + inlineFmt(paraBuf.join(' ')) + '</p>'; paraBuf = []; } }
+  function flushList() { if (listType) { html += `</${listType}>`; listType = null; } }
+  for (const raw of lines) {
+    const line = raw.replace(/\s+$/, '');
+    if (!line.trim()) { flushPara(); flushList(); continue; }
+    let m;
+    if ((m = line.match(/^(#{1,6})\s+(.*)$/))) { flushPara(); flushList(); html += `<h${m[1].length}>` + inlineFmt(m[2]) + `</h${m[1].length}>`; continue; }
+    if ((m = line.match(/^[-*+]\s+(.*)$/))) { flushPara(); if (listType !== 'ul') { flushList(); html += '<ul>'; listType = 'ul'; } html += '<li>' + inlineFmt(m[1]) + '</li>'; continue; }
+    if ((m = line.match(/^\d+[.)]\s+(.*)$/))) { flushPara(); if (listType !== 'ol') { flushList(); html += '<ol>'; listType = 'ol'; } html += '<li>' + inlineFmt(m[1]) + '</li>'; continue; }
+    flushList(); paraBuf.push(line);
+  }
+  flushPara(); flushList(); return html;
+}
+function inlineFmt(s) {
+  s = escapeHtml(s);
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  s = s.replace(/\[([^\]]+)\]\((https?:[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return s;
+}
+
+const submit = document.getElementById('submit');
+const result = document.getElementById('result');
+const status = document.getElementById('status');
+const quotaPill = document.getElementById('quotaPill');
+const deployNote = document.getElementById('deployNote');
+
+submit.addEventListener('click', async () => {
+  const text = document.getElementById('input').value.trim();
+  const question = document.getElementById('question').value.trim();
+  const license = document.getElementById('license').value.trim();
+  if (!text) { status.textContent = 'Paste some YAML or a log first.'; return; }
+  submit.disabled = true; status.textContent = 'Thinking...';
+  result.classList.remove('show', 'err');
+  result.innerHTML = '';
+
+  const body = { mode, question };
+  if (isLikelyYaml(text)) body.yaml = text; else body.log = text;
+
+  const headers = { 'Content-Type': 'application/json' };
+  if (license) headers.Authorization = 'Bearer ' + license;
+
+  try {
+    const r = await fetch(ENDPOINT, { method: 'POST', headers, body: JSON.stringify(body) });
+    const data = await r.json().catch(() => ({}));
+    if (r.status === 429) {
+      result.classList.add('show', 'err');
+      result.innerHTML = '<p><strong>Daily free limit reached.</strong> Reset at UTC midnight, or paste a Pro license to continue.</p>' +
+        '<div class="upsell">Pro is $9/mo on Polar - unlimited calls, larger model. <a href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09">Get Pro</a>.</div>';
+      status.textContent = '';
+    } else if (!r.ok) {
+      throw new Error(data.error || ('http ' + r.status));
+    } else {
+      result.classList.add('show');
+      result.innerHTML = md(data.answer || '(no answer)') +
+        '<div class="meta">tokens in/out: ' + (data.tokens && data.tokens.input || 0) + '/' + (data.tokens && data.tokens.output || 0) +
+        ' &middot; quota left today: ' + (data.remaining === -1 ? 'unlimited (Pro)' : data.remaining) +
+        ' &middot; license: ' + (data.license || 'free') + '</div>';
+      if (typeof data.remaining === 'number') {
+        quotaPill.textContent = data.remaining === -1 ? 'Pro' : (data.remaining + ' left today');
+      }
+      status.textContent = '';
+    }
+  } catch (e) {
+    deployNote.classList.add('show');
+    result.classList.add('show', 'err');
+    result.innerHTML = '<p><strong>Could not reach the AI worker.</strong> Either the endpoint is still being deployed, or your network blocked it. Error: <code>' + escapeHtml(String(e.message || e)) + '</code></p>';
+    status.textContent = '';
+  } finally {
+    submit.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
