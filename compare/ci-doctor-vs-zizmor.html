@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ci-doctor vs zizmor - honest comparison - depmedic</title>
+<meta name="description" content="Honest, scope-aware comparison of zizmor and ci-doctor for GitHub Actions security and cost analysis. Where each wins, where they overlap, what to run together." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/compare/ci-doctor-vs-zizmor.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="ci-doctor vs zizmor - honest comparison" />
+<meta property="og:description" content="zizmor is a deep security auditor for GitHub Actions. ci-doctor covers cost and reliability too. Run both." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/compare/ci-doctor-vs-zizmor.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  h2 { font-size: 19px; color: #c9d1d9; margin: 32px 0 8px; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 18px; }
+  .lead code { background: #11151b; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0 26px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .col { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 16px 18px; }
+  .col.win-them { border-left: 3px solid #6cb6ff; }
+  .col.win-us { border-left: 3px solid #9ce29c; }
+  .col h3 { margin: 0 0 8px; font-size: 15px; color: #c9d1d9; }
+  .col ul { padding-left: 20px; margin: 0; color: #b6bec7; font-size: 14.5px; }
+  .col li { margin: 5px 0; }
+  .col code { background: #0b0d10; padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+  .callout { background: #11151b; border-left: 3px solid #2a3744; padding: 14px 18px; border-radius: 4px; color: #b6bec7; margin: 14px 0 22px; }
+  .callout strong { color: #e6e8eb; }
+  pre { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 12px 14px;
+    overflow-x: auto; font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace;
+    color: #c9d1d9; margin: 8px 0 14px; }
+  pre .h { color: #6f7882; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 22px; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.y { color: #9ce29c; } td.n { color: #6f7882; } td.p { color: #ffd9a3; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 28px 0; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; }
+  .cta p { margin: 0 0 8px; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 9px 16px; border-radius: 6px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / compare / ci-doctor vs zizmor</p>
+
+<h1>ci-doctor vs zizmor</h1>
+<p class="lead"><a href="https://woodruffw.github.io/zizmor/" rel="noopener">zizmor</a> is a Rust-based static analyzer focused exclusively on security audits of GitHub Actions workflows. ci-doctor is a broader cost-security-reliability audit. They are complementary - zizmor digs deeper on supply-chain and injection vectors; ci-doctor adds cost and reliability rules zizmor doesn't claim.</p>
+
+<div class="callout">
+  <strong>tl;dr</strong> &nbsp; If your priority is supply-chain security and you only care about that, run zizmor first. If you also want cost waste catches and reliability rules in the same pass, add ci-doctor. Both have SARIF output and both are MIT.
+</div>
+
+<div class="grid">
+  <div class="col win-them">
+    <h3>Where zizmor wins</h3>
+    <ul>
+      <li>Deeper template-injection analysis: traces user-controlled context (<code>github.event.issue.title</code>) into <code>run:</code> blocks across step boundaries.</li>
+      <li>Catches dangerous <code>pull_request_target</code> + checkout patterns with sub-rule precision.</li>
+      <li>Audits self-hosted runner labels, impostor commits, ref confusion, cache poisoning.</li>
+      <li>23+ pure security rules vs ci-doctor's 6 security rules.</li>
+      <li>Native Rust binary, no Node runtime needed.</li>
+      <li>Maintained by William Woodruff, well-known supply-chain security researcher.</li>
+    </ul>
+  </div>
+  <div class="col win-us">
+    <h3>Where ci-doctor wins</h3>
+    <ul>
+      <li>Cost rules zizmor does not have: <code>missing-concurrency</code>, <code>missing-cache</code>, <code>expensive-runner</code>, <code>cron-storm</code>, <code>wide-paths</code>, <code>service-no-healthcheck</code>.</li>
+      <li>Reliability rules zizmor does not have: <code>missing-timeout-minutes</code>, <code>flaky-retries</code>, <code>legacy-actions-version</code>.</li>
+      <li>Auto-fix: <code>npx ci-doctor --fix</code> rewrites four safe categories in place. zizmor is read-only.</li>
+      <li>Pairs with <code>gha-budget</code> for $-denominated cost numbers per workflow.</li>
+      <li>Zero install via <code>npx ci-doctor</code> - no compile, no PATH wiring.</li>
+      <li>Same engine ports to GitLab (<code>gitlab-ci-doctor</code>), Bitbucket (<code>bitbucket-ci-doctor</code>), Azure (<code>azure-pipelines-ci-doctor</code>) - one mental model across CIs.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Rule-set overlap</h2>
+
+<table>
+<thead><tr><th>Concern</th><th>zizmor</th><th>ci-doctor</th></tr></thead>
+<tbody>
+<tr><td>Pin <code>uses:</code> to SHAs</td><td class="y">yes (<code>unpinned-uses</code>)</td><td class="y">yes (<code>no-pin-actions</code>)</td></tr>
+<tr><td>Template injection from user input</td><td class="y">deep (<code>template-injection</code>)</td><td class="p">basic (<code>script-injection-context</code>)</td></tr>
+<tr><td><code>pull_request_target</code> + checkout</td><td class="y">yes (sub-rule precise)</td><td class="y">yes (<code>pull-request-target-checkout</code>)</td></tr>
+<tr><td>Container image not pinned to digest</td><td class="n">no</td><td class="y">yes (<code>docker-no-pin</code>)</td></tr>
+<tr><td>Self-hosted runner label spoofing</td><td class="y">yes</td><td class="n">no</td></tr>
+<tr><td>Cache poisoning vectors</td><td class="y">yes</td><td class="n">no</td></tr>
+<tr><td>Service container missing healthcheck</td><td class="n">no</td><td class="y">yes (<code>service-no-healthcheck</code>)</td></tr>
+<tr><td>Missing <code>concurrency:</code> (cost)</td><td class="n">no</td><td class="y">yes</td></tr>
+<tr><td>Missing <code>timeout-minutes:</code> (cost+reliability)</td><td class="n">no</td><td class="y">yes</td></tr>
+<tr><td>Missing language/dep cache (cost)</td><td class="n">no</td><td class="y">yes</td></tr>
+<tr><td>Expensive runner (cost)</td><td class="n">no</td><td class="y">yes</td></tr>
+<tr><td>Auto-fix mode</td><td class="n">no</td><td class="y">yes (<code>--fix</code>)</td></tr>
+<tr><td>SARIF output</td><td class="y">yes</td><td class="y">yes</td></tr>
+<tr><td>Other CIs (GitLab, Bitbucket, Azure)</td><td class="n">no (GHA-only)</td><td class="y">yes (sister CLIs)</td></tr>
+</tbody>
+</table>
+
+<h2>Run them side by side</h2>
+
+<p>This is what we recommend for any team that takes both security and cost seriously:</p>
+
+<pre><span class="h"># supply-chain depth</span>
+pip install zizmor
+zizmor .
+
+<span class="h"># cost + reliability + lighter security</span>
+npx ci-doctor</pre>
+
+<p>Or in one workflow:</p>
+
+<pre>name: ci-audit
+on: pull_request
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  zizmor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install zizmor
+      - run: zizmor --format sarif . &gt; zizmor.sarif
+      - uses: github/codeql-action/upload-sarif@v3
+        with: { sarif_file: zizmor.sarif, category: zizmor }
+  ci-doctor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: depmedicdev-byte/ci-doctor-action@v1
+</pre>
+
+<p>Both reports land in the same Security tab under different categories.</p>
+
+<div class="cta">
+  <h3>Try ci-doctor in 6 ms</h3>
+  <p>Zero install:</p>
+  <pre style="margin: 6px 0 12px;"><span class="h"># 16-rule audit of every workflow under .github/workflows/</span>
+npx ci-doctor
+
+<span class="h"># auto-apply safe fixes</span>
+npx ci-doctor --fix
+
+<span class="h"># SARIF for GitHub Code Scanning</span>
+npx ci-doctor --sarif &gt; results.sarif</pre>
+  <a class="btn" href="https://www.npmjs.com/package/ci-doctor">View on npm</a>
+  &nbsp;
+  <a class="btn" href="/rules.html">All 16 rules explained</a>
+</div>
+
+<h2>What about woodpecker, mega-linter, super-linter?</h2>
+<p>
+  <a href="https://woodpecker-ci.org/" rel="noopener">Woodpecker</a> is a CI <em>system</em>, not a workflow linter, so it isn't in the same category - it's an alternative <em>to</em> GitHub Actions, not an analyzer of it.
+  <a href="/compare/ci-doctor-vs-mega-linter.html">MegaLinter</a> and <a href="/compare/ci-doctor-vs-super-linter.html">super-linter</a> bundle dozens of language linters and incidentally include actionlint - they are heavyweight wrappers, not focused workflow analyzers. We have separate honest comparisons for each.
+</p>
+
+<h2>About this comparison</h2>
+<p>Written 2026-04-28 by the maintainer of ci-doctor.
+<a href="https://woodruffw.github.io/zizmor/" rel="noopener">zizmor's docs</a> for upstream information.
+If anything here is incorrect or outdated, open an issue at
+<a href="https://github.com/depmedicdev-byte/ci-doctor/issues">depmedicdev-byte/ci-doctor/issues</a>
+and I will fix it. We do not pay for placement and we do not accept paid placement.</p>
+
+<p>Other comparisons:
+<a href="/compare/ci-doctor-vs-actionlint.html">vs actionlint</a> &middot;
+<a href="/compare/ci-doctor-vs-super-linter.html">vs super-linter</a> &middot;
+<a href="/compare/ci-doctor-vs-mega-linter.html">vs MegaLinter</a> &middot;
+<a href="/compare/ci-doctor-vs-octoscan.html">vs octoscan</a>
+</p>
+
+<footer>
+  See also: <a href="/rules.html">all 16 ci-doctor rules</a> &middot;
+  <a href="/benchmarks.html">benchmarks against 20 popular OSS repos</a> &middot;
+  <a href="/audit.html">paste-and-audit your workflow</a>.
+</footer>
+
+</main>
+</body>
+</html>

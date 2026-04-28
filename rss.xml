@@ -15,6 +15,13 @@
   <description>Real findings from 10 well-known gitlab.com pipelines (gitlab-runner, gitaly, gitlab-pages, release-cli, glab, inkscape and more). The rules that fire most often, and the tiny YAML changes that fix them.</description>
 </item>
 <item>
+  <title>depmedic weekly #2 - the GitHub Action ships, Azure Pipelines joins the family</title>
+  <link>https://depmedicdev-byte.github.io/blog/depmedic-weekly-2.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/depmedic-weekly-2.html</guid>
+  <pubDate>Tue, 28 Apr 2026 18:00:00 GMT</pubDate>
+  <description>ci-doctor-action ships to GitHub Marketplace as a composite action with sticky PR comment + SARIF. azure-pipelines-ci-doctor lands as the fourth sister CLI with 8 rules tuned to Azure DevOps quirks. /scan-azure.html in-browser scanner is up. Sitemap hits 69 URLs.</description>
+</item>
+<item>
   <title>depmedic weekly #1 - 16 rules, the GitHub App is live, the pin bar is 59%</title>
   <link>https://depmedicdev-byte.github.io/blog/depmedic-weekly-1.html</link>
   <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/depmedic-weekly-1.html</guid>

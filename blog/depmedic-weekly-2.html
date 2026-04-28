@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>depmedic weekly #2 - the GitHub Action ships, Azure Pipelines joins the family - depmedic</title>
+<meta name="description" content="depmedic weekly issue 2: ci-doctor-action ships to GitHub Marketplace, azure-pipelines-ci-doctor lands as the fourth sister CLI, scan-azure.html in-browser, sitemap hits 69 URLs." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/depmedic-weekly-2.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="depmedic weekly #2" />
+<meta property="og:description" content="ci-doctor-action ships, azure-pipelines-ci-doctor lands, four CIs covered." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/depmedic-weekly-2.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 28px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.meta { color: #6f7882; font-size: 13px; margin: 0 0 24px; }
+h2 { font-size: 20px; margin: 32px 0 8px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+p { margin: 0 0 14px; color: #d6dadf; }
+pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #c9d1d9; }
+pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+ul li { margin: 6px 0; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 16px 20px; margin: 22px 0; }
+.cta h3 { margin: 0 0 6px; font-size: 16px; }
+.cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+.cta .btn { display: inline-block; padding: 9px 16px; border-radius: 8px;
+  background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; margin-top: 10px; font-size: 14px; }
+.cta .btn:hover { text-decoration: none; background: #3a4754; }
+blockquote { border-left: 3px solid #2a3744; padding: 8px 14px; color: #b6bec7; margin: 8px 0 16px; }
+footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+.tag { display: inline-block; padding: 2px 8px; background: #1e242c; color: #b6bec7; border-radius: 4px; font-size: 12px; margin-right: 6px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / <a href="/newsletter.html">weekly</a> / #2</p>
+
+<h1>depmedic weekly #2</h1>
+<p class="meta">2026-04-28 &middot; <span class="tag">issue 2</span> <span class="tag">ci-doctor-action</span> <span class="tag">azure</span></p>
+
+<p>Two big shipments since last week. The free CLI portfolio is now four
+distinct CI systems wide, and there's finally a one-line "drop into your
+workflow" GitHub Action that wraps the whole thing.</p>
+
+<h2>1. ci-doctor-action - the easiest way to put ci-doctor on a PR</h2>
+
+<p>Until now you'd have to write a workflow that ran <code>npx ci-doctor</code>,
+piped output to <code>tee</code>, then either uploaded SARIF or posted a
+comment. That's three steps, and most people never got past step one.</p>
+
+<p><a href="/ci-doctor-action.html">ci-doctor-action</a> is a composite Action
+that does it all in three lines:</p>
+
+<pre>name: ci-doctor
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: depmedicdev-byte/ci-doctor-action@v1
+</pre>
+
+<p>You get:</p>
+<ul>
+  <li>a <strong>sticky markdown PR comment</strong> with the findings table - one comment per PR, updated in place when you push fixes</li>
+  <li><strong>SARIF</strong> uploaded to GitHub Code Scanning so findings show under the Security tab</li>
+  <li>a configurable <code>fail-on</code> threshold (default <code>error</code>; bump to <code>warn</code> for stricter teams)</li>
+  <li>pinnable down to a SHA for fully reproducible audits</li>
+</ul>
+
+<p>Repo: <a href="https://github.com/depmedicdev-byte/ci-doctor-action">depmedicdev-byte/ci-doctor-action</a>. Marketplace listing toggles on shortly. <code>v1</code> mutable tag is already pushed at the same commit so consumers can use <code>@v1</code>.</p>
+
+<h2>2. azure-pipelines-ci-doctor - the fourth sister</h2>
+
+<p>The portfolio now covers GitHub Actions, GitLab CI, Bitbucket Pipelines,
+and as of this week, <strong>Azure Pipelines</strong>.
+<a href="/azure-pipelines-ci-doctor.html">azure-pipelines-ci-doctor</a> ships
+with eight rules tuned to the quirks of Azure DevOps:</p>
+
+<ul>
+  <li><code>expensive-vm-image</code> &mdash; flags <code>macOS-latest</code> (~10x cost) and <code>windows-latest</code> (~2x) when the steps don't actually need them</li>
+  <li><code>container-no-pin</code> &mdash; floating <code>container.image</code> tags</li>
+  <li><code>missing-timeout-in-minutes</code> &mdash; default is <strong>60 min</strong> hosted, <strong>360 min</strong> self-hosted; one hang can burn the whole window</li>
+  <li><code>missing-cache</code> &mdash; npm/pip/maven/gradle/cargo/go/bundler installs without a <code>Cache@2</code> task</li>
+  <li><code>wide-trigger</code> &mdash; unscoped <code>trigger:</code> or <code>pr:</code></li>
+  <li><code>inline-secret-leak</code> &mdash; <code>$(SECRET_NAME)</code> macros that expand inline in build logs (the #1 Azure secret-handling mistake)</li>
+  <li><code>legacy-task-version</code> &mdash; outdated built-in task majors (e.g. <code>UseNode@1</code>)</li>
+  <li><code>unbounded-parallelism</code> &mdash; <code>strategy.parallel &gt;= 5</code> without <code>maxParallel</code></li>
+</ul>
+
+<pre>$ npx azure-pipelines-ci-doctor              # audit current repo
+$ npx azure-pipelines-ci-doctor --markdown   # PR-comment friendly
+$ npx azure-pipelines-ci-doctor --rules      # list all 8</pre>
+
+<p>And the in-browser scanner is up at <a href="/scan-azure.html">/scan-azure.html</a> alongside <a href="/scan.html">scan</a>, <a href="/scan-gitlab.html">scan-gitlab</a>, and <a href="/scan-bitbucket.html">scan-bitbucket</a>.</p>
+
+<h2>3. By the numbers</h2>
+
+<ul>
+  <li><strong>Free CLIs:</strong> 5 (depmedic, ci-doctor, gha-budget, gitlab-ci-doctor, bitbucket-ci-doctor) &rarr; <strong>6</strong> with azure-pipelines-ci-doctor</li>
+  <li><strong>Free GitHub Actions:</strong> 1 (ci-doctor-action)</li>
+  <li><strong>Browser scanners:</strong> 4 (GitHub, GitLab, Bitbucket, Azure)</li>
+  <li><strong>Sitemap:</strong> 65 &rarr; <strong>69 URLs</strong></li>
+  <li><strong>Lines of audit logic across all four engines:</strong> &lt; 5,000 (most of it shared)</li>
+</ul>
+
+<h2>4. Pattern of the week: pin the action, pin its CLI</h2>
+
+<p>If you adopt <code>ci-doctor-action</code> for production gating, pin both
+the action <em>and</em> the CLI it runs:</p>
+
+<pre>- uses: depmedicdev-byte/ci-doctor-action@1bd71901bbe5b1630ceea73d27597364c9af683 # v1.0.0
+  with:
+    ci-doctor-version: '0.5.0'</pre>
+
+<p>That way, an upstream npm publish can't change what your gate flags or
+silently bump severity. Reproducible audits are the only audits worth
+gating on.</p>
+
+<h2>5. Coming next</h2>
+
+<ul>
+  <li>A long-form comparison: depmedic vs actionlint vs zizmor vs woodpecker. Honest about who wins where.</li>
+  <li>Azure Pipelines benchmark: scan the top 30 OSS repos that publish their <code>azure-pipelines.yml</code>, publish a Pin Bar equivalent for Azure.</li>
+  <li>The CircleCI sister CLI (<code>circleci-ci-doctor</code>) - drafting now.</li>
+</ul>
+
+<div class="cta">
+  <h3>Get the next issue Sunday</h3>
+  <p>Eight subscribers, no spam, no ads (unless you sponsor &mdash; <a href="/sponsor.html">$75 / issue</a>).</p>
+  <a class="btn" href="/newsletter.html">Subscribe</a>
+  <a class="btn" href="/blog/depmedic-weekly-1.html">Read issue #1</a>
+</div>
+
+<footer>
+  <a href="/">depmedic</a> &middot; <a href="/newsletter.html">/newsletter</a> &middot; <a href="/">browse all tools</a>
+</footer>
+
+</main>
+</body>
+</html>
