@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ci-doctor rules - all 14 GitHub Actions audits explained - depmedic</title>
+<meta name="description" content="Reference for all 14 ci-doctor rules: what each catches, why it matters, a bad example, and the fix. Use it to audit any .github/workflows/*.yml file." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/rules.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="ci-doctor rules - all 14 GitHub Actions audits explained" />
+<meta property="og:description" content="Every ci-doctor rule with a bad example, a good example, and the why." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/rules.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 24px; }
+  h2 { font-size: 22px; color: #e6e8eb; margin: 36px 0 6px; letter-spacing: -0.005em; }
+  h2 code { background: transparent; padding: 0; color: #9ce29c; font-weight: 500; font-size: 0.85em; }
+  .sev { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; vertical-align: middle; margin-left: 8px; }
+  .sev.error { background: #4b1d1d; color: #ffb6b6; }
+  .sev.warn { background: #4b3a1d; color: #ffd57a; }
+  .sev.info { background: #1d3b4b; color: #9ec9ff; }
+  .desc { color: #b6bec7; margin: 6px 0 14px; }
+  pre { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 12px 14px;
+    overflow-x: auto; font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace;
+    color: #c9d1d9; margin: 8px 0 14px; }
+  pre.bad { border-left: 3px solid #ff6b6b; }
+  pre.good { border-left: 3px solid #9ce29c; }
+  .why { color: #b6bec7; font-size: 14px; padding: 10px 14px; background: #11151b;
+    border-left: 3px solid #2a3744; border-radius: 4px; margin: 8px 0 14px; }
+  .toc { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 16px 20px; margin: 18px 0 30px; }
+  .toc h3 { margin: 0 0 8px; font-size: 14px; color: #9aa3ad; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 500; }
+  .toc ol { margin: 0; padding-left: 20px; column-count: 2; column-gap: 24px; font-size: 14px; }
+  .toc li { margin: 3px 0; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 36px 0 16px; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; }
+  .cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+  code { background: #11151b; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / rules</p>
+
+<h1>ci-doctor rules reference</h1>
+<p class="lead">
+  Every rule that <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a> runs
+  against your <code>.github/workflows/*.yml</code> files. 14 rules, three severities,
+  three categories (cost, security, reliability). The four marked with
+  <code>--fix</code> can be auto-applied. Run <code>npx ci-doctor</code> in any repo
+  to see your own findings.
+</p>
+
+<div class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#missing-concurrency">missing-concurrency</a></li>
+    <li><a href="#missing-timeout">missing-timeout</a></li>
+    <li><a href="#missing-cache">missing-cache</a></li>
+    <li><a href="#missing-permissions">missing-permissions</a></li>
+    <li><a href="#pinned-action-sha">pinned-action-sha</a></li>
+    <li><a href="#deprecated-action">deprecated-action</a></li>
+    <li><a href="#expensive-runner">expensive-runner</a></li>
+    <li><a href="#matrix-overcommit">matrix-overcommit</a></li>
+    <li><a href="#stale-cache-key">stale-cache-key</a></li>
+    <li><a href="#fail-fast-true">fail-fast-true</a></li>
+    <li><a href="#always-run-on-pr">always-run-on-pr</a></li>
+    <li><a href="#artifact-no-retention">artifact-no-retention</a></li>
+    <li><a href="#fetch-depth-zero">fetch-depth-zero</a></li>
+    <li><a href="#wide-trigger">wide-trigger</a></li>
+  </ol>
+</div>
+
+<h2 id="missing-concurrency"><code>missing-concurrency</code><span class="sev warn">warn</span></h2>
+<p class="desc">Workflows triggered on <code>push</code> or <code>pull_request</code> should declare a <code>concurrency</code> group with <code>cancel-in-progress: true</code>. <span style="color:#9ce29c;">Auto-fixable with <code>--fix</code>.</span></p>
+<pre class="bad">on:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: [...]</pre>
+<pre class="good">on:
+  pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: [...]</pre>
+<div class="why"><strong>Why:</strong> Without this, every push to a PR branch starts a new run while the previous one keeps running to completion. On a busy PR with 5 force-pushes you pay for 5 full CI runs instead of 1.</div>
+
+<h2 id="missing-timeout"><code>missing-timeout</code><span class="sev warn">warn</span></h2>
+<p class="desc">Jobs without <code>timeout-minutes</code> default to 360 (6 hours). A runaway job burns minutes you pay for. <span style="color:#9ce29c;">Auto-fixable with <code>--fix</code>.</span></p>
+<pre class="bad">jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm test</pre>
+<pre class="good">jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm test</pre>
+<div class="why"><strong>Why:</strong> A test that hangs because of a flaky network call or an infinite loop will eat all 360 minutes. On private repos that's billable. Set this to 2-3x your expected job time.</div>
+
+<h2 id="missing-cache"><code>missing-cache</code><span class="sev warn">warn</span></h2>
+<p class="desc"><code>setup-*</code> actions without a <code>cache</code> option re-download dependencies on every run.</p>
+<pre class="bad">- uses: actions/setup-node@v4
+  with:
+    node-version: 20</pre>
+<pre class="good">- uses: actions/setup-node@v4
+  with:
+    node-version: 20
+    cache: npm</pre>
+<div class="why"><strong>Why:</strong> Re-downloading <code>node_modules</code> from npm registry costs ~30-60 seconds per job. With <code>cache: npm</code> the second run pulls from GitHub's cache in ~3 seconds. <code>setup-python</code>, <code>setup-go</code>, <code>setup-java</code> all support the same flag.</div>
+
+<h2 id="missing-permissions"><code>missing-permissions</code><span class="sev warn">warn</span></h2>
+<p class="desc">Without a top-level <code>permissions</code> block, <code>GITHUB_TOKEN</code> gets the repository default - usually <code>write-all</code>.</p>
+<pre class="bad">on:
+  pull_request:
+jobs:
+  test: ...</pre>
+<pre class="good">on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test: ...</pre>
+<div class="why"><strong>Why:</strong> A compromised dependency in any third-party action can use <code>GITHUB_TOKEN</code> to push to <code>main</code>, create releases, or delete branches if permissions are wide. Set the workflow's permissions to the minimum it needs.</div>
+
+<h2 id="pinned-action-sha"><code>pinned-action-sha</code><span class="sev warn">warn</span></h2>
+<p class="desc">Third-party actions should be pinned to a full commit SHA, not a tag or branch. <span style="color:#9ce29c;">Use <code>npx pin-actions</code> to bulk-fix.</span></p>
+<pre class="bad">- uses: tj-actions/changed-files@v45</pre>
+<pre class="good">- uses: tj-actions/changed-files@a284dc1814e3fc6e30d9f170b3d17d61b4a7156c # v45.0.4</pre>
+<div class="why"><strong>Why:</strong> The Jan 2024 <code>tj-actions/changed-files</code> compromise replaced the published tag with a payload that exfiltrated secrets. Repos that pinned to a SHA were unaffected. <code>actions/*</code> from GitHub itself is the only safe-to-tag namespace.</div>
+
+<h2 id="deprecated-action"><code>deprecated-action</code><span class="sev error">error</span></h2>
+<p class="desc">Pinned to a deprecated major version (Node12/16, set-output, save-state, <code>::set-env</code>). GitHub will start failing these.</p>
+<pre class="bad">- uses: actions/checkout@v2
+- run: echo "::set-output name=x::y"</pre>
+<pre class="good">- uses: actions/checkout@v4
+- run: echo "x=y" &gt;&gt; "$GITHUB_OUTPUT"</pre>
+<div class="why"><strong>Why:</strong> GitHub has already removed <code>::set-output</code> from new runners and Node12-based actions stopped working in 2023. Node16 sunset is in progress. Pinning to a v2 of an official action is a ticking time bomb.</div>
+
+<h2 id="expensive-runner"><code>expensive-runner</code><span class="sev warn">warn</span></h2>
+<p class="desc"><code>macos-*</code> runners cost 10x and <code>windows-*</code> costs 2x ubuntu. Use them only when platform-specific commands are present.</p>
+<pre class="bad">jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm test</pre>
+<pre class="good">jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm test</pre>
+<div class="why"><strong>Why:</strong> A 10-minute job on macos-latest costs $0.80, the same job on ubuntu-latest costs $0.08. If your code does not call <code>xcodebuild</code>, <code>codesign</code>, or use macOS-only APIs, drop the macOS runner.</div>
+
+<h2 id="matrix-overcommit"><code>matrix-overcommit</code><span class="sev warn">warn</span></h2>
+<p class="desc">A matrix that crosses many OS or version axes can multiply CI minutes silently.</p>
+<pre class="bad">strategy:
+  matrix:
+    os: [ubuntu-latest, windows-latest, macos-latest]
+    node: [16, 18, 20, 22]
+    pg:   [13, 14, 15, 16]</pre>
+<pre class="good">strategy:
+  matrix:
+    os: [ubuntu-latest]
+    node: [18, 20, 22]
+  include:
+    - os: macos-latest
+      node: 20
+    - os: windows-latest
+      node: 20</pre>
+<div class="why"><strong>Why:</strong> 3 x 4 x 4 = 48 jobs per run. Most teams want full coverage on Linux + LTS, plus a smoke test on the others. Use <code>include:</code> to add specific cells without multiplying everything.</div>
+
+<h2 id="stale-cache-key"><code>stale-cache-key</code><span class="sev warn">warn</span></h2>
+<p class="desc"><code>actions/cache</code> step has a key that does not include a lockfile hash, so the cache never invalidates when deps change.</p>
+<pre class="bad">- uses: actions/cache@v4
+  with:
+    path: ~/.npm
+    key: npm-cache</pre>
+<pre class="good">- uses: actions/cache@v4
+  with:
+    path: ~/.npm
+    key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+    restore-keys: |
+      npm-${{ runner.os }}-</pre>
+<div class="why"><strong>Why:</strong> A static cache key means GitHub keeps serving the same cache forever, even after you update <code>package-lock.json</code>. Builds get stale dependencies and you are paying for cache storage that never gets refreshed.</div>
+
+<h2 id="fail-fast-true"><code>fail-fast-true</code><span class="sev info">info</span></h2>
+<p class="desc">Matrix job uses default <code>fail-fast: true</code>, which kills sibling jobs on first failure - wasting their already-billed minutes and hiding parallel failures.</p>
+<pre class="bad">strategy:
+  matrix:
+    node: [18, 20, 22]
+  # fail-fast defaults to true</pre>
+<pre class="good">strategy:
+  fail-fast: false
+  matrix:
+    node: [18, 20, 22]</pre>
+<div class="why"><strong>Why:</strong> When the Node 18 job fails 30 seconds in, the 20 and 22 jobs get cancelled mid-run. You still pay for those 30 seconds and you lose the signal of "does it also fail on 20 and 22?". For matrices &lt; 6 cells, <code>fail-fast: false</code> is almost always the right call.</div>
+
+<h2 id="always-run-on-pr"><code>always-run-on-pr</code><span class="sev info">info</span></h2>
+<p class="desc">A heavy step (docker build, e2e, codeql) runs on every PR with no <code>paths:</code> filter, no label gate, and no condition. It runs whether or not the PR touched anything that matters to it.</p>
+<pre class="bad">on:
+  pull_request:
+jobs:
+  e2e:
+    steps:
+      - uses: cypress-io/github-action@v6
+        with:
+          spec: cypress/e2e/**/*.cy.ts</pre>
+<pre class="good">on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'cypress/**'
+      - 'package*.json'
+jobs:
+  e2e:
+    steps:
+      - uses: cypress-io/github-action@v6
+        with:
+          spec: cypress/e2e/**/*.cy.ts</pre>
+<div class="why"><strong>Why:</strong> A docs-only PR should not trigger a 12-minute E2E run. Use <code>paths:</code> filters or <code>if: contains(github.event.pull_request.labels.*.name, 'needs-e2e')</code> to gate expensive steps.</div>
+
+<h2 id="artifact-no-retention"><code>artifact-no-retention</code><span class="sev info">info</span></h2>
+<p class="desc"><code>upload-artifact</code> without <code>retention-days</code> uses the repo default (often 90 days) and bills storage for the full window.</p>
+<pre class="bad">- uses: actions/upload-artifact@v4
+  with:
+    name: build
+    path: dist/</pre>
+<pre class="good">- uses: actions/upload-artifact@v4
+  with:
+    name: build
+    path: dist/
+    retention-days: 7</pre>
+<div class="why"><strong>Why:</strong> CI build artifacts are almost always disposable - you rebuild them on every PR. Holding 90 days of every build at $0.25/GB-month adds up fast on private repos.</div>
+
+<h2 id="fetch-depth-zero"><code>fetch-depth-zero</code><span class="sev info">info</span></h2>
+<p class="desc"><code>actions/checkout</code> with <code>fetch-depth: 0</code> pulls full history. Slow and rarely needed.</p>
+<pre class="bad">- uses: actions/checkout@v4
+  with:
+    fetch-depth: 0</pre>
+<pre class="good">- uses: actions/checkout@v4
+  # default fetch-depth: 1 (just HEAD)</pre>
+<div class="why"><strong>Why:</strong> <code>fetch-depth: 0</code> downloads every commit ever. Tools like <code>semantic-release</code>, <code>git diff main...HEAD</code>, and changelog generators need it - but most jobs do not. If you only need the diff against the base branch, use <code>fetch-depth: 2</code> or fetch the base ref selectively.</div>
+
+<h2 id="wide-trigger"><code>wide-trigger</code><span class="sev info">info</span></h2>
+<p class="desc"><code>on: push</code> without a <code>branches</code> filter runs the workflow on every branch push.</p>
+<pre class="bad">on:
+  push:</pre>
+<pre class="good">on:
+  push:
+    branches: [main]
+  pull_request:</pre>
+<div class="why"><strong>Why:</strong> Without a <code>branches</code> filter, every feature branch push runs the workflow once on push and again on the PR open. Restrict <code>push</code> to your protected branch and let <code>pull_request</code> handle the rest.</div>
+
+<div class="cta">
+  <h3>Run all 14 rules in 6 ms</h3>
+  <p><code>npx ci-doctor</code> in any repo. Zero config. Or pipe to GitHub Code Scanning with <code>npx ci-doctor --sarif &gt; results.sarif</code>.</p>
+  <a class="btn" href="https://www.npmjs.com/package/ci-doctor">View on npm</a>
+  &nbsp;
+  <a class="btn" href="https://github.com/depmedicdev/ci-doctor">Source on GitHub</a>
+</div>
+
+<div class="cta">
+  <h3>Want the full pattern set?</h3>
+  <p>The <strong>Cut Your CI Bill</strong> cookbook is 30 paste-ready GitHub Actions patterns plus 5 hardened workflow templates - the long-form versions of these rules with edge cases handled. $19, one-time, MIT-licensed templates.</p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Get the cookbook</a>
+  &nbsp;
+  <a class="btn" href="/patterns.html">Free preview (5 patterns)</a>
+</div>
+
+<p style="margin-top:24px;">
+  See also: <a href="/audit.html">paste-and-audit your YAML</a> &middot;
+  <a href="/budget.html">cost estimator</a> &middot;
+  <a href="/benchmarks.html">how 20 popular OSS repos score</a> &middot;
+  <a href="/examples/">per-repo deep dives</a>
+</p>
+
+<footer>
+  Last updated 2026-04-27.
+  Rules and source: <a href="https://github.com/depmedicdev/ci-doctor/tree/main/src/rules">src/rules</a>.
+  Methodology and benchmark dataset: <a href="/blog/oss-ci-cost-benchmarks.html">/blog/oss-ci-cost-benchmarks.html</a>.
+</footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>tannerlinsley/react-query GitHub Actions cost and CI smells - depmedic</title>
+<meta name="description" content="What ci-doctor and gha-budget find in tannerlinsley/react-query's public GitHub Actions workflows. 5 workflows scanned, 20 findings, modeled monthly cost at 30 runs/day." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/examples/tannerlinsley-react-query.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="tannerlinsley/react-query CI cost and smells" />
+<meta property="og:description" content="5 workflows, 20 ci-doctor findings, modeled $403.2/mo at 30 runs/day. Public methodology." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/examples/tannerlinsley-react-query.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; }
+  .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #6f7882; font-size: 14px; margin: 0 0 22px; }
+  h2 { font-size: 19px; color: #c9d1d9; margin: 32px 0 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; }
+  th, td { border-bottom: 1px solid #1e242c; padding: 8px 10px; text-align: left; font-size: 14px; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  td code { font-size: 12.5px; }
+  .stats { display: flex; gap: 18px; flex-wrap: wrap; margin: 18px 0 26px; }
+  .stat { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 18px; min-width: 140px; }
+  .stat .label { color: #9aa3ad; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .val { font-size: 22px; font-weight: 600; margin-top: 2px; }
+  .stat .val.green { color: #9ce29c; }
+  .stat .val.amber { color: #ffb86c; }
+  .stat .val.blue { color: #6cb6ff; }
+  pre, code { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; }
+  p code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  .finding { font-size: 13px; color: #b6bec7; margin: 4px 0; }
+  .finding .sev-error { color: #ff6b6b; }
+  .finding .sev-warn { color: #ffb86c; }
+  .finding .sev-info { color: #6cb6ff; }
+  .promo { margin: 28px 0; padding: 18px 22px; border-radius: 10px; background: linear-gradient(135deg, #11151b, #0e1b1c); border: 1px solid #2a4732; }
+  .promo h3 { margin-top: 0; color: #e6e8eb; font-size: 17px; }
+  .btn { display: inline-block; padding: 9px 16px; border-radius: 6px; margin-top: 6px; background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .btn:hover { text-decoration: none; background: #3a4754; }
+  .price { color: #9aa3ad; font-size: 13px; margin-left: 8px; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+  .disclaimer { background: #11151b; border-left: 3px solid #2a3744; padding: 10px 16px; color: #9aa3ad; font-size: 13px; margin: 14px 0 22px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / <a href="/benchmarks.html">benchmarks</a> / tannerlinsley/react-query</p>
+
+<h1>tannerlinsley/react-query - GitHub Actions cost &amp; CI smells</h1>
+<p class="meta">From the depmedic OSS benchmark dataset. Source: public workflow YAML in <a href="https://github.com/tannerlinsley/react-query/tree/main/.github/workflows" rel="noopener">tannerlinsley/react-query/.github/workflows</a>.</p>
+
+<div class="stats">
+  <div class="stat"><div class="label">Workflows</div><div class="val">5</div></div>
+  <div class="stat"><div class="label">Per-run $ (modeled)</div><div class="val blue">$0.45</div></div>
+  <div class="stat"><div class="label">Monthly $ @ 30/day</div><div class="val green">$403.2</div></div>
+  <div class="stat"><div class="label">ci-doctor findings</div><div class="val amber">20</div></div>
+</div>
+
+<div class="disclaimer">
+  Numbers are <strong>modeled</strong>: 8 minutes per priced job, 30 runs per day per workflow, 30-day month, GitHub-hosted runner rate sheet. tannerlinsley/react-query's real run frequency is unknown to me. Smells, however, are real - they come from parsing the actual YAML.
+</div>
+
+<h2>Findings by rule</h2>
+<table>
+  <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
+  <tbody>
+    <tr><td><code>pinned-action-sha</code></td><td class="right">9</td></tr>
+    <tr><td><code>missing-timeout</code></td><td class="right">7</td></tr>
+    <tr><td><code>missing-concurrency</code></td><td class="right">2</td></tr>
+    <tr><td><code>fetch-depth-zero</code></td><td class="right">2</td></tr>
+  </tbody>
+</table>
+
+<h2>Per-workflow breakdown</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Workflow</th>
+      <th class="right">Jobs</th>
+      <th class="right">Per-run $</th>
+      <th class="right">Findings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/TanStack/query/blob/main/.github/workflows/pr.yml" rel="noopener"><code>pr.yml</code></a></td>
+      <td class="right">4</td>
+      <td class="right">$0.26</td>
+      <td class="right">11</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/TanStack/query/blob/main/.github/workflows/autofix.yml" rel="noopener"><code>autofix.yml</code></a></td>
+      <td class="right">1</td>
+      <td class="right">$0.06</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/TanStack/query/blob/main/.github/workflows/labeler.yml" rel="noopener"><code>labeler.yml</code></a></td>
+      <td class="right">1</td>
+      <td class="right">$0.06</td>
+      <td class="right">2</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/TanStack/query/blob/main/.github/workflows/release.yml" rel="noopener"><code>release.yml</code></a></td>
+      <td class="right">1</td>
+      <td class="right">$0.06</td>
+      <td class="right">4</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/TanStack/query/blob/main/.github/workflows/detect-agent.yml" rel="noopener"><code>detect-agent.yml</code></a></td>
+      <td class="right">2</td>
+      <td class="right">$0.00</td>
+      <td class="right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Examples of what ci-doctor reports</h2>
+<div class="finding">
+    <code>pr.yml</code> &middot;
+    <span class="sev-warn">WARN</span>
+    <code>pinned-action-sha</code><br />
+    <span style="color:#9aa3ad;">TanStack/config/.github/setup@main is not SHA-pinned. Mutable refs let upstream replace the action under you. Pin to a 40-char commit SHA and add a comment with the version. Run `npx pin-actions` to do all pins automatically.</span>
+  </div>
+<div class="finding">
+    <code>pr.yml</code> &middot;
+    <span class="sev-warn">WARN</span>
+    <code>pinned-action-sha</code><br />
+    <span style="color:#9aa3ad;">nrwl/nx-set-shas@v4.4.0 is not SHA-pinned. Mutable refs let upstream replace the action under you. Pin to a 40-char commit SHA and add a comment with the version. Run `npx pin-actions` to do all pins automatically.</span>
+  </div>
+<div class="finding">
+    <code>pr.yml</code> &middot;
+    <span class="sev-warn">WARN</span>
+    <code>pinned-action-sha</code><br />
+    <span style="color:#9aa3ad;">TanStack/config/.github/setup@main is not SHA-pinned. Mutable refs let upstream replace the action under you. Pin to a 40-char commit SHA and add a comment with the version. Run `npx pin-actions` to do all pins automatically.</span>
+  </div>
+<div class="finding">
+    <code>autofix.yml</code> &middot;
+    <span class="sev-warn">WARN</span>
+    <code>pinned-action-sha</code><br />
+    <span style="color:#9aa3ad;">TanStack/config/.github/setup@main is not SHA-pinned. Mutable refs let upstream replace the action under you. Pin to a 40-char commit SHA and add a comment with the version. Run `npx pin-actions` to do all pins automatically.</span>
+  </div>
+<div class="finding">
+    <code>autofix.yml</code> &middot;
+    <span class="sev-warn">WARN</span>
+    <code>missing-timeout</code><br />
+    <span style="color:#9aa3ad;">Job &#39;autofix&#39; has no timeout-minutes. Default is 360 (6h). A hung job can drain your CI budget.</span>
+  </div>
+<div class="finding">
+    <code>labeler.yml</code> &middot;
+    <span class="sev-warn">WARN</span>
+    <code>missing-concurrency</code><br />
+    <span style="color:#9aa3ad;">No top-level concurrency block. New pushes will not cancel in-flight runs of stale commits, doubling spend on rapid-push branches.</span>
+  </div>
+
+<h2>What you can do</h2>
+<p>If you maintain tannerlinsley/react-query or a similar workflow shape, three patterns probably move the most dollars per minute of work:</p>
+<ol>
+  <li>Add a <code>concurrency:</code> block with <code>cancel-in-progress: true</code> on every PR-triggered workflow.</li>
+  <li>Set <code>timeout-minutes</code> on every job (default is 6 hours).</li>
+  <li>Make sure every <code>setup-*</code> action sets <code>cache: &lt;ecosystem&gt;</code>.</li>
+</ol>
+
+<p>Free CLIs that automate the audit and the pin step:</p>
+<pre><code>npx ci-doctor             # 14-rule audit
+npx ci-doctor --fix       # auto-apply the four safe fixes
+npx pin-actions           # pin every uses: ref to a SHA
+npx gha-budget            # estimate per-run $ + monthly</code></pre>
+
+<div class="promo">
+  <h3>Want the full pattern set?</h3>
+  <p>The <strong>Cut Your CI Bill</strong> cookbook is 30 paste-ready GitHub Actions patterns plus 5 hardened workflow templates. <span class="price">$19, one-time, MIT-licensed templates.</span></p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD" rel="noopener">Get the cookbook</a>
+</div>
+
+<h2>About this dataset</h2>
+<p>
+  Methodology and code: <a href="/blog/oss-ci-cost-benchmarks.html">/blog/oss-ci-cost-benchmarks.html</a>.
+  Compare with all 20 repos: <a href="/benchmarks.html">/benchmarks.html</a>.
+  This page is regenerated when the benchmark dataset is refreshed.
+</p>
+
+<footer>
+  Last refreshed 2026-04-28.
+  Not affiliated with tannerlinsley.
+  <a href="/">Back to depmedic.</a>
+</footer>
+
+</main>
+</body>
+</html>

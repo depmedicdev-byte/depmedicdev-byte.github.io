@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OSS GitHub Actions cost examples - depmedic</title>
+<meta name="description" content="Per-repo deep dives on the GitHub Actions cost and CI smells of 20 popular open-source projects: React, Next.js, Deno, TypeScript, Vite, and more." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/examples/" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="OSS GitHub Actions cost examples" />
+<meta property="og:description" content="Per-repo deep dives on the CI cost and smells of 20 popular OSS projects." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/examples/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .meta { color: #6f7882; font-size: 14px; margin: 0 0 22px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border-bottom: 1px solid #1e242c; padding: 10px 12px; text-align: left; font-size: 14.5px; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  td code { font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+<p class="nav"><a href="/">depmedic</a> / examples</p>
+<h1>OSS GitHub Actions cost examples</h1>
+<p class="meta">Per-repo deep dives. 20 popular projects. Numbers modeled at 30 runs/day, 8 min/job.</p>
+<table>
+  <thead><tr><th>Repo</th><th class="right">Workflows</th><th class="right">Findings</th><th class="right">Modeled $/mo</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><a href="/examples/denoland-deno.html">denoland/deno</a></td>
+      <td class="right">11</td>
+      <td class="right">99</td>
+      <td class="right">$16,473.6</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/facebook-react.html">facebook/react</a></td>
+      <td class="right">24</td>
+      <td class="right">91</td>
+      <td class="right">$14,572.8</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/vercel-next.js.html">vercel/next.js</a></td>
+      <td class="right">37</td>
+      <td class="right">166</td>
+      <td class="right">$3,686.4</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/axios-axios.html">axios/axios</a></td>
+      <td class="right">8</td>
+      <td class="right">40</td>
+      <td class="right">$2,361.6</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/storybookjs-storybook.html">storybookjs/storybook</a></td>
+      <td class="right">15</td>
+      <td class="right">67</td>
+      <td class="right">$1,843.2</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/microsoft-typescript.html">microsoft/TypeScript</a></td>
+      <td class="right">18</td>
+      <td class="right">79</td>
+      <td class="right">$1,728</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/eslint-eslint.html">eslint/eslint</a></td>
+      <td class="right">8</td>
+      <td class="right">46</td>
+      <td class="right">$1,382.4</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/remix-run-react-router.html">remix-run/react-router</a></td>
+      <td class="right">19</td>
+      <td class="right">52</td>
+      <td class="right">$1,094.4</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/webpack-webpack.html">webpack/webpack</a></td>
+      <td class="right">9</td>
+      <td class="right">25</td>
+      <td class="right">$1,036.8</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/vitejs-vite.html">vitejs/vite</a></td>
+      <td class="right">12</td>
+      <td class="right">26</td>
+      <td class="right">$979.2</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/prettier-prettier.html">prettier/prettier</a></td>
+      <td class="right">17</td>
+      <td class="right">32</td>
+      <td class="right">$921.6</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/jestjs-jest.html">jestjs/jest</a></td>
+      <td class="right">9</td>
+      <td class="right">20</td>
+      <td class="right">$806.4</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/parcel-bundler-parcel.html">parcel-bundler/parcel</a></td>
+      <td class="right">6</td>
+      <td class="right">52</td>
+      <td class="right">$806.4</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/vuejs-core.html">vuejs/core</a></td>
+      <td class="right">9</td>
+      <td class="right">39</td>
+      <td class="right">$748.8</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/sveltejs-svelte.html">sveltejs/svelte</a></td>
+      <td class="right">5</td>
+      <td class="right">14</td>
+      <td class="right">$633.6</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/rollup-rollup.html">rollup/rollup</a></td>
+      <td class="right">4</td>
+      <td class="right">25</td>
+      <td class="right">$576</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/preactjs-preact.html">preactjs/preact</a></td>
+      <td class="right">8</td>
+      <td class="right">30</td>
+      <td class="right">$576</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/tannerlinsley-react-query.html">tannerlinsley/react-query</a></td>
+      <td class="right">5</td>
+      <td class="right">20</td>
+      <td class="right">$403.2</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/expressjs-express.html">expressjs/express</a></td>
+      <td class="right">4</td>
+      <td class="right">18</td>
+      <td class="right">$345.6</td>
+    </tr>
+    <tr>
+      <td><a href="/examples/sindresorhus-got.html">sindresorhus/got</a></td>
+      <td class="right">1</td>
+      <td class="right">3</td>
+      <td class="right">$0</td>
+    </tr>
+  </tbody>
+</table>
+<p style="margin-top:22px;">Methodology: <a href="/blog/oss-ci-cost-benchmarks.html">/blog/oss-ci-cost-benchmarks.html</a>. Aggregate dataset: <a href="/benchmarks.html">/benchmarks.html</a>.</p>
+</main>
+</body>
+</html>
