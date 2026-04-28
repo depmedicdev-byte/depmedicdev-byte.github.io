@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>depmedic weekly #1 - 16 rules, the GitHub App is live, the pin bar is 59% - depmedic</title>
+<meta name="description" content="depmedic weekly issue 1: ci-doctor 0.5.0 ships docker-no-pin and service-no-healthcheck, the depmedic-bot GitHub App lands, VS Code/Cursor extension hits 0.2.0, and the pin bar across 20 OSS repos comes in at 59%." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/depmedic-weekly-1.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="depmedic weekly #1" />
+<meta property="og:description" content="ci-doctor 0.5.0, depmedic-bot lands, the 59% pin bar." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/depmedic-weekly-1.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 28px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.meta { color: #6f7882; font-size: 13px; margin: 0 0 24px; }
+h2 { font-size: 20px; margin: 32px 0 8px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+p { margin: 0 0 14px; color: #d6dadf; }
+pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #c9d1d9; }
+pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+ul li { margin: 6px 0; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 16px 20px; margin: 22px 0; }
+.cta h3 { margin: 0 0 6px; font-size: 16px; }
+.cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+.cta .btn { display: inline-block; padding: 9px 16px; border-radius: 8px;
+  background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; margin-top: 10px; font-size: 14px; }
+.cta .btn:hover { text-decoration: none; background: #3a4754; }
+blockquote { border-left: 3px solid #2a3744; padding: 8px 14px; color: #b6bec7; margin: 8px 0 16px; }
+footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+.tag { display: inline-block; padding: 2px 8px; background: #1e242c; color: #b6bec7; border-radius: 4px; font-size: 12px; margin-right: 6px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / <a href="/newsletter.html">weekly</a> / #1</p>
+
+<h1>depmedic weekly #1</h1>
+<p class="meta">2026-04-28 - depmedic - the inaugural issue</p>
+
+<p>
+  Hi. This is the first issue of <em>depmedic weekly</em>, a short
+  letter for people who run GitHub Actions or npm at work and would like
+  it to be cheaper, less leaky, and less lit on fire by surprise. Every
+  Monday-ish: what shipped, one numbers piece, one pattern.
+</p>
+
+<p>
+  If you got this and don't want it, the unsubscribe link is at the
+  bottom and it works.
+</p>
+
+<h2>This week: ci-doctor 0.5.0</h2>
+
+<p>
+  Two new rules. Now 16 total. <code>npx ci-doctor</code> is unchanged.
+</p>
+
+<ul>
+  <li>
+    <code>docker-no-pin</code> <span class="tag">warn</span> <span class="tag">security</span>
+    - flags <code>container.image</code>, <code>services.&lt;name&gt;.image</code>,
+    and <code>uses: docker://&lt;ref&gt;</code> when the image
+    reference uses a floating tag (<code>:latest</code>,
+    <code>:22</code>, <code>:alpine</code>...). A silent registry
+    update can change your build out from under you. Pin to
+    <code>image@sha256:&lt;digest&gt;</code>.
+  </li>
+  <li>
+    <code>service-no-healthcheck</code> <span class="tag">warn</span> <span class="tag">cost</span>
+    - flags well-known service containers (postgres, mysql, redis,
+    mongo, kafka, elasticsearch, opensearch, minio, memcached) declared
+    without an <code>--health-cmd</code> in the <code>options:</code> block.
+    Test steps that race the service start fail intermittently and burn
+    re-run minutes that you actually pay for.
+  </li>
+</ul>
+
+<p>
+  Same release, no breaking changes:
+  <a href="https://github.com/depmedicdev-byte/ci-doctor/releases/tag/v0.5.0">v0.5.0 release notes</a> &middot;
+  <a href="https://www.npmjs.com/package/ci-doctor">npm</a> &middot;
+  <a href="/rules.html#docker-no-pin"><code>docker-no-pin</code> docs</a> &middot;
+  <a href="/rules.html#service-no-healthcheck"><code>service-no-healthcheck</code> docs</a>.
+</p>
+
+<h2>Numbers: the OSS pin bar is 59%</h2>
+
+<p>
+  Across 20 famous OSS repos and 1,461 <code>uses:</code> references,
+  <strong>59.4%</strong> are pinned to a 40-character SHA. The rest
+  float on a tag (<code>@v4</code>, <code>@main</code>) and inherit
+  whatever the maintainer most recently tagged that way. Six repos hit
+  100% (deno, axios, express, jest, webpack, rollup). Four repos hit
+  0% (parcel, preact, react-router, got).
+</p>
+
+<p>
+  Full per-repo board, methodology, and the data:
+  <a href="/blog/pin-bar-2026.html"><strong>The Pin Bar 2026</strong></a>.
+</p>
+
+<h2>Pattern of the week: pin + Dependabot</h2>
+
+<p>
+  Pinning to SHAs without enabling Dependabot for
+  <code>github-actions</code> is a maintenance tax. You'll fall behind on
+  security patches because tag updates won't reach you. Pair the two:
+</p>
+
+<pre># .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions-minor:
+        update-types: ["minor", "patch"]</pre>
+
+<p>
+  Dependabot will open one PR per week with all the action SHA bumps
+  (grouped) and a summary of what changed. Add <code>npx ci-doctor</code>
+  to a workflow on those PRs and you'll see if any of the bumps removed
+  hardening you previously had.
+</p>
+
+<p>
+  Then run <code>npx pin-actions</code> once to convert any remaining
+  unpinned <code>@v4</code> tags to SHAs, and add
+  <code>npx pin-actions --check</code> to your CI gate to keep new
+  unpinned references from sneaking in.
+</p>
+
+<h2>Also shipped this week</h2>
+
+<ul>
+  <li>
+    <strong><a href="/depmedic-bot.html">depmedic-bot</a></strong> -
+    GitHub App. Auto-comments on every PR that touches a workflow file.
+    Free for public repos. The Cloudflare Worker, the
+    HMAC-verified webhook handler, the bundled audit engine, and the
+    landing page are all live; the App registration is the only
+    user-side step left.
+  </li>
+  <li>
+    <strong><a href="/vscode.html">depmedic for VS Code &amp; Cursor</a></strong>
+    - inline lint as native Diagnostics. <code>.vsix</code> is at
+    <a href="/downloads/depmedic-vscode-0.2.0.vsix">v0.2.0</a>.
+    Marketplace + Open VSX listings come this week.
+  </li>
+  <li>
+    <strong><a href="/health/">107 npm package health pages</a></strong>
+    + <strong><a href="/health/badge/_README.md">107 embeddable badges</a></strong>
+    + <strong><a href="/vendor-dossier.html">$9 Vendor Dossier PDF</a></strong>
+    + <strong><a href="/org-monitor.html">$19/mo Org Dep Health Monitor</a></strong>.
+  </li>
+  <li>
+    <strong><a href="https://www.npmjs.com/package/gitlab-ci-doctor">gitlab-ci-doctor 0.1.0</a></strong>
+    on npm + an <a href="/scan-gitlab.html">in-browser scanner</a>
+    for GitLab pipelines.
+  </li>
+</ul>
+
+<div class="cta">
+  <h3>Try one of the free tools</h3>
+  <p>If you're reading this you probably have a workflow file lying
+  around. Two minutes, no install:</p>
+  <a class="btn" href="/scan.html">Scan any public repo</a>
+  <a class="btn" href="/audit.html">Paste a single workflow</a>
+  <a class="btn" href="/leaderboard.html">See the OSS leaderboard</a>
+</div>
+
+<h2>Recommended links (no affiliate)</h2>
+
+<ul>
+  <li>
+    <a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions">
+    GitHub's own security-hardening guide</a> - the canonical reference
+    for why pinning, minimum permissions, and OIDC matter.
+  </li>
+  <li>
+    <a href="https://github.com/rhysd/actionlint">actionlint</a> -
+    syntax + expression linter for workflows. Complementary to ci-doctor;
+    catches different things.
+  </li>
+  <li>
+    <a href="https://www.stepsecurity.io/blog/harden-runner-detection-tj-actions-changed-files-action-is-compromised">
+    The tj-actions/changed-files compromise writeup</a> - the
+    motivating example for why
+    <a href="/rules.html#pinned-action-sha"><code>pinned-action-sha</code></a> exists.
+  </li>
+</ul>
+
+<h2>Reply</h2>
+
+<p>
+  This is issue 1. If you have a thing you'd like benchmarked
+  ("how often do popular repos do X?"), or a workflow pattern that you
+  see everywhere and would like a teardown of, hit reply. Or email
+  <a href="mailto:depmedicdev@gmail.com">depmedicdev@gmail.com</a>.
+</p>
+
+<p>
+  See you next week.
+</p>
+
+<footer>
+  Sent to <code>{{email}}</code>. <a href="{{unsubscribe_url}}">Unsubscribe</a>.
+  <br />
+  This page is the public archive of the issue. Subscribe at
+  <a href="/newsletter.html">/newsletter.html</a>.
+</footer>
+
+</main>
+</body>
+</html>

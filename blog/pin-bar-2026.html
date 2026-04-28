@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Pin Bar 2026: 20 famous OSS repos, 1461 uses:, 59% pinned to a SHA - depmedic</title>
+<meta name="description" content="Real data: across 20 popular OSS repos and 1461 'uses:' references, 59.4% are pinned to a 40-char SHA. The rest float on a tag. Six repos hit 100%. Four repos hit 0%. Here's the per-repo board and what to do about it." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/pin-bar-2026.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="The Pin Bar 2026: 20 OSS repos, 1461 uses:, 59% pinned" />
+<meta property="og:description" content="Real data on how often popular OSS pins their actions to SHAs - and which repos are at 0% and 100%." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/pin-bar-2026.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 30px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.meta { color: #6f7882; font-size: 13px; margin: 0 0 24px; }
+h2 { font-size: 22px; margin: 36px 0 8px; }
+h3 { font-size: 17px; margin: 22px 0 6px; }
+p { margin: 0 0 14px; color: #d6dadf; }
+pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #c9d1d9; }
+pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #1e242c; }
+th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+td.right, th.right { text-align: right; }
+.bar { display: inline-block; height: 10px; background: #2a3744; border-radius: 4px; vertical-align: middle; min-width: 4px; margin-right: 6px; }
+.bar.green { background: #2da44e; } .bar.amber { background: #d29922; } .bar.red { background: #d24f4f; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 20px 22px; margin: 26px 0; }
+.cta h3 { margin: 0 0 6px; font-size: 17px; }
+.cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+.cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+  background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; margin-top: 10px; }
+.cta .btn:hover { text-decoration: none; background: #3a4754; }
+blockquote { border-left: 3px solid #2a3744; padding: 8px 14px; color: #b6bec7; margin: 8px 0 16px; }
+footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / blog / pin bar 2026</p>
+
+<h1>The Pin Bar 2026</h1>
+<p class="meta">2026-04-28 - depmedic - 20 popular OSS repos, 1,461 <code>uses:</code> references, what % pin to a SHA</p>
+
+<p>
+  Pinning third-party Actions to a 40-character commit SHA - <code>uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332</code>
+  rather than <code>uses: actions/checkout@v4</code> - is the
+  <a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions">single
+  most-recommended hardening</a> in GitHub's own security guide.
+  It's why <a href="/rules.html#pinned-action-sha"><code>pinned-action-sha</code></a>
+  is a warn-level rule in <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a>.
+</p>
+
+<p>
+  How often is the recommendation actually followed in famous OSS?
+  We have the data lying around because the
+  <a href="/leaderboard.html">depmedic leaderboard</a> already pulls every
+  workflow from 20 popular repos every day. Here are the numbers from
+  the latest snapshot.
+</p>
+
+<h2>Headline numbers</h2>
+<table>
+  <tr><th>Repos audited</th><td>20</td></tr>
+  <tr><th>Total <code>uses:</code> references</th><td>1,461</td></tr>
+  <tr><th>Pinned to a 40-char SHA</th><td><strong>868 (59.4%)</strong></td></tr>
+  <tr><th>Pinned to a tag (<code>@v4</code>, <code>@main</code>...)</th><td>592 (40.5%)</td></tr>
+  <tr><th>Unpinned (no <code>@</code>)</th><td>1</td></tr>
+  <tr><th>Repos at 100%</th><td>6 (deno, axios, express, jest, webpack, rollup)</td></tr>
+  <tr><th>Repos at 0%</th><td>4 (parcel, preact, react-router, got)</td></tr>
+</table>
+
+<h2>Per-repo board</h2>
+
+<table>
+  <thead><tr><th>Repo</th><th class="right">Pin %</th><th class="right">Pinned</th><th class="right">Total</th><th>Bar</th></tr></thead>
+  <tbody>
+    <tr><td>denoland/deno</td><td class="right">100%</td><td class="right">368</td><td class="right">368</td><td><span class="bar green" style="width:200px"></span></td></tr>
+    <tr><td>axios/axios</td><td class="right">100%</td><td class="right">60</td><td class="right">60</td><td><span class="bar green" style="width:200px"></span></td></tr>
+    <tr><td>expressjs/express</td><td class="right">100%</td><td class="right">22</td><td class="right">22</td><td><span class="bar green" style="width:200px"></span></td></tr>
+    <tr><td>jestjs/jest</td><td class="right">100%</td><td class="right">35</td><td class="right">35</td><td><span class="bar green" style="width:200px"></span></td></tr>
+    <tr><td>webpack/webpack</td><td class="right">100%</td><td class="right">48</td><td class="right">48</td><td><span class="bar green" style="width:200px"></span></td></tr>
+    <tr><td>rollup/rollup</td><td class="right">100%</td><td class="right">50</td><td class="right">50</td><td><span class="bar green" style="width:200px"></span></td></tr>
+    <tr><td>prettier/prettier</td><td class="right">98.0%</td><td class="right">50</td><td class="right">51</td><td><span class="bar green" style="width:196px"></span></td></tr>
+    <tr><td>microsoft/TypeScript</td><td class="right">93.2%</td><td class="right">68</td><td class="right">73</td><td><span class="bar green" style="width:186px"></span></td></tr>
+    <tr><td>storybookjs/storybook</td><td class="right">74.3%</td><td class="right">81</td><td class="right">109</td><td><span class="bar amber" style="width:149px"></span></td></tr>
+    <tr><td>vitejs/vite</td><td class="right">37.5%</td><td class="right">15</td><td class="right">40</td><td><span class="bar amber" style="width:75px"></span></td></tr>
+    <tr><td>vercel/next.js</td><td class="right">34.0%</td><td class="right">48</td><td class="right">141</td><td><span class="bar amber" style="width:68px"></span></td></tr>
+    <tr><td>sveltejs/svelte</td><td class="right">23.1%</td><td class="right">9</td><td class="right">39</td><td><span class="bar red" style="width:46px"></span></td></tr>
+    <tr><td>tannerlinsley/react-query</td><td class="right">20.0%</td><td class="right">4</td><td class="right">20</td><td><span class="bar red" style="width:40px"></span></td></tr>
+    <tr><td>eslint/eslint</td><td class="right">6.5%</td><td class="right">3</td><td class="right">46</td><td><span class="bar red" style="width:13px"></span></td></tr>
+    <tr><td>facebook/react</td><td class="right">3.3%</td><td class="right">6</td><td class="right">180</td><td><span class="bar red" style="width:7px"></span></td></tr>
+    <tr><td>vuejs/core</td><td class="right">2.4%</td><td class="right">1</td><td class="right">42</td><td><span class="bar red" style="width:5px"></span></td></tr>
+    <tr><td>sindresorhus/got</td><td class="right">0%</td><td class="right">0</td><td class="right">2</td><td><span class="bar red" style="width:4px"></span></td></tr>
+    <tr><td>remix-run/react-router</td><td class="right">0%</td><td class="right">0</td><td class="right">52</td><td><span class="bar red" style="width:4px"></span></td></tr>
+    <tr><td>preactjs/preact</td><td class="right">0%</td><td class="right">0</td><td class="right">32</td><td><span class="bar red" style="width:4px"></span></td></tr>
+    <tr><td>parcel-bundler/parcel</td><td class="right">0%</td><td class="right">0</td><td class="right">51</td><td><span class="bar red" style="width:4px"></span></td></tr>
+  </tbody>
+</table>
+
+<h2>What the headline number means</h2>
+<p>
+  <strong>59.4%</strong> sounds bad on its face. It's not as bad as it
+  looks - and it's not as good either.
+</p>
+<ul>
+  <li><strong>It is partly Dependabot.</strong> Dependabot can rewrite
+    <code>actions/checkout@v4</code> to a SHA via the
+    <code>package-ecosystem: github-actions</code> entry. Repos that
+    enable it score higher essentially for free. Deno, axios, jest,
+    rollup, webpack, prettier, and TypeScript all have Dependabot on
+    GitHub Actions.</li>
+  <li><strong>It is partly culture.</strong> The dropoff between
+    "always pinned" and "never pinned" is sharper than the dropoff
+    between "all rules followed" and "no rules followed" you'd expect
+    from a normal distribution. Repos either care about this or they
+    don't.</li>
+  <li><strong>The unpinned half is concentrated.</strong> 4 repos
+    (parcel, preact, react-router, got) account for 137 fully unpinned
+    references on their own. Fix those four and the OSS pin bar
+    averages 70%+.</li>
+</ul>
+
+<h2>Why pinning matters in 30 seconds</h2>
+<p>
+  When you write <code>uses: tj-actions/changed-files@v45</code>,
+  GitHub resolves <code>v45</code> to whatever commit the maintainer
+  most recently tagged that way. Tags are mutable. If the maintainer's
+  npm or PyPI account is compromised - or, say,
+  <a href="https://www.stepsecurity.io/blog/harden-runner-detection-tj-actions-changed-files-action-is-compromised">
+  if the action gets a malicious push</a> the way <code>tj-actions/changed-files</code>
+  did in March 2025 - your CI immediately runs the attacker's payload.
+  Workflows then have access to <code>GITHUB_TOKEN</code>, your
+  <code>secrets.*</code>, and on private runners often the runner's
+  filesystem and AWS metadata service.
+</p>
+<p>
+  Pinning to a 40-character SHA fixes this. The SHA is content-addressed,
+  so it cannot be moved out from under you. You give up automatic
+  updates - which is why
+  <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates">
+  configuring Dependabot for <code>github-actions</code></a> is the
+  paired move.
+</p>
+
+<h2>Fix it in your repo, in two minutes</h2>
+<pre>$ npx pin-actions             # rewrites every uses: in .github/workflows to a SHA
+$ npx pin-actions --check     # CI gate: exit 1 if anything is unpinned
+</pre>
+<p>
+  <a href="https://www.npmjs.com/package/pin-actions"><code>pin-actions</code></a>
+  is the depmedic-built free CLI that does the rewrite, comment-preserving,
+  in place. Pair it with the <code>github-actions</code> entry in
+  <code>.github/dependabot.yml</code> and you get the security of pinning
+  without the maintenance tax.
+</p>
+
+<h2>Verify on your own repo</h2>
+<p>
+  No install needed:
+</p>
+<ul>
+  <li><a href="/scan.html">Scan any public GitHub repo</a> in the
+    browser. Look for the <code>pinned-action-sha</code> finding count.</li>
+  <li><a href="/audit.html">Or paste a single workflow</a> for an
+    instant report.</li>
+  <li><a href="/depmedic-bot.html">Install depmedic-bot</a> and the
+    finding shows up as a PR comment automatically.</li>
+</ul>
+
+<div class="cta">
+  <h3>Score your own repo on the leaderboard</h3>
+  <p>The depmedic leaderboard ranks 20+ OSS repos by CI hygiene every
+  day. Want yours added? Email <a href="mailto:depmedicdev@gmail.com">depmedicdev@gmail.com</a>
+  with the repo URL. No charge.</p>
+  <a class="btn" href="/leaderboard.html">See the leaderboard</a>
+  <a class="btn" href="/rules.html#pinned-action-sha">Read the rule</a>
+</div>
+
+<h3>Methodology</h3>
+<p>
+  Source: the depmedic leaderboard's nightly scrape of all
+  <code>.github/workflows/*.yml</code> files in 20 popular OSS repos.
+  Counting rule: every <code>uses: owner/repo@ref</code> reference
+  (including reusable workflows). <code>./</code> local references and
+  <code>docker://</code> step refs are excluded. A reference counts as
+  "pinned" iff <code>ref</code> matches <code>/^[0-9a-f]{40}$/i</code>.
+  No deduplication: a single action used in five jobs counts five times.
+</p>
+<p>
+  Snapshot date: 2026-04-28. Data + script:
+  <a href="https://github.com/depmedicdev-byte/workit/blob/main/tools/analyze-pin-bar.mjs">tools/analyze-pin-bar.mjs</a>.
+</p>
+
+<footer>
+Posted 2026-04-28. Want next quarter's update? <a href="/newsletter.html">Subscribe to depmedic weekly</a>.
+</footer>
+
+</main>
+</body>
+</html>

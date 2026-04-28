@@ -187,6 +187,18 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/blog/pin-bar-2026.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://depmedicdev-byte.github.io/blog/depmedic-weekly-1.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>

@@ -6,20 +6,27 @@
 <description>Notes on cheaper, faster, less leaky CI. Free CLIs and a small set of paid playbooks.</description>
 <language>en-us</language>
 <atom:link href="https://depmedicdev-byte.github.io/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Tue, 28 Apr 2026 04:30:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Apr 2026 09:10:18 GMT</lastBuildDate>
 <item>
-  <title>I let Gemini explain 10 famous OSS GitHub Actions workflows. Here's what it found.</title>
-  <link>https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html</link>
-  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html</guid>
-  <pubDate>Tue, 28 Apr 2026 04:30:00 GMT</pubDate>
-  <description>Next.js, Vite, React, Vue, Deno, Prettier, Nuxt, Svelte, MUI, TanStack Query - their primary CI workflows fed to Gemini Flash via the new /ask.html. Raw output, 30+ smells, total spend $0.002.</description>
+  <title>I audited 10 famous GitLab projects with gitlab-ci-doctor. Here are the patterns.</title>
+  <link>https://depmedicdev-byte.github.io/blog/audit-10-gitlab-projects.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/audit-10-gitlab-projects.html</guid>
+  <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+  <description>Real findings from 10 well-known gitlab.com pipelines (gitlab-runner, gitaly, gitlab-pages, release-cli, glab, inkscape and more). The rules that fire most often, and the tiny YAML changes that fix them.</description>
 </item>
 <item>
-  <title>I scanned 5 popular OSS repos in 5 minutes. Here's what I found.</title>
-  <link>https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html</link>
-  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html</guid>
-  <pubDate>Tue, 28 Apr 2026 02:55:00 GMT</pubDate>
-  <description>vite, prettier, axios, svelte, eslint - 50 workflows scanned via the new in-browser /scan.html tool. 158 ci-doctor findings, ~$6,279/mo modeled CI spend, the same three smells in all five repos.</description>
+  <title>depmedic weekly #1 - 16 rules, the GitHub App is live, the pin bar is 59%</title>
+  <link>https://depmedicdev-byte.github.io/blog/depmedic-weekly-1.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/depmedic-weekly-1.html</guid>
+  <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+  <description>depmedic weekly issue 1: ci-doctor 0.5.0 ships docker-no-pin and service-no-healthcheck, the depmedic-bot GitHub App lands, VS Code/Cursor extension hits 0.2.0, and the pin bar across 20 OSS repos comes in at 59%.</description>
+</item>
+<item>
+  <title>The Pin Bar 2026: 20 famous OSS repos, 1461 uses:, 59% pinned to a SHA</title>
+  <link>https://depmedicdev-byte.github.io/blog/pin-bar-2026.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/pin-bar-2026.html</guid>
+  <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+  <description>Real data: across 20 popular OSS repos and 1461 'uses:' references, 59.4% are pinned to a 40-char SHA. The rest float on a tag. Six repos hit 100%. Four repos hit 0%. Here's the per-repo board and what to do about it.</description>
 </item>
 <item>
   <title>A .cursorrules that actually fits your stack.</title>
@@ -27,6 +34,20 @@
   <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/cursorrules-starter.html</guid>
   <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
   <description>cursor-rules-init scaffolds a starter .cursorrules / AGENTS.md / system prompt for Cursor, Claude Code, and ChatGPT. Stack-aware: TypeScript, React, Next.js, Python, Node servers.</description>
+</item>
+<item>
+  <title>I shipped 3 new ci-doctor rules. Then I ran them on my own repos.</title>
+  <link>https://depmedicdev-byte.github.io/blog/dogfood-found-real-bug.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/dogfood-found-real-bug.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>ci-doctor 0.4.0 added stale-cache-key, fail-fast-true, and always-run-on-pr. The first thing I did was run them on my own 6 repos. fail-fast-true caught real waste. The CLI also crashed on a single-file argument. 0.4.1 fixes both.</description>
+</item>
+<item>
+  <title>I let Gemini explain 10 famous OSS GitHub Actions workflows. Here's what it found.</title>
+  <link>https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/gemini-explains-10-workflows.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>Next.js, Vite, React, Vue, Deno, Prettier, Nuxt, Svelte, MUI, TanStack Query - their primary CI workflows, explained by Gemini Flash. ~30 cost and reliability smells across 10 repos. No editorial picking; raw output, cited line by line.</description>
 </item>
 <item>
   <title>How much does my GitHub Actions workflow cost?</title>
@@ -62,6 +83,13 @@
   <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/pin-github-actions-to-sha.html</guid>
   <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
   <description>Tags are mutable. Branches are mutable. SHAs are not. pin-actions rewrites every uses: line in your workflows to a full commit SHA. Supply chain hardening in one command.</description>
+</item>
+<item>
+  <title>I scanned 5 popular OSS repos in 5 minutes. Here's what I found.</title>
+  <link>https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html</guid>
+  <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
+  <description>vitejs/vite, prettier/prettier, axios/axios, sveltejs/svelte, eslint/eslint - all popular, all maintained by good engineers. All five have the same three workflow-level smells. Real numbers, no judgement.</description>
 </item>
 <item>
   <title>Stop linting your GitHub Actions. Fix them.</title>

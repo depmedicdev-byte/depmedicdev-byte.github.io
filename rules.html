@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ci-doctor rules - all 14 GitHub Actions audits explained - depmedic</title>
-<meta name="description" content="Reference for all 14 ci-doctor rules: what each catches, why it matters, a bad example, and the fix. Use it to audit any .github/workflows/*.yml file." />
+<title>ci-doctor rules - all 16 GitHub Actions audits explained - depmedic</title>
+<meta name="description" content="Reference for all 16 ci-doctor rules: what each catches, why it matters, a bad example, and the fix. Use it to audit any .github/workflows/*.yml file." />
 <link rel="canonical" href="https://depmedicdev-byte.github.io/rules.html" />
 <meta name="theme-color" content="#0b0d10" />
 <meta property="og:title" content="ci-doctor rules - all 14 GitHub Actions audits explained" />
@@ -66,7 +66,7 @@
 <h1>ci-doctor rules reference</h1>
 <p class="lead">
   Every rule that <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a> runs
-  against your <code>.github/workflows/*.yml</code> files. 14 rules, three severities,
+  against your <code>.github/workflows/*.yml</code> files. 16 rules, three severities,
   three categories (cost, security, reliability). The four marked with
   <code>--fix</code> can be auto-applied. Run <code>npx ci-doctor</code> in any repo
   to see your own findings.
@@ -273,6 +273,41 @@ jobs:
   # default fetch-depth: 1 (just HEAD)</pre>
 <div class="why"><strong>Why:</strong> <code>fetch-depth: 0</code> downloads every commit ever. Tools like <code>semantic-release</code>, <code>git diff main...HEAD</code>, and changelog generators need it - but most jobs do not. If you only need the diff against the base branch, use <code>fetch-depth: 2</code> or fetch the base ref selectively.</div>
 
+<h2 id="docker-no-pin"><code>docker-no-pin</code><span class="sev warn">warn</span></h2>
+<p class="desc">Container/service images and <code>uses: docker://</code> step refs use a floating tag instead of a digest.</p>
+<pre class="bad">jobs:
+  build:
+    container:
+      image: node:22
+    services:
+      db:
+        image: postgres:16</pre>
+<pre class="good">jobs:
+  build:
+    container:
+      image: node@sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+    services:
+      db:
+        image: postgres@sha256:abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890</pre>
+<div class="why"><strong>Why:</strong> A floating tag like <code>:latest</code>, <code>:22</code>, <code>:alpine</code> can change under you when the registry updates the image. Yesterday's green build, today's red build, and you didn't change anything. Pin to a digest (<code>image@sha256:&lt;hash&gt;</code>) for genuinely reproducible CI. Update the digest with the same review you give any dependency bump.</div>
+
+<h2 id="service-no-healthcheck"><code>service-no-healthcheck</code><span class="sev warn">warn</span></h2>
+<p class="desc">Well-known service containers (postgres, mysql, redis, mongo, kafka...) declared without an <code>--health-cmd</code> in <code>options:</code>.</p>
+<pre class="bad">services:
+  db:
+    image: postgres@sha256:&lt;digest&gt;
+    ports: ['5432:5432']</pre>
+<pre class="good">services:
+  db:
+    image: postgres@sha256:&lt;digest&gt;
+    ports: ['5432:5432']
+    options: &gt;-
+      --health-cmd "pg_isready -U postgres"
+      --health-interval 5s
+      --health-timeout 5s
+      --health-retries 5</pre>
+<div class="why"><strong>Why:</strong> Without a healthcheck, your test step starts before the database accepts connections. The result is intermittent "connection refused" failures that pass on re-run - which costs you money every time. Adding a healthcheck makes GitHub Actions wait until the service is actually ready.</div>
+
 <h2 id="wide-trigger"><code>wide-trigger</code><span class="sev info">info</span></h2>
 <p class="desc"><code>on: push</code> without a <code>branches</code> filter runs the workflow on every branch push.</p>
 <pre class="bad">on:
@@ -284,7 +319,7 @@ jobs:
 <div class="why"><strong>Why:</strong> Without a <code>branches</code> filter, every feature branch push runs the workflow once on push and again on the PR open. Restrict <code>push</code> to your protected branch and let <code>pull_request</code> handle the rest.</div>
 
 <div class="cta">
-  <h3>Run all 14 rules in 6 ms</h3>
+  <h3>Run all 16 rules in 6 ms</h3>
   <p><code>npx ci-doctor</code> in any repo. Zero config. Or pipe to GitHub Code Scanning with <code>npx ci-doctor --sarif &gt; results.sarif</code>.</p>
   <a class="btn" href="https://www.npmjs.com/package/ci-doctor">View on npm</a>
   &nbsp;
