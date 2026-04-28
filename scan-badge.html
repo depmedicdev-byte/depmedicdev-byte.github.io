@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Embed a ci-doctor badge in your README - depmedic</title>
+<meta name="description" content="Free shields.io-style ci-doctor badge for your repo's README. Refreshes daily. Shows current ci-doctor findings count - errors, warnings, info. Embeddable in any markdown README." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/scan-badge.html" />
+<meta property="og:title" content="Embed a ci-doctor badge in your README" />
+<meta property="og:description" content="Free, daily-refreshed CI hygiene badge for your repo. Embed in 1 line." />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+:root{color-scheme:dark;}*{box-sizing:border-box;}body{background:#0b0d10;color:#e6e8eb;font:16px/1.55 ui-sans-serif,system-ui,sans-serif;margin:0;padding:40px 20px 80px;}
+main{max-width:880px;margin:0 auto;}
+a{color:#6cb6ff;text-decoration:none;}a:hover{text-decoration:underline;}
+.nav{color:#9aa3ad;font-size:14px;margin:0 0 16px;}.nav a{color:#9aa3ad;}
+h1{font-size:30px;letter-spacing:-0.01em;margin:0 0 8px;}
+.lead{color:#b6bec7;max-width:64ch;margin:0 0 22px;font-size:17px;}
+h2{font-size:20px;margin:30px 0 8px;color:#c9d1d9;}
+.row{display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid #1e242c;}
+img.b{height:20px;}
+code{background:#11151b;border:1px solid #1e242c;padding:1px 6px;border-radius:4px;font:13px ui-monospace,monospace;color:#c9d1d9;}
+pre{background:#11151b;border:1px solid #1e242c;padding:14px;border-radius:6px;font:13px ui-monospace,monospace;overflow-x:auto;color:#c9d1d9;}
+input[type=text]{background:#11151b;border:1px solid #2a3744;border-radius:6px;padding:10px 12px;color:#e6e8eb;font:14px ui-monospace,monospace;width:100%;}
+input[type=text]:focus{outline:none;border-color:#6cb6ff;}
+button{background:#2d5a7a;color:#fff;border:1px solid #3a6e94;padding:10px 18px;border-radius:6px;font:inherit;cursor:pointer;font-weight:600;margin-top:8px;}
+button:hover{filter:brightness(1.12);}
+.cta{background:linear-gradient(135deg,#16202b,#1e2a38);border:1px solid #3a4754;border-radius:10px;padding:18px 22px;margin:24px 0;}
+.preview{background:#11151b;border:1px dashed #2a3744;border-radius:6px;padding:14px;margin-top:8px;}
+footer{margin-top:44px;color:#6f7882;font-size:13px;border-top:1px solid #1e242c;padding-top:14px;}
+</style>
+</head>
+<body>
+<main>
+<p class="nav"><a href="/">depmedic</a> &middot; <a href="/leaderboard.html">leaderboard</a> &middot; <a href="/badge/">all badges</a></p>
+<h1>Embed a ci-doctor badge in your README</h1>
+<p class="lead">Free shields.io-style badge that shows your repo's current ci-doctor findings count. Refreshes daily from the depmedic CI hygiene leaderboard. One line in your README.</p>
+
+<h2>Examples</h2>
+<div class="row"><img class="b" src="/badge/redis/ioredis.svg" alt="ioredis"/> <span><a href="https://github.com/redis/ioredis">redis/ioredis</a></span></div>
+<div class="row"><img class="b" src="/badge/vercel/next.js.svg" alt="next.js"/> <span><a href="https://github.com/vercel/next.js">vercel/next.js</a></span></div>
+<div class="row"><img class="b" src="/badge/mantinedev/mantine.svg" alt="mantine"/> <span><a href="https://github.com/mantinedev/mantine">mantinedev/mantine</a></span></div>
+<div class="row"><img class="b" src="/badge/_unknown.svg" alt="unknown"/> <span>not yet on the leaderboard</span></div>
+
+<h2>Get the snippet for your repo</h2>
+<input id="repo" type="text" placeholder="owner/repo (example: vercel/next.js)" />
+<button id="go">Generate snippets</button>
+<div id="out" style="display:none;margin-top:16px;">
+  <h2>Markdown</h2>
+  <pre id="md"></pre>
+  <h2>HTML</h2>
+  <pre id="html"></pre>
+  <h2>Preview</h2>
+  <div class="preview"><img id="prev" class="b" alt="preview"/></div>
+</div>
+
+<div class="cta">
+  <strong>Want your repo scanned daily?</strong>
+  <p style="margin:8px 0 0;color:#b6bec7;">Open an issue on <a href="https://github.com/depmedicdev-byte/depmedicdev-byte.github.io/issues">the site repo</a> with the <code>owner/repo</code>. We add it to the leaderboard and the badge starts working within 24h. Your repo gets scanned, the SVG starts existing.</p>
+</div>
+
+<h2>Browse all 107 currently-scanned repos</h2>
+<p><a href="/badge/">/badge/index.html</a></p>
+
+<h2>Why does this exist?</h2>
+<p>Two reasons. First, public CI hygiene is a <em>thing teams care about</em> &mdash; you can already get coverage badges, codecov badges, security badges from Snyk, supply-chain badges from Scorecard. None of them tell you whether your CI is bleeding cash on missing concurrency, missing caches, expensive runners, or floating tags. <code>ci-doctor</code> does. So now that score is embeddable too.</p>
+<p>Second, dogfooding. The 107 repos on the leaderboard are real, the findings are reproducible (<code>npx ci-doctor</code> against any of them produces the same numbers), and embedding the badge keeps the data honest because anyone can click through and verify.</p>
+
+<footer>Powered by <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a> &middot; daily refresh via <a href="https://github.com/depmedicdev-byte/depmedicdev-byte.github.io/blob/main/.github/workflows/daily-leaderboard.yml">daily-leaderboard.yml</a> cron.</footer>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+function render(repo) {
+  const url = 'https://depmedicdev-byte.github.io/badge/' + repo + '.svg';
+  const link = 'https://depmedicdev-byte.github.io/leaderboard.html';
+  const md = '[![ci-doctor](' + url + ')](' + link + ')';
+  const html = '<a href="' + link + '"><img src="' + url + '" alt="ci-doctor"/></a>';
+  $('md').textContent = md;
+  $('html').textContent = html;
+  $('prev').src = url + '?v=' + Date.now();
+  $('out').style.display = 'block';
+}
+$('go').addEventListener('click', () => {
+  const v = $('repo').value.trim().replace(/^https?:\/\/github\.com\//, '').replace(/\/$/, '');
+  if (!/^[\w.-]+\/[\w.-]+$/.test(v)) { alert('format: owner/repo (e.g. vercel/next.js)'); return; }
+  render(v);
+});
+$('repo').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('go').click(); });
+</script>
+</body>
+</html>

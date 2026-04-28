@@ -36,11 +36,14 @@ jobs:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node .scripts/build-leaderboard.mjs
 
+      - name: Rebuild ci-doctor badges
+        run: node .scripts/build-ci-doctor-badges.mjs
+
       - name: Commit + push if changed
         run: |
           git config user.name "depmedic-bot"
           git config user.email "depmedic.dev@gmail.com"
-          git add leaderboard.html leaderboard.json .scripts/leaderboard-history.jsonl 2>/dev/null || true
+          git add leaderboard.html leaderboard.json badge/ .scripts/leaderboard-history.jsonl 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "no changes"
             exit 0
