@@ -253,6 +253,18 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://depmedicdev-byte.github.io/scan-badge.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://depmedicdev-byte.github.io/badge/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://depmedicdev-byte.github.io/perf-patterns.html</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
