@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I scanned 5 popular OSS repos in 5 minutes. Here's what I found. - depmedic</title>
+<meta name="description" content="vitejs/vite, prettier/prettier, axios/axios, sveltejs/svelte, eslint/eslint - all popular, all maintained by good engineers. All five have the same three workflow-level smells. Real numbers, no judgement." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="I scanned 5 popular OSS repos in 5 minutes. Here's what I found." />
+<meta property="og:description" content="vite, prettier, axios, svelte, eslint - 50 workflows, 158 findings, the same 3 smells in all 5 repos. Numbers + raw data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; line-height: 1.2; }
+  h2 { font-size: 22px; color: #c9d1d9; margin: 36px 0 6px; }
+  h3 { font-size: 18px; color: #e6e8eb; margin: 22px 0 4px; }
+  .meta { color: #6f7882; font-size: 14px; margin: 0 0 20px; }
+  pre { background: #0d1117; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 16px; overflow: auto; }
+  code { font: 13.5px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+  p code, li code, td code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  .promo { margin: 28px 0; padding: 18px 22px; border-radius: 10px; background: linear-gradient(135deg, #11151b, #0e1b1c); border: 1px solid #2a4732; }
+  .promo h3 { margin-top: 0; color: #e6e8eb; font-size: 17px; }
+  .btn { display: inline-block; padding: 9px 16px; border-radius: 6px; margin-top: 6px; background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .btn:hover { text-decoration: none; background: #3a4754; }
+  blockquote { color: #b6bec7; border-left: 3px solid #2a3744; padding: 6px 16px; margin: 16px 0; }
+  footer { margin-top: 48px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "I scanned 5 popular OSS repos in 5 minutes. Here's what I found.",
+  "datePublished": "2026-04-27",
+  "author": { "@type": "Organization", "name": "depmedic" },
+  "publisher": { "@type": "Organization", "name": "depmedic" },
+  "url": "https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html",
+  "image": "https://depmedicdev-byte.github.io/og/audit.png"
+}
+</script>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / <a href="/#blog">blog</a></p>
+
+<h1>I scanned 5 popular OSS repos in 5 minutes. Here's what I found.</h1>
+<p class="meta">2026-04-27 - using the new <a href="/scan.html">/scan.html</a> in-browser tool</p>
+
+<p>
+  Earlier today I shipped <a href="/scan.html"><code>scan.html</code></a>: a one-page
+  in-browser tool that takes any public GitHub repo URL, fetches its
+  <code>.github/workflows/*.yml</code>, and returns a per-workflow report
+  using <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
+  (14 rules) and <a href="https://www.npmjs.com/package/gha-budget"><code>gha-budget</code></a>
+  (per-job pricing). Runs entirely client-side via the GitHub public API.
+  No signup, nothing uploaded.
+</p>
+
+<p>
+  To make sure it actually works on real-world repos and not just on
+  the canned examples I built it against, I picked 5 well-known
+  npm-ecosystem repos that I had not specifically optimized for, and
+  ran them through. All 5 are maintained by experienced engineers.
+  None of these are random small repos; they all matter.
+</p>
+
+<h2>The 5 repos</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Repo</th>
+      <th class="right">Workflows</th>
+      <th class="right">Per-run $</th>
+      <th class="right">Modeled $/mo*</th>
+      <th class="right">Findings (err/warn/info)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/axios/axios" rel="noopener">axios/axios</a></td>
+      <td class="right">8</td>
+      <td class="right">$2.62</td>
+      <td class="right">$2,362</td>
+      <td class="right">40 (12 / 27 / 1)</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/eslint/eslint" rel="noopener">eslint/eslint</a></td>
+      <td class="right">8</td>
+      <td class="right">$1.54</td>
+      <td class="right">$1,382</td>
+      <td class="right">46 (0 / 40 / 6)</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a></td>
+      <td class="right">12</td>
+      <td class="right">$1.09</td>
+      <td class="right">$979</td>
+      <td class="right">26 (0 / 25 / 1)</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/prettier/prettier" rel="noopener">prettier/prettier</a></td>
+      <td class="right">17</td>
+      <td class="right">$1.02</td>
+      <td class="right">$922</td>
+      <td class="right">32 (6 / 23 / 3)</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/sveltejs/svelte" rel="noopener">sveltejs/svelte</a></td>
+      <td class="right">5</td>
+      <td class="right">$0.70</td>
+      <td class="right">$634</td>
+      <td class="right">14 (0 / 10 / 4)</td>
+    </tr>
+    <tr>
+      <td><strong>Total</strong></td>
+      <td class="right"><strong>50</strong></td>
+      <td class="right"><strong>$6.97</strong></td>
+      <td class="right"><strong>$6,279</strong></td>
+      <td class="right"><strong>158 (18 / 125 / 15)</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="font-size: 13px; color: #9aa3ad; margin-top: -10px;">
+  *Modeled at 30 runs/day, 8 min/job, on standard <code>ubuntu-latest</code>
+  GitHub-hosted runner pricing. Real spend depends on actual run frequency,
+  runner choice, and OSS rate-limit credits. The point of the column is
+  comparison, not accusation.
+</p>
+
+<h2>The same 3 rules show up in all 5 repos</h2>
+
+<p>
+  This is the part I find genuinely interesting. These repos have nothing
+  in common architecturally - vite is a bundler, axios is an HTTP client,
+  eslint is a static analyzer, etc. - but the top-3 ci-doctor findings
+  are nearly identical across all of them:
+</p>
+
+<ol>
+  <li>
+    <strong><code>missing-timeout</code></strong> (76 hits across 5 repos).
+    No <code>timeout-minutes:</code> on jobs, so a hung step bills until
+    GitHub's 6-hour default cap. Every repo has this.
+  </li>
+  <li>
+    <strong><code>missing-concurrency</code></strong> (20 hits).
+    Push 3 commits to a PR in 30 seconds, you get 3 stacked CI runs and
+    GitHub bills all 3. <code>concurrency:</code> with
+    <code>cancel-in-progress: true</code> kills the first 2 in
+    milliseconds. Free 30-50% CI savings on PR-heavy repos.
+  </li>
+  <li>
+    <strong><code>missing-cache</code></strong> (16 hits, mostly in eslint).
+    <code>actions/setup-node</code> without <code>cache: 'npm'</code> /
+    <code>'pnpm'</code> / <code>'yarn'</code> means every job
+    re-downloads <code>node_modules</code>. Slow and expensive.
+  </li>
+</ol>
+
+<p>
+  The interesting outlier is <code>axios/axios</code> with 12
+  <strong>error-severity</strong> findings. All 12 are
+  <code>deprecated-action</code>: workflows still pinned to
+  <code>actions/checkout@v3</code>, <code>actions/setup-node@v3</code>,
+  and <code>actions/upload-artifact@v3</code>. v3 of upload-artifact was
+  deprecated in late 2024 and the v3 endpoint is being shut off.
+  These are not "save 3% of your CI bill" findings; these are "your CI
+  will silently start failing" findings.
+</p>
+
+<h2>Why these specific 3 are everywhere</h2>
+
+<p>
+  My theory: GitHub Actions doesn't push you to add any of them. The
+  workflow files YAML-validates fine without a timeout, without
+  concurrency, without a cache. The CI passes. The PR ships. There
+  is no linter built in to nudge anyone toward better defaults. So
+  the same 3 smells survive in every repo I scan, including in mine
+  before I built ci-doctor.
+</p>
+
+<p>
+  This is a tooling problem, not a competence problem. The maintainers
+  of all 5 of these repos are excellent engineers. The smells are just
+  invisible until something points at them.
+</p>
+
+<div class="promo">
+  <h3>Run this scan on your own repo (free, browser-only)</h3>
+  <p>Paste any public GitHub repo URL. Get the same per-workflow report
+     above for your own code in about 10 seconds. Shareable result URL.
+     Nothing uploaded.</p>
+  <p><a class="btn" href="/scan.html">Open the scanner</a>
+     <a class="btn" href="https://www.npmjs.com/package/ci-doctor">Or install the CLI</a>
+  </p>
+</div>
+
+<h2>What to do about it (5-minute fixes)</h2>
+
+<p>For each of the top 3 rules, here's the smallest possible change:</p>
+
+<h3>1. Add a job-level timeout</h3>
+<pre><code>jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15   # &lt;-- add this
+    steps: ...</code></pre>
+
+<h3>2. Add concurrency at workflow scope</h3>
+<pre><code># top of every workflow that runs on PRs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true</code></pre>
+
+<h3>3. Tell setup-node what package manager you use</h3>
+<pre><code>- uses: actions/setup-node@v4
+  with:
+    node-version: '20'
+    cache: 'npm'      # or 'pnpm' or 'yarn'</code></pre>
+
+<p>
+  Or just run <code>npx ci-doctor --fix</code> and let it patch
+  <code>missing-concurrency</code>, <code>missing-timeout</code>,
+  <code>wide-trigger</code>, and <code>artifact-no-retention</code>
+  in place. The other 10 rules need a human to look at them, but those 4 are mechanical.
+</p>
+
+<div class="promo">
+  <h3>Cookbook: 30 paste-ready GitHub Actions patterns</h3>
+  <p>If the in-browser report flags 5 things in your workflow and you'd
+     rather just copy a known-good template than fix one rule at a time,
+     the <strong>Cut Your CI Bill</strong> cookbook ships 30 production
+     patterns: monorepo dispatch, OIDC publish, security gates, matrix
+     trims, the works. $19 one-time, MIT-licensed templates.</p>
+  <p><a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Get the cookbook</a>
+     <a class="btn" href="/patterns.html">Or read 5 free patterns first</a>
+     <a class="btn" href="https://buy.polar.sh/polar_cl_0B3rGUBRJTdwvZRv7UYRoFcaznHfDrsywfXMH2ichbn">Hardened workflows pack ($9)</a>
+  </p>
+</div>
+
+<h2>Methodology + raw data</h2>
+
+<ul>
+  <li>All 5 repos were pulled via the GitHub public API, no auth.</li>
+  <li>Each <code>.github/workflows/*.yml</code> was passed through
+      <code>ci-doctor</code> 0.4.1 (14 rules) and <code>gha-budget</code> for per-job pricing.</li>
+  <li>Cost = sum of all jobs at GitHub-hosted standard
+      <code>ubuntu-latest</code> rates, assuming 8 min/job.</li>
+  <li>Monthly = per-run * 30 runs/day * 30 days. Self-hosted and
+      large-runner jobs are unpriced.</li>
+  <li>This is the same engine that runs in the browser at
+      <a href="/scan.html"><code>/scan.html</code></a>. The 20-repo
+      version of this analysis lives at
+      <a href="/benchmarks.html"><code>/benchmarks.html</code></a>
+      with <a href="/examples/">per-repo deep dives</a>.</li>
+</ul>
+
+<h2>What this is NOT</h2>
+
+<blockquote>
+  This isn't an attack on any of these projects. They all ship
+  excellent software, and "modeled $/mo" is not the same as "actual
+  $/mo" - large OSS projects get free GitHub Actions credits, run
+  things conditionally, and use self-hosted runners for the heavy
+  lifting. The point is that the <em>same three workflow-YAML
+  patterns</em> show up in every repo I scan, including mine before
+  I started building ci-doctor.
+</blockquote>
+
+<footer>
+  Free CLIs: <a href="https://github.com/depmedicdev-byte/ci-doctor">ci-doctor</a>,
+  <a href="https://github.com/depmedicdev-byte/gha-budget">gha-budget</a>,
+  <a href="https://github.com/depmedicdev-byte/pin-actions">pin-actions</a>.
+  All MIT.
+  More: <a href="/rules.html">all 14 rules explained</a> -
+  <a href="/compare/">how ci-doctor compares to other linters</a> -
+  <a href="/badge.html">put a "scanned with ci-doctor" badge on your README</a>.
+</footer>
+
+</main>
+</body>
+</html>

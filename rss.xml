@@ -6,7 +6,14 @@
 <description>Notes on cheaper, faster, less leaky CI. Free CLIs and a small set of paid playbooks.</description>
 <language>en-us</language>
 <atom:link href="https://depmedicdev-byte.github.io/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Mon, 27 Apr 2026 23:57:52 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Apr 2026 02:55:00 GMT</lastBuildDate>
+<item>
+  <title>I scanned 5 popular OSS repos in 5 minutes. Here's what I found.</title>
+  <link>https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html</link>
+  <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/scan-five-random-repos.html</guid>
+  <pubDate>Tue, 28 Apr 2026 02:55:00 GMT</pubDate>
+  <description>vite, prettier, axios, svelte, eslint - 50 workflows scanned via the new in-browser /scan.html tool. 158 ci-doctor findings, ~$6,279/mo modeled CI spend, the same three smells in all five repos.</description>
+</item>
 <item>
   <title>A .cursorrules that actually fits your stack.</title>
   <link>https://depmedicdev-byte.github.io/blog/cursorrules-starter.html</link>
