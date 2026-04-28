@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>bitbucket-ci-doctor - audit bitbucket-pipelines.yml for waste, cost, security gaps - depmedic</title>
+<meta name="description" content="bitbucket-ci-doctor is a free, MIT, opinionated CLI that audits any bitbucket-pipelines.yml for cost leaks (max-time, expensive size, missing caches) and security gaps (image-no-pin, after-script-leaks, deployment-no-environment). Drop into a PR pipeline. Try the in-browser scanner with no signup." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/bitbucket-ci-doctor.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="bitbucket-ci-doctor - audit bitbucket-pipelines.yml for waste, cost, security gaps" />
+<meta property="og:description" content="8 rules. PR-comment friendly. Drops into a PR step with one line. Try it in-browser, no signup." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/bitbucket-ci-doctor.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "bitbucket-ci-doctor",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "any",
+  "description": "Audit Bitbucket Pipelines for waste, cost leaks, and security gaps. Fast, opinionated, CI-friendly. MIT.",
+  "url": "https://www.npmjs.com/package/bitbucket-ci-doctor",
+  "license": "https://opensource.org/licenses/MIT",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}</script>
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 32px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; font-size: 17px; }
+h2 { font-size: 22px; margin: 36px 0 8px; letter-spacing: -0.005em; }
+h3 { font-size: 17px; margin: 16px 0 4px; }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px;
+  background: #1d3b4b; color: #9ec9ff; margin-right: 6px; }
+pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace; color: #c9d1d9; }
+pre { padding: 12px 14px; overflow-x: auto; margin: 8px 0 16px; }
+pre.bad { border-left: 3px solid #ff6b6b; }
+pre.good { border-left: 3px solid #9ce29c; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+td.sev { white-space: nowrap; }
+.sev-warn { color: #ffd9a3; } .sev-info { color: #a3d4ff; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 32px 0 16px; }
+.cta h3 { margin: 0 0 6px; font-size: 17px; }
+.cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+.cta .btn { display: inline-block; padding: 10px 18px; border-radius: 8px;
+  background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-right: 8px; }
+.cta .btn:hover { text-decoration: none; background: #3a4754; }
+footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / bitbucket-ci-doctor</p>
+
+<h1>bitbucket-ci-doctor</h1>
+<p class="lead">
+  Audit any <code>bitbucket-pipelines.yml</code> for waste, cost leaks,
+  and security gaps. Eight rules. One command. MIT. Sister project to
+  <a href="https://www.npmjs.com/package/ci-doctor"><code>ci-doctor</code></a>
+  (GitHub Actions) and
+  <a href="https://www.npmjs.com/package/gitlab-ci-doctor"><code>gitlab-ci-doctor</code></a>
+  (GitLab CI).
+</p>
+
+<p>
+  <span class="pill">npm</span>
+  <a href="https://www.npmjs.com/package/bitbucket-ci-doctor">npmjs.com/package/bitbucket-ci-doctor</a>
+  &nbsp;|&nbsp;
+  <span class="pill">source</span>
+  <a href="https://github.com/depmedicdev-byte/bitbucket-ci-doctor">github.com/depmedicdev-byte/bitbucket-ci-doctor</a>
+  &nbsp;|&nbsp;
+  <span class="pill">try it</span>
+  <a href="/scan-bitbucket.html">in-browser scanner</a>
+</p>
+
+<h2>Try it in 5 seconds</h2>
+
+<pre class="good">$ npx bitbucket-ci-doctor                  # audit current repo
+$ npx bitbucket-ci-doctor --markdown       # PR-comment friendly output
+$ npx bitbucket-ci-doctor --json           # machine-readable
+$ npx bitbucket-ci-doctor --severity=warn  # warn + error only
+$ npx bitbucket-ci-doctor --rules          # list checks
+$ npx bitbucket-ci-doctor --demo           # smoke-test against bundled bad pipeline</pre>
+
+<p>Exit code is <code>1</code> when there are error-level findings, so it drops into a Bitbucket Pipelines step (or a pre-commit hook) without ceremony.</p>
+
+<h2>The 8 rules</h2>
+
+<table>
+  <thead><tr><th>Rule</th><th class="sev">Severity</th><th>What it catches</th></tr></thead>
+  <tbody>
+    <tr><td><code>image-no-pin</code></td><td class="sev"><span class="sev-warn">warn / security</span></td><td>Top-level or step <code>image:</code> uses a floating tag (<code>node:22</code>, <code>:latest</code>) instead of <code>image@sha256:&lt;digest&gt;</code>.</td></tr>
+    <tr><td><code>missing-max-time</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td>Steps without <code>max-time:</code> default to <strong>120 minutes</strong>. A runaway step burns build minutes.</td></tr>
+    <tr><td><code>expensive-size</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td><code>size: 2x</code>/<code>4x</code>/<code>8x</code> doubles, quadruples, octuples build-minute cost. Justify or cut.</td></tr>
+    <tr><td><code>missing-caches</code></td><td class="sev"><span class="sev-warn">warn / cost</span></td><td>Step installs deps (<code>npm</code>, <code>pip</code>, <code>bundler</code>, <code>gradle</code>...) without declaring the matching built-in cache.</td></tr>
+    <tr><td><code>service-no-pin</code></td><td class="sev"><span class="sev-warn">warn / security</span></td><td><code>definitions.services.&lt;name&gt;.image</code> not pinned to a digest.</td></tr>
+    <tr><td><code>deployment-no-environment</code></td><td class="sev"><span class="sev-warn">warn / security</span></td><td><code>deployment:</code> value is not <code>test</code>/<code>staging</code>/<code>production</code> - environment protections (manual approvals, secret scoping) may not apply.</td></tr>
+    <tr><td><code>artifact-no-paths</code></td><td class="sev"><span class="sev-info">info / cost</span></td><td><code>artifacts:</code> declared without paths or with a wildcard catch-all (<code>**/*</code>).</td></tr>
+    <tr><td><code>after-script-leaks</code></td><td class="sev"><span class="sev-warn">warn / security</span></td><td><code>after-script:</code> contains <code>env</code>, <code>printenv</code>, <code>set -x</code>, or <code>echo $...</code> - secrets may leak to logs.</td></tr>
+  </tbody>
+</table>
+
+<h2>Drop into a PR pipeline</h2>
+
+<pre class="good">image: node@sha256:1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+pipelines:
+  pull-requests:
+    '**':
+      - step:
+          name: ci-doctor
+          max-time: 5
+          caches:
+            - node
+          script:
+            - npx --yes bitbucket-ci-doctor --markdown > ci-doctor.md
+            - cat ci-doctor.md
+          artifacts:
+            - ci-doctor.md
+</pre>
+
+<h2>Why a third one?</h2>
+<p>
+  Bitbucket Pipelines bills differently than GitHub Actions or GitLab CI:
+  every plan ships a fixed monthly minute bundle, and <code>size: 2x</code>
+  burns 2 minutes per real minute. There is no built-in cost dashboard.
+  The pricing model rewards short steps with explicit caches and small
+  size - exactly what these 8 rules nudge you toward.
+</p>
+<p>
+  And: pinning <code>node:22</code> to a digest, declaring
+  <code>deployment: production</code>, and avoiding
+  <code>env</code> in <code>after-script</code> are the same hygiene the
+  other two CIs have - bitbucket-ci-doctor just carries the same
+  opinionation across.
+</p>
+
+<div class="cta">
+  <h3>Audit one repo right now</h3>
+  <p>The in-browser scanner takes a paste, runs all 8 rules, and shows the report inline. Nothing leaves your browser.</p>
+  <a class="btn" href="/scan-bitbucket.html">Open the scanner</a>
+  <a class="btn" href="https://github.com/depmedicdev-byte/bitbucket-ci-doctor">View source</a>
+</div>
+
+<footer>
+  <a href="/">depmedic</a> &middot; built and maintained by depmedic.
+  Sister: <a href="/index.html">ci-doctor</a> (GitHub) &middot; <a href="/gitlab-ci-doctor.html">gitlab-ci-doctor</a>.
+</footer>
+
+</main>
+</body>
+</html>
