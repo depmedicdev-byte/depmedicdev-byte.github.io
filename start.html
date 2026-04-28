@@ -11,6 +11,45 @@
 <meta property="og:description" content="Drop one job into your pipeline. ci-doctor audits cost waste + security gaps + reliability bugs in <1s. Free, MIT, no signup. 5 CI providers." />
 <meta property="og:url" content="https://depmedicdev-byte.github.io/start.html" />
 <meta property="og:type" content="website" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Get started with ci-doctor in 60 seconds",
+  "description": "Pick your CI provider, copy the snippet, push. ci-doctor audits cost + security + reliability for GitHub Actions, GitLab CI, Bitbucket Pipelines, Azure Pipelines, CircleCI.",
+  "totalTime": "PT1M",
+  "tool": [{ "@type": "HowToTool", "name": "Node.js (already on your CI runner)" }],
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Pick your CI provider", "text": "Choose GitHub Actions, GitLab CI, Bitbucket Pipelines, Azure Pipelines, or CircleCI." },
+    { "@type": "HowToStep", "position": 2, "name": "Copy the snippet", "text": "Copy the 1-3 line snippet for your provider into your pipeline file." },
+    { "@type": "HowToStep", "position": 3, "name": "Push and review", "text": "On the next CI run, ci-doctor prints a Markdown table of findings and (on GitHub) posts a sticky PR comment." }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does ci-doctor support self-hosted runners?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The audit runs against the workflow YAML, regardless of where the runner lives." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ci-doctor support reusable workflows?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. It follows uses: references and audits the referenced workflow if it lives in the same repo. Cross-repo references are flagged for manual review." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ci-doctor work in monorepos?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Point it at a directory and it audits every workflow file under it, including nested .github/workflows trees from packages inside the monorepo." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ci-doctor free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The CLI and companion Action are MIT-licensed and free forever. The optional Pro tier ($5/mo) adds per-org rule overrides, Slack/Webhook delivery, and a hosted GitHub App with one-click install." }
+    }
+  ]
+}</script>
 <style>
 :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
 body { background: #0b0d10; color: #e6e8eb;

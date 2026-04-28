@@ -88,6 +88,37 @@
   ]
 }
 </script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is depmedic?",
+      "acceptedAnswer": { "@type": "Answer", "text": "depmedic is a small suite of free MIT-licensed CLIs for the boring, expensive parts of CI: cost auditing, security gap detection, dependency health, and AI-coding-tool rules. Free CLIs are MIT, paid playbooks ship as zips." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is ci-doctor?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ci-doctor is a free CLI that audits GitHub Actions workflows for cost waste, security gaps, and reliability bugs. 16 rules. Sister CLIs cover GitLab CI, Bitbucket Pipelines, Azure Pipelines, and CircleCI." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does ci-doctor cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The CLI and companion GitHub Action are free forever (MIT). The optional Pro tier is $5/mo and adds per-org rule overrides, Slack/Webhook delivery of weekly digests, and the hosted GitHub App with one-click install." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does ci-doctor compare to actionlint, zizmor, octoscan, super-linter?",
+      "acceptedAnswer": { "@type": "Answer", "text": "actionlint validates YAML schema; zizmor and octoscan focus on workflow security; super-linter aggregates source-code linters. ci-doctor is the only one that catches cost waste and reliability issues. See /alternatives.html for the head-to-head comparison." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does depmedic work with GitLab CI / Bitbucket / Azure Pipelines / CircleCI?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The depmedic CI auditor family covers all five major CI providers with sister CLIs: ci-doctor (GitHub), gitlab-ci-doctor, bitbucket-ci-doctor, azure-pipelines-ci-doctor, circleci-ci-doctor. Same rule philosophy across all of them." }
+    }
+  ]
+}</script>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }

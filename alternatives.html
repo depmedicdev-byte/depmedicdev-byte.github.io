@@ -26,6 +26,60 @@
   "url": "https://depmedicdev-byte.github.io/alternatives.html",
   "mainEntityOfPage": "https://depmedicdev-byte.github.io/alternatives.html"
 }</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need ci-doctor if I already use actionlint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. actionlint validates your workflow YAML schema; ci-doctor audits its cost, security, and reliability. They don't overlap meaningfully. Run both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need ci-doctor if I already use zizmor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes if you care about cost or reliability. zizmor catches workflow-security flaws (and is excellent at it). ci-doctor catches cost waste, missing timeouts, exploding matrices, etc. They share zero rules."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best GitHub Actions cost auditor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ci-doctor is the only tool in this comparison that catches cost waste. The other four (actionlint, zizmor, octoscan, super-linter) focus on security or schema correctness. ci-doctor flags oversized runners, exploding matrices, missing concurrency, missing timeout-minutes, unused caches, and wide path triggers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why a separate Action when ci-doctor is just a CLI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Action wraps npx ci-doctor with a sticky PR comment (so a re-run replaces the old comment instead of stacking), optional SARIF upload to GitHub Code Scanning, and a configurable severity gate that fails the check on errors but not warnings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the data sent anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Both the CLI and the in-browser scanner run locally. The optional GitHub App processes your workflows in a Cloudflare Worker that never persists workflow content; only aggregate counts are kept for the leaderboard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the Pro tier add?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per-org rule overrides (mute a noisy rule across all repos), Slack/Webhook delivery of the weekly leaderboard digest, the hosted GitHub App with one-click install, and priority response on issues. The free CLI never expires and is feature-complete on its own."
+      }
+    }
+  ]
+}</script>
 <style>
 :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
 body { background: #0b0d10; color: #e6e8eb;
