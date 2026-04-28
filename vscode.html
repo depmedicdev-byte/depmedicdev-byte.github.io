@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>depmedic for VS Code & Cursor - inline ci-doctor lint for GitHub Actions</title>
+<meta name="description" content="Inline lint for .github/workflows/*.yml in VS Code and Cursor. 14 cost / security / hygiene rules from ci-doctor as native Diagnostics. Free; Pro tier ($5/mo) unlocks autofix and the Cursor Rules Pack." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/vscode.html" />
+<link rel="icon" href="/favicon.ico" />
+<style>
+:root { color-scheme: dark; }
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:#0b0d10;color:#e6e8eb}
+a{color:#7cc4ff;text-decoration:none}
+a:hover{text-decoration:underline}
+header,footer{padding:18px 24px;border-bottom:1px solid #1e242c}
+footer{border-top:1px solid #1e242c;border-bottom:0;color:#8a929c;font-size:14px;text-align:center}
+header nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;max-width:1080px;margin:0 auto}
+header nav .brand{font-weight:700}
+main{max-width:880px;margin:0 auto;padding:32px 24px 64px}
+h1{font-size:34px;margin:0 0 12px;line-height:1.2}
+h2{font-size:22px;margin:36px 0 12px}
+h3{font-size:17px;margin:24px 0 8px}
+.lede{color:#b6bec7;font-size:18px;margin:0 0 28px}
+.cta{display:inline-block;background:#3b82f6;color:#fff;padding:12px 22px;border-radius:8px;font-weight:600;margin:8px 12px 8px 0}
+.cta.secondary{background:#1e242c;color:#cdd5de}
+.cta:hover{text-decoration:none;filter:brightness(1.1)}
+.box{background:#11151b;border:1px solid #1e242c;border-radius:10px;padding:18px 22px;margin:18px 0}
+pre{background:#0a0e13;border:1px solid #1e242c;padding:14px;border-radius:8px;overflow:auto;font-size:13px;color:#cdd5de}
+code{font:13px/1.5 ui-monospace,Consolas,Menlo,monospace}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:720px){.row{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:4px;background:#1f3b5b;color:#9ec5ff;margin-right:6px}
+.tag.green{background:#163b27;color:#7be0a3}
+.tag.amber{background:#3d2c0a;color:#f0c14b}
+.price{display:inline-block;background:#163b27;color:#7be0a3;padding:2px 10px;border-radius:6px;font-weight:600;font-size:13px;margin-left:6px}
+ul{padding-left:22px}
+li{margin:6px 0}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #1e242c;vertical-align:top}
+th{color:#8a929c;font-weight:600;font-size:13px}
+</style>
+</head>
+<body>
+<header><nav>
+  <a href="/" class="brand">depmedic</a>
+  <a href="/scan.html">scan</a>
+  <a href="/depmedic-bot.html">bot</a>
+  <a href="/health/">health</a>
+  <a href="/vscode.html"><strong>vscode</strong></a>
+  <a href="/sponsor.html">sponsor</a>
+</nav></header>
+
+<main>
+<h1>depmedic for VS Code &amp; Cursor</h1>
+<p class="lede">Inline lint for <code>.github/workflows/*.yml</code>. 14 cost, security, and hygiene rules from <a href="https://www.npmjs.com/package/ci-doctor">ci-doctor</a> surfaced as native Diagnostics. Squiggle, hover, jump-to-rule, optional autofix.</p>
+
+<p>
+  <a class="cta" href="https://marketplace.visualstudio.com/items?itemName=depmedic.depmedic-vscode">Install from VS Code Marketplace</a>
+  <a class="cta secondary" href="https://open-vsx.org/extension/depmedic/depmedic-vscode">Install from Open VSX (Cursor)</a>
+  <a class="cta secondary" href="/downloads/depmedic-vscode-0.1.0.vsix">Direct .vsix download</a>
+</p>
+
+<p>
+  <span class="tag green">Free: lint, diagnostics, docs links</span>
+  <span class="tag amber">Pro: per-rule autofix + Cursor Rules Pack</span>
+  <span class="price">$5/mo</span>
+</p>
+
+<h2>What you see in your editor</h2>
+<div class="box">
+<p>Open any workflow file in VS Code or Cursor. On save:</p>
+<ol>
+<li>Each rule violation gets a red/yellow squiggle exactly where the problem starts.</li>
+<li>Hover for the message, severity, and rule id.</li>
+<li>Click the rule id to jump to <a href="/rules.html">rules.html</a>.</li>
+<li>Lightbulb -&gt; "open docs" (free) or "autofix" (Pro) for safe rules.</li>
+</ol>
+<pre>actions/checkout@v4   <span style="color:#f0c14b">~~~~~</span>  warn  action-no-pin
+                                       Pin actions to a commit SHA, not a moving tag.
+                                       <span style="color:#7cc4ff">https://depmedicdev-byte.github.io/rules.html#action-no-pin</span>
+
+run: echo "${{ github.event.head_commit.message }}" <span style="color:#ff6b6b">~~~~~~~~~~~~~~~</span>  error  script-injection
+                                                                            github.event.* interpolated into a run: block.
+                                                                            <span style="color:#7cc4ff">https://depmedicdev-byte.github.io/rules.html#script-injection</span></pre>
+</div>
+
+<h2>The 14 rules (same engine as ci-doctor + ci-doctor.com badge + bot)</h2>
+<div class="row">
+<div class="box">
+<h3>Cost &amp; speed</h3>
+<ul>
+<li><code>missing-timeout</code> - jobs without a timeout.</li>
+<li><code>missing-cache</code> - <code>npm ci</code> / <code>pip install</code> without cache.</li>
+<li><code>missing-concurrency</code> - duplicate runs from rapid pushes.</li>
+<li><code>expensive-runner</code> - large runners with no platform-only commands.</li>
+<li><code>matrix-overcommit</code> - matrix that fans out beyond a sane bound.</li>
+<li><code>e2e-on-every-push</code> - e2e jobs without path filter or label gate.</li>
+</ul>
+</div>
+<div class="box">
+<h3>Security &amp; hygiene</h3>
+<ul>
+<li><code>action-no-pin</code> - actions on a moving tag instead of a SHA.</li>
+<li><code>script-injection</code> - <code>github.event.*</code> in <code>run:</code>.</li>
+<li><code>token-permissions</code> - missing <code>permissions:</code> block.</li>
+<li><code>cache-key-fragile</code> - cache keys without lockfile hashes.</li>
+<li><code>missing-fetch-depth</code> - shallow clone breaks blame / signing.</li>
+<li><code>artifact-no-expiration</code> - 90-day default artifact retention.</li>
+<li><code>setup-no-pin</code> - <code>setup-node@v4</code> without node-version lock.</li>
+<li><code>workflow-dispatch-only</code> - workflows that never run automatically.</li>
+</ul>
+</div>
+</div>
+
+<h2>Pro tier (optional)</h2>
+<table>
+<thead><tr><th>Feature</th><th>Free</th><th>Pro - $5/mo</th></tr></thead>
+<tbody>
+<tr><td>Inline diagnostics for all 14 rules</td><td>yes</td><td>yes</td></tr>
+<tr><td>Hover + jump to rule docs</td><td>yes</td><td>yes</td></tr>
+<tr><td>Per-rule autofix code action (5 safe rules)</td><td>locked</td><td>yes</td></tr>
+<tr><td><code>depmedic: Apply safe autofixes</code> command</td><td>locked</td><td>yes</td></tr>
+<tr><td>Cursor Rules Pack v2 (12 rule files for Cursor)</td><td>buy separately ($9)</td><td>included</td></tr>
+<tr><td>License works in VS Code AND Cursor</td><td>n/a</td><td>yes</td></tr>
+<tr><td>Pairs with depmedic Pro CLI tier (CLI autofixes)</td><td>n/a</td><td>same key</td></tr>
+</tbody>
+</table>
+
+<p style="margin-top:18px">
+  <a class="cta" href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09">Get Pro - $5/mo</a>
+  <a class="cta secondary" href="https://buy.polar.sh/polar_cl_JVgKDJuOyHONZmW2GlP8oBoIIME2ZDCxlfP5c3ZA1ZN">Yearly - $50/yr</a>
+</p>
+
+<h2>Privacy</h2>
+<ul>
+<li>The lint engine is bundled - it runs entirely on your machine.</li>
+<li>No telemetry. Period.</li>
+<li>One outbound request, only when a Pro key is set: license validation hits the depmedic-license Cloudflare Worker once and caches the answer for 24 hours.</li>
+<li>Source code: <a href="https://github.com/depmedicdev-byte/depmedic-vscode">github.com/depmedicdev-byte/depmedic-vscode</a> (MIT).</li>
+</ul>
+
+<h2>FAQ</h2>
+<h3>Does it work in Cursor?</h3>
+<p>Yes. Cursor uses Open VSX as its extension marketplace. Install
+"depmedic" from the Extensions panel - the same .vsix is published to
+both VS Code Marketplace and Open VSX.</p>
+
+<h3>Will it slow my editor down?</h3>
+<p>No. The lint engine is ~5ms per workflow file at typical sizes.
+Diagnostics update on save by default (configurable to onChange or
+manual via <code>depmedic.run</code>).</p>
+
+<h3>What if I already have actionlint or super-linter?</h3>
+<p>They are complementary. depmedic focuses on cost and security
+gotchas (timeout, cache, runner choice, action pinning, script
+injection); actionlint catches syntax + expression bugs; super-linter
+runs a thousand things across many languages. Use all three if you
+like - they don't overlap much.</p>
+
+<h3>Where do my license keys come from?</h3>
+<p>Polar - same checkout as <a href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09">depmedic Pro $5/mo</a>. The key is emailed to you immediately after checkout. Paste it into VS Code Settings -&gt; <code>depmedic.proLicenseKey</code>.</p>
+
+</main>
+<footer>depmedic - small tools, real bills. <a href="/">home</a> &middot; <a href="/sponsor.html">sponsor</a> &middot; <a href="https://github.com/depmedicdev-byte/depmedic-vscode">source</a></footer>
+</body>
+</html>
