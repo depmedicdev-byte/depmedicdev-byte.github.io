@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ci-doctor compared - actionlint, super-linter, MegaLinter, octoscan</title>
+<meta name="description" content="Honest, scope-aware comparisons of ci-doctor against the four most-used GitHub Actions linters. Where each wins. What to run together." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/compare/" />
+<meta name="theme-color" content="#0b0d10" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; letter-spacing: -0.01em; margin: 0 0 8px; }
+  ul { padding-left: 0; list-style: none; }
+  li { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 16px; margin: 10px 0; }
+  li a { font-weight: 600; color: #e6e8eb; font-size: 16px; }
+  li p { margin: 4px 0 0; color: #9aa3ad; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+<p class="nav"><a href="/">depmedic</a> / compare</p>
+<h1>ci-doctor compared</h1>
+<p style="color:#b6bec7; max-width:64ch;">Honest, scope-aware comparisons. Where each tool wins. Where they overlap. What to run side by side.</p>
+<ul>
+  <li>
+    <a href="/compare/ci-doctor-vs-actionlint.html">ci-doctor vs actionlint</a>
+    <p>actionlint is the gold standard for syntactic and shell-safety checks on GitHub Actions workflow files. ci-doctor is the cost-and-reliability-first audit. They are complementary - most teams should run both.</p>
+  </li>
+  <li>
+    <a href="/compare/ci-doctor-vs-super-linter.html">ci-doctor vs super-linter</a>
+    <p>super-linter is a meta-runner that bundles 50+ language linters into a single GitHub Action. ci-doctor is a focused audit of your .github/workflows/*.yml files for cost and reliability smells. Different problems.</p>
+  </li>
+  <li>
+    <a href="/compare/ci-doctor-vs-mega-linter.html">ci-doctor vs MegaLinter</a>
+    <p>MegaLinter is a configurable fork of super-linter with finer-grained linter selection and reporting. ci-doctor is focused on auditing .github/workflows/*.yml for cost and reliability. Different scopes.</p>
+  </li>
+  <li>
+    <a href="/compare/ci-doctor-vs-octoscan.html">ci-doctor vs octoscan</a>
+    <p>octoscan is a security-focused workflow analyzer from Synacktiv. ci-doctor is a cost-and-reliability-focused audit that includes a few security rules. Closest scope of any competitor on this list - they overlap on a few rules and complement each other on the rest.</p>
+  </li>
+</ul>
+</main>
+</body>
+</html>

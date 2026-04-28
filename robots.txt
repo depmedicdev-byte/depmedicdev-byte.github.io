@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://depmedicdev-byte.github.io/sitemap.xml
+
+# AI / LLM crawlers: there are dedicated, machine-readable indexes for you.
+# Short overview:    https://depmedicdev-byte.github.io/llms.txt
+# Full content dump: https://depmedicdev-byte.github.io/llms-full.txt

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>"Audited with ci-doctor" README badge - depmedic</title>
+<meta name="description" content="Generate a copy-paste README badge that signals your repo's GitHub Actions workflows pass ci-doctor's 14 cost and reliability rules. Free. Static badge from img.shields.io." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/badge.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content='"Audited with ci-doctor" README badge' />
+<meta property="og:description" content="Free copy-paste README badge for repos that pass ci-doctor's 14 cost and reliability rules." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/badge.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  h2 { font-size: 18px; color: #c9d1d9; margin: 30px 0 8px; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+  label { display: block; color: #9aa3ad; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 14px; margin-bottom: 4px; }
+  input[type=text] { width: 100%; padding: 10px 12px; background: #11151b; border: 1px solid #2a3744; border-radius: 6px; color: #e6e8eb; font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  input[type=text]:focus { outline: none; border-color: #6cb6ff; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+  .pill { background: #11151b; border: 1px solid #2a3744; border-radius: 999px; padding: 4px 12px; font-size: 13px; color: #b6bec7; cursor: pointer; user-select: none; }
+  .pill.active { background: #2a3744; border-color: #6cb6ff; color: #e6e8eb; }
+  .preview { background: #fff; padding: 20px; border-radius: 8px; margin: 16px 0; text-align: center; }
+  .preview img { max-width: 100%; vertical-align: middle; }
+  pre { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 12px 14px;
+    overflow-x: auto; font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace;
+    color: #c9d1d9; margin: 8px 0 14px; position: relative; }
+  pre.copy::after { content: 'click to copy'; position: absolute; right: 10px; top: 8px; font-size: 11px;
+    color: #6f7882; text-transform: uppercase; letter-spacing: 0.04em; }
+  pre.copy:hover { border-color: #6cb6ff; cursor: pointer; }
+  pre.copied::after { content: 'copied!'; color: #9ce29c; }
+  .swatches { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .sw { width: 32px; height: 32px; border-radius: 6px; border: 2px solid transparent; cursor: pointer; }
+  .sw.active { border-color: #fff; }
+  .meta { color: #6f7882; font-size: 13px; margin-top: 18px; }
+  .examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin: 14px 0; }
+  .example { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 14px; }
+  .example img { max-width: 100%; }
+  .example .label { color: #6f7882; font-size: 12px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / badge</p>
+
+<h1>"Audited with ci-doctor" README badge</h1>
+<p class="lead">
+  A small badge for your README that signals your repo's GitHub Actions workflows pass <a href="/rules.html">ci-doctor's 14 cost and reliability rules</a>. Free, static, hosted on <a href="https://shields.io">shields.io</a>. Click it: it links to <a href="/rules.html">/rules.html</a> on this site.
+</p>
+
+<h2>Quick: just give me the snippet</h2>
+<p>Drop this at the top of your README. Works in any Markdown renderer:</p>
+<pre class="copy" id="quickSnippet">[![CI audited with ci-doctor](https://img.shields.io/badge/CI-audited%20with%20ci--doctor-2b8a3e?style=flat&amp;logo=githubactions&amp;logoColor=white)](https://depmedicdev-byte.github.io/rules.html)</pre>
+
+<h2>Customize</h2>
+
+<label for="label">Left text</label>
+<input id="label" type="text" value="CI" />
+
+<label for="message">Right text</label>
+<input id="message" type="text" value="audited with ci-doctor" />
+
+<label>Color</label>
+<div class="swatches" id="swatches">
+  <div class="sw active" data-color="2b8a3e" style="background:#2b8a3e"></div>
+  <div class="sw" data-color="1f6feb" style="background:#1f6feb"></div>
+  <div class="sw" data-color="6f42c1" style="background:#6f42c1"></div>
+  <div class="sw" data-color="0b0d10" style="background:#0b0d10"></div>
+  <div class="sw" data-color="b08800" style="background:#b08800"></div>
+  <div class="sw" data-color="cf222e" style="background:#cf222e"></div>
+</div>
+
+<label>Style</label>
+<div class="row">
+  <span class="pill active" data-style="flat">flat</span>
+  <span class="pill" data-style="flat-square">flat-square</span>
+  <span class="pill" data-style="for-the-badge">for-the-badge</span>
+  <span class="pill" data-style="plastic">plastic</span>
+</div>
+
+<h2>Preview</h2>
+<div class="preview" id="preview"></div>
+
+<h2>Markdown (paste into README.md)</h2>
+<pre class="copy" id="md"></pre>
+
+<h2>HTML (paste into a doc site)</h2>
+<pre class="copy" id="html"></pre>
+
+<h2>Why use this</h2>
+<p>Three small upsides:</p>
+<ul style="color:#b6bec7;">
+  <li>Anyone landing on your README sees you take CI hygiene seriously - no extra config.</li>
+  <li>Clicking the badge opens the <a href="/rules.html">14-rule reference</a>, so contributors who've never used ci-doctor learn what you're enforcing.</li>
+  <li>It's static. No status check. No build pipeline impact. The shields.io URL is cached aggressively.</li>
+</ul>
+
+<p>If you'd like the badge to actually <em>verify</em> ci-doctor passed in your CI, run ci-doctor in a workflow with <code>--fail-on error</code> and use a normal GitHub Actions status badge - documented in <a href="https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge">the official docs</a>. The badge here is voluntary self-declaration.</p>
+
+<h2>Examples</h2>
+<div class="examples">
+  <div class="example"><div class="label">flat - green</div><img src="https://img.shields.io/badge/CI-audited%20with%20ci--doctor-2b8a3e?style=flat&amp;logo=githubactions&amp;logoColor=white" alt="" /></div>
+  <div class="example"><div class="label">for-the-badge - blue</div><img src="https://img.shields.io/badge/CI-audited%20with%20ci--doctor-1f6feb?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" alt="" /></div>
+  <div class="example"><div class="label">flat-square - black</div><img src="https://img.shields.io/badge/CI-audited%20with%20ci--doctor-0b0d10?style=flat-square&amp;logo=githubactions&amp;logoColor=white" alt="" /></div>
+</div>
+
+<p class="meta">
+  See also: <a href="/rules.html">all 14 rules explained</a> &middot;
+  <a href="/audit.html">paste-and-audit your YAML</a> &middot;
+  <a href="/benchmarks.html">how 20 popular OSS repos score</a>.
+</p>
+
+<footer>
+  Hosted on shields.io. The badge URL is a public, cacheable resource.
+  No analytics or tracking pixel is added. Adding the badge to your
+  README does not opt your repo into any monitoring or data collection.
+</footer>
+
+</main>
+<script>
+(function(){
+  const labelEl = document.getElementById('label');
+  const messageEl = document.getElementById('message');
+  const previewEl = document.getElementById('preview');
+  const mdEl = document.getElementById('md');
+  const htmlEl = document.getElementById('html');
+  let color = '2b8a3e';
+  let style = 'flat';
+
+  function shieldsEscape(s) {
+    // shields.io: -- becomes -, _ stays as is, spaces -> %20
+    return encodeURIComponent(String(s).replace(/-/g, '--')).replace(/%20/g, '%20');
+  }
+  function build() {
+    const l = shieldsEscape(labelEl.value || 'CI');
+    const m = shieldsEscape(messageEl.value || 'audited with ci-doctor');
+    const url = 'https://img.shields.io/badge/' + l + '-' + m + '-' + color + '?style=' + style + '&logo=githubactions&logoColor=white';
+    const link = 'https://depmedicdev-byte.github.io/rules.html';
+    const alt = (labelEl.value || 'CI') + ': ' + (messageEl.value || 'audited with ci-doctor');
+    previewEl.innerHTML = '<a href="' + link + '"><img src="' + url + '" alt="' + alt + '" /></a>';
+    mdEl.textContent = '[![' + alt + '](' + url + ')](' + link + ')';
+    htmlEl.textContent = '<a href="' + link + '"><img src="' + url + '" alt="' + alt + '" /></a>';
+  }
+  labelEl.addEventListener('input', build);
+  messageEl.addEventListener('input', build);
+  document.querySelectorAll('#swatches .sw').forEach(sw => {
+    sw.addEventListener('click', () => {
+      document.querySelectorAll('#swatches .sw').forEach(x => x.classList.remove('active'));
+      sw.classList.add('active');
+      color = sw.dataset.color;
+      build();
+    });
+  });
+  document.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      style = p.dataset.style;
+      build();
+    });
+  });
+  document.querySelectorAll('pre.copy').forEach(pre => {
+    pre.addEventListener('click', () => {
+      navigator.clipboard.writeText(pre.textContent).then(() => {
+        pre.classList.add('copied');
+        setTimeout(() => pre.classList.remove('copied'), 1400);
+      });
+    });
+  });
+  build();
+})();
+</script>
+</body>
+</html>

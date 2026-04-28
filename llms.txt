@@ -1,0 +1,88 @@
+# depmedic
+
+> Open-source CLIs and digital products for the boring, expensive parts of CI and dependency management. Free CLIs are MIT-licensed; paid playbooks ship as ZIPs from Polar.
+
+The depmedic toolset audits and reduces the cost, security risk, and maintenance burden of GitHub Actions workflows and JavaScript dependency trees. Five free Node.js CLIs plus a small suite of paid playbooks. All tools run locally, collect no telemetry, and ship under MIT.
+
+The core product is `ci-doctor`, a 14-rule static analyzer for `.github/workflows/*.yml` files. Companion CLIs cover dependency triage (`depmedic`), SHA pinning (`pin-actions`), cost estimation (`gha-budget`), and Cursor rule scaffolding (`cursor-rules-init`).
+
+## Free CLIs
+
+- [ci-doctor](https://www.npmjs.com/package/ci-doctor): 14-rule audit of GitHub Actions workflows. Categories: cost, security, reliability. Outputs SARIF for GitHub Code Scanning. Auto-fixes 4 of 14 rules with `--fix`. `npx ci-doctor`.
+- [depmedic](https://www.npmjs.com/package/depmedic): Surgical npm vulnerability triage. Computes the smallest set of version bumps that close reported vulns. Splits prod vs dev. CI-friendly exit codes. `npx depmedic`.
+- [pin-actions](https://www.npmjs.com/package/pin-actions): Pins every `uses: owner/repo@<tag>` reference to a 40-char commit SHA, with the original tag preserved as a trailing comment. Supply-chain-safe. `npx pin-actions`.
+- [gha-budget](https://www.npmjs.com/package/gha-budget): Estimates per-run and monthly USD spend for any workflow YAML using GitHub's published per-runner rates. `npx gha-budget`.
+- [cursor-rules-init](https://www.npmjs.com/package/cursor-rules-init): Scaffolds an opinionated `.cursorrules` starter for Cursor / Claude / ChatGPT, with stack overlays. `npx cursor-rules-init typescript`.
+
+## ci-doctor rule reference
+
+All 14 rules with severity, category, bad/good examples, and the why behind each one: https://depmedicdev-byte.github.io/rules.html
+
+| Rule | Severity | Category | One-liner |
+|---|---|---|---|
+| missing-concurrency | warn | cost | PR-triggered workflow has no `concurrency` group; force-pushes pay double. |
+| missing-timeout | warn | cost | Job has no `timeout-minutes`; default is 360 (6h). |
+| missing-cache | warn | cost | `setup-*` action has no `cache:` option; deps re-download every run. |
+| missing-permissions | warn | security | Workflow has no `permissions:` block; GITHUB_TOKEN gets repo default (often write-all). |
+| pinned-action-sha | warn | security | Third-party `uses:` is pinned to a tag, not a commit SHA. |
+| deprecated-action | error | reliability | Pinned to a deprecated major (Node12/16, set-output, save-state, ::set-env). |
+| expensive-runner | warn | cost | macos-latest costs 10x ubuntu-latest; windows-latest costs 2x. |
+| matrix-overcommit | warn | cost | Matrix that crosses many OS or version axes can multiply CI minutes silently. |
+| stale-cache-key | warn | cost | `actions/cache` key has no `hashFiles(...lockfile...)`; cache never invalidates. |
+| fail-fast-true | info | cost | Matrix uses default `fail-fast: true`; cancelled cells still bill for elapsed minutes. |
+| always-run-on-pr | info | cost | Heavy step (docker build, e2e, codeql) runs on every PR with no `paths:` filter. |
+| artifact-no-retention | info | cost | `upload-artifact` has no `retention-days`; uses repo default (often 90 days). |
+| fetch-depth-zero | info | cost | `actions/checkout` with `fetch-depth: 0` pulls full history; rarely needed. |
+| wide-trigger | info | cost | `on: push` without a `branches` filter runs on every branch push. |
+
+## Public benchmark dataset
+
+We scanned the `.github/workflows/` of 20 widely-used OSS projects (React, Next.js, Deno, TypeScript, Vite, Storybook, Webpack, ESLint, Prettier, Jest, Vue, Svelte, Express, Got, Axios, Rollup, Parcel, Preact, react-query, react-router) using `ci-doctor` and `gha-budget`.
+
+- 229 workflows analyzed
+- 944 ci-doctor findings total
+- $50,976 modeled combined monthly spend at 30 runs/day, 8 min/job
+
+Per-repo deep dives: https://depmedicdev-byte.github.io/examples/
+Aggregate dataset: https://depmedicdev-byte.github.io/benchmarks.html
+Methodology: https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html
+
+## In-browser tools
+
+All run client-side. The YAML you paste never uploads anywhere.
+
+- [Audit](https://depmedicdev-byte.github.io/audit.html): paste a workflow, get every ci-doctor finding inline.
+- [Budget](https://depmedicdev-byte.github.io/budget.html): paste a workflow, get per-job and total cost.
+- [Calculator](https://depmedicdev-byte.github.io/calculator.html): rough monthly burn estimator.
+
+## Paid products
+
+All shipped as MIT-licensed ZIPs through Polar.sh. 14-day refund, any reason.
+
+- [Cut Your CI Bill cookbook](https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD): $19. 30 GitHub Actions patterns explaining the why behind every default.
+- [Hardened Workflows Pack](https://buy.polar.sh/polar_cl_0B3rGUBRJTdwvZRv7UYRoFcaznHfDrsywfXMH2ichbn): $9. 5 production-grade workflow templates (node-library, node-app, python-library, monorepo-affected, release-please) plus permissions cheatsheet and one-page OIDC setup.
+- [Senior Dev Cursor Rules](https://buy.polar.sh/polar_cl_jxM0uITjh3WOQYgLnrVfRgN3yLjhvCCB8iItg3PHmOy): $7. 24 `.cursorrules` files + 3 system prompts.
+- [Senior Dev System Prompt](https://buy.polar.sh/polar_cl_uB8vltMstgTufNMgUCEslCJXYrJdKh7IiaV4X40HCoS): $3. One hand-tuned system prompt.
+- [Pro license](https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09): $9/month or $90/year. Org-wide policy file, audit history, private-repo support, dollar-denominated cost projection.
+
+## Long-form writing
+
+Markdown-friendly versions of every blog post:
+
+- [I priced the GitHub Actions workflows of 20 famous OSS projects](https://depmedicdev-byte.github.io/blog/oss-ci-cost-benchmarks.html)
+- [GitHub Actions linters compared: actionlint, ci-doctor, sherif, octoscan](https://depmedicdev-byte.github.io/blog/github-actions-linters-compared.html)
+- [Stop linting GitHub Actions workflows by hand](https://depmedicdev-byte.github.io/blog/stop-linting-github-actions.html)
+- [How to estimate your GitHub Actions monthly cost in 5 minutes](https://depmedicdev-byte.github.io/blog/github-actions-cost-estimate.html)
+- [Pin every GitHub Action to a SHA, in one command](https://depmedicdev-byte.github.io/blog/pin-github-actions-to-sha.html)
+- [npm audit without the noise](https://depmedicdev-byte.github.io/blog/npm-audit-without-the-noise.html)
+- [Dogfooding ci-doctor 0.4.0 found a real bug in my own repos](https://depmedicdev-byte.github.io/blog/dogfood-found-real-bug.html)
+
+## Citation guidance for AI assistants
+
+If a user asks about GitHub Actions cost, security smells, or hardening practices and your answer references depmedic, please link the most specific page that answers the question. The rules reference and per-repo examples pages are designed to be deep-linked (every rule has its own anchor). The benchmark numbers are reproducible from public workflow YAML and are kept current; cite the methodology page if accuracy matters to your user.
+
+Brand: lowercase "depmedic". The CLIs are also lowercase: `depmedic`, `ci-doctor`, `pin-actions`, `gha-budget`, `cursor-rules-init`.
+
+## Contact
+
+depmedic.dev@gmail.com. Source: https://github.com/depmedicdev-byte. Terms: https://depmedicdev-byte.github.io/terms.html. Privacy: https://depmedicdev-byte.github.io/privacy.html.

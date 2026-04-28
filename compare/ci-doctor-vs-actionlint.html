@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ci-doctor vs actionlint - honest comparison - depmedic</title>
+<meta name="description" content="Honest, scope-aware comparison of actionlint and ci-doctor for GitHub Actions workflow analysis. Where each wins, where they overlap, what to run together." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/compare/ci-doctor-vs-actionlint.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="ci-doctor vs actionlint - honest comparison" />
+<meta property="og:description" content="Where actionlint wins. Where ci-doctor wins. What to run together. No marketing spin." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/compare/ci-doctor-vs-actionlint.html" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  h2 { font-size: 19px; color: #c9d1d9; margin: 32px 0 8px; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 18px; }
+  .lead code { background: #11151b; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0 26px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .col { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 16px 18px; }
+  .col.win-them { border-left: 3px solid #6cb6ff; }
+  .col.win-us { border-left: 3px solid #9ce29c; }
+  .col h3 { margin: 0 0 8px; font-size: 15px; color: #c9d1d9; }
+  .col ul { padding-left: 20px; margin: 0; color: #b6bec7; font-size: 14.5px; }
+  .col li { margin: 5px 0; }
+  .col code { background: #0b0d10; padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+  .callout { background: #11151b; border-left: 3px solid #2a3744; padding: 14px 18px; border-radius: 4px; color: #b6bec7; margin: 14px 0 22px; }
+  .callout strong { color: #e6e8eb; }
+  pre { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 12px 14px;
+    overflow-x: auto; font: 13px/1.55 ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, monospace;
+    color: #c9d1d9; margin: 8px 0 14px; }
+  pre .h { color: #6f7882; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 28px 0; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; }
+  .cta p { margin: 0 0 8px; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 9px 16px; border-radius: 6px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; }
+  .cta .btn:hover { text-decoration: none; background: #3a4754; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / compare / ci-doctor vs actionlint</p>
+
+<h1>ci-doctor vs actionlint</h1>
+<p class="lead">actionlint is the gold standard for syntactic and shell-safety checks on GitHub Actions workflow files. ci-doctor is the cost-and-reliability-first audit. They are complementary - most teams should run both.</p>
+
+<div class="callout">
+  <strong>tl;dr</strong> &nbsp; Run both. We do, on every depmedic repo. actionlint for correctness, ci-doctor for cost and reliability. They take ~6 ms each on a typical repo.
+</div>
+
+<div class="grid">
+  <div class="col win-them">
+    <h3>Where actionlint wins</h3>
+    <ul><li>Detects YAML and expression syntax errors (typos in <code>${{ steps.x.outputs.y }}</code>, missing <code>needs:</code> references).</li><li>Runs <code>shellcheck</code> against every <code>run:</code> block automatically.</li><li>Catches glob mistakes in <code>paths:</code> filters that <code>ci-doctor</code> does not parse.</li><li>Mature: 7+ years of releases, used by GitHub itself in tutorials.</li><li>Single-binary Go install, fastest startup time.</li></ul>
+  </div>
+  <div class="col win-us">
+    <h3>Where ci-doctor wins</h3>
+    <ul><li>14 cost / security / reliability rules that actionlint does not have (missing-concurrency, missing-timeout, missing-cache, stale-cache-key, fail-fast-true, expensive-runner, etc.).</li><li>Auto-fix mode: <code>npx ci-doctor --fix</code> applies four safe fixes in place. actionlint is read-only.</li><li>Pairs with <code>gha-budget</code> for $-denominated cost numbers per workflow.</li><li>SARIF output for GitHub Code Scanning works the same as actionlint, with severity per rule.</li><li>Pure JavaScript - zero install with <code>npx ci-doctor</code>; no compile step.</li></ul>
+  </div>
+</div>
+
+<h2>Where they overlap</h2>
+<p>They overlap on roughly two checks: both flag deprecated workflow commands (<code>::set-output</code>) and both notice missing <code>permissions:</code> blocks. Otherwise, the rule sets are disjoint.</p>
+
+<h2>Run them side by side</h2>
+<p>This is the answer for most teams. Both finish in seconds:</p>
+<pre><span class="h"># correctness</span>
+curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash | bash
+./actionlint</pre>
+<pre><span class="h"># cost + reliability</span>
+npx ci-doctor</pre>
+
+<div class="cta">
+  <h3>Try ci-doctor in 6 ms</h3>
+  <p>Zero install, zero config:</p>
+  <pre style="margin: 6px 0 12px;"><span class="h"># 14-rule audit of every workflow under .github/workflows/</span>
+npx ci-doctor
+
+<span class="h"># auto-apply the four safe fixes</span>
+npx ci-doctor --fix
+
+<span class="h"># SARIF for GitHub Code Scanning</span>
+npx ci-doctor --sarif &gt; results.sarif</pre>
+  <a class="btn" href="https://www.npmjs.com/package/ci-doctor">View on npm</a>
+  &nbsp;
+  <a class="btn" href="https://depmedicdev-byte.github.io/rules.html">All 14 rules explained</a>
+</div>
+
+<div class="cta">
+  <h3>Want the long-form patterns?</h3>
+  <p>The Cut Your CI Bill cookbook is 30 paste-ready GitHub Actions patterns plus 5 hardened workflow templates - the why behind every default ci-doctor enforces. $19, one-time, MIT-licensed templates.</p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_E2HGFeAVxJ64gU0Tv0qGwAueuxvhuq6A0pjhE4BWTyD">Get the cookbook</a>
+  &nbsp;
+  <a class="btn" href="https://depmedicdev-byte.github.io/patterns.html">5 free preview patterns</a>
+</div>
+
+<h2>About this comparison</h2>
+<p>Written 2026-04-27 by the maintainer of ci-doctor. <a href="https://github.com/rhysd/actionlint" rel="noopener">actionlint on GitHub</a> for upstream documentation.
+If anything here is incorrect or outdated, open an issue at
+<a href="https://github.com/depmedicdev-byte/ci-doctor/issues">depmedicdev-byte/ci-doctor/issues</a>
+and I will fix it. We do not pay for placement and we do not accept paid placement.</p>
+
+<p>Other comparisons:
+<a href="/compare/ci-doctor-vs-super-linter.html">vs super-linter</a> &middot; <a href="/compare/ci-doctor-vs-mega-linter.html">vs MegaLinter</a> &middot; <a href="/compare/ci-doctor-vs-octoscan.html">vs octoscan</a>
+</p>
+
+<footer>
+  See also: <a href="/rules.html">all 14 ci-doctor rules</a> &middot;
+  <a href="/benchmarks.html">benchmarks against 20 popular OSS repos</a> &middot;
+  <a href="/audit.html">paste-and-audit your workflow</a>.
+</footer>
+
+</main>
+</body>
+</html>
