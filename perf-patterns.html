@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GHA Performance Patterns - 12 paste-ready patterns - depmedic</title>
+<meta name="description" content="12 paste-ready GitHub Actions patterns that shave wallclock and minute-cost. Concurrency cancel, path filters, setup-* cache, expensive-runner sizing, matrix max-parallel, reusable workflows, turbo affected, docker buildx gha cache, corepack, conditional steps, fetch-depth. Letter PDF + HTML twin. $14, MIT for the YAML." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/perf-patterns.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="GHA Performance Patterns - 12 paste-ready patterns" />
+<meta property="og:description" content="Shave wallclock and minutes off real workflows. Letter PDF + HTML, $14, MIT YAML." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/perf-patterns.html" />
+<meta property="og:type" content="product" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://depmedicdev-byte.github.io/og/benchmarks.png" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "GHA Performance Patterns",
+  "description": "12 paste-ready patterns that shave wallclock and minute-cost off real GitHub Actions workflows.",
+  "brand": { "@type": "Brand", "name": "depmedic" },
+  "offers": { "@type": "Offer", "price": "14", "priceCurrency": "USD",
+    "url": "https://buy.polar.sh/polar_cl_Sz9OSApa6UUllMeiz04NpMO80ot6kwWlV5h650dYykQ",
+    "availability": "https://schema.org/InStock" }
+}</script>
+<style>
+:root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+body { background: #0b0d10; color: #e6e8eb;
+  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+main { max-width: 820px; margin: 0 auto; padding: 40px 20px 80px; }
+.nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+h1 { font-size: 32px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; font-size: 17px; }
+h2 { font-size: 20px; margin: 30px 0 8px; }
+ol li { margin: 6px 0; color: #d6dadf; }
+ol li code { background: #11151b; border: 1px solid #1e242c; padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+.cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+  border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 22px 0; }
+.cta h3 { margin: 0 0 6px; font-size: 18px; }
+.cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+.cta .price { font-size: 28px; font-weight: 700; color: #e6e8eb; }
+.cta .btn { display: inline-block; padding: 11px 22px; border-radius: 8px;
+  background: #2d5a7a; color: #fff; font-weight: 600; border: 1px solid #3a6e94; margin-top: 8px; margin-right: 8px; }
+.cta .btn:hover { text-decoration: none; background: #3a6e94; }
+.cta .btn.secondary { background: #2a3744; border-color: #3a4754; }
+.toc { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 14px 18px; margin: 14px 0 18px; }
+.toc strong { color: #c9d1d9; }
+.toc ul { margin: 6px 0 0 18px; padding: 0; }
+.toc li { color: #b6bec7; font-size: 14px; margin: 3px 0; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #1e242c; }
+th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+footer { margin-top: 40px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / GHA Performance Patterns</p>
+
+<h1>GHA Performance Patterns</h1>
+<p class="lead">
+  12 paste-ready GitHub Actions patterns that shave wallclock and
+  minute-cost off real workflows. Each pattern: a <em>before</em>, an
+  <em>after</em>, and the <em>why</em>. Letter PDF + HTML twin. The YAML
+  is MIT.
+</p>
+
+<div class="cta">
+  <div class="price">$14 one-time</div>
+  <p>Letter PDF + HTML twin + LICENSE.txt. Free updates within v1.x emailed to your purchase address.</p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_Sz9OSApa6UUllMeiz04NpMO80ot6kwWlV5h650dYykQ">Buy on Polar</a>
+  <a class="btn secondary" href="/everything-bundle.html">or get it free in the Everything Bundle ($59)</a>
+</div>
+
+<h2>What's inside</h2>
+
+<div class="toc">
+  <strong>The 12 patterns</strong>
+  <ul>
+    <li>1. Concurrency cancel-in-progress (kills duplicate-PR-push burn) &mdash; <em>30-60% on a busy branch</em></li>
+    <li>2. Path filters: only build what changed &mdash; <em>50-95% in a monorepo</em></li>
+    <li>3. Dependency cache via setup-* (no actions/cache@v4 dance) &mdash; <em>30-90 sec/job</em></li>
+    <li>4. Use a faster runner only where you need cores &mdash; <em>$0 if right, $200/mo if wrong</em></li>
+    <li>5. Matrix max-parallel + fail-fast: false done right &mdash; <em>5-30% on flaky matrices</em></li>
+    <li>6. Reusable workflows + composite actions &mdash; <em>indirect: less drift, less maintenance</em></li>
+    <li>7. turborepo / nx affected: only test what changed &mdash; <em>60-90% in a monorepo</em></li>
+    <li>8. docker/buildx with GitHub Actions cache backend &mdash; <em>2-5 min on Docker jobs</em></li>
+    <li>9. Setup-node 20+ with corepack &mdash; <em>5-15 sec/job</em></li>
+    <li>10. Skip safe-but-slow setup-* when Node is preinstalled &mdash; <em>10-30 sec/job</em></li>
+    <li>11. Conditional steps: <code>if: always()</code>, <code>if: success()</code>, <code>if: github.event_name == 'push'</code></li>
+    <li>12. <code>fetch-depth: 1</code> by default &mdash; <em>5-30 sec on big repos</em></li>
+  </ul>
+</div>
+
+<h2>Two pages from the inside</h2>
+
+<table>
+  <thead><tr><th>Pattern</th><th>What changes</th><th>Saves</th></tr></thead>
+  <tbody>
+    <tr><td>1. Concurrency cancel-in-progress</td><td>3 lines on top of the workflow</td><td>30-60% on a busy branch</td></tr>
+    <tr><td>3. Cache via setup-*</td><td>Replaces a 6-line <code>actions/cache@v4</code> block with one line</td><td>30-90 sec/job</td></tr>
+    <tr><td>7. turbo / nx affected</td><td>Replaces <code>pnpm test</code> with <code>turbo run test --filter=...</code></td><td>60-90% in a monorepo</td></tr>
+    <tr><td>8. buildx + gha cache</td><td>Adds <code>cache-from: type=gha</code> + <code>cache-to: type=gha,mode=max</code></td><td>2-5 min on Docker jobs</td></tr>
+  </tbody>
+</table>
+
+<h2>How is this different from the Cookbook?</h2>
+<p>
+  The <a href="/index.html">Cut Your CI Bill cookbook</a> ($19, also on
+  Polar) covers <strong>cost</strong> at the workflow architecture level
+  (30 patterns + 5 paste-ready workflow templates: PR fast lane, monorepo
+  affected-only, cache-everything, SHA-pinned actions, nightly full
+  matrix). It's denser and broader.
+</p>
+<p>
+  This product covers <strong>performance</strong> at the line-by-line
+  level: a tight set of 12 mechanical edits that compound to faster CI.
+  No templates, no narrative chapters - just before / after / why.
+</p>
+<p>
+  Buy both? Skip both: get the
+  <a href="/everything-bundle.html">Everything Bundle ($59)</a> which
+  includes both plus every other current and future depmedic playbook.
+</p>
+
+<h2>Free companions (no purchase needed)</h2>
+<ul>
+  <li><code>npx ci-doctor</code> - 16 audits across cost / security / hygiene. Tells you which patterns to apply.</li>
+  <li><code>npx gha-budget</code> - prices a workflow before you push.</li>
+  <li><a href="/leaderboard.html">/leaderboard.html</a> - 107 OSS repos ranked by hygiene score, daily refresh.</li>
+  <li><a href="/blog/pin-bar-2026.html">The Pin Bar 2026</a> - 1,461 <code>uses:</code> across 20 OSS repos, 59% pinned to SHA.</li>
+</ul>
+
+<div class="cta">
+  <h3>Ready</h3>
+  <p>$14 one-time. Stripe via Polar. Refunds within 14 days, no questions.</p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_Sz9OSApa6UUllMeiz04NpMO80ot6kwWlV5h650dYykQ">Buy GHA Performance Patterns</a>
+</div>
+
+<footer>
+  <a href="/">depmedic</a> &middot; built and maintained by depmedic. Issues, refunds, or pattern requests: <a href="mailto:depmedic.dev@gmail.com">depmedic.dev@gmail.com</a>.
+</footer>
+
+</main>
+</body>
+</html>
