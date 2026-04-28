@@ -133,7 +133,7 @@
 <p class="footer">
   Free tier: 5 calls per IP per UTC day. Pro: unlimited, priority queue, runs
   against a larger model.
-  <a href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09">Get a Pro license ($9/mo)</a>.
+  <a href="https://buy.polar.sh/polar_cl_YoH8LHbbEbvsJG2isJEHzWM4WFgIeftbwV9KA0BgLgq">Get a Pro license ($5/mo)</a>.
   &middot; <a href="https://buy.polar.sh/polar_cl_BGcLSOeiHg1yFfq5kOIayEcTgvSGqCLa6LnBU4PyHIJ">Tip jar</a>.
 </p>
 
@@ -238,7 +238,7 @@ submit.addEventListener('click', async () => {
     if (r.status === 429) {
       result.classList.add('show', 'err');
       result.innerHTML = '<p><strong>Daily free limit reached.</strong> Reset at UTC midnight, or paste a Pro license to continue.</p>' +
-        '<div class="upsell">Pro is $9/mo on Polar - unlimited calls, larger model. <a href="https://buy.polar.sh/polar_cl_SUzmX5RCQCV8MJV3dDEBFMu3MGWu2WQhzZ1s02ZhK09">Get Pro</a>.</div>';
+        '<div class="upsell">ask depmedic Pro is $5/mo on Polar - unlimited calls, larger model. <a href="https://buy.polar.sh/polar_cl_YoH8LHbbEbvsJG2isJEHzWM4WFgIeftbwV9KA0BgLgq">Get Pro</a>.</div>';
       status.textContent = '';
     } else if (!r.ok) {
       throw new Error(data.error || ('http ' + r.status));
