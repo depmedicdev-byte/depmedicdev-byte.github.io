@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#0b0d10" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; }
+  h2 { font-size: 18px; margin: 28px 0 8px; color: #c9d1d9; text-transform: uppercase; letter-spacing: 0.04em; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.right, th.right { text-align: right; }
+  .grade { display: inline-block; width: 68px; height: 68px; border-radius: 12px; line-height: 68px;
+    text-align: center; font-size: 32px; font-weight: 700; vertical-align: middle; margin-right: 14px; color: #0b0d10; }
+  .score { font-size: 44px; font-weight: 700; vertical-align: middle; }
+  .score-sub { color: #9aa3ad; font-size: 14px; margin-left: 8px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 18px 0 22px; }
+  .stat { background: #11151b; border: 1px solid #1e242c; border-radius: 8px; padding: 12px 14px; }
+  .stat .label { color: #9aa3ad; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .val { font-size: 20px; font-weight: 600; margin-top: 2px; }
+  .bar { height: 8px; background: #1e242c; border-radius: 4px; overflow: hidden; margin: 4px 0 10px; }
+  .bar > div { height: 100%; background: #6cb6ff; }
+  .deprecated { background: #4a1e1e; color: #ffb8b8; padding: 8px 12px; border-radius: 6px; margin: 12px 0; }
+  pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+    font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #c9d1d9; }
+  pre { padding: 10px 14px; overflow-x: auto; margin: 6px 0 14px; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 18px 22px; margin: 22px 0; }
+  .cta h3 { margin: 0 0 4px; font-size: 16px; }
+  .cta p { margin: 0; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 8px 14px; border-radius: 6px;
+    background: #2a3744; color: #e6e8eb; font-weight: 500; border: 1px solid #3a4754; margin-top: 10px; margin-right: 8px; }
+  .badge-ex { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 12px 14px; }
+  footer { margin-top: 36px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 14px; }
+</style>
+</head><body><main>
+<title>axios - dependency health snapshot - depmedic</title>
+<meta name="description" content="axios: depmedic health score 83/100 (grade B). Promise based HTTP client for the browser and node.js" />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/health/axios.html" />
+<meta property="og:title" content="axios - depmedic health: 83/100 (B)" />
+<meta property="og:description" content="Dependency health snapshot: popularity, maintenance, quality, risk." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/health/axios.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+
+<p class="nav"><a href="/">depmedic</a> / <a href="/health/">health</a> / axios</p>
+
+<h1>axios <span class="score-sub">v1.2.2</span></h1>
+<p class="lead">Promise based HTTP client for the browser and node.js</p>
+
+
+
+<div style="display:flex;align-items:center;margin:20px 0;">
+  <div class="grade" style="background:#bfe3a3;">B</div>
+  <div>
+    <div class="score">83<span class="score-sub">/100 depmedic health score</span></div>
+    <div style="color:#9aa3ad;font-size:13px;margin-top:4px;">snapshot taken 2026-04-28T07:19:41.497Z</div>
+  </div>
+</div>
+
+<h2>Score breakdown</h2>
+<table>
+<tr><td>Popularity</td><td class="right">96/100</td></tr>
+<tr><td>Maintenance</td><td class="right">67/100</td></tr>
+<tr><td>Quality</td><td class="right">78/100</td></tr>
+<tr><td>Risk (penalty for deprecated)</td><td class="right">100/100</td></tr>
+</table>
+
+<h2>Snapshot</h2>
+<div class="stats">
+  <div class="stat"><div class="label">Weekly downloads</div><div class="val">4M</div></div>
+  <div class="stat"><div class="label">Monthly downloads</div><div class="val">147.4M</div></div>
+  <div class="stat"><div class="label">npm dependents</div><div class="val">0</div></div>
+  <div class="stat"><div class="label">GitHub stars</div><div class="val">97.9K</div></div>
+  <div class="stat"><div class="label">Open issues</div><div class="val">322</div></div>
+  <div class="stat"><div class="label">License</div><div class="val">MIT</div></div>
+  <div class="stat"><div class="label">TypeScript types</div><div class="val">no</div></div>
+  <div class="stat"><div class="label">Maintainers (top 5)</div><div class="val" style="font-size:13px;">mzabriskie, nickuraltsev, emilyemorehouse, jasonsaayman</div></div>
+</div>
+
+<h2>Embed the badge</h2>
+<p>Drop one of these into your README. Updates whenever depmedic re-runs the snapshot.</p>
+
+<div class="badge-ex">
+  <p><img src="https://depmedicdev-byte.github.io/health/badge/axios.svg" alt="depmedic health: 83/100 (B)" /></p>
+  <pre><code>![depmedic health](https://depmedicdev-byte.github.io/health/badge/axios.svg)</code></pre>
+</div>
+
+<h2>Use depmedic locally on this package</h2>
+<pre><code># In your project that depends on axios:
+npm install axios
+npx depmedic                    # vulnerability triage on your install
+npx depmedic --severity=high    # CI-friendly: exits 1 on high+critical</code></pre>
+
+<div class="cta">
+  <h3>Want a deep audit of axios for vendor review?</h3>
+  <p>The Vendor Dossier PDF goes deeper than this snapshot: full advisory list (resolved + open), maintainer drift, release cadence, transitive risk, license tree. $9 one-time per package.</p>
+  <a class="btn" href="/vendor-dossier.html?pkg=axios">Order Vendor Dossier ($9)</a>
+  <a class="btn" href="/">More tools</a>
+</div>
+
+<div class="cta">
+  <h3>Org-wide monitoring</h3>
+  <p>Track every package across your repos. Get an email when any one slips below your minimum grade. $19/mo.</p>
+  <a class="btn" href="/org-monitor.html">Org Dep Health Monitor ($19/mo)</a>
+</div>
+
+<footer>
+  Snapshot via <a href="https://api.npms.io/">api.npms.io</a> + <a href="https://registry.npmjs.org/">npm registry</a>.
+  Source: <a href="https://www.npmjs.com/package/axios">npm</a>
+  &middot; <a href="https://github.com/axios/axios">repo</a>
+  &middot; <a href="https://axios-http.com">homepage</a>
+  &middot; <a href="/health/">all packages</a>
+</footer>
+
+</main></body></html>

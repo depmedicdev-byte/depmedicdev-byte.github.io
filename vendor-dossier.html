@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vendor Dossier PDF - npm package security review for $9 - depmedic</title>
+<meta name="description" content="Pro-grade vendor / security review dossier for any npm package. 0-100 health score, identity, adoption, release cadence, OSV advisories, decision matrix, vendor questionnaire. PDF + raw JSON. $9 per package, includes 1 custom dossier with the lodash sample to preview the format." />
+<link rel="canonical" href="https://depmedicdev-byte.github.io/vendor-dossier.html" />
+<meta name="theme-color" content="#0b0d10" />
+<meta property="og:title" content="Vendor Dossier PDF - npm package security review for $9" />
+<meta property="og:description" content="6-8 page security / vendor review dossier for any npm package. PDF + raw JSON. Same engine as the free /health snapshots, deeper." />
+<meta property="og:url" content="https://depmedicdev-byte.github.io/vendor-dossier.html" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://depmedicdev-byte.github.io/og/audit.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<style>
+  :root { color-scheme: dark; } * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: #0b0d10; color: #e6e8eb;
+    font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #6cb6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  main { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+  .nav { color: #9aa3ad; font-size: 14px; margin: 0 0 16px; } .nav a { color: #9aa3ad; }
+  h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: #b6bec7; max-width: 64ch; margin: 0 0 22px; font-size: 17px; }
+  h2 { font-size: 20px; margin: 28px 0 8px; }
+  h3 { font-size: 16px; margin: 16px 0 4px; color: #c9d1d9; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #1e242c; vertical-align: top; }
+  th { color: #9aa3ad; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  ol, ul { padding-left: 22px; }
+  li { margin: 5px 0; color: #d6dadf; }
+  .cta { background: linear-gradient(135deg, #16202b, #1e2a38);
+    border: 1px solid #3a4754; border-radius: 12px; padding: 22px 24px; margin: 26px 0; }
+  .cta h3 { margin: 0 0 6px; font-size: 17px; color: #e6e8eb; }
+  .cta p { margin: 0 0 10px; color: #b6bec7; font-size: 14px; }
+  .cta .btn { display: inline-block; padding: 12px 22px; border-radius: 8px;
+    background: #2d5a7a; color: #e6e8eb; font-weight: 600; border: 1px solid #3a6e94; margin-right: 8px; margin-top: 10px; font-size: 15px; }
+  .cta .btn:hover { text-decoration: none; background: #3a6e94; }
+  .cta .btn.secondary { background: #2a3744; border-color: #3a4754; font-weight: 500; }
+  .price { font-size: 36px; font-weight: 700; color: #9ce29c; }
+  pre, code { background: #11151b; border: 1px solid #1e242c; border-radius: 6px; padding: 0 6px;
+    font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; color: #c9d1d9; }
+  pre { padding: 12px 14px; overflow-x: auto; }
+  footer { margin-top: 44px; color: #6f7882; font-size: 13px; border-top: 1px solid #1e242c; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+<p class="nav"><a href="/">depmedic</a> / vendor dossier</p>
+
+<h1>Vendor Dossier PDF</h1>
+<p class="lead">
+  A pro-grade, 6-8 page security / vendor review dossier for any
+  npm package. The same data the free <a href="/health/">/health</a> pages
+  use, plus security advisories from OSV, release cadence, and a
+  decision matrix scoped to your use case (load-bearing /
+  peripheral / defer / sunset). PDF + raw JSON, delivered within 24 h.
+</p>
+
+<p class="price">$9 per package</p>
+
+<div class="cta">
+  <h3>Get a dossier</h3>
+  <p>You get the lodash sample dossier instantly + a custom dossier for the npm package of your choice. 7-day refunds.</p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_UdAXRpDDbv8k0wAPDaC4ES6FZelqLNPsxYAVj09fchW">Buy a Vendor Dossier ($9)</a>
+  <a class="btn secondary" href="/health/">See free /health snapshots first</a>
+</div>
+
+<h2>What's in a dossier</h2>
+
+<ol>
+  <li><strong>Executive summary</strong> with the depmedic 0-100 health score (popularity, maintenance, quality, risk) + letter grade.</li>
+  <li><strong>Identity and ownership</strong>: publisher, maintainers, license, repository, types support.</li>
+  <li><strong>Adoption signal</strong>: downloads, dependents, stars, forks, open vs closed issues.</li>
+  <li><strong>Release cadence</strong>: last 12 versions with days between - shows whether maintenance is alive or stalled.</li>
+  <li><strong>Known security advisories</strong> from <a href="https://osv.dev/">OSV.dev</a>: ID, summary, severity, dates.</li>
+  <li><strong>Decision matrix</strong>: GO / CAUTION / NO for load-bearing, peripheral, defer, sunset use cases.</li>
+  <li><strong>Vendor questionnaire</strong>: the questions to ask the maintainer in a security review.</li>
+  <li><strong>Operational mitigations</strong>: pin, mirror, watch, allowlist.</li>
+  <li><strong>Sources and methodology</strong>: every input named so an auditor can reproduce.</li>
+</ol>
+
+<h2>How it works</h2>
+
+<ol>
+  <li>Buy ($9). You get the bundle download instantly: <code>sample-lodash.pdf</code> showing the format, plus the request guide.</li>
+  <li>Reply to your Polar receipt with the npm package name. Subject: <code>Vendor Dossier - &lt;package&gt;</code>.</li>
+  <li>Receive your dossier within 24 hours, usually same day. PDF + raw JSON.</li>
+</ol>
+
+<h2>Compared to writing it yourself</h2>
+
+<table>
+<tr><th></th><th>Yourself</th><th>Vendor Dossier</th></tr>
+<tr><td>Time</td><td>2-4 hours per package</td><td>~1 minute (forward the receipt)</td></tr>
+<tr><td>Format</td><td>Whatever you can paste together</td><td>Consistent printable PDF, comparable across packages</td></tr>
+<tr><td>OSV advisory pull</td><td>Manual, click click click</td><td>Auto, every advisory in one table</td></tr>
+<tr><td>Decision matrix</td><td>From memory</td><td>Scored against load-bearing / peripheral / defer / sunset</td></tr>
+<tr><td>Reproducible</td><td>Hard, depends on which tab you opened</td><td>Yes, raw JSON included; methodology cited</td></tr>
+<tr><td>Cost</td><td>$200+ at typical engineer rate</td><td>$9</td></tr>
+</table>
+
+<h2>Bigger needs?</h2>
+
+<div class="cta">
+  <h3>Org Dep Health Monitor - $19/mo</h3>
+  <p>Up to 200 packages monitored continuously. Weekly digest + same-day alerts on grade drops, deprecations, advisories. Includes 4 Vendor Dossier PDFs per quarter (a $36 standalone value). Slack webhook supported.</p>
+  <a class="btn" href="https://buy.polar.sh/polar_cl_gjFTQAIlh9IBuMCAPdwyP6Yt2gIGUAtYPSqRP4bsBie">Subscribe ($19/mo)</a>
+  <a class="btn secondary" href="/org-monitor.html">Read more</a>
+</div>
+
+<footer>
+  Sources: <a href="https://api.npms.io/">api.npms.io</a> + <code>registry.npmjs.org</code> + <a href="https://osv.dev/">osv.dev</a>.
+  Sample: <a href="/health/lodash.html">lodash health snapshot</a> (free version of the same data).
+  Refunds within 7 days.
+</footer>
+
+</main>
+</body>
+</html>
