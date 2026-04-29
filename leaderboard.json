@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-04-28 19:13 UTC",
+  "generatedAt": "2026-04-29 18:59 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
-      "workflows": 17,
-      "findings": 30,
+      "workflows": 16,
+      "findings": 28,
       "e": 0,
-      "w": 24,
+      "w": 22,
       "i": 6,
       "ruleHits": {
-        "missing-concurrency": 6,
-        "missing-timeout": 16,
+        "missing-concurrency": 5,
+        "missing-timeout": 15,
         "matrix-overcommit": 2,
         "fail-fast-true": 2,
         "fetch-depth-zero": 4
       },
-      "perRun": 0.9,
-      "monthly": 806,
-      "score": 1.59
+      "perRun": 0.83,
+      "monthly": 749,
+      "score": 1.56
     },
     {
       "repo": "gatsbyjs/gatsby",
@@ -245,15 +245,15 @@
     {
       "repo": "nodejs/node",
       "workflows": 36,
-      "findings": 104,
-      "e": 2,
+      "findings": 106,
+      "e": 3,
       "w": 94,
-      "i": 8,
+      "i": 9,
       "ruleHits": {
         "missing-cache": 28,
         "missing-timeout": 57,
-        "deprecated-action": 2,
-        "artifact-no-retention": 4,
+        "deprecated-action": 3,
+        "artifact-no-retention": 5,
         "missing-concurrency": 6,
         "fetch-depth-zero": 4,
         "expensive-runner": 1,
@@ -262,7 +262,7 @@
       },
       "perRun": 6.27,
       "monthly": 5645,
-      "score": 2.89
+      "score": 2.99
     },
     {
       "repo": "sindresorhus/got",
@@ -643,28 +643,6 @@
       "score": 5.56
     },
     {
-      "repo": "remix-run/remix",
-      "workflows": 11,
-      "findings": 70,
-      "e": 0,
-      "w": 67,
-      "i": 3,
-      "ruleHits": {
-        "pinned-action-sha": 24,
-        "missing-timeout": 23,
-        "missing-permissions": 10,
-        "fail-fast-true": 1,
-        "missing-cache": 1,
-        "missing-concurrency": 3,
-        "fetch-depth-zero": 2,
-        "stale-cache-key": 4,
-        "expensive-runner": 2
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 6.23
-    },
-    {
       "repo": "rollup/rollup",
       "workflows": 4,
       "findings": 25,
@@ -786,6 +764,26 @@
       "perRun": 0.9,
       "monthly": 806,
       "score": 8.25
+    },
+    {
+      "repo": "remix-run/remix",
+      "workflows": 9,
+      "findings": 117,
+      "e": 0,
+      "w": 111,
+      "i": 6,
+      "ruleHits": {
+        "pinned-action-sha": 42,
+        "missing-cache": 2,
+        "missing-timeout": 46,
+        "expensive-runner": 6,
+        "missing-permissions": 7,
+        "fetch-depth-zero": 6,
+        "stale-cache-key": 8
+      },
+      "perRun": 3.52,
+      "monthly": 3168,
+      "score": 12.67
     }
   ]
 }
