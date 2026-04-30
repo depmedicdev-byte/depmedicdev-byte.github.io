@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29 18:59 UTC",
+  "generatedAt": "2026-04-30 18:56 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -74,17 +74,17 @@
     {
       "repo": "jestjs/jest",
       "workflows": 9,
-      "findings": 20,
+      "findings": 21,
       "e": 0,
-      "w": 20,
+      "w": 21,
       "i": 0,
       "ruleHits": {
-        "missing-timeout": 16,
+        "missing-timeout": 17,
         "missing-permissions": 4
       },
-      "perRun": 0.9,
-      "monthly": 806,
-      "score": 2.22
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 2.33
     },
     {
       "repo": "sveltejs/svelte",
@@ -488,8 +488,8 @@
         "matrix-overcommit": 13,
         "expensive-runner": 1
       },
-      "perRun": 1.79,
-      "monthly": 1613,
+      "perRun": 1.73,
+      "monthly": 1555,
       "score": 4.95
     },
     {
