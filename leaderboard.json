@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-30 18:56 UTC",
+  "generatedAt": "2026-05-01 17:37 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -245,13 +245,13 @@
     {
       "repo": "nodejs/node",
       "workflows": 36,
-      "findings": 106,
+      "findings": 105,
       "e": 3,
-      "w": 94,
+      "w": 93,
       "i": 9,
       "ruleHits": {
         "missing-cache": 28,
-        "missing-timeout": 57,
+        "missing-timeout": 56,
         "deprecated-action": 3,
         "artifact-no-retention": 5,
         "missing-concurrency": 6,
@@ -260,9 +260,9 @@
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.27,
-      "monthly": 5645,
-      "score": 2.99
+      "perRun": 6.21,
+      "monthly": 5587,
+      "score": 2.96
     },
     {
       "repo": "sindresorhus/got",
@@ -519,13 +519,13 @@
     {
       "repo": "vercel/next.js",
       "workflows": 37,
-      "findings": 166,
+      "findings": 164,
       "e": 17,
-      "w": 137,
+      "w": 135,
       "i": 12,
       "ruleHits": {
         "missing-cache": 30,
-        "missing-timeout": 56,
+        "missing-timeout": 54,
         "deprecated-action": 17,
         "missing-permissions": 28,
         "artifact-no-retention": 11,
@@ -535,9 +535,9 @@
         "stale-cache-key": 1,
         "missing-concurrency": 1
       },
-      "perRun": 4.1,
-      "monthly": 3686,
-      "score": 5.24
+      "perRun": 3.71,
+      "monthly": 3341,
+      "score": 5.19
     },
     {
       "repo": "expressjs/express",
