@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-01 17:37 UTC",
+  "generatedAt": "2026-05-02 16:33 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -35,25 +35,6 @@
       "score": 2
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 9,
-      "findings": 21,
-      "e": 0,
-      "w": 17,
-      "i": 4,
-      "ruleHits": {
-        "missing-concurrency": 4,
-        "missing-timeout": 11,
-        "fetch-depth-zero": 1,
-        "matrix-overcommit": 1,
-        "always-run-on-pr": 3,
-        "missing-cache": 1
-      },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 2.11
-    },
-    {
       "repo": "vitejs/vite",
       "workflows": 12,
       "findings": 26,
@@ -70,6 +51,26 @@
       "perRun": 1.09,
       "monthly": 979,
       "score": 2.13
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 9,
+      "findings": 22,
+      "e": 0,
+      "w": 18,
+      "i": 4,
+      "ruleHits": {
+        "missing-concurrency": 4,
+        "missing-timeout": 11,
+        "fetch-depth-zero": 1,
+        "matrix-overcommit": 1,
+        "always-run-on-pr": 3,
+        "expensive-runner": 1,
+        "missing-cache": 1
+      },
+      "perRun": 1.28,
+      "monthly": 1152,
+      "score": 2.22
     },
     {
       "repo": "jestjs/jest",
@@ -704,24 +705,6 @@
       "score": 6.63
     },
     {
-      "repo": "axios/axios",
-      "workflows": 8,
-      "findings": 40,
-      "e": 12,
-      "w": 27,
-      "i": 1,
-      "ruleHits": {
-        "missing-cache": 2,
-        "missing-concurrency": 4,
-        "missing-timeout": 21,
-        "deprecated-action": 12,
-        "fetch-depth-zero": 1
-      },
-      "perRun": 2.62,
-      "monthly": 2362,
-      "score": 7.94
-    },
-    {
       "repo": "denoland/deno",
       "workflows": 11,
       "findings": 99,
@@ -764,6 +747,23 @@
       "perRun": 0.9,
       "monthly": 806,
       "score": 8.25
+    },
+    {
+      "repo": "axios/axios",
+      "workflows": 7,
+      "findings": 38,
+      "e": 12,
+      "w": 26,
+      "i": 0,
+      "ruleHits": {
+        "missing-cache": 2,
+        "missing-concurrency": 4,
+        "missing-timeout": 20,
+        "deprecated-action": 12
+      },
+      "perRun": 2.56,
+      "monthly": 2304,
+      "score": 8.86
     },
     {
       "repo": "remix-run/remix",
