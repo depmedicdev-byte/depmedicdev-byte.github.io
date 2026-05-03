@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02 16:33 UTC",
+  "generatedAt": "2026-05-03 16:33 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -83,8 +83,8 @@
         "missing-timeout": 17,
         "missing-permissions": 4
       },
-      "perRun": 0.96,
-      "monthly": 864,
+      "perRun": 1.22,
+      "monthly": 1094,
       "score": 2.33
     },
     {
