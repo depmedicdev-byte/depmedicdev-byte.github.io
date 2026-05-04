@@ -105,5 +105,12 @@
   <pubDate>Mon, 27 Apr 2026 12:00:00 GMT</pubDate>
   <description>ci-doctor 0.2 ships --fix mode: auto-applies safe fixes for missing-permissions, missing-concurrency, missing-timeout, and artifact-no-retention. Comments preserved.</description>
 </item>
-</channel>
+    <item>
+      <title>depmedic weekly #3: 9 package updates this week</title>
+      <link>https://depmedicdev-byte.github.io/blog/depmedic-weekly-3.html</link>
+      <guid isPermaLink="true">https://depmedicdev-byte.github.io/blog/depmedic-weekly-3.html</guid>
+      <pubDate>Mon, 04 May 2026 18:05:36 GMT</pubDate>
+      <description>9 depmedic packages shipped this week.</description>
+    </item>
+  </channel>
 </rss>
