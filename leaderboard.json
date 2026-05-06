@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-05 18:57 UTC",
+  "generatedAt": "2026-05-06 19:14 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -519,16 +519,16 @@
     },
     {
       "repo": "vercel/next.js",
-      "workflows": 37,
-      "findings": 164,
-      "e": 17,
-      "w": 135,
+      "workflows": 36,
+      "findings": 160,
+      "e": 16,
+      "w": 132,
       "i": 12,
       "ruleHits": {
-        "missing-cache": 30,
-        "missing-timeout": 54,
-        "deprecated-action": 17,
-        "missing-permissions": 28,
+        "missing-cache": 29,
+        "missing-timeout": 53,
+        "deprecated-action": 16,
+        "missing-permissions": 27,
         "artifact-no-retention": 11,
         "fail-fast-true": 1,
         "matrix-overcommit": 20,
@@ -536,9 +536,9 @@
         "stale-cache-key": 1,
         "missing-concurrency": 1
       },
-      "perRun": 3.71,
-      "monthly": 3341,
-      "score": 5.19
+      "perRun": 3.65,
+      "monthly": 3283,
+      "score": 5.17
     },
     {
       "repo": "expressjs/express",
