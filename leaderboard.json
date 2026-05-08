@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07 19:21 UTC",
+  "generatedAt": "2026-05-08 18:55 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -284,22 +284,21 @@
     {
       "repo": "lodash/lodash",
       "workflows": 8,
-      "findings": 28,
+      "findings": 26,
       "e": 0,
-      "w": 25,
+      "w": 23,
       "i": 3,
       "ruleHits": {
         "missing-cache": 1,
         "missing-concurrency": 7,
         "missing-timeout": 8,
         "missing-permissions": 6,
-        "pinned-action-sha": 2,
         "matrix-overcommit": 1,
         "always-run-on-pr": 3
       },
       "perRun": 0.64,
       "monthly": 576,
-      "score": 3.31
+      "score": 3.06
     },
     {
       "repo": "facebook/react",
