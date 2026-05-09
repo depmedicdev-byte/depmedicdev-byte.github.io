@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-08 18:55 UTC",
+  "generatedAt": "2026-05-09 16:38 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -473,6 +473,29 @@
       "score": 4.8
     },
     {
+      "repo": "vercel/next.js",
+      "workflows": 36,
+      "findings": 157,
+      "e": 13,
+      "w": 132,
+      "i": 12,
+      "ruleHits": {
+        "missing-cache": 29,
+        "missing-timeout": 53,
+        "deprecated-action": 13,
+        "missing-permissions": 27,
+        "artifact-no-retention": 11,
+        "fail-fast-true": 1,
+        "matrix-overcommit": 20,
+        "pinned-action-sha": 1,
+        "stale-cache-key": 1,
+        "missing-concurrency": 1
+      },
+      "perRun": 3.65,
+      "monthly": 3283,
+      "score": 4.92
+    },
+    {
       "repo": "microsoft/playwright",
       "workflows": 19,
       "findings": 94,
@@ -515,29 +538,6 @@
       "perRun": 2.56,
       "monthly": 2304,
       "score": 5.15
-    },
-    {
-      "repo": "vercel/next.js",
-      "workflows": 36,
-      "findings": 160,
-      "e": 16,
-      "w": 132,
-      "i": 12,
-      "ruleHits": {
-        "missing-cache": 29,
-        "missing-timeout": 53,
-        "deprecated-action": 16,
-        "missing-permissions": 27,
-        "artifact-no-retention": 11,
-        "fail-fast-true": 1,
-        "matrix-overcommit": 20,
-        "pinned-action-sha": 1,
-        "stale-cache-key": 1,
-        "missing-concurrency": 1
-      },
-      "perRun": 3.65,
-      "monthly": 3283,
-      "score": 5.17
     },
     {
       "repo": "expressjs/express",
