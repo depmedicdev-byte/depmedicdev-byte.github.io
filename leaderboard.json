@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-10 16:38 UTC",
+  "generatedAt": "2026-05-11 20:24 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -165,13 +165,12 @@
     {
       "repo": "nuxt/nuxt",
       "workflows": 28,
-      "findings": 64,
+      "findings": 63,
       "e": 7,
-      "w": 48,
+      "w": 47,
       "i": 9,
       "ruleHits": {
         "missing-timeout": 26,
-        "stale-cache-key": 1,
         "missing-concurrency": 18,
         "fetch-depth-zero": 4,
         "deprecated-action": 7,
@@ -182,7 +181,7 @@
       },
       "perRun": 2.11,
       "monthly": 1901,
-      "score": 2.63
+      "score": 2.59
     },
     {
       "repo": "remix-run/react-router",
@@ -475,9 +474,9 @@
     {
       "repo": "vercel/next.js",
       "workflows": 36,
-      "findings": 157,
+      "findings": 155,
       "e": 13,
-      "w": 132,
+      "w": 130,
       "i": 12,
       "ruleHits": {
         "missing-cache": 29,
@@ -486,14 +485,14 @@
         "missing-permissions": 27,
         "artifact-no-retention": 11,
         "fail-fast-true": 1,
-        "matrix-overcommit": 20,
+        "matrix-overcommit": 18,
         "pinned-action-sha": 1,
         "stale-cache-key": 1,
         "missing-concurrency": 1
       },
       "perRun": 3.65,
       "monthly": 3283,
-      "score": 4.92
+      "score": 4.86
     },
     {
       "repo": "microsoft/playwright",
