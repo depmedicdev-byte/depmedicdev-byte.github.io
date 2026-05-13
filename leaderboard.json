@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12 20:18 UTC",
+  "generatedAt": "2026-05-13 20:23 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -18,6 +18,22 @@
       "perRun": 0.83,
       "monthly": 749,
       "score": 1.56
+    },
+    {
+      "repo": "TanStack/query",
+      "workflows": 6,
+      "findings": 13,
+      "e": 0,
+      "w": 11,
+      "i": 2,
+      "ruleHits": {
+        "missing-timeout": 8,
+        "missing-concurrency": 3,
+        "fetch-depth-zero": 2
+      },
+      "perRun": 0.51,
+      "monthly": 461,
+      "score": 2
     },
     {
       "repo": "gatsbyjs/gatsby",
@@ -184,24 +200,6 @@
       "score": 2.59
     },
     {
-      "repo": "remix-run/react-router",
-      "workflows": 19,
-      "findings": 52,
-      "e": 0,
-      "w": 49,
-      "i": 3,
-      "ruleHits": {
-        "pinned-action-sha": 15,
-        "missing-timeout": 19,
-        "missing-concurrency": 2,
-        "missing-permissions": 13,
-        "fetch-depth-zero": 3
-      },
-      "perRun": 1.22,
-      "monthly": 1094,
-      "score": 2.66
-    },
-    {
       "repo": "electron/electron",
       "workflows": 42,
       "findings": 110,
@@ -220,6 +218,25 @@
       "perRun": 2.3,
       "monthly": 2074,
       "score": 2.8
+    },
+    {
+      "repo": "remix-run/react-router",
+      "workflows": 19,
+      "findings": 55,
+      "e": 0,
+      "w": 52,
+      "i": 3,
+      "ruleHits": {
+        "pinned-action-sha": 15,
+        "missing-timeout": 19,
+        "missing-concurrency": 2,
+        "missing-permissions": 13,
+        "fetch-depth-zero": 3,
+        "missing-cache": 3
+      },
+      "perRun": 1.22,
+      "monthly": 1094,
+      "score": 2.82
     },
     {
       "repo": "fastify/fastify",
@@ -375,23 +392,6 @@
       "perRun": 2.11,
       "monthly": 1901,
       "score": 3.69
-    },
-    {
-      "repo": "TanStack/query",
-      "workflows": 5,
-      "findings": 20,
-      "e": 0,
-      "w": 18,
-      "i": 2,
-      "ruleHits": {
-        "pinned-action-sha": 9,
-        "missing-timeout": 7,
-        "missing-concurrency": 2,
-        "fetch-depth-zero": 2
-      },
-      "perRun": 0.45,
-      "monthly": 403,
-      "score": 3.8
     },
     {
       "repo": "microsoft/TypeScript",
@@ -721,8 +721,8 @@
         "fail-fast-true": 3,
         "missing-concurrency": 1
       },
-      "perRun": 21.76,
-      "monthly": 19584,
+      "perRun": 21.5,
+      "monthly": 19354,
       "score": 8.18
     },
     {
