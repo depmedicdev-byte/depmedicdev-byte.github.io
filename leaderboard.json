@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15 19:10 UTC",
+  "generatedAt": "2026-05-16 17:33 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -180,29 +180,6 @@
       "score": 2.59
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 17,
-      "findings": 50,
-      "e": 0,
-      "w": 39,
-      "i": 11,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 28,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 2,
-        "always-run-on-pr": 3,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 3,
-        "fail-fast-true": 3,
-        "expensive-runner": 1,
-        "missing-cache": 1
-      },
-      "perRun": 2.11,
-      "monthly": 1901,
-      "score": 2.62
-    },
-    {
       "repo": "electron/electron",
       "workflows": 42,
       "findings": 110,
@@ -357,6 +334,30 @@
       "perRun": 16.19,
       "monthly": 14573,
       "score": 3.42
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 17,
+      "findings": 55,
+      "e": 5,
+      "w": 39,
+      "i": 11,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 28,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 2,
+        "always-run-on-pr": 3,
+        "stale-cache-key": 2,
+        "deprecated-action": 5,
+        "artifact-no-retention": 3,
+        "fail-fast-true": 3,
+        "expensive-runner": 1,
+        "missing-cache": 1
+      },
+      "perRun": 2.11,
+      "monthly": 1901,
+      "score": 3.5
     },
     {
       "repo": "nestjs/nest",
@@ -644,15 +645,15 @@
     },
     {
       "repo": "rollup/rollup",
-      "workflows": 4,
-      "findings": 25,
-      "e": 2,
-      "w": 16,
+      "workflows": 5,
+      "findings": 27,
+      "e": 3,
+      "w": 17,
       "i": 7,
       "ruleHits": {
         "missing-cache": 7,
-        "missing-timeout": 5,
-        "deprecated-action": 2,
+        "missing-timeout": 6,
+        "deprecated-action": 3,
         "artifact-no-retention": 4,
         "fetch-depth-zero": 1,
         "matrix-overcommit": 2,
@@ -660,9 +661,9 @@
         "missing-concurrency": 1,
         "missing-permissions": 1
       },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 6.38
+      "perRun": 0.7,
+      "monthly": 634,
+      "score": 5.9
     },
     {
       "repo": "sequelize/sequelize",
