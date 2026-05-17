@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-16 17:33 UTC",
+  "generatedAt": "2026-05-17 17:35 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -141,6 +141,26 @@
       "score": 2.5
     },
     {
+      "repo": "nuxt/nuxt",
+      "workflows": 28,
+      "findings": 62,
+      "e": 7,
+      "w": 46,
+      "i": 9,
+      "ruleHits": {
+        "missing-timeout": 26,
+        "missing-concurrency": 18,
+        "fetch-depth-zero": 4,
+        "deprecated-action": 7,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 5,
+        "missing-cache": 1
+      },
+      "perRun": 2.11,
+      "monthly": 1901,
+      "score": 2.55
+    },
+    {
       "repo": "webpack/webpack",
       "workflows": 9,
       "findings": 25,
@@ -157,27 +177,6 @@
       "perRun": 1.15,
       "monthly": 1037,
       "score": 2.56
-    },
-    {
-      "repo": "nuxt/nuxt",
-      "workflows": 28,
-      "findings": 63,
-      "e": 7,
-      "w": 47,
-      "i": 9,
-      "ruleHits": {
-        "missing-timeout": 26,
-        "missing-concurrency": 18,
-        "fetch-depth-zero": 4,
-        "deprecated-action": 7,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 5,
-        "missing-permissions": 1,
-        "missing-cache": 1
-      },
-      "perRun": 2.11,
-      "monthly": 1901,
-      "score": 2.59
     },
     {
       "repo": "electron/electron",
