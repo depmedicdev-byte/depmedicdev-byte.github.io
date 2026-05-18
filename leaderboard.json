@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17 17:35 UTC",
+  "generatedAt": "2026-05-18 19:19 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -220,26 +220,6 @@
       "score": 2.85
     },
     {
-      "repo": "swc-project/swc",
-      "workflows": 16,
-      "findings": 49,
-      "e": 0,
-      "w": 45,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 35,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 1,
-        "missing-concurrency": 2,
-        "missing-cache": 6,
-        "artifact-no-retention": 1
-      },
-      "perRun": 2.69,
-      "monthly": 2419,
-      "score": 2.94
-    },
-    {
       "repo": "nodejs/node",
       "workflows": 36,
       "findings": 106,
@@ -280,21 +260,22 @@
     {
       "repo": "remix-run/react-router",
       "workflows": 19,
-      "findings": 59,
+      "findings": 60,
       "e": 0,
       "w": 55,
-      "i": 4,
+      "i": 5,
       "ruleHits": {
-        "pinned-action-sha": 16,
         "missing-timeout": 20,
-        "missing-concurrency": 2,
         "missing-permissions": 13,
+        "pinned-action-sha": 17,
+        "missing-concurrency": 1,
+        "artifact-no-retention": 1,
         "fetch-depth-zero": 4,
         "missing-cache": 4
       },
       "perRun": 1.28,
       "monthly": 1152,
-      "score": 3
+      "score": 3.03
     },
     {
       "repo": "lodash/lodash",
@@ -314,6 +295,26 @@
       "perRun": 0.64,
       "monthly": 576,
       "score": 3.06
+    },
+    {
+      "repo": "swc-project/swc",
+      "workflows": 16,
+      "findings": 52,
+      "e": 0,
+      "w": 48,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 37,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 2,
+        "missing-concurrency": 3,
+        "fail-fast-true": 1,
+        "missing-cache": 6,
+        "artifact-no-retention": 1
+      },
+      "perRun": 2.82,
+      "monthly": 2534,
+      "score": 3.13
     },
     {
       "repo": "facebook/react",
