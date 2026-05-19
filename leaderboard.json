@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18 19:19 UTC",
+  "generatedAt": "2026-05-19 20:19 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -70,18 +70,18 @@
     },
     {
       "repo": "jestjs/jest",
-      "workflows": 9,
-      "findings": 21,
+      "workflows": 11,
+      "findings": 23,
       "e": 0,
-      "w": 21,
+      "w": 23,
       "i": 0,
       "ruleHits": {
-        "missing-timeout": 17,
+        "missing-timeout": 19,
         "missing-permissions": 4
       },
-      "perRun": 1.22,
-      "monthly": 1094,
-      "score": 2.33
+      "perRun": 1.34,
+      "monthly": 1210,
+      "score": 2.09
     },
     {
       "repo": "sveltejs/svelte",
@@ -103,26 +103,6 @@
       "score": 2.4
     },
     {
-      "repo": "prettier/prettier",
-      "workflows": 17,
-      "findings": 32,
-      "e": 6,
-      "w": 23,
-      "i": 3,
-      "ruleHits": {
-        "missing-timeout": 16,
-        "artifact-no-retention": 1,
-        "deprecated-action": 6,
-        "always-run-on-pr": 2,
-        "matrix-overcommit": 3,
-        "missing-cache": 3,
-        "stale-cache-key": 1
-      },
-      "perRun": 1.02,
-      "monthly": 922,
-      "score": 2.5
-    },
-    {
       "repo": "ReactiveX/rxjs",
       "workflows": 4,
       "findings": 12,
@@ -142,23 +122,23 @@
     },
     {
       "repo": "nuxt/nuxt",
-      "workflows": 28,
-      "findings": 62,
+      "workflows": 29,
+      "findings": 64,
       "e": 7,
-      "w": 46,
+      "w": 48,
       "i": 9,
       "ruleHits": {
-        "missing-timeout": 26,
-        "missing-concurrency": 18,
+        "missing-timeout": 27,
+        "missing-concurrency": 19,
         "fetch-depth-zero": 4,
         "deprecated-action": 7,
         "matrix-overcommit": 1,
         "fail-fast-true": 5,
         "missing-cache": 1
       },
-      "perRun": 2.11,
-      "monthly": 1901,
-      "score": 2.55
+      "perRun": 2.18,
+      "monthly": 1958,
+      "score": 2.53
     },
     {
       "repo": "webpack/webpack",
@@ -177,6 +157,26 @@
       "perRun": 1.15,
       "monthly": 1037,
       "score": 2.56
+    },
+    {
+      "repo": "prettier/prettier",
+      "workflows": 16,
+      "findings": 31,
+      "e": 6,
+      "w": 22,
+      "i": 3,
+      "ruleHits": {
+        "missing-timeout": 15,
+        "artifact-no-retention": 1,
+        "deprecated-action": 6,
+        "always-run-on-pr": 2,
+        "matrix-overcommit": 3,
+        "missing-cache": 3,
+        "stale-cache-key": 1
+      },
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 2.59
     },
     {
       "repo": "electron/electron",
@@ -258,26 +258,6 @@
       "score": 3
     },
     {
-      "repo": "remix-run/react-router",
-      "workflows": 19,
-      "findings": 60,
-      "e": 0,
-      "w": 55,
-      "i": 5,
-      "ruleHits": {
-        "missing-timeout": 20,
-        "missing-permissions": 13,
-        "pinned-action-sha": 17,
-        "missing-concurrency": 1,
-        "artifact-no-retention": 1,
-        "fetch-depth-zero": 4,
-        "missing-cache": 4
-      },
-      "perRun": 1.28,
-      "monthly": 1152,
-      "score": 3.03
-    },
-    {
       "repo": "lodash/lodash",
       "workflows": 8,
       "findings": 26,
@@ -295,6 +275,26 @@
       "perRun": 0.64,
       "monthly": 576,
       "score": 3.06
+    },
+    {
+      "repo": "remix-run/react-router",
+      "workflows": 17,
+      "findings": 55,
+      "e": 0,
+      "w": 50,
+      "i": 5,
+      "ruleHits": {
+        "missing-timeout": 18,
+        "missing-permissions": 12,
+        "pinned-action-sha": 15,
+        "missing-concurrency": 1,
+        "artifact-no-retention": 1,
+        "fetch-depth-zero": 4,
+        "missing-cache": 4
+      },
+      "perRun": 1.15,
+      "monthly": 1037,
+      "score": 3.09
     },
     {
       "repo": "swc-project/swc",
@@ -750,20 +750,20 @@
     },
     {
       "repo": "axios/axios",
-      "workflows": 7,
-      "findings": 50,
+      "workflows": 8,
+      "findings": 53,
       "e": 12,
-      "w": 38,
+      "w": 41,
       "i": 0,
       "ruleHits": {
-        "missing-cache": 14,
-        "missing-concurrency": 4,
-        "missing-timeout": 20,
+        "missing-cache": 15,
+        "missing-concurrency": 5,
+        "missing-timeout": 21,
         "deprecated-action": 12
       },
-      "perRun": 2.56,
-      "monthly": 2304,
-      "score": 10.57
+      "perRun": 2.62,
+      "monthly": 2362,
+      "score": 9.63
     },
     {
       "repo": "remix-run/remix",
