@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19 20:19 UTC",
+  "generatedAt": "2026-05-20 21:16 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -82,6 +82,25 @@
       "perRun": 1.34,
       "monthly": 1210,
       "score": 2.09
+    },
+    {
+      "repo": "vuejs/core",
+      "workflows": 9,
+      "findings": 20,
+      "e": 0,
+      "w": 19,
+      "i": 1,
+      "ruleHits": {
+        "missing-concurrency": 4,
+        "missing-timeout": 12,
+        "missing-cache": 1,
+        "missing-permissions": 1,
+        "artifact-no-retention": 1,
+        "expensive-runner": 1
+      },
+      "perRun": 0.83,
+      "monthly": 749,
+      "score": 2.17
     },
     {
       "repo": "sveltejs/svelte",
@@ -397,9 +416,9 @@
     {
       "repo": "storybookjs/storybook",
       "workflows": 16,
-      "findings": 68,
+      "findings": 67,
       "e": 0,
-      "w": 50,
+      "w": 49,
       "i": 18,
       "ruleHits": {
         "missing-timeout": 32,
@@ -408,34 +427,14 @@
         "missing-concurrency": 3,
         "wide-trigger": 3,
         "pinned-action-sha": 6,
-        "missing-permissions": 7,
+        "missing-permissions": 6,
         "fail-fast-true": 1,
         "missing-cache": 1,
         "fetch-depth-zero": 2
       },
       "perRun": 2.11,
       "monthly": 1901,
-      "score": 3.69
-    },
-    {
-      "repo": "vuejs/core",
-      "workflows": 9,
-      "findings": 37,
-      "e": 0,
-      "w": 36,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 17,
-        "missing-concurrency": 4,
-        "missing-timeout": 12,
-        "missing-cache": 1,
-        "missing-permissions": 1,
-        "artifact-no-retention": 1,
-        "expensive-runner": 1
-      },
-      "perRun": 0.83,
-      "monthly": 749,
-      "score": 4.06
+      "score": 3.63
     },
     {
       "repo": "microsoft/TypeScript",
@@ -565,6 +564,26 @@
       "score": 5.15
     },
     {
+      "repo": "biomejs/biome",
+      "workflows": 25,
+      "findings": 148,
+      "e": 0,
+      "w": 110,
+      "i": 38,
+      "ruleHits": {
+        "missing-concurrency": 9,
+        "missing-timeout": 69,
+        "fail-fast-true": 23,
+        "missing-cache": 14,
+        "missing-permissions": 14,
+        "artifact-no-retention": 15,
+        "matrix-overcommit": 4
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 5.16
+    },
+    {
       "repo": "expressjs/express",
       "workflows": 4,
       "findings": 18,
@@ -622,26 +641,6 @@
       "perRun": 0.58,
       "monthly": 518,
       "score": 5.36
-    },
-    {
-      "repo": "biomejs/biome",
-      "workflows": 23,
-      "findings": 144,
-      "e": 0,
-      "w": 106,
-      "i": 38,
-      "ruleHits": {
-        "missing-concurrency": 7,
-        "missing-timeout": 69,
-        "fail-fast-true": 23,
-        "missing-cache": 14,
-        "missing-permissions": 12,
-        "artifact-no-retention": 15,
-        "matrix-overcommit": 4
-      },
-      "perRun": 0.51,
-      "monthly": 461,
-      "score": 5.43
     },
     {
       "repo": "rollup/rollup",
