@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20 21:16 UTC",
+  "generatedAt": "2026-05-21 20:28 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -437,6 +437,23 @@
       "score": 3.63
     },
     {
+      "repo": "date-fns/date-fns",
+      "workflows": 7,
+      "findings": 26,
+      "e": 0,
+      "w": 26,
+      "i": 0,
+      "ruleHits": {
+        "pinned-action-sha": 7,
+        "missing-timeout": 7,
+        "missing-permissions": 7,
+        "missing-concurrency": 5
+      },
+      "perRun": 0.45,
+      "monthly": 403,
+      "score": 3.71
+    },
+    {
       "repo": "microsoft/TypeScript",
       "workflows": 18,
       "findings": 79,
@@ -475,6 +492,25 @@
       "perRun": 0.51,
       "monthly": 461,
       "score": 4.17
+    },
+    {
+      "repo": "tailwindlabs/tailwindcss",
+      "workflows": 4,
+      "findings": 22,
+      "e": 0,
+      "w": 13,
+      "i": 9,
+      "ruleHits": {
+        "missing-cache": 6,
+        "missing-timeout": 2,
+        "matrix-overcommit": 3,
+        "expensive-runner": 2,
+        "artifact-no-retention": 7,
+        "fail-fast-true": 2
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 4.38
     },
     {
       "repo": "eslint/eslint",
@@ -623,26 +659,6 @@
       "score": 5.32
     },
     {
-      "repo": "date-fns/date-fns",
-      "workflows": 7,
-      "findings": 34,
-      "e": 2,
-      "w": 31,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 10,
-        "missing-concurrency": 6,
-        "missing-timeout": 7,
-        "missing-permissions": 7,
-        "missing-cache": 1,
-        "deprecated-action": 2,
-        "fail-fast-true": 1
-      },
-      "perRun": 0.58,
-      "monthly": 518,
-      "score": 5.36
-    },
-    {
       "repo": "rollup/rollup",
       "workflows": 5,
       "findings": 27,
@@ -683,25 +699,6 @@
       "perRun": 5.25,
       "monthly": 4723,
       "score": 6.44
-    },
-    {
-      "repo": "tailwindlabs/tailwindcss",
-      "workflows": 4,
-      "findings": 31,
-      "e": 0,
-      "w": 22,
-      "i": 9,
-      "ruleHits": {
-        "pinned-action-sha": 15,
-        "missing-timeout": 2,
-        "matrix-overcommit": 3,
-        "expensive-runner": 2,
-        "artifact-no-retention": 7,
-        "fail-fast-true": 2
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 6.63
     },
     {
       "repo": "denoland/deno",
@@ -760,8 +757,8 @@
         "missing-timeout": 21,
         "deprecated-action": 12
       },
-      "perRun": 2.62,
-      "monthly": 2362,
+      "perRun": 2.88,
+      "monthly": 2592,
       "score": 9.63
     },
     {
