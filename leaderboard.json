@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-21 20:28 UTC",
+  "generatedAt": "2026-05-22 19:19 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -22,18 +22,18 @@
     {
       "repo": "TanStack/query",
       "workflows": 6,
-      "findings": 13,
+      "findings": 12,
       "e": 0,
-      "w": 11,
+      "w": 10,
       "i": 2,
       "ruleHits": {
-        "missing-timeout": 8,
+        "missing-timeout": 7,
         "missing-concurrency": 3,
         "fetch-depth-zero": 2
       },
-      "perRun": 0.51,
-      "monthly": 461,
-      "score": 2
+      "perRun": 0.45,
+      "monthly": 403,
+      "score": 1.83
     },
     {
       "repo": "gatsbyjs/gatsby",
@@ -296,6 +296,26 @@
       "score": 3.06
     },
     {
+      "repo": "swc-project/swc",
+      "workflows": 17,
+      "findings": 54,
+      "e": 0,
+      "w": 50,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 38,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 2,
+        "missing-concurrency": 4,
+        "fail-fast-true": 1,
+        "missing-cache": 6,
+        "artifact-no-retention": 1
+      },
+      "perRun": 2.88,
+      "monthly": 2592,
+      "score": 3.06
+    },
+    {
       "repo": "remix-run/react-router",
       "workflows": 17,
       "findings": 55,
@@ -314,26 +334,6 @@
       "perRun": 1.15,
       "monthly": 1037,
       "score": 3.09
-    },
-    {
-      "repo": "swc-project/swc",
-      "workflows": 16,
-      "findings": 52,
-      "e": 0,
-      "w": 48,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 37,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 2,
-        "missing-concurrency": 3,
-        "fail-fast-true": 1,
-        "missing-cache": 6,
-        "artifact-no-retention": 1
-      },
-      "perRun": 2.82,
-      "monthly": 2534,
-      "score": 3.13
     },
     {
       "repo": "facebook/react",
