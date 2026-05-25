@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24 17:35 UTC",
+  "generatedAt": "2026-05-25 19:08 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -21,19 +21,19 @@
     },
     {
       "repo": "TanStack/query",
-      "workflows": 6,
-      "findings": 12,
+      "workflows": 4,
+      "findings": 9,
       "e": 0,
-      "w": 10,
+      "w": 7,
       "i": 2,
       "ruleHits": {
-        "missing-timeout": 7,
-        "missing-concurrency": 3,
-        "fetch-depth-zero": 2
+        "missing-timeout": 6,
+        "fetch-depth-zero": 2,
+        "missing-concurrency": 1
       },
-      "perRun": 0.45,
-      "monthly": 403,
-      "score": 1.83
+      "perRun": 0.38,
+      "monthly": 346,
+      "score": 2
     },
     {
       "repo": "gatsbyjs/gatsby",
