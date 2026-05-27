@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-26 21:00 UTC",
+  "generatedAt": "2026-05-27 21:16 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -538,23 +538,24 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 19,
-      "findings": 97,
+      "workflows": 20,
+      "findings": 101,
       "e": 0,
-      "w": 97,
-      "i": 0,
+      "w": 100,
+      "i": 1,
       "ruleHits": {
-        "missing-cache": 21,
+        "missing-cache": 22,
         "missing-timeout": 39,
-        "pinned-action-sha": 5,
+        "pinned-action-sha": 6,
         "missing-concurrency": 9,
-        "missing-permissions": 9,
+        "missing-permissions": 10,
         "matrix-overcommit": 13,
-        "expensive-runner": 1
+        "expensive-runner": 1,
+        "artifact-no-retention": 1
       },
-      "perRun": 1.73,
-      "monthly": 1555,
-      "score": 5.11
+      "perRun": 4.29,
+      "monthly": 3859,
+      "score": 5.03
     },
     {
       "repo": "npm/cli",
