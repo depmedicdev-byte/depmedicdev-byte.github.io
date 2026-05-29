@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28 17:35 UTC",
+  "generatedAt": "2026-05-29 17:35 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -581,26 +581,6 @@
       "score": 5.15
     },
     {
-      "repo": "biomejs/biome",
-      "workflows": 25,
-      "findings": 148,
-      "e": 0,
-      "w": 110,
-      "i": 38,
-      "ruleHits": {
-        "missing-concurrency": 9,
-        "missing-timeout": 69,
-        "fail-fast-true": 23,
-        "missing-cache": 14,
-        "missing-permissions": 14,
-        "artifact-no-retention": 15,
-        "matrix-overcommit": 4
-      },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 5.16
-    },
-    {
       "repo": "expressjs/express",
       "workflows": 4,
       "findings": 18,
@@ -618,6 +598,26 @@
       "perRun": 0.38,
       "monthly": 346,
       "score": 5.25
+    },
+    {
+      "repo": "biomejs/biome",
+      "workflows": 25,
+      "findings": 151,
+      "e": 0,
+      "w": 113,
+      "i": 38,
+      "ruleHits": {
+        "missing-concurrency": 9,
+        "missing-timeout": 71,
+        "fail-fast-true": 23,
+        "missing-cache": 15,
+        "missing-permissions": 14,
+        "artifact-no-retention": 15,
+        "matrix-overcommit": 4
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 5.28
     },
     {
       "repo": "prisma/prisma",
