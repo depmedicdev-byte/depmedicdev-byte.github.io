@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-31 15:18 UTC",
+  "generatedAt": "2026-06-01 19:20 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -51,24 +51,6 @@
       "score": 2
     },
     {
-      "repo": "vitejs/vite",
-      "workflows": 13,
-      "findings": 27,
-      "e": 0,
-      "w": 26,
-      "i": 1,
-      "ruleHits": {
-        "missing-timeout": 17,
-        "stale-cache-key": 1,
-        "missing-concurrency": 6,
-        "wide-trigger": 1,
-        "missing-cache": 2
-      },
-      "perRun": 1.15,
-      "monthly": 1037,
-      "score": 2.04
-    },
-    {
       "repo": "jestjs/jest",
       "workflows": 11,
       "findings": 23,
@@ -82,6 +64,25 @@
       "perRun": 1.34,
       "monthly": 1210,
       "score": 2.09
+    },
+    {
+      "repo": "vitejs/vite",
+      "workflows": 13,
+      "findings": 28,
+      "e": 0,
+      "w": 27,
+      "i": 1,
+      "ruleHits": {
+        "missing-timeout": 17,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 1,
+        "missing-concurrency": 6,
+        "wide-trigger": 1,
+        "missing-cache": 2
+      },
+      "perRun": 1.15,
+      "monthly": 1037,
+      "score": 2.12
     },
     {
       "repo": "vuejs/core",
@@ -600,26 +601,6 @@
       "score": 5.25
     },
     {
-      "repo": "biomejs/biome",
-      "workflows": 25,
-      "findings": 151,
-      "e": 0,
-      "w": 113,
-      "i": 38,
-      "ruleHits": {
-        "missing-concurrency": 9,
-        "missing-timeout": 71,
-        "fail-fast-true": 23,
-        "missing-cache": 15,
-        "missing-permissions": 14,
-        "artifact-no-retention": 15,
-        "matrix-overcommit": 4
-      },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 5.28
-    },
-    {
       "repo": "prisma/prisma",
       "workflows": 17,
       "findings": 91,
@@ -657,6 +638,26 @@
       "perRun": 16.19,
       "monthly": 14573,
       "score": 5.4
+    },
+    {
+      "repo": "biomejs/biome",
+      "workflows": 24,
+      "findings": 150,
+      "e": 0,
+      "w": 112,
+      "i": 38,
+      "ruleHits": {
+        "missing-concurrency": 9,
+        "missing-timeout": 70,
+        "fail-fast-true": 23,
+        "missing-cache": 15,
+        "missing-permissions": 14,
+        "artifact-no-retention": 15,
+        "matrix-overcommit": 4
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 5.46
     },
     {
       "repo": "rollup/rollup",

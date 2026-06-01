@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-05-31"
+  "dateModified": "2026-06-01"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-05-31 15:18 UTC</strong> &middot;
+  Last updated <strong>2026-06-01 19:20 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,7 +95,7 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">539</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">538</div></div>
   <div class="stat"><div class="label">Total findings</div><div class="val">2,170</div></div>
   <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,264</div></div>
 </div>
@@ -103,7 +103,7 @@
 <div class="toplist">
   <div class="card best">
     <h3>Cleanest 5 (lowest score)</h3>
-    <ol><li>mui/material-ui <code>1.56</code></li><li>TanStack/query <code>2.00</code></li><li>gatsbyjs/gatsby <code>2.00</code></li><li>vitejs/vite <code>2.04</code></li><li>jestjs/jest <code>2.09</code></li></ol>
+    <ol><li>mui/material-ui <code>1.56</code></li><li>TanStack/query <code>2.00</code></li><li>gatsbyjs/gatsby <code>2.00</code></li><li>jestjs/jest <code>2.09</code></li><li>vitejs/vite <code>2.12</code></li></ol>
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
@@ -114,7 +114,7 @@
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">897</td></tr><tr><td><code>missing-cache</code></td><td class="right">257</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">184</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">178</td></tr><tr><td><code>missing-permissions</code></td><td class="right">132</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">896</td></tr><tr><td><code>missing-cache</code></td><td class="right">257</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">184</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">178</td></tr><tr><td><code>missing-permissions</code></td><td class="right">132</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -165,18 +165,7 @@
       <td class="right">$58</td>
     </tr><tr>
       <td class="right">4</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a>
-          &middot; <a href="/scan.html#r=vitejs%2Fvite&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.04</strong></td>
-      <td class="right">13</td>
-      <td class="right">27</td>
-      <td class="right">0/26/1</td>
-      <td class="right">$1.15</td>
-      <td class="right">$1,037</td>
-    </tr><tr>
-      <td class="right">5</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/jestjs/jest" rel="noopener">jestjs/jest</a>
           &middot; <a href="/scan.html#r=jestjs%2Fjest&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.09</strong></td>
@@ -185,6 +174,17 @@
       <td class="right">0/23/0</td>
       <td class="right">$1.34</td>
       <td class="right">$1,210</td>
+    </tr><tr>
+      <td class="right">5</td>
+      <td><span class="trend down">&darr;1</span></td>
+      <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a>
+          &middot; <a href="/scan.html#r=vitejs%2Fvite&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.12</strong></td>
+      <td class="right">13</td>
+      <td class="right">28</td>
+      <td class="right">0/27/1</td>
+      <td class="right">$1.15</td>
+      <td class="right">$1,037</td>
     </tr><tr>
       <td class="right">6</td>
       <td><span class="trend same">-</span></td>
@@ -473,18 +473,7 @@
       <td class="right">$346</td>
     </tr><tr>
       <td class="right">32</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/biomejs/biome" rel="noopener">biomejs/biome</a>
-          &middot; <a href="/scan.html#r=biomejs%2Fbiome&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.28</strong></td>
-      <td class="right">25</td>
-      <td class="right">151</td>
-      <td class="right">0/113/38</td>
-      <td class="right">$0.64</td>
-      <td class="right">$576</td>
-    </tr><tr>
-      <td class="right">33</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/prisma/prisma" rel="noopener">prisma/prisma</a>
           &middot; <a href="/scan.html#r=prisma%2Fprisma&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.32</strong></td>
@@ -494,8 +483,8 @@
       <td class="right">$14.59</td>
       <td class="right">$13,133</td>
     </tr><tr>
-      <td class="right">34</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">33</td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/facebook/react" rel="noopener">facebook/react</a>
           &middot; <a href="/scan.html#r=facebook%2Freact&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.40</strong></td>
@@ -504,6 +493,17 @@
       <td class="right">0/105/17</td>
       <td class="right">$16.19</td>
       <td class="right">$14,573</td>
+    </tr><tr>
+      <td class="right">34</td>
+      <td><span class="trend down">&darr;2</span></td>
+      <td><a href="https://github.com/biomejs/biome" rel="noopener">biomejs/biome</a>
+          &middot; <a href="/scan.html#r=biomejs%2Fbiome&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.46</strong></td>
+      <td class="right">24</td>
+      <td class="right">150</td>
+      <td class="right">0/112/38</td>
+      <td class="right">$0.64</td>
+      <td class="right">$576</td>
     </tr><tr>
       <td class="right">35</td>
       <td><span class="trend same">-</span></td>
