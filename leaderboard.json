@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-01 19:20 UTC",
+  "generatedAt": "2026-06-02 18:06 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -174,8 +174,8 @@
         "missing-permissions": 1,
         "matrix-overcommit": 1
       },
-      "perRun": 1.15,
-      "monthly": 1037,
+      "perRun": 1.34,
+      "monthly": 1210,
       "score": 2.56
     },
     {
@@ -197,26 +197,6 @@
       "perRun": 0.96,
       "monthly": 864,
       "score": 2.59
-    },
-    {
-      "repo": "electron/electron",
-      "workflows": 42,
-      "findings": 110,
-      "e": 11,
-      "w": 70,
-      "i": 29,
-      "ruleHits": {
-        "missing-timeout": 55,
-        "artifact-no-retention": 3,
-        "fetch-depth-zero": 26,
-        "missing-cache": 4,
-        "missing-concurrency": 10,
-        "deprecated-action": 11,
-        "stale-cache-key": 1
-      },
-      "perRun": 2.3,
-      "monthly": 2074,
-      "score": 2.8
     },
     {
       "repo": "fastify/fastify",
@@ -359,6 +339,26 @@
       "score": 3.16
     },
     {
+      "repo": "electron/electron",
+      "workflows": 44,
+      "findings": 132,
+      "e": 15,
+      "w": 80,
+      "i": 37,
+      "ruleHits": {
+        "missing-timeout": 64,
+        "artifact-no-retention": 4,
+        "fetch-depth-zero": 33,
+        "missing-cache": 5,
+        "missing-concurrency": 10,
+        "deprecated-action": 15,
+        "stale-cache-key": 1
+      },
+      "perRun": 2.5,
+      "monthly": 2246,
+      "score": 3.26
+    },
+    {
       "repo": "nestjs/nest",
       "workflows": 1,
       "findings": 5,
@@ -457,6 +457,27 @@
       "score": 4.06
     },
     {
+      "repo": "microsoft/playwright",
+      "workflows": 22,
+      "findings": 90,
+      "e": 0,
+      "w": 89,
+      "i": 1,
+      "ruleHits": {
+        "missing-cache": 22,
+        "missing-timeout": 31,
+        "pinned-action-sha": 8,
+        "missing-concurrency": 10,
+        "missing-permissions": 8,
+        "matrix-overcommit": 9,
+        "expensive-runner": 1,
+        "artifact-no-retention": 1
+      },
+      "perRun": 4.22,
+      "monthly": 3802,
+      "score": 4.07
+    },
+    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -535,27 +556,6 @@
       "perRun": 3.71,
       "monthly": 3341,
       "score": 4.78
-    },
-    {
-      "repo": "microsoft/playwright",
-      "workflows": 20,
-      "findings": 101,
-      "e": 0,
-      "w": 100,
-      "i": 1,
-      "ruleHits": {
-        "missing-cache": 22,
-        "missing-timeout": 39,
-        "pinned-action-sha": 6,
-        "missing-concurrency": 9,
-        "missing-permissions": 10,
-        "matrix-overcommit": 13,
-        "expensive-runner": 1,
-        "artifact-no-retention": 1
-      },
-      "perRun": 4.29,
-      "monthly": 3859,
-      "score": 5.03
     },
     {
       "repo": "npm/cli",
@@ -640,26 +640,6 @@
       "score": 5.4
     },
     {
-      "repo": "biomejs/biome",
-      "workflows": 24,
-      "findings": 150,
-      "e": 0,
-      "w": 112,
-      "i": 38,
-      "ruleHits": {
-        "missing-concurrency": 9,
-        "missing-timeout": 70,
-        "fail-fast-true": 23,
-        "missing-cache": 15,
-        "missing-permissions": 14,
-        "artifact-no-retention": 15,
-        "matrix-overcommit": 4
-      },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 5.46
-    },
-    {
       "repo": "rollup/rollup",
       "workflows": 5,
       "findings": 27,
@@ -700,6 +680,27 @@
       "perRun": 5.25,
       "monthly": 4723,
       "score": 6.44
+    },
+    {
+      "repo": "biomejs/biome",
+      "workflows": 24,
+      "findings": 162,
+      "e": 12,
+      "w": 112,
+      "i": 38,
+      "ruleHits": {
+        "missing-concurrency": 9,
+        "missing-timeout": 70,
+        "fail-fast-true": 23,
+        "missing-cache": 15,
+        "deprecated-action": 12,
+        "missing-permissions": 14,
+        "artifact-no-retention": 15,
+        "matrix-overcommit": 4
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 6.96
     },
     {
       "repo": "denoland/deno",
