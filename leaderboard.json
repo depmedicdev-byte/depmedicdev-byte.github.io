@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-02 18:06 UTC",
+  "generatedAt": "2026-06-03 18:22 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -161,24 +161,6 @@
       "score": 2.53
     },
     {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 25,
-      "e": 0,
-      "w": 21,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 15,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "missing-permissions": 1,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.34,
-      "monthly": 1210,
-      "score": 2.56
-    },
-    {
       "repo": "prettier/prettier",
       "workflows": 16,
       "findings": 31,
@@ -197,6 +179,24 @@
       "perRun": 0.96,
       "monthly": 864,
       "score": 2.59
+    },
+    {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 26,
+      "e": 0,
+      "w": 22,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 16,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "missing-permissions": 1,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.41,
+      "monthly": 1267,
+      "score": 2.67
     },
     {
       "repo": "fastify/fastify",
@@ -437,13 +437,13 @@
     {
       "repo": "microsoft/TypeScript",
       "workflows": 18,
-      "findings": 79,
+      "findings": 77,
       "e": 0,
-      "w": 67,
+      "w": 65,
       "i": 12,
       "ruleHits": {
-        "missing-cache": 25,
-        "missing-timeout": 32,
+        "missing-cache": 24,
+        "missing-timeout": 31,
         "missing-concurrency": 4,
         "artifact-no-retention": 3,
         "matrix-overcommit": 1,
@@ -452,30 +452,30 @@
         "pinned-action-sha": 5,
         "fetch-depth-zero": 5
       },
-      "perRun": 1.92,
-      "monthly": 1728,
-      "score": 4.06
+      "perRun": 1.86,
+      "monthly": 1670,
+      "score": 3.94
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 22,
-      "findings": 90,
+      "workflows": 21,
+      "findings": 87,
       "e": 0,
-      "w": 89,
+      "w": 86,
       "i": 1,
       "ruleHits": {
         "missing-cache": 22,
-        "missing-timeout": 31,
+        "missing-timeout": 30,
         "pinned-action-sha": 8,
-        "missing-concurrency": 10,
+        "missing-concurrency": 9,
         "missing-permissions": 8,
-        "matrix-overcommit": 9,
+        "matrix-overcommit": 8,
         "expensive-runner": 1,
         "artifact-no-retention": 1
       },
       "perRun": 4.22,
       "monthly": 3802,
-      "score": 4.07
+      "score": 4.12
     },
     {
       "repo": "chakra-ui/chakra-ui",
@@ -537,9 +537,9 @@
     {
       "repo": "vercel/next.js",
       "workflows": 37,
-      "findings": 157,
+      "findings": 153,
       "e": 13,
-      "w": 132,
+      "w": 128,
       "i": 12,
       "ruleHits": {
         "missing-cache": 29,
@@ -548,14 +548,14 @@
         "missing-permissions": 27,
         "artifact-no-retention": 11,
         "fail-fast-true": 1,
-        "matrix-overcommit": 18,
+        "matrix-overcommit": 14,
         "missing-concurrency": 2,
         "pinned-action-sha": 1,
         "stale-cache-key": 1
       },
       "perRun": 3.71,
       "monthly": 3341,
-      "score": 4.78
+      "score": 4.68
     },
     {
       "repo": "npm/cli",
