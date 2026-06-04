@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-03 18:22 UTC",
+  "generatedAt": "2026-06-04 16:54 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -299,6 +299,26 @@
       "score": 3.06
     },
     {
+      "repo": "remix-run/react-router",
+      "workflows": 16,
+      "findings": 52,
+      "e": 0,
+      "w": 47,
+      "i": 5,
+      "ruleHits": {
+        "pinned-action-sha": 14,
+        "missing-timeout": 18,
+        "missing-permissions": 10,
+        "missing-concurrency": 1,
+        "artifact-no-retention": 1,
+        "fetch-depth-zero": 4,
+        "missing-cache": 4
+      },
+      "perRun": 1.15,
+      "monthly": 1037,
+      "score": 3.09
+    },
+    {
       "repo": "swc-project/swc",
       "workflows": 16,
       "findings": 52,
@@ -317,26 +337,6 @@
       "perRun": 2.82,
       "monthly": 2534,
       "score": 3.13
-    },
-    {
-      "repo": "remix-run/react-router",
-      "workflows": 16,
-      "findings": 53,
-      "e": 0,
-      "w": 48,
-      "i": 5,
-      "ruleHits": {
-        "pinned-action-sha": 14,
-        "missing-timeout": 18,
-        "missing-permissions": 11,
-        "missing-concurrency": 1,
-        "artifact-no-retention": 1,
-        "fetch-depth-zero": 4,
-        "missing-cache": 4
-      },
-      "perRun": 1.15,
-      "monthly": 1037,
-      "score": 3.16
     },
     {
       "repo": "electron/electron",
@@ -683,15 +683,15 @@
     },
     {
       "repo": "biomejs/biome",
-      "workflows": 24,
-      "findings": 162,
+      "workflows": 25,
+      "findings": 165,
       "e": 12,
-      "w": 112,
-      "i": 38,
+      "w": 114,
+      "i": 39,
       "ruleHits": {
-        "missing-concurrency": 9,
-        "missing-timeout": 70,
-        "fail-fast-true": 23,
+        "missing-concurrency": 10,
+        "missing-timeout": 71,
+        "fail-fast-true": 24,
         "missing-cache": 15,
         "deprecated-action": 12,
         "missing-permissions": 14,
@@ -700,7 +700,7 @@
       },
       "perRun": 0.64,
       "monthly": 576,
-      "score": 6.96
+      "score": 6.78
     },
     {
       "repo": "denoland/deno",
