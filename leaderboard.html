@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-06-04"
+  "dateModified": "2026-06-05"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-06-04 16:54 UTC</strong> &middot;
+  Last updated <strong>2026-06-05 16:29 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,9 +95,9 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">542</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,187</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,551</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">543</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,190</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,724</div></div>
 </div>
 
 <div class="toplist">
@@ -114,7 +114,7 @@
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">897</td></tr><tr><td><code>missing-cache</code></td><td class="right">257</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">186</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">179</td></tr><tr><td><code>missing-permissions</code></td><td class="right">129</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">900</td></tr><tr><td><code>missing-cache</code></td><td class="right">257</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">186</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">179</td></tr><tr><td><code>missing-permissions</code></td><td class="right">129</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -242,18 +242,7 @@
       <td class="right">$864</td>
     </tr><tr>
       <td class="right">11</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
-          &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.67</strong></td>
-      <td class="right">9</td>
-      <td class="right">26</td>
-      <td class="right">0/22/4</td>
-      <td class="right">$1.41</td>
-      <td class="right">$1,267</td>
-    </tr><tr>
-      <td class="right">12</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/fastify/fastify" rel="noopener">fastify/fastify</a>
           &middot; <a href="/scan.html#r=fastify%2Ffastify&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.85</strong></td>
@@ -262,6 +251,17 @@
       <td class="right">0/53/8</td>
       <td class="right">$1.41</td>
       <td class="right">$1,267</td>
+    </tr><tr>
+      <td class="right">12</td>
+      <td><span class="trend down">&darr;1</span></td>
+      <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
+          &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.89</strong></td>
+      <td class="right">9</td>
+      <td class="right">28</td>
+      <td class="right">0/24/4</td>
+      <td class="right">$1.54</td>
+      <td class="right">$1,382</td>
     </tr><tr>
       <td class="right">13</td>
       <td><span class="trend same">-</span></td>
@@ -308,7 +308,7 @@
       <td class="right">$576</td>
     </tr><tr>
       <td class="right">17</td>
-      <td><span class="trend up">&uarr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/remix-run/react-router" rel="noopener">remix-run/react-router</a>
           &middot; <a href="/scan.html#r=remix-run%2Freact-router&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.09</strong></td>
@@ -319,7 +319,7 @@
       <td class="right">$1,037</td>
     </tr><tr>
       <td class="right">18</td>
-      <td><span class="trend down">&darr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/swc-project/swc" rel="noopener">swc-project/swc</a>
           &middot; <a href="/scan.html#r=swc-project%2Fswc&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.13</strong></td>
@@ -352,7 +352,18 @@
       <td class="right">$58</td>
     </tr><tr>
       <td class="right">21</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
+      <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
+          &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.55</strong></td>
+      <td class="right">19</td>
+      <td class="right">62</td>
+      <td class="right">6/43/13</td>
+      <td class="right">$2.24</td>
+      <td class="right">$2,016</td>
+    </tr><tr>
+      <td class="right">22</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/preactjs/preact" rel="noopener">preactjs/preact</a>
           &middot; <a href="/scan.html#r=preactjs%2Fpreact&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.56</strong></td>
@@ -361,17 +372,6 @@
       <td class="right">0/26/5</td>
       <td class="right">$0.70</td>
       <td class="right">$634</td>
-    </tr><tr>
-      <td class="right">22</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
-          &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.69</strong></td>
-      <td class="right">18</td>
-      <td class="right">61</td>
-      <td class="right">6/42/13</td>
-      <td class="right">$2.18</td>
-      <td class="right">$1,958</td>
     </tr><tr>
       <td class="right">23</td>
       <td><span class="trend same">-</span></td>

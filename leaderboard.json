@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04 16:54 UTC",
+  "generatedAt": "2026-06-05 16:29 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -181,24 +181,6 @@
       "score": 2.59
     },
     {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 26,
-      "e": 0,
-      "w": 22,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 16,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "missing-permissions": 1,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.41,
-      "monthly": 1267,
-      "score": 2.67
-    },
-    {
       "repo": "fastify/fastify",
       "workflows": 20,
       "findings": 61,
@@ -218,6 +200,24 @@
       "perRun": 1.41,
       "monthly": 1267,
       "score": 2.85
+    },
+    {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 28,
+      "e": 0,
+      "w": 24,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 18,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "missing-permissions": 1,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 2.89
     },
     {
       "repo": "storybookjs/storybook",
@@ -375,6 +375,30 @@
       "score": 3.5
     },
     {
+      "repo": "pnpm/pnpm",
+      "workflows": 19,
+      "findings": 62,
+      "e": 6,
+      "w": 43,
+      "i": 13,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 31,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 3,
+        "always-run-on-pr": 3,
+        "stale-cache-key": 2,
+        "deprecated-action": 6,
+        "artifact-no-retention": 4,
+        "fail-fast-true": 4,
+        "expensive-runner": 1,
+        "missing-cache": 1
+      },
+      "perRun": 2.24,
+      "monthly": 2016,
+      "score": 3.55
+    },
+    {
       "repo": "preactjs/preact",
       "workflows": 8,
       "findings": 31,
@@ -392,30 +416,6 @@
       "perRun": 0.7,
       "monthly": 634,
       "score": 3.56
-    },
-    {
-      "repo": "pnpm/pnpm",
-      "workflows": 18,
-      "findings": 61,
-      "e": 6,
-      "w": 42,
-      "i": 13,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 30,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 3,
-        "always-run-on-pr": 3,
-        "stale-cache-key": 2,
-        "deprecated-action": 6,
-        "artifact-no-retention": 4,
-        "fail-fast-true": 4,
-        "expensive-runner": 1,
-        "missing-cache": 1
-      },
-      "perRun": 2.18,
-      "monthly": 1958,
-      "score": 3.69
     },
     {
       "repo": "date-fns/date-fns",
