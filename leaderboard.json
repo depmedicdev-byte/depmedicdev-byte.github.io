@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-05 16:29 UTC",
+  "generatedAt": "2026-06-06 15:14 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -765,23 +765,23 @@
     },
     {
       "repo": "remix-run/remix",
-      "workflows": 9,
-      "findings": 117,
+      "workflows": 8,
+      "findings": 111,
       "e": 0,
-      "w": 111,
-      "i": 6,
+      "w": 107,
+      "i": 4,
       "ruleHits": {
-        "pinned-action-sha": 42,
+        "pinned-action-sha": 40,
         "missing-cache": 2,
-        "missing-timeout": 46,
+        "missing-timeout": 44,
         "expensive-runner": 6,
         "missing-permissions": 7,
-        "fetch-depth-zero": 6,
+        "fetch-depth-zero": 4,
         "stale-cache-key": 8
       },
-      "perRun": 3.52,
-      "monthly": 3168,
-      "score": 12.67
+      "perRun": 3.2,
+      "monthly": 2880,
+      "score": 13.63
     }
   ]
 }
