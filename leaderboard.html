@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-06-07"
+  "dateModified": "2026-06-08"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-06-07 15:24 UTC</strong> &middot;
+  Last updated <strong>2026-06-08 17:22 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,9 +95,9 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">542</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,184</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,436</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">541</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,178</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,379</div></div>
 </div>
 
 <div class="toplist">
@@ -114,7 +114,7 @@
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">898</td></tr><tr><td><code>missing-cache</code></td><td class="right">257</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">184</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">179</td></tr><tr><td><code>missing-permissions</code></td><td class="right">129</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">897</td></tr><tr><td><code>missing-cache</code></td><td class="right">257</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">183</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">179</td></tr><tr><td><code>missing-permissions</code></td><td class="right">127</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -242,7 +242,18 @@
       <td class="right">$864</td>
     </tr><tr>
       <td class="right">11</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
+      <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
+          &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.78</strong></td>
+      <td class="right">9</td>
+      <td class="right">27</td>
+      <td class="right">0/23/4</td>
+      <td class="right">$1.54</td>
+      <td class="right">$1,382</td>
+    </tr><tr>
+      <td class="right">12</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/fastify/fastify" rel="noopener">fastify/fastify</a>
           &middot; <a href="/scan.html#r=fastify%2Ffastify&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.85</strong></td>
@@ -251,17 +262,6 @@
       <td class="right">0/53/8</td>
       <td class="right">$1.41</td>
       <td class="right">$1,267</td>
-    </tr><tr>
-      <td class="right">12</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
-          &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.89</strong></td>
-      <td class="right">9</td>
-      <td class="right">28</td>
-      <td class="right">0/24/4</td>
-      <td class="right">$1.54</td>
-      <td class="right">$1,382</td>
     </tr><tr>
       <td class="right">13</td>
       <td><span class="trend same">-</span></td>
@@ -377,12 +377,12 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/date-fns/date-fns" rel="noopener">date-fns/date-fns</a>
           &middot; <a href="/scan.html#r=date-fns%2Fdate-fns&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>3.71</strong></td>
-      <td class="right">7</td>
-      <td class="right">26</td>
-      <td class="right">0/26/0</td>
-      <td class="right">$0.45</td>
-      <td class="right">$403</td>
+      <td class="right"><strong>3.83</strong></td>
+      <td class="right">6</td>
+      <td class="right">23</td>
+      <td class="right">0/23/0</td>
+      <td class="right">$0.38</td>
+      <td class="right">$346</td>
     </tr><tr>
       <td class="right">24</td>
       <td><span class="trend same">-</span></td>
@@ -443,10 +443,10 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/vercel/next.js" rel="noopener">vercel/next.js</a>
           &middot; <a href="/scan.html#r=vercel%2Fnext.js&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.68</strong></td>
+      <td class="right"><strong>4.62</strong></td>
       <td class="right">37</td>
-      <td class="right">153</td>
-      <td class="right">13/128/12</td>
+      <td class="right">151</td>
+      <td class="right">13/126/12</td>
       <td class="right">$3.71</td>
       <td class="right">$3,341</td>
     </tr><tr>

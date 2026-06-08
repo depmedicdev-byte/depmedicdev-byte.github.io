@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-07 15:24 UTC",
+  "generatedAt": "2026-06-08 17:22 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -181,6 +181,23 @@
       "score": 2.59
     },
     {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 27,
+      "e": 0,
+      "w": 23,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 18,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 2.78
+    },
+    {
       "repo": "fastify/fastify",
       "workflows": 20,
       "findings": 61,
@@ -200,24 +217,6 @@
       "perRun": 1.41,
       "monthly": 1267,
       "score": 2.85
-    },
-    {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 28,
-      "e": 0,
-      "w": 24,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 18,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "missing-permissions": 1,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 2.89
     },
     {
       "repo": "storybookjs/storybook",
@@ -419,20 +418,20 @@
     },
     {
       "repo": "date-fns/date-fns",
-      "workflows": 7,
-      "findings": 26,
+      "workflows": 6,
+      "findings": 23,
       "e": 0,
-      "w": 26,
+      "w": 23,
       "i": 0,
       "ruleHits": {
-        "pinned-action-sha": 7,
-        "missing-timeout": 7,
-        "missing-permissions": 7,
-        "missing-concurrency": 5
+        "pinned-action-sha": 6,
+        "missing-concurrency": 5,
+        "missing-timeout": 6,
+        "missing-permissions": 6
       },
-      "perRun": 0.45,
-      "monthly": 403,
-      "score": 3.71
+      "perRun": 0.38,
+      "monthly": 346,
+      "score": 3.83
     },
     {
       "repo": "microsoft/TypeScript",
@@ -537,9 +536,9 @@
     {
       "repo": "vercel/next.js",
       "workflows": 37,
-      "findings": 153,
+      "findings": 151,
       "e": 13,
-      "w": 128,
+      "w": 126,
       "i": 12,
       "ruleHits": {
         "missing-cache": 29,
@@ -548,14 +547,14 @@
         "missing-permissions": 27,
         "artifact-no-retention": 11,
         "fail-fast-true": 1,
-        "matrix-overcommit": 14,
+        "matrix-overcommit": 12,
         "missing-concurrency": 2,
         "pinned-action-sha": 1,
         "stale-cache-key": 1
       },
       "perRun": 3.71,
       "monthly": 3341,
-      "score": 4.68
+      "score": 4.62
     },
     {
       "repo": "npm/cli",
