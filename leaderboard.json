@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16 18:27 UTC",
+  "generatedAt": "2026-06-17 16:54 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -394,14 +394,14 @@
     },
     {
       "repo": "pnpm/pnpm",
-      "workflows": 21,
-      "findings": 69,
+      "workflows": 22,
+      "findings": 71,
       "e": 7,
-      "w": 49,
+      "w": 51,
       "i": 13,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 36,
+        "missing-timeout": 38,
         "fetch-depth-zero": 2,
         "matrix-overcommit": 4,
         "always-run-on-pr": 3,
@@ -412,9 +412,9 @@
         "expensive-runner": 1,
         "missing-cache": 1
       },
-      "perRun": 3.07,
-      "monthly": 2765,
-      "score": 3.64
+      "perRun": 3.2,
+      "monthly": 2880,
+      "score": 3.57
     },
     {
       "repo": "date-fns/date-fns",
