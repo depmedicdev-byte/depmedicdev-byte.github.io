@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17 16:54 UTC",
+  "generatedAt": "2026-06-18 16:56 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -298,26 +298,6 @@
       "score": 3.06
     },
     {
-      "repo": "remix-run/react-router",
-      "workflows": 16,
-      "findings": 52,
-      "e": 0,
-      "w": 47,
-      "i": 5,
-      "ruleHits": {
-        "pinned-action-sha": 14,
-        "missing-timeout": 18,
-        "missing-permissions": 10,
-        "missing-concurrency": 1,
-        "artifact-no-retention": 1,
-        "fetch-depth-zero": 4,
-        "missing-cache": 4
-      },
-      "perRun": 1.15,
-      "monthly": 1037,
-      "score": 3.09
-    },
-    {
       "repo": "swc-project/swc",
       "workflows": 16,
       "findings": 53,
@@ -339,13 +319,13 @@
     },
     {
       "repo": "electron/electron",
-      "workflows": 44,
-      "findings": 132,
+      "workflows": 45,
+      "findings": 134,
       "e": 15,
-      "w": 80,
+      "w": 82,
       "i": 37,
       "ruleHits": {
-        "missing-timeout": 64,
+        "missing-timeout": 66,
         "artifact-no-retention": 4,
         "fetch-depth-zero": 33,
         "missing-cache": 5,
@@ -353,9 +333,33 @@
         "deprecated-action": 15,
         "stale-cache-key": 1
       },
-      "perRun": 2.5,
-      "monthly": 2246,
-      "score": 3.26
+      "perRun": 2.62,
+      "monthly": 2362,
+      "score": 3.23
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 23,
+      "findings": 71,
+      "e": 8,
+      "w": 50,
+      "i": 13,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 37,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 4,
+        "always-run-on-pr": 3,
+        "deprecated-action": 8,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 4,
+        "fail-fast-true": 4,
+        "expensive-runner": 1,
+        "missing-cache": 1
+      },
+      "perRun": 3.14,
+      "monthly": 2822,
+      "score": 3.5
     },
     {
       "repo": "nestjs/nest",
@@ -393,28 +397,23 @@
       "score": 3.56
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 22,
-      "findings": 71,
-      "e": 7,
-      "w": 51,
-      "i": 13,
+      "repo": "remix-run/react-router",
+      "workflows": 13,
+      "findings": 52,
+      "e": 0,
+      "w": 46,
+      "i": 6,
       "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 38,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 4,
-        "always-run-on-pr": 3,
-        "deprecated-action": 7,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 4,
-        "fail-fast-true": 4,
-        "expensive-runner": 1,
-        "missing-cache": 1
+        "pinned-action-sha": 16,
+        "missing-timeout": 19,
+        "missing-permissions": 6,
+        "artifact-no-retention": 1,
+        "fetch-depth-zero": 5,
+        "missing-cache": 5
       },
-      "perRun": 3.2,
-      "monthly": 2880,
-      "score": 3.57
+      "perRun": 1.22,
+      "monthly": 1094,
+      "score": 3.77
     },
     {
       "repo": "date-fns/date-fns",
@@ -536,16 +535,16 @@
     {
       "repo": "vercel/next.js",
       "workflows": 36,
-      "findings": 149,
+      "findings": 150,
       "e": 13,
       "w": 124,
-      "i": 12,
+      "i": 13,
       "ruleHits": {
         "missing-cache": 29,
         "missing-timeout": 53,
         "deprecated-action": 13,
         "missing-permissions": 27,
-        "artifact-no-retention": 11,
+        "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
         "pinned-action-sha": 1,
@@ -554,20 +553,20 @@
       },
       "perRun": 3.65,
       "monthly": 3283,
-      "score": 4.69
+      "score": 4.71
     },
     {
       "repo": "npm/cli",
       "workflows": 26,
-      "findings": 133,
+      "findings": 135,
       "e": 3,
-      "w": 120,
+      "w": 122,
       "i": 10,
       "ruleHits": {
         "missing-timeout": 59,
         "missing-concurrency": 21,
         "fetch-depth-zero": 7,
-        "matrix-overcommit": 17,
+        "matrix-overcommit": 19,
         "pinned-action-sha": 19,
         "expensive-runner": 1,
         "always-run-on-pr": 2,
@@ -578,7 +577,7 @@
       },
       "perRun": 2.56,
       "monthly": 2304,
-      "score": 5.15
+      "score": 5.23
     },
     {
       "repo": "facebook/react",
