@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-20 15:45 UTC",
+  "generatedAt": "2026-06-21 15:50 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -181,23 +181,6 @@
       "score": 2.59
     },
     {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 27,
-      "e": 0,
-      "w": 23,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 18,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 2.78
-    },
-    {
       "repo": "fastify/fastify",
       "workflows": 20,
       "findings": 61,
@@ -217,6 +200,23 @@
       "perRun": 1.41,
       "monthly": 1267,
       "score": 2.85
+    },
+    {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 28,
+      "e": 0,
+      "w": 24,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 19,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.66,
+      "monthly": 1498,
+      "score": 2.89
     },
     {
       "repo": "nodejs/node",
