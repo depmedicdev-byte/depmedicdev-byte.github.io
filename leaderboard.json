@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21 15:50 UTC",
+  "generatedAt": "2026-06-22 18:12 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -338,6 +338,25 @@
       "score": 3.23
     },
     {
+      "repo": "remix-run/react-router",
+      "workflows": 13,
+      "findings": 48,
+      "e": 0,
+      "w": 43,
+      "i": 5,
+      "ruleHits": {
+        "pinned-action-sha": 15,
+        "missing-timeout": 18,
+        "missing-permissions": 6,
+        "artifact-no-retention": 1,
+        "fetch-depth-zero": 4,
+        "missing-cache": 4
+      },
+      "perRun": 1.15,
+      "monthly": 1037,
+      "score": 3.5
+    },
+    {
       "repo": "nestjs/nest",
       "workflows": 1,
       "findings": 5,
@@ -395,25 +414,6 @@
       "perRun": 3.26,
       "monthly": 2938,
       "score": 3.59
-    },
-    {
-      "repo": "remix-run/react-router",
-      "workflows": 13,
-      "findings": 52,
-      "e": 0,
-      "w": 46,
-      "i": 6,
-      "ruleHits": {
-        "pinned-action-sha": 16,
-        "missing-timeout": 19,
-        "missing-permissions": 6,
-        "artifact-no-retention": 1,
-        "fetch-depth-zero": 5,
-        "missing-cache": 5
-      },
-      "perRun": 1.22,
-      "monthly": 1094,
-      "score": 3.77
     },
     {
       "repo": "date-fns/date-fns",
