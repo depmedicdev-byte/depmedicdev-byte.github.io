@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23 16:27 UTC",
+  "generatedAt": "2026-06-24 16:21 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -163,14 +163,14 @@
     {
       "repo": "prettier/prettier",
       "workflows": 16,
-      "findings": 31,
-      "e": 6,
+      "findings": 32,
+      "e": 7,
       "w": 22,
       "i": 3,
       "ruleHits": {
         "missing-timeout": 15,
         "artifact-no-retention": 1,
-        "deprecated-action": 6,
+        "deprecated-action": 7,
         "always-run-on-pr": 2,
         "matrix-overcommit": 3,
         "missing-cache": 3,
@@ -178,7 +178,7 @@
       },
       "perRun": 0.96,
       "monthly": 864,
-      "score": 2.59
+      "score": 2.78
     },
     {
       "repo": "fastify/fastify",
@@ -393,27 +393,27 @@
     },
     {
       "repo": "pnpm/pnpm",
-      "workflows": 23,
-      "findings": 73,
-      "e": 8,
-      "w": 52,
+      "workflows": 24,
+      "findings": 77,
+      "e": 10,
+      "w": 54,
       "i": 13,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 39,
+        "missing-timeout": 42,
         "fetch-depth-zero": 2,
-        "matrix-overcommit": 4,
         "always-run-on-pr": 3,
-        "deprecated-action": 8,
+        "deprecated-action": 10,
+        "matrix-overcommit": 3,
         "stale-cache-key": 2,
         "artifact-no-retention": 4,
         "fail-fast-true": 4,
         "expensive-runner": 1,
         "missing-cache": 1
       },
-      "perRun": 3.26,
-      "monthly": 2938,
-      "score": 3.59
+      "perRun": 3.39,
+      "monthly": 3053,
+      "score": 3.77
     },
     {
       "repo": "date-fns/date-fns",
@@ -515,22 +515,22 @@
     {
       "repo": "eslint/eslint",
       "workflows": 10,
-      "findings": 48,
+      "findings": 50,
       "e": 0,
-      "w": 43,
-      "i": 5,
+      "w": 44,
+      "i": 6,
       "ruleHits": {
         "missing-cache": 16,
         "missing-concurrency": 7,
         "missing-timeout": 18,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 2,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 3,
         "always-run-on-pr": 3,
         "missing-permissions": 1
       },
-      "perRun": 1.15,
-      "monthly": 1037,
-      "score": 4.55
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 4.7
     },
     {
       "repo": "vercel/next.js",
