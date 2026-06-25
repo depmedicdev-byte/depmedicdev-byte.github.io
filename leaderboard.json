@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24 16:21 UTC",
+  "generatedAt": "2026-06-25 16:23 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -143,22 +143,22 @@
     {
       "repo": "nuxt/nuxt",
       "workflows": 29,
-      "findings": 64,
-      "e": 7,
+      "findings": 65,
+      "e": 8,
       "w": 48,
       "i": 9,
       "ruleHits": {
         "missing-timeout": 27,
         "missing-concurrency": 19,
         "fetch-depth-zero": 4,
-        "deprecated-action": 7,
+        "deprecated-action": 8,
         "matrix-overcommit": 1,
         "fail-fast-true": 5,
         "missing-cache": 1
       },
       "perRun": 2.18,
       "monthly": 1958,
-      "score": 2.53
+      "score": 2.64
     },
     {
       "repo": "prettier/prettier",
@@ -200,23 +200,6 @@
       "perRun": 1.41,
       "monthly": 1267,
       "score": 2.85
-    },
-    {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 28,
-      "e": 0,
-      "w": 24,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 19,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.66,
-      "monthly": 1498,
-      "score": 2.89
     },
     {
       "repo": "nodejs/node",
@@ -373,29 +356,10 @@
       "score": 3.5
     },
     {
-      "repo": "preactjs/preact",
-      "workflows": 8,
-      "findings": 31,
-      "e": 0,
-      "w": 26,
-      "i": 5,
-      "ruleHits": {
-        "pinned-action-sha": 8,
-        "missing-permissions": 6,
-        "artifact-no-retention": 5,
-        "missing-cache": 2,
-        "missing-timeout": 8,
-        "missing-concurrency": 2
-      },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 3.56
-    },
-    {
       "repo": "pnpm/pnpm",
       "workflows": 24,
-      "findings": 77,
-      "e": 10,
+      "findings": 76,
+      "e": 9,
       "w": 54,
       "i": 13,
       "ruleHits": {
@@ -403,7 +367,7 @@
         "missing-timeout": 42,
         "fetch-depth-zero": 2,
         "always-run-on-pr": 3,
-        "deprecated-action": 10,
+        "deprecated-action": 9,
         "matrix-overcommit": 3,
         "stale-cache-key": 2,
         "artifact-no-retention": 4,
@@ -413,7 +377,7 @@
       },
       "perRun": 3.39,
       "monthly": 3053,
-      "score": 3.77
+      "score": 3.65
     },
     {
       "repo": "date-fns/date-fns",
@@ -515,22 +479,22 @@
     {
       "repo": "eslint/eslint",
       "workflows": 10,
-      "findings": 50,
+      "findings": 49,
       "e": 0,
       "w": 44,
-      "i": 6,
+      "i": 5,
       "ruleHits": {
         "missing-cache": 16,
         "missing-concurrency": 7,
         "missing-timeout": 18,
         "matrix-overcommit": 2,
-        "fail-fast-true": 3,
+        "fail-fast-true": 2,
         "always-run-on-pr": 3,
         "missing-permissions": 1
       },
       "perRun": 1.54,
       "monthly": 1382,
-      "score": 4.7
+      "score": 4.65
     },
     {
       "repo": "vercel/next.js",
@@ -554,6 +518,25 @@
       "perRun": 3.65,
       "monthly": 3283,
       "score": 4.71
+    },
+    {
+      "repo": "preactjs/preact",
+      "workflows": 8,
+      "findings": 29,
+      "e": 6,
+      "w": 18,
+      "i": 5,
+      "ruleHits": {
+        "deprecated-action": 6,
+        "missing-permissions": 6,
+        "artifact-no-retention": 5,
+        "missing-cache": 2,
+        "missing-timeout": 8,
+        "missing-concurrency": 2
+      },
+      "perRun": 0.7,
+      "monthly": 634,
+      "score": 4.81
     },
     {
       "repo": "npm/cli",
@@ -637,6 +620,24 @@
       "perRun": 14.59,
       "monthly": 13133,
       "score": 5.32
+    },
+    {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 36,
+      "e": 8,
+      "w": 24,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 19,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "deprecated-action": 8,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.66,
+      "monthly": 1498,
+      "score": 5.56
     },
     {
       "repo": "rollup/rollup",
