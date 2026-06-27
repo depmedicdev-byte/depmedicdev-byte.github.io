@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-26 16:16 UTC",
+  "generatedAt": "2026-06-27 15:14 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -141,6 +141,26 @@
       "score": 2.5
     },
     {
+      "repo": "prettier/prettier",
+      "workflows": 16,
+      "findings": 31,
+      "e": 6,
+      "w": 22,
+      "i": 3,
+      "ruleHits": {
+        "missing-timeout": 15,
+        "artifact-no-retention": 1,
+        "deprecated-action": 6,
+        "always-run-on-pr": 2,
+        "matrix-overcommit": 3,
+        "missing-cache": 3,
+        "stale-cache-key": 1
+      },
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 2.59
+    },
+    {
       "repo": "nuxt/nuxt",
       "workflows": 29,
       "findings": 65,
@@ -159,26 +179,6 @@
       "perRun": 2.18,
       "monthly": 1958,
       "score": 2.64
-    },
-    {
-      "repo": "prettier/prettier",
-      "workflows": 16,
-      "findings": 32,
-      "e": 7,
-      "w": 22,
-      "i": 3,
-      "ruleHits": {
-        "missing-timeout": 15,
-        "artifact-no-retention": 1,
-        "deprecated-action": 7,
-        "always-run-on-pr": 2,
-        "matrix-overcommit": 3,
-        "missing-cache": 3,
-        "stale-cache-key": 1
-      },
-      "perRun": 0.96,
-      "monthly": 864,
-      "score": 2.78
     },
     {
       "repo": "fastify/fastify",
