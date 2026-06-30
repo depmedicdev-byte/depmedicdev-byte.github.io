@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-29 16:53 UTC",
+  "generatedAt": "2026-06-30 16:23 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -181,6 +181,28 @@
       "score": 2.64
     },
     {
+      "repo": "storybookjs/storybook",
+      "workflows": 18,
+      "findings": 60,
+      "e": 0,
+      "w": 41,
+      "i": 19,
+      "ruleHits": {
+        "missing-timeout": 34,
+        "stale-cache-key": 1,
+        "missing-concurrency": 5,
+        "artifact-no-retention": 12,
+        "wide-trigger": 3,
+        "fail-fast-true": 1,
+        "missing-cache": 1,
+        "fetch-depth-zero": 2,
+        "always-run-on-pr": 1
+      },
+      "perRun": 2.24,
+      "monthly": 2016,
+      "score": 2.81
+    },
+    {
       "repo": "fastify/fastify",
       "workflows": 20,
       "findings": 61,
@@ -200,28 +222,6 @@
       "perRun": 1.41,
       "monthly": 1267,
       "score": 2.85
-    },
-    {
-      "repo": "storybookjs/storybook",
-      "workflows": 16,
-      "findings": 57,
-      "e": 0,
-      "w": 38,
-      "i": 19,
-      "ruleHits": {
-        "missing-timeout": 32,
-        "stale-cache-key": 1,
-        "artifact-no-retention": 12,
-        "missing-concurrency": 4,
-        "wide-trigger": 3,
-        "fail-fast-true": 1,
-        "missing-cache": 1,
-        "fetch-depth-zero": 2,
-        "always-run-on-pr": 1
-      },
-      "perRun": 2.11,
-      "monthly": 1901,
-      "score": 2.97
     },
     {
       "repo": "sindresorhus/got",
@@ -440,23 +440,23 @@
     {
       "repo": "microsoft/playwright",
       "workflows": 19,
-      "findings": 84,
+      "findings": 80,
       "e": 0,
-      "w": 83,
+      "w": 79,
       "i": 1,
       "ruleHits": {
-        "missing-cache": 22,
-        "missing-timeout": 29,
-        "pinned-action-sha": 8,
+        "missing-cache": 21,
+        "missing-timeout": 28,
         "missing-concurrency": 7,
         "missing-permissions": 7,
+        "pinned-action-sha": 6,
         "matrix-overcommit": 9,
         "expensive-runner": 1,
         "artifact-no-retention": 1
       },
-      "perRun": 4.16,
-      "monthly": 3744,
-      "score": 4.39
+      "perRun": 4.1,
+      "monthly": 3686,
+      "score": 4.18
     },
     {
       "repo": "tailwindlabs/tailwindcss",
