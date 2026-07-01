@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30 16:23 UTC",
+  "generatedAt": "2026-07-01 16:26 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -224,6 +224,46 @@
       "score": 2.85
     },
     {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 28,
+      "e": 0,
+      "w": 24,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 19,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.66,
+      "monthly": 1498,
+      "score": 2.89
+    },
+    {
+      "repo": "nodejs/node",
+      "workflows": 40,
+      "findings": 115,
+      "e": 5,
+      "w": 99,
+      "i": 11,
+      "ruleHits": {
+        "missing-cache": 31,
+        "missing-timeout": 59,
+        "deprecated-action": 5,
+        "artifact-no-retention": 6,
+        "fail-fast-true": 1,
+        "missing-concurrency": 6,
+        "fetch-depth-zero": 4,
+        "expensive-runner": 1,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 1
+      },
+      "perRun": 6.27,
+      "monthly": 5645,
+      "score": 2.99
+    },
+    {
       "repo": "sindresorhus/got",
       "workflows": 1,
       "findings": 3,
@@ -238,29 +278,6 @@
       "perRun": 0,
       "monthly": 0,
       "score": 3
-    },
-    {
-      "repo": "nodejs/node",
-      "workflows": 39,
-      "findings": 113,
-      "e": 5,
-      "w": 97,
-      "i": 11,
-      "ruleHits": {
-        "missing-cache": 30,
-        "missing-timeout": 58,
-        "deprecated-action": 5,
-        "artifact-no-retention": 6,
-        "fail-fast-true": 1,
-        "missing-concurrency": 6,
-        "fetch-depth-zero": 4,
-        "expensive-runner": 1,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 1
-      },
-      "perRun": 6.27,
-      "monthly": 5645,
-      "score": 3.01
     },
     {
       "repo": "lodash/lodash",
@@ -420,6 +437,27 @@
       "score": 3.94
     },
     {
+      "repo": "microsoft/playwright",
+      "workflows": 20,
+      "findings": 83,
+      "e": 0,
+      "w": 81,
+      "i": 2,
+      "ruleHits": {
+        "missing-cache": 22,
+        "missing-timeout": 29,
+        "missing-concurrency": 7,
+        "missing-permissions": 7,
+        "pinned-action-sha": 6,
+        "matrix-overcommit": 9,
+        "expensive-runner": 1,
+        "artifact-no-retention": 2
+      },
+      "perRun": 4.22,
+      "monthly": 3802,
+      "score": 4.1
+    },
+    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -436,27 +474,6 @@
       "perRun": 0.51,
       "monthly": 461,
       "score": 4.17
-    },
-    {
-      "repo": "microsoft/playwright",
-      "workflows": 19,
-      "findings": 80,
-      "e": 0,
-      "w": 79,
-      "i": 1,
-      "ruleHits": {
-        "missing-cache": 21,
-        "missing-timeout": 28,
-        "missing-concurrency": 7,
-        "missing-permissions": 7,
-        "pinned-action-sha": 6,
-        "matrix-overcommit": 9,
-        "expensive-runner": 1,
-        "artifact-no-retention": 1
-      },
-      "perRun": 4.1,
-      "monthly": 3686,
-      "score": 4.18
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -621,24 +638,6 @@
       "perRun": 14.59,
       "monthly": 13133,
       "score": 5.32
-    },
-    {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 36,
-      "e": 8,
-      "w": 24,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 19,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "deprecated-action": 8,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.66,
-      "monthly": 1498,
-      "score": 5.56
     },
     {
       "repo": "rollup/rollup",
