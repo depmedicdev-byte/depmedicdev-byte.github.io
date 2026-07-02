@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01 16:26 UTC",
+  "generatedAt": "2026-07-02 16:05 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -319,6 +319,26 @@
       "score": 3.16
     },
     {
+      "repo": "electron/electron",
+      "workflows": 46,
+      "findings": 144,
+      "e": 18,
+      "w": 86,
+      "i": 40,
+      "ruleHits": {
+        "missing-timeout": 70,
+        "artifact-no-retention": 4,
+        "fetch-depth-zero": 36,
+        "missing-cache": 5,
+        "missing-concurrency": 10,
+        "deprecated-action": 18,
+        "stale-cache-key": 1
+      },
+      "perRun": 2.88,
+      "monthly": 2592,
+      "score": 3.48
+    },
+    {
       "repo": "remix-run/react-router",
       "workflows": 13,
       "findings": 48,
@@ -375,26 +395,6 @@
       },
       "perRun": 3.46,
       "monthly": 3110,
-      "score": 3.54
-    },
-    {
-      "repo": "electron/electron",
-      "workflows": 46,
-      "findings": 145,
-      "e": 19,
-      "w": 86,
-      "i": 40,
-      "ruleHits": {
-        "missing-timeout": 70,
-        "artifact-no-retention": 4,
-        "fetch-depth-zero": 36,
-        "missing-cache": 5,
-        "missing-concurrency": 10,
-        "deprecated-action": 19,
-        "stale-cache-key": 1
-      },
-      "perRun": 2.88,
-      "monthly": 2592,
       "score": 3.54
     },
     {
@@ -581,26 +581,6 @@
       "score": 5.23
     },
     {
-      "repo": "facebook/react",
-      "workflows": 22,
-      "findings": 124,
-      "e": 0,
-      "w": 107,
-      "i": 17,
-      "ruleHits": {
-        "missing-concurrency": 7,
-        "missing-timeout": 58,
-        "missing-cache": 33,
-        "artifact-no-retention": 17,
-        "stale-cache-key": 4,
-        "pinned-action-sha": 1,
-        "matrix-overcommit": 4
-      },
-      "perRun": 16.26,
-      "monthly": 14630,
-      "score": 5.25
-    },
-    {
       "repo": "expressjs/express",
       "workflows": 4,
       "findings": 18,
@@ -638,6 +618,26 @@
       "perRun": 14.59,
       "monthly": 13133,
       "score": 5.32
+    },
+    {
+      "repo": "facebook/react",
+      "workflows": 22,
+      "findings": 129,
+      "e": 0,
+      "w": 111,
+      "i": 18,
+      "ruleHits": {
+        "missing-concurrency": 7,
+        "missing-timeout": 60,
+        "missing-cache": 35,
+        "artifact-no-retention": 18,
+        "stale-cache-key": 4,
+        "pinned-action-sha": 1,
+        "matrix-overcommit": 4
+      },
+      "perRun": 16.38,
+      "monthly": 14746,
+      "score": 5.45
     },
     {
       "repo": "rollup/rollup",
