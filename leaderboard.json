@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05 15:12 UTC",
+  "generatedAt": "2026-07-06 16:52 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -301,12 +301,12 @@
     {
       "repo": "swc-project/swc",
       "workflows": 16,
-      "findings": 53,
+      "findings": 54,
       "e": 0,
-      "w": 48,
+      "w": 49,
       "i": 5,
       "ruleHits": {
-        "missing-timeout": 37,
+        "missing-timeout": 38,
         "fetch-depth-zero": 3,
         "matrix-overcommit": 2,
         "missing-concurrency": 3,
@@ -316,7 +316,7 @@
       },
       "perRun": 2.82,
       "monthly": 2534,
-      "score": 3.16
+      "score": 3.22
     },
     {
       "repo": "electron/electron",
