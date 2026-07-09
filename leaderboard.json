@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08 16:02 UTC",
+  "generatedAt": "2026-07-09 16:27 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -438,24 +438,25 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 21,
-      "findings": 84,
+      "workflows": 22,
+      "findings": 92,
       "e": 0,
-      "w": 82,
-      "i": 2,
+      "w": 86,
+      "i": 6,
       "ruleHits": {
-        "missing-cache": 23,
-        "missing-timeout": 29,
+        "missing-cache": 25,
+        "missing-timeout": 31,
+        "artifact-no-retention": 4,
+        "fetch-depth-zero": 2,
         "missing-concurrency": 7,
         "missing-permissions": 7,
         "pinned-action-sha": 6,
         "matrix-overcommit": 9,
-        "expensive-runner": 1,
-        "artifact-no-retention": 2
+        "expensive-runner": 1
       },
-      "perRun": 4.29,
-      "monthly": 3859,
-      "score": 3.95
+      "perRun": 4.42,
+      "monthly": 3974,
+      "score": 4.05
     },
     {
       "repo": "chakra-ui/chakra-ui",
