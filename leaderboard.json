@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-07-09 16:27 UTC",
+  "generatedAt": "2026-07-10 16:24 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
       "workflows": 16,
-      "findings": 28,
+      "findings": 29,
       "e": 0,
-      "w": 22,
+      "w": 23,
       "i": 6,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 15,
+        "missing-timeout": 16,
         "matrix-overcommit": 2,
         "fail-fast-true": 2,
         "fetch-depth-zero": 4
       },
-      "perRun": 0.83,
-      "monthly": 749,
-      "score": 1.56
+      "perRun": 0.9,
+      "monthly": 806,
+      "score": 1.63
     },
     {
       "repo": "TanStack/query",
@@ -301,12 +301,12 @@
     {
       "repo": "swc-project/swc",
       "workflows": 16,
-      "findings": 54,
+      "findings": 55,
       "e": 0,
-      "w": 49,
+      "w": 50,
       "i": 5,
       "ruleHits": {
-        "missing-timeout": 38,
+        "missing-timeout": 39,
         "fetch-depth-zero": 3,
         "matrix-overcommit": 2,
         "missing-concurrency": 3,
@@ -314,9 +314,9 @@
         "missing-cache": 6,
         "artifact-no-retention": 1
       },
-      "perRun": 2.82,
-      "monthly": 2534,
-      "score": 3.22
+      "perRun": 2.88,
+      "monthly": 2592,
+      "score": 3.28
     },
     {
       "repo": "electron/electron",
@@ -376,16 +376,16 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 25,
-      "findings": 77,
-      "e": 9,
-      "w": 55,
+      "findings": 79,
+      "e": 10,
+      "w": 56,
       "i": 13,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 43,
+        "missing-timeout": 44,
         "fetch-depth-zero": 2,
         "always-run-on-pr": 3,
-        "deprecated-action": 9,
+        "deprecated-action": 10,
         "matrix-overcommit": 3,
         "stale-cache-key": 2,
         "artifact-no-retention": 4,
@@ -393,9 +393,9 @@
         "expensive-runner": 1,
         "missing-cache": 1
       },
-      "perRun": 3.46,
-      "monthly": 3110,
-      "score": 3.54
+      "perRun": 3.52,
+      "monthly": 3168,
+      "score": 3.7
     },
     {
       "repo": "date-fns/date-fns",
@@ -439,14 +439,14 @@
     {
       "repo": "microsoft/playwright",
       "workflows": 22,
-      "findings": 92,
+      "findings": 95,
       "e": 0,
-      "w": 86,
-      "i": 6,
+      "w": 88,
+      "i": 7,
       "ruleHits": {
-        "missing-cache": 25,
-        "missing-timeout": 31,
-        "artifact-no-retention": 4,
+        "missing-cache": 26,
+        "missing-timeout": 32,
+        "artifact-no-retention": 5,
         "fetch-depth-zero": 2,
         "missing-concurrency": 7,
         "missing-permissions": 7,
@@ -454,9 +454,9 @@
         "matrix-overcommit": 9,
         "expensive-runner": 1
       },
-      "perRun": 4.42,
-      "monthly": 3974,
-      "score": 4.05
+      "perRun": 4.54,
+      "monthly": 4090,
+      "score": 4.16
     },
     {
       "repo": "chakra-ui/chakra-ui",
