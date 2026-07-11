@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10 16:24 UTC",
+  "generatedAt": "2026-07-11 14:52 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -437,28 +437,6 @@
       "score": 3.94
     },
     {
-      "repo": "microsoft/playwright",
-      "workflows": 22,
-      "findings": 95,
-      "e": 0,
-      "w": 88,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 26,
-        "missing-timeout": 32,
-        "artifact-no-retention": 5,
-        "fetch-depth-zero": 2,
-        "missing-concurrency": 7,
-        "missing-permissions": 7,
-        "pinned-action-sha": 6,
-        "matrix-overcommit": 9,
-        "expensive-runner": 1
-      },
-      "perRun": 4.54,
-      "monthly": 4090,
-      "score": 4.16
-    },
-    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -474,6 +452,28 @@
       },
       "perRun": 0.51,
       "monthly": 461,
+      "score": 4.17
+    },
+    {
+      "repo": "microsoft/playwright",
+      "workflows": 21,
+      "findings": 91,
+      "e": 0,
+      "w": 84,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 25,
+        "missing-timeout": 31,
+        "artifact-no-retention": 5,
+        "fetch-depth-zero": 2,
+        "missing-concurrency": 7,
+        "missing-permissions": 7,
+        "pinned-action-sha": 4,
+        "matrix-overcommit": 9,
+        "expensive-runner": 1
+      },
+      "perRun": 4.48,
+      "monthly": 4032,
       "score": 4.17
     },
     {
