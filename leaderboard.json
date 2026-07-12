@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11 14:52 UTC",
+  "generatedAt": "2026-07-12 14:55 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -241,29 +241,6 @@
       "score": 2.89
     },
     {
-      "repo": "nodejs/node",
-      "workflows": 40,
-      "findings": 115,
-      "e": 5,
-      "w": 99,
-      "i": 11,
-      "ruleHits": {
-        "missing-cache": 31,
-        "missing-timeout": 59,
-        "deprecated-action": 5,
-        "artifact-no-retention": 6,
-        "fail-fast-true": 1,
-        "missing-concurrency": 6,
-        "fetch-depth-zero": 4,
-        "expensive-runner": 1,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 1
-      },
-      "perRun": 6.27,
-      "monthly": 5645,
-      "score": 2.99
-    },
-    {
       "repo": "sindresorhus/got",
       "workflows": 1,
       "findings": 3,
@@ -278,6 +255,29 @@
       "perRun": 0,
       "monthly": 0,
       "score": 3
+    },
+    {
+      "repo": "nodejs/node",
+      "workflows": 40,
+      "findings": 116,
+      "e": 5,
+      "w": 100,
+      "i": 11,
+      "ruleHits": {
+        "missing-cache": 31,
+        "missing-timeout": 60,
+        "deprecated-action": 5,
+        "artifact-no-retention": 6,
+        "fail-fast-true": 1,
+        "missing-concurrency": 6,
+        "fetch-depth-zero": 4,
+        "expensive-runner": 1,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 1
+      },
+      "perRun": 6.34,
+      "monthly": 5702,
+      "score": 3.01
     },
     {
       "repo": "lodash/lodash",
@@ -393,8 +393,8 @@
         "expensive-runner": 1,
         "missing-cache": 1
       },
-      "perRun": 3.52,
-      "monthly": 3168,
+      "perRun": 2.62,
+      "monthly": 2362,
       "score": 3.7
     },
     {
