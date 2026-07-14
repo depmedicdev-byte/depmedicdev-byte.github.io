@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-07-13"
+  "dateModified": "2026-07-14"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-07-13 16:33 UTC</strong> &middot;
+  Last updated <strong>2026-07-14 15:25 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -96,7 +96,7 @@
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
   <div class="stat"><div class="label">Workflows scanned</div><div class="val">550</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,220</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,219</div></div>
   <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$102,992</div></div>
 </div>
 
@@ -114,7 +114,7 @@
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">926</td></tr><tr><td><code>missing-cache</code></td><td class="right">264</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">176</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">173</td></tr><tr><td><code>missing-permissions</code></td><td class="right">122</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">926</td></tr><tr><td><code>missing-cache</code></td><td class="right">263</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">176</td></tr><tr><td><code>pinned-action-sha</code></td><td class="right">173</td></tr><tr><td><code>missing-permissions</code></td><td class="right">122</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -198,7 +198,7 @@
       <td class="right">$749</td>
     </tr><tr>
       <td class="right">7</td>
-      <td><span class="trend up">&uarr;4</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/storybookjs/storybook" rel="noopener">storybookjs/storybook</a>
           &middot; <a href="/scan.html#r=storybookjs%2Fstorybook&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.34</strong></td>
@@ -209,7 +209,7 @@
       <td class="right">$1,498</td>
     </tr><tr>
       <td class="right">8</td>
-      <td><span class="trend down">&darr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/sveltejs/svelte" rel="noopener">sveltejs/svelte</a>
           &middot; <a href="/scan.html#r=sveltejs%2Fsvelte&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.40</strong></td>
@@ -220,6 +220,17 @@
       <td class="right">$634</td>
     </tr><tr>
       <td class="right">9</td>
+      <td><span class="trend up">&uarr;1</span></td>
+      <td><a href="https://github.com/nuxt/nuxt" rel="noopener">nuxt/nuxt</a>
+          &middot; <a href="/scan.html#r=nuxt%2Fnuxt&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>2.50</strong></td>
+      <td class="right">29</td>
+      <td class="right">63</td>
+      <td class="right">7/47/9</td>
+      <td class="right">$2.18</td>
+      <td class="right">$1,958</td>
+    </tr><tr>
+      <td class="right">10</td>
       <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/ReactiveX/rxjs" rel="noopener">ReactiveX/rxjs</a>
           &middot; <a href="/scan.html#r=ReactiveX%2Frxjs&m=8&d=30" title="re-scan in browser">scan</a></td>
@@ -230,19 +241,8 @@
       <td class="right">$0.38</td>
       <td class="right">$346</td>
     </tr><tr>
-      <td class="right">10</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/nuxt/nuxt" rel="noopener">nuxt/nuxt</a>
-          &middot; <a href="/scan.html#r=nuxt%2Fnuxt&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.53</strong></td>
-      <td class="right">29</td>
-      <td class="right">64</td>
-      <td class="right">7/48/9</td>
-      <td class="right">$2.18</td>
-      <td class="right">$1,958</td>
-    </tr><tr>
       <td class="right">11</td>
-      <td><span class="trend down">&darr;2</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/prettier/prettier" rel="noopener">prettier/prettier</a>
           &middot; <a href="/scan.html#r=prettier%2Fprettier&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>2.59</strong></td>
@@ -352,7 +352,7 @@
       <td class="right">$58</td>
     </tr><tr>
       <td class="right">21</td>
-      <td><span class="trend up">&uarr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/date-fns/date-fns" rel="noopener">date-fns/date-fns</a>
           &middot; <a href="/scan.html#r=date-fns%2Fdate-fns&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.83</strong></td>
@@ -363,7 +363,7 @@
       <td class="right">$346</td>
     </tr><tr>
       <td class="right">22</td>
-      <td><span class="trend up">&uarr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/microsoft/TypeScript" rel="noopener">microsoft/TypeScript</a>
           &middot; <a href="/scan.html#r=microsoft%2FTypeScript&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.94</strong></td>
@@ -374,7 +374,7 @@
       <td class="right">$1,670</td>
     </tr><tr>
       <td class="right">23</td>
-      <td><span class="trend down">&darr;2</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
           &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.07</strong></td>

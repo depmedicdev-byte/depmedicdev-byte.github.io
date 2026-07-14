@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13 16:33 UTC",
+  "generatedAt": "2026-07-14 15:25 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -144,6 +144,25 @@
       "score": 2.4
     },
     {
+      "repo": "nuxt/nuxt",
+      "workflows": 29,
+      "findings": 63,
+      "e": 7,
+      "w": 47,
+      "i": 9,
+      "ruleHits": {
+        "missing-timeout": 27,
+        "missing-concurrency": 19,
+        "fetch-depth-zero": 4,
+        "deprecated-action": 7,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 5
+      },
+      "perRun": 2.18,
+      "monthly": 1958,
+      "score": 2.5
+    },
+    {
       "repo": "ReactiveX/rxjs",
       "workflows": 4,
       "findings": 12,
@@ -160,26 +179,6 @@
       "perRun": 0.38,
       "monthly": 346,
       "score": 2.5
-    },
-    {
-      "repo": "nuxt/nuxt",
-      "workflows": 29,
-      "findings": 64,
-      "e": 7,
-      "w": 48,
-      "i": 9,
-      "ruleHits": {
-        "missing-timeout": 27,
-        "missing-concurrency": 19,
-        "fetch-depth-zero": 4,
-        "deprecated-action": 7,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 5,
-        "missing-cache": 1
-      },
-      "perRun": 2.18,
-      "monthly": 1958,
-      "score": 2.53
     },
     {
       "repo": "prettier/prettier",
