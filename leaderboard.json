@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-15 15:26 UTC",
+  "generatedAt": "2026-07-16 15:38 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -18,6 +18,25 @@
       "perRun": 0.96,
       "monthly": 864,
       "score": 1.59
+    },
+    {
+      "repo": "vuejs/core",
+      "workflows": 9,
+      "findings": 17,
+      "e": 0,
+      "w": 16,
+      "i": 1,
+      "ruleHits": {
+        "missing-timeout": 12,
+        "missing-cache": 1,
+        "missing-concurrency": 1,
+        "missing-permissions": 1,
+        "artifact-no-retention": 1,
+        "expensive-runner": 1
+      },
+      "perRun": 0.83,
+      "monthly": 749,
+      "score": 1.83
     },
     {
       "repo": "TanStack/query",
@@ -83,25 +102,6 @@
       "perRun": 1.15,
       "monthly": 1037,
       "score": 2.12
-    },
-    {
-      "repo": "vuejs/core",
-      "workflows": 9,
-      "findings": 20,
-      "e": 0,
-      "w": 19,
-      "i": 1,
-      "ruleHits": {
-        "missing-concurrency": 4,
-        "missing-timeout": 12,
-        "missing-cache": 1,
-        "missing-permissions": 1,
-        "artifact-no-retention": 1,
-        "expensive-runner": 1
-      },
-      "perRun": 0.83,
-      "monthly": 749,
-      "score": 2.17
     },
     {
       "repo": "storybookjs/storybook",
@@ -318,23 +318,23 @@
     },
     {
       "repo": "electron/electron",
-      "workflows": 46,
-      "findings": 144,
+      "workflows": 47,
+      "findings": 147,
       "e": 18,
-      "w": 86,
+      "w": 89,
       "i": 40,
       "ruleHits": {
-        "missing-timeout": 70,
+        "missing-timeout": 72,
         "artifact-no-retention": 4,
         "fetch-depth-zero": 36,
         "missing-cache": 5,
-        "missing-concurrency": 10,
+        "missing-concurrency": 11,
         "deprecated-action": 18,
         "stale-cache-key": 1
       },
-      "perRun": 2.88,
-      "monthly": 2592,
-      "score": 3.48
+      "perRun": 3.01,
+      "monthly": 2707,
+      "score": 3.47
     },
     {
       "repo": "remix-run/react-router",
@@ -411,30 +411,6 @@
       "score": 3.94
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 24,
-      "findings": 81,
-      "e": 10,
-      "w": 58,
-      "i": 13,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 46,
-        "fetch-depth-zero": 2,
-        "always-run-on-pr": 3,
-        "deprecated-action": 10,
-        "matrix-overcommit": 3,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 4,
-        "fail-fast-true": 4,
-        "expensive-runner": 1,
-        "missing-cache": 1
-      },
-      "perRun": 2.75,
-      "monthly": 2477,
-      "score": 3.94
-    },
-    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -473,6 +449,30 @@
       "perRun": 4.48,
       "monthly": 4032,
       "score": 4.17
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 24,
+      "findings": 87,
+      "e": 12,
+      "w": 62,
+      "i": 13,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 49,
+        "fetch-depth-zero": 2,
+        "always-run-on-pr": 3,
+        "deprecated-action": 12,
+        "matrix-overcommit": 3,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 4,
+        "fail-fast-true": 4,
+        "expensive-runner": 2,
+        "missing-cache": 1
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 4.35
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -683,13 +683,13 @@
     {
       "repo": "biomejs/biome",
       "workflows": 25,
-      "findings": 165,
+      "findings": 163,
       "e": 12,
-      "w": 114,
+      "w": 112,
       "i": 39,
       "ruleHits": {
         "missing-concurrency": 10,
-        "missing-timeout": 71,
+        "missing-timeout": 69,
         "fail-fast-true": 24,
         "missing-cache": 15,
         "deprecated-action": 12,
@@ -699,7 +699,7 @@
       },
       "perRun": 0.64,
       "monthly": 576,
-      "score": 6.78
+      "score": 6.7
     },
     {
       "repo": "denoland/deno",
