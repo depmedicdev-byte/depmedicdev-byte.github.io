@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-16 15:38 UTC",
+  "generatedAt": "2026-07-17 15:13 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -18,6 +18,24 @@
       "perRun": 0.96,
       "monthly": 864,
       "score": 1.59
+    },
+    {
+      "repo": "nuxt/nuxt",
+      "workflows": 29,
+      "findings": 56,
+      "e": 0,
+      "w": 47,
+      "i": 9,
+      "ruleHits": {
+        "missing-timeout": 27,
+        "missing-concurrency": 19,
+        "fetch-depth-zero": 4,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 5
+      },
+      "perRun": 2.18,
+      "monthly": 1958,
+      "score": 1.78
     },
     {
       "repo": "vuejs/core",
@@ -142,25 +160,6 @@
       "perRun": 0.7,
       "monthly": 634,
       "score": 2.4
-    },
-    {
-      "repo": "nuxt/nuxt",
-      "workflows": 29,
-      "findings": 63,
-      "e": 7,
-      "w": 47,
-      "i": 9,
-      "ruleHits": {
-        "missing-timeout": 27,
-        "missing-concurrency": 19,
-        "fetch-depth-zero": 4,
-        "deprecated-action": 7,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 5
-      },
-      "perRun": 2.18,
-      "monthly": 1958,
-      "score": 2.5
     },
     {
       "repo": "ReactiveX/rxjs",
@@ -453,13 +452,13 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 24,
-      "findings": 87,
+      "findings": 88,
       "e": 12,
-      "w": 62,
+      "w": 63,
       "i": 13,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 49,
+        "missing-timeout": 51,
         "fetch-depth-zero": 2,
         "always-run-on-pr": 3,
         "deprecated-action": 12,
@@ -467,12 +466,11 @@
         "stale-cache-key": 2,
         "artifact-no-retention": 4,
         "fail-fast-true": 4,
-        "expensive-runner": 2,
-        "missing-cache": 1
+        "expensive-runner": 2
       },
       "perRun": 1.54,
       "monthly": 1382,
-      "score": 4.35
+      "score": 4.4
     },
     {
       "repo": "tailwindlabs/tailwindcss",
