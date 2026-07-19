@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18 14:50 UTC",
+  "generatedAt": "2026-07-19 14:54 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -202,23 +202,22 @@
     {
       "repo": "fastify/fastify",
       "workflows": 20,
-      "findings": 61,
+      "findings": 57,
       "e": 0,
-      "w": 53,
+      "w": 49,
       "i": 8,
       "ruleHits": {
         "missing-concurrency": 13,
         "missing-timeout": 27,
         "matrix-overcommit": 3,
         "fail-fast-true": 7,
-        "pinned-action-sha": 4,
         "expensive-runner": 1,
         "missing-cache": 5,
         "fetch-depth-zero": 1
       },
       "perRun": 1.41,
       "monthly": 1267,
-      "score": 2.85
+      "score": 2.65
     },
     {
       "repo": "webpack/webpack",
@@ -450,29 +449,6 @@
       "score": 4.17
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 24,
-      "findings": 88,
-      "e": 12,
-      "w": 63,
-      "i": 13,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 51,
-        "fetch-depth-zero": 2,
-        "always-run-on-pr": 3,
-        "deprecated-action": 12,
-        "matrix-overcommit": 3,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 4,
-        "fail-fast-true": 4,
-        "expensive-runner": 2
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 4.4
-    },
-    {
       "repo": "eslint/eslint",
       "workflows": 10,
       "findings": 48,
@@ -490,6 +466,29 @@
       "perRun": 1.54,
       "monthly": 1382,
       "score": 4.55
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 24,
+      "findings": 90,
+      "e": 13,
+      "w": 64,
+      "i": 13,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 52,
+        "fetch-depth-zero": 2,
+        "always-run-on-pr": 3,
+        "deprecated-action": 13,
+        "matrix-overcommit": 3,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 4,
+        "fail-fast-true": 4,
+        "expensive-runner": 2
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 4.56
     },
     {
       "repo": "tailwindlabs/tailwindcss",
