@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19 14:54 UTC",
+  "generatedAt": "2026-07-20 15:49 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -30,11 +30,11 @@
         "missing-timeout": 27,
         "missing-concurrency": 19,
         "fetch-depth-zero": 4,
-        "matrix-overcommit": 1,
+        "expensive-runner": 1,
         "fail-fast-true": 5
       },
-      "perRun": 2.18,
-      "monthly": 1958,
+      "perRun": 2.3,
+      "monthly": 2074,
       "score": 1.78
     },
     {
@@ -449,6 +449,29 @@
       "score": 4.17
     },
     {
+      "repo": "pnpm/pnpm",
+      "workflows": 24,
+      "findings": 89,
+      "e": 13,
+      "w": 63,
+      "i": 13,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 51,
+        "fetch-depth-zero": 2,
+        "always-run-on-pr": 3,
+        "deprecated-action": 13,
+        "matrix-overcommit": 3,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 4,
+        "fail-fast-true": 4,
+        "expensive-runner": 2
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 4.52
+    },
+    {
       "repo": "eslint/eslint",
       "workflows": 10,
       "findings": 48,
@@ -466,29 +489,6 @@
       "perRun": 1.54,
       "monthly": 1382,
       "score": 4.55
-    },
-    {
-      "repo": "pnpm/pnpm",
-      "workflows": 24,
-      "findings": 90,
-      "e": 13,
-      "w": 64,
-      "i": 13,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 52,
-        "fetch-depth-zero": 2,
-        "always-run-on-pr": 3,
-        "deprecated-action": 13,
-        "matrix-overcommit": 3,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 4,
-        "fail-fast-true": 4,
-        "expensive-runner": 2
-      },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 4.56
     },
     {
       "repo": "tailwindlabs/tailwindcss",
