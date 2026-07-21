@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-20 15:49 UTC",
+  "generatedAt": "2026-07-21 15:43 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -33,8 +33,8 @@
         "expensive-runner": 1,
         "fail-fast-true": 5
       },
-      "perRun": 2.3,
-      "monthly": 2074,
+      "perRun": 2.43,
+      "monthly": 2189,
       "score": 1.78
     },
     {
@@ -101,25 +101,6 @@
       "perRun": 1.34,
       "monthly": 1210,
       "score": 2.09
-    },
-    {
-      "repo": "vitejs/vite",
-      "workflows": 13,
-      "findings": 28,
-      "e": 0,
-      "w": 27,
-      "i": 1,
-      "ruleHits": {
-        "missing-timeout": 17,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 1,
-        "missing-concurrency": 6,
-        "wide-trigger": 1,
-        "missing-cache": 2
-      },
-      "perRun": 1.15,
-      "monthly": 1037,
-      "score": 2.12
     },
     {
       "repo": "storybookjs/storybook",
@@ -315,26 +296,6 @@
       "score": 3.34
     },
     {
-      "repo": "electron/electron",
-      "workflows": 47,
-      "findings": 147,
-      "e": 18,
-      "w": 89,
-      "i": 40,
-      "ruleHits": {
-        "missing-timeout": 72,
-        "artifact-no-retention": 4,
-        "fetch-depth-zero": 36,
-        "missing-cache": 5,
-        "missing-concurrency": 11,
-        "deprecated-action": 18,
-        "stale-cache-key": 1
-      },
-      "perRun": 3.01,
-      "monthly": 2707,
-      "score": 3.47
-    },
-    {
       "repo": "remix-run/react-router",
       "workflows": 13,
       "findings": 48,
@@ -428,14 +389,14 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 21,
-      "findings": 91,
+      "workflows": 20,
+      "findings": 89,
       "e": 0,
-      "w": 84,
+      "w": 82,
       "i": 7,
       "ruleHits": {
-        "missing-cache": 25,
-        "missing-timeout": 31,
+        "missing-cache": 24,
+        "missing-timeout": 30,
         "artifact-no-retention": 5,
         "fetch-depth-zero": 2,
         "missing-concurrency": 7,
@@ -444,9 +405,9 @@
         "matrix-overcommit": 9,
         "expensive-runner": 1
       },
-      "perRun": 4.48,
-      "monthly": 4032,
-      "score": 4.17
+      "perRun": 4.42,
+      "monthly": 3974,
+      "score": 4.28
     },
     {
       "repo": "pnpm/pnpm",
@@ -550,6 +511,26 @@
       "perRun": 0.7,
       "monthly": 634,
       "score": 4.81
+    },
+    {
+      "repo": "vitejs/vite",
+      "workflows": 13,
+      "findings": 41,
+      "e": 13,
+      "w": 27,
+      "i": 1,
+      "ruleHits": {
+        "missing-timeout": 17,
+        "deprecated-action": 13,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 1,
+        "missing-concurrency": 6,
+        "wide-trigger": 1,
+        "missing-cache": 2
+      },
+      "perRun": 1.15,
+      "monthly": 1037,
+      "score": 5.12
     },
     {
       "repo": "npm/cli",
@@ -696,6 +677,26 @@
       "perRun": 0.64,
       "monthly": 576,
       "score": 6.7
+    },
+    {
+      "repo": "electron/electron",
+      "workflows": 47,
+      "findings": 202,
+      "e": 73,
+      "w": 89,
+      "i": 40,
+      "ruleHits": {
+        "missing-timeout": 72,
+        "deprecated-action": 73,
+        "artifact-no-retention": 4,
+        "fetch-depth-zero": 36,
+        "missing-cache": 5,
+        "missing-concurrency": 11,
+        "stale-cache-key": 1
+      },
+      "perRun": 3.01,
+      "monthly": 2707,
+      "score": 6.98
     },
     {
       "repo": "denoland/deno",
