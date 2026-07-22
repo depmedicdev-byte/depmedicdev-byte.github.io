@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21 15:43 UTC",
+  "generatedAt": "2026-07-22 15:40 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -201,23 +201,6 @@
       "score": 2.65
     },
     {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 28,
-      "e": 0,
-      "w": 24,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 19,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "matrix-overcommit": 1
-      },
-      "perRun": 1.66,
-      "monthly": 1498,
-      "score": 2.89
-    },
-    {
       "repo": "sindresorhus/got",
       "workflows": 1,
       "findings": 3,
@@ -390,13 +373,13 @@
     {
       "repo": "microsoft/playwright",
       "workflows": 20,
-      "findings": 89,
+      "findings": 90,
       "e": 0,
-      "w": 82,
+      "w": 83,
       "i": 7,
       "ruleHits": {
         "missing-cache": 24,
-        "missing-timeout": 30,
+        "missing-timeout": 31,
         "artifact-no-retention": 5,
         "fetch-depth-zero": 2,
         "missing-concurrency": 7,
@@ -405,9 +388,9 @@
         "matrix-overcommit": 9,
         "expensive-runner": 1
       },
-      "perRun": 4.42,
-      "monthly": 3974,
-      "score": 4.28
+      "perRun": 4.54,
+      "monthly": 4090,
+      "score": 4.33
     },
     {
       "repo": "pnpm/pnpm",
@@ -741,6 +724,24 @@
       "perRun": 0.9,
       "monthly": 806,
       "score": 8.25
+    },
+    {
+      "repo": "webpack/webpack",
+      "workflows": 9,
+      "findings": 46,
+      "e": 18,
+      "w": 24,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 19,
+        "deprecated-action": 18,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 4,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.66,
+      "monthly": 1498,
+      "score": 8.89
     },
     {
       "repo": "axios/axios",
