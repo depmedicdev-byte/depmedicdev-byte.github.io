@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22 15:40 UTC",
+  "generatedAt": "2026-07-23 15:55 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -159,26 +159,6 @@
       "perRun": 0.38,
       "monthly": 346,
       "score": 2.5
-    },
-    {
-      "repo": "prettier/prettier",
-      "workflows": 16,
-      "findings": 31,
-      "e": 6,
-      "w": 22,
-      "i": 3,
-      "ruleHits": {
-        "missing-timeout": 15,
-        "artifact-no-retention": 1,
-        "deprecated-action": 6,
-        "always-run-on-pr": 2,
-        "matrix-overcommit": 3,
-        "missing-cache": 3,
-        "stale-cache-key": 1
-      },
-      "perRun": 0.96,
-      "monthly": 864,
-      "score": 2.59
     },
     {
       "repo": "fastify/fastify",
@@ -394,7 +374,7 @@
     },
     {
       "repo": "pnpm/pnpm",
-      "workflows": 24,
+      "workflows": 25,
       "findings": 89,
       "e": 13,
       "w": 63,
@@ -411,9 +391,9 @@
         "fail-fast-true": 4,
         "expensive-runner": 2
       },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 4.52
+      "perRun": 1.6,
+      "monthly": 1440,
+      "score": 4.34
     },
     {
       "repo": "eslint/eslint",
@@ -599,6 +579,26 @@
       "score": 5.45
     },
     {
+      "repo": "prettier/prettier",
+      "workflows": 16,
+      "findings": 47,
+      "e": 22,
+      "w": 22,
+      "i": 3,
+      "ruleHits": {
+        "missing-timeout": 15,
+        "deprecated-action": 22,
+        "artifact-no-retention": 1,
+        "always-run-on-pr": 2,
+        "matrix-overcommit": 3,
+        "missing-cache": 3,
+        "stale-cache-key": 1
+      },
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 5.59
+    },
+    {
       "repo": "rollup/rollup",
       "workflows": 5,
       "findings": 27,
@@ -643,13 +643,13 @@
     {
       "repo": "biomejs/biome",
       "workflows": 25,
-      "findings": 163,
+      "findings": 164,
       "e": 12,
-      "w": 112,
+      "w": 113,
       "i": 39,
       "ruleHits": {
         "missing-concurrency": 10,
-        "missing-timeout": 69,
+        "missing-timeout": 70,
         "fail-fast-true": 24,
         "missing-cache": 15,
         "deprecated-action": 12,
@@ -659,7 +659,7 @@
       },
       "perRun": 0.64,
       "monthly": 576,
-      "score": 6.7
+      "score": 6.74
     },
     {
       "repo": "electron/electron",
