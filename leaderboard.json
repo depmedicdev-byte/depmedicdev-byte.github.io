@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23 15:55 UTC",
+  "generatedAt": "2026-07-24 15:24 UTC",
   "rows": [
     {
       "repo": "mui/material-ui",
@@ -18,24 +18,6 @@
       "perRun": 0.96,
       "monthly": 864,
       "score": 1.59
-    },
-    {
-      "repo": "nuxt/nuxt",
-      "workflows": 29,
-      "findings": 56,
-      "e": 0,
-      "w": 47,
-      "i": 9,
-      "ruleHits": {
-        "missing-timeout": 27,
-        "missing-concurrency": 19,
-        "fetch-depth-zero": 4,
-        "expensive-runner": 1,
-        "fail-fast-true": 5
-      },
-      "perRun": 2.43,
-      "monthly": 2189,
-      "score": 1.78
     },
     {
       "repo": "vuejs/core",
@@ -312,25 +294,25 @@
     },
     {
       "repo": "microsoft/TypeScript",
-      "workflows": 18,
-      "findings": 77,
+      "workflows": 17,
+      "findings": 73,
       "e": 0,
-      "w": 65,
-      "i": 12,
+      "w": 62,
+      "i": 11,
       "ruleHits": {
-        "missing-cache": 24,
-        "missing-timeout": 31,
+        "missing-cache": 23,
+        "missing-timeout": 30,
         "missing-concurrency": 4,
         "artifact-no-retention": 3,
         "matrix-overcommit": 1,
         "fail-fast-true": 1,
         "always-run-on-pr": 3,
-        "pinned-action-sha": 5,
-        "fetch-depth-zero": 5
+        "pinned-action-sha": 4,
+        "fetch-depth-zero": 4
       },
-      "perRun": 1.86,
-      "monthly": 1670,
-      "score": 3.94
+      "perRun": 1.79,
+      "monthly": 1613,
+      "score": 3.97
     },
     {
       "repo": "chakra-ui/chakra-ui",
@@ -373,27 +355,23 @@
       "score": 4.33
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 25,
-      "findings": 89,
-      "e": 13,
-      "w": 63,
-      "i": 13,
+      "repo": "nuxt/nuxt",
+      "workflows": 29,
+      "findings": 81,
+      "e": 25,
+      "w": 47,
+      "i": 9,
       "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 51,
-        "fetch-depth-zero": 2,
-        "always-run-on-pr": 3,
-        "deprecated-action": 13,
-        "matrix-overcommit": 3,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 4,
-        "fail-fast-true": 4,
-        "expensive-runner": 2
+        "missing-timeout": 27,
+        "missing-concurrency": 19,
+        "deprecated-action": 25,
+        "fetch-depth-zero": 4,
+        "expensive-runner": 1,
+        "fail-fast-true": 5
       },
-      "perRun": 1.6,
-      "monthly": 1440,
-      "score": 4.34
+      "perRun": 2.43,
+      "monthly": 2189,
+      "score": 4.36
     },
     {
       "repo": "eslint/eslint",
@@ -599,28 +577,6 @@
       "score": 5.59
     },
     {
-      "repo": "rollup/rollup",
-      "workflows": 5,
-      "findings": 27,
-      "e": 3,
-      "w": 17,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 7,
-        "missing-timeout": 6,
-        "deprecated-action": 3,
-        "artifact-no-retention": 4,
-        "fetch-depth-zero": 1,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "missing-concurrency": 1,
-        "missing-permissions": 1
-      },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 5.9
-    },
-    {
       "repo": "sequelize/sequelize",
       "workflows": 9,
       "findings": 41,
@@ -682,6 +638,24 @@
       "score": 6.98
     },
     {
+      "repo": "webpack/webpack",
+      "workflows": 10,
+      "findings": 47,
+      "e": 18,
+      "w": 25,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 19,
+        "deprecated-action": 18,
+        "fetch-depth-zero": 4,
+        "missing-concurrency": 5,
+        "matrix-overcommit": 1
+      },
+      "perRun": 1.66,
+      "monthly": 1498,
+      "score": 8.1
+    },
+    {
       "repo": "denoland/deno",
       "workflows": 11,
       "findings": 99,
@@ -726,22 +700,27 @@
       "score": 8.25
     },
     {
-      "repo": "webpack/webpack",
-      "workflows": 9,
-      "findings": 46,
-      "e": 18,
-      "w": 24,
-      "i": 4,
+      "repo": "pnpm/pnpm",
+      "workflows": 25,
+      "findings": 130,
+      "e": 55,
+      "w": 62,
+      "i": 13,
       "ruleHits": {
-        "missing-timeout": 19,
-        "deprecated-action": 18,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 4,
-        "matrix-overcommit": 1
+        "missing-concurrency": 5,
+        "missing-timeout": 50,
+        "deprecated-action": 55,
+        "fetch-depth-zero": 2,
+        "always-run-on-pr": 3,
+        "matrix-overcommit": 3,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 4,
+        "fail-fast-true": 4,
+        "expensive-runner": 2
       },
-      "perRun": 1.66,
-      "monthly": 1498,
-      "score": 8.89
+      "perRun": 1.6,
+      "monthly": 1440,
+      "score": 9.34
     },
     {
       "repo": "axios/axios",
@@ -759,6 +738,28 @@
       "perRun": 2.88,
       "monthly": 2592,
       "score": 9.63
+    },
+    {
+      "repo": "rollup/rollup",
+      "workflows": 5,
+      "findings": 37,
+      "e": 13,
+      "w": 17,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 7,
+        "missing-timeout": 6,
+        "deprecated-action": 13,
+        "artifact-no-retention": 4,
+        "fetch-depth-zero": 1,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 2,
+        "missing-concurrency": 1,
+        "missing-permissions": 1
+      },
+      "perRun": 0.7,
+      "monthly": 634,
+      "score": 11.9
     },
     {
       "repo": "remix-run/remix",
