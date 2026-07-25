@@ -1,6 +1,24 @@
 {
-  "generatedAt": "2026-07-24 15:24 UTC",
+  "generatedAt": "2026-07-25 15:01 UTC",
   "rows": [
+    {
+      "repo": "sveltejs/svelte",
+      "workflows": 4,
+      "findings": 7,
+      "e": 0,
+      "w": 5,
+      "i": 2,
+      "ruleHits": {
+        "missing-timeout": 3,
+        "missing-concurrency": 1,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 1,
+        "fetch-depth-zero": 1
+      },
+      "perRun": 0.45,
+      "monthly": 403,
+      "score": 1.5
+    },
     {
       "repo": "mui/material-ui",
       "workflows": 17,
@@ -104,25 +122,6 @@
       "perRun": 1.66,
       "monthly": 1498,
       "score": 2.34
-    },
-    {
-      "repo": "sveltejs/svelte",
-      "workflows": 5,
-      "findings": 14,
-      "e": 0,
-      "w": 10,
-      "i": 4,
-      "ruleHits": {
-        "missing-timeout": 7,
-        "missing-concurrency": 2,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 1,
-        "artifact-no-retention": 2,
-        "fetch-depth-zero": 1
-      },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 2.4
     },
     {
       "repo": "ReactiveX/rxjs",
