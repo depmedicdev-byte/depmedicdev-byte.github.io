@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25 15:01 UTC",
+  "generatedAt": "2026-07-26 15:04 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -356,9 +356,9 @@
     {
       "repo": "nuxt/nuxt",
       "workflows": 29,
-      "findings": 81,
+      "findings": 84,
       "e": 25,
-      "w": 47,
+      "w": 50,
       "i": 9,
       "ruleHits": {
         "missing-timeout": 27,
@@ -366,11 +366,13 @@
         "deprecated-action": 25,
         "fetch-depth-zero": 4,
         "expensive-runner": 1,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 2,
         "fail-fast-true": 5
       },
       "perRun": 2.43,
       "monthly": 2189,
-      "score": 4.36
+      "score": 4.47
     },
     {
       "repo": "eslint/eslint",
@@ -701,13 +703,13 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 25,
-      "findings": 130,
+      "findings": 129,
       "e": 55,
-      "w": 62,
+      "w": 61,
       "i": 13,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 50,
+        "missing-timeout": 49,
         "deprecated-action": 55,
         "fetch-depth-zero": 2,
         "always-run-on-pr": 3,
@@ -719,7 +721,7 @@
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 9.34
+      "score": 9.3
     },
     {
       "repo": "axios/axios",
