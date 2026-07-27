@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26 15:04 UTC",
+  "generatedAt": "2026-07-27 16:16 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -355,24 +355,24 @@
     },
     {
       "repo": "nuxt/nuxt",
-      "workflows": 29,
-      "findings": 84,
-      "e": 25,
+      "workflows": 30,
+      "findings": 86,
+      "e": 26,
       "w": 50,
-      "i": 9,
+      "i": 10,
       "ruleHits": {
         "missing-timeout": 27,
         "missing-concurrency": 19,
-        "deprecated-action": 25,
-        "fetch-depth-zero": 4,
+        "deprecated-action": 26,
+        "fetch-depth-zero": 5,
         "expensive-runner": 1,
         "matrix-overcommit": 1,
         "stale-cache-key": 2,
         "fail-fast-true": 5
       },
-      "perRun": 2.43,
-      "monthly": 2189,
-      "score": 4.47
+      "perRun": 2.5,
+      "monthly": 2246,
+      "score": 4.43
     },
     {
       "repo": "eslint/eslint",
