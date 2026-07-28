@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27 16:16 UTC",
+  "generatedAt": "2026-07-28 16:05 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -55,6 +55,25 @@
       "perRun": 0.83,
       "monthly": 749,
       "score": 1.83
+    },
+    {
+      "repo": "prisma/prisma",
+      "workflows": 17,
+      "findings": 37,
+      "e": 0,
+      "w": 29,
+      "i": 8,
+      "ruleHits": {
+        "missing-cache": 1,
+        "missing-timeout": 26,
+        "fetch-depth-zero": 7,
+        "missing-concurrency": 1,
+        "artifact-no-retention": 1,
+        "pinned-action-sha": 1
+      },
+      "perRun": 1.86,
+      "monthly": 1670,
+      "score": 1.94
     },
     {
       "repo": "TanStack/query",
@@ -456,23 +475,23 @@
     },
     {
       "repo": "vitejs/vite",
-      "workflows": 13,
-      "findings": 41,
-      "e": 13,
-      "w": 27,
+      "workflows": 12,
+      "findings": 36,
+      "e": 12,
+      "w": 23,
       "i": 1,
       "ruleHits": {
-        "missing-timeout": 17,
-        "deprecated-action": 13,
+        "missing-timeout": 14,
+        "deprecated-action": 12,
         "matrix-overcommit": 1,
         "stale-cache-key": 1,
-        "missing-concurrency": 6,
+        "missing-concurrency": 5,
         "wide-trigger": 1,
         "missing-cache": 2
       },
-      "perRun": 1.15,
-      "monthly": 1037,
-      "score": 5.12
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 4.96
     },
     {
       "repo": "npm/cli",
@@ -516,26 +535,6 @@
       "perRun": 0.38,
       "monthly": 346,
       "score": 5.25
-    },
-    {
-      "repo": "prisma/prisma",
-      "workflows": 17,
-      "findings": 91,
-      "e": 0,
-      "w": 90,
-      "i": 1,
-      "ruleHits": {
-        "pinned-action-sha": 47,
-        "missing-timeout": 15,
-        "missing-permissions": 15,
-        "matrix-overcommit": 7,
-        "stale-cache-key": 1,
-        "fail-fast-true": 1,
-        "missing-concurrency": 5
-      },
-      "perRun": 14.59,
-      "monthly": 13133,
-      "score": 5.32
     },
     {
       "repo": "facebook/react",
@@ -620,23 +619,23 @@
     },
     {
       "repo": "electron/electron",
-      "workflows": 47,
-      "findings": 202,
-      "e": 73,
-      "w": 89,
+      "workflows": 48,
+      "findings": 205,
+      "e": 74,
+      "w": 91,
       "i": 40,
       "ruleHits": {
-        "missing-timeout": 72,
-        "deprecated-action": 73,
+        "missing-timeout": 73,
+        "deprecated-action": 74,
         "artifact-no-retention": 4,
         "fetch-depth-zero": 36,
-        "missing-cache": 5,
+        "missing-cache": 6,
         "missing-concurrency": 11,
         "stale-cache-key": 1
       },
-      "perRun": 3.01,
-      "monthly": 2707,
-      "score": 6.98
+      "perRun": 3.07,
+      "monthly": 2765,
+      "score": 6.94
     },
     {
       "repo": "webpack/webpack",
