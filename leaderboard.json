@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28 16:05 UTC",
+  "generatedAt": "2026-07-29 15:49 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -57,25 +57,6 @@
       "score": 1.83
     },
     {
-      "repo": "prisma/prisma",
-      "workflows": 17,
-      "findings": 37,
-      "e": 0,
-      "w": 29,
-      "i": 8,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-timeout": 26,
-        "fetch-depth-zero": 7,
-        "missing-concurrency": 1,
-        "artifact-no-retention": 1,
-        "pinned-action-sha": 1
-      },
-      "perRun": 1.86,
-      "monthly": 1670,
-      "score": 1.94
-    },
-    {
       "repo": "TanStack/query",
       "workflows": 4,
       "findings": 9,
@@ -104,6 +85,25 @@
       },
       "perRun": 0.06,
       "monthly": 58,
+      "score": 2
+    },
+    {
+      "repo": "prisma/prisma",
+      "workflows": 16,
+      "findings": 36,
+      "e": 0,
+      "w": 28,
+      "i": 8,
+      "ruleHits": {
+        "missing-cache": 1,
+        "missing-timeout": 25,
+        "fetch-depth-zero": 7,
+        "missing-concurrency": 1,
+        "artifact-no-retention": 1,
+        "pinned-action-sha": 1
+      },
+      "perRun": 1.79,
+      "monthly": 1613,
       "score": 2
     },
     {
@@ -434,13 +434,13 @@
     {
       "repo": "vercel/next.js",
       "workflows": 36,
-      "findings": 150,
+      "findings": 151,
       "e": 13,
-      "w": 124,
+      "w": 125,
       "i": 13,
       "ruleHits": {
         "missing-cache": 29,
-        "missing-timeout": 53,
+        "missing-timeout": 54,
         "deprecated-action": 13,
         "missing-permissions": 27,
         "artifact-no-retention": 12,
@@ -450,9 +450,9 @@
         "stale-cache-key": 1,
         "missing-concurrency": 1
       },
-      "perRun": 3.65,
-      "monthly": 3283,
-      "score": 4.71
+      "perRun": 3.71,
+      "monthly": 3341,
+      "score": 4.74
     },
     {
       "repo": "preactjs/preact",
