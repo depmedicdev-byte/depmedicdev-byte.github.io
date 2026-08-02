@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01 14:59 UTC",
+  "generatedAt": "2026-08-02 15:01 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -106,24 +106,6 @@
       "score": 2.26
     },
     {
-      "repo": "ReactiveX/rxjs",
-      "workflows": 4,
-      "findings": 12,
-      "e": 0,
-      "w": 8,
-      "i": 4,
-      "ruleHits": {
-        "missing-concurrency": 2,
-        "missing-timeout": 5,
-        "fail-fast-true": 2,
-        "fetch-depth-zero": 2,
-        "pinned-action-sha": 1
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 2.5
-    },
-    {
       "repo": "fastify/fastify",
       "workflows": 20,
       "findings": 57,
@@ -142,6 +124,27 @@
       "perRun": 1.41,
       "monthly": 1267,
       "score": 2.65
+    },
+    {
+      "repo": "ReactiveX/rxjs",
+      "workflows": 6,
+      "findings": 19,
+      "e": 0,
+      "w": 16,
+      "i": 3,
+      "ruleHits": {
+        "missing-timeout": 6,
+        "missing-concurrency": 1,
+        "fail-fast-true": 1,
+        "pinned-action-sha": 4,
+        "missing-cache": 2,
+        "stale-cache-key": 2,
+        "fetch-depth-zero": 2,
+        "expensive-runner": 1
+      },
+      "perRun": 2.18,
+      "monthly": 1958,
+      "score": 2.92
     },
     {
       "repo": "sindresorhus/got",
@@ -333,6 +336,27 @@
       "score": 4.17
     },
     {
+      "repo": "nuxt/nuxt",
+      "workflows": 31,
+      "findings": 86,
+      "e": 26,
+      "w": 50,
+      "i": 10,
+      "ruleHits": {
+        "missing-timeout": 27,
+        "missing-concurrency": 19,
+        "deprecated-action": 26,
+        "fetch-depth-zero": 5,
+        "expensive-runner": 1,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 2,
+        "fail-fast-true": 5
+      },
+      "perRun": 2.56,
+      "monthly": 2304,
+      "score": 4.29
+    },
+    {
       "repo": "microsoft/playwright",
       "workflows": 20,
       "findings": 90,
@@ -353,27 +377,6 @@
       "perRun": 4.54,
       "monthly": 4090,
       "score": 4.33
-    },
-    {
-      "repo": "nuxt/nuxt",
-      "workflows": 30,
-      "findings": 86,
-      "e": 26,
-      "w": 50,
-      "i": 10,
-      "ruleHits": {
-        "missing-timeout": 27,
-        "missing-concurrency": 19,
-        "deprecated-action": 26,
-        "fetch-depth-zero": 5,
-        "expensive-runner": 1,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 2,
-        "fail-fast-true": 5
-      },
-      "perRun": 2.5,
-      "monthly": 2246,
-      "score": 4.43
     },
     {
       "repo": "eslint/eslint",
@@ -704,25 +707,25 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 25,
-      "findings": 129,
-      "e": 55,
-      "w": 61,
-      "i": 13,
+      "findings": 135,
+      "e": 59,
+      "w": 62,
+      "i": 14,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 49,
-        "deprecated-action": 55,
+        "missing-timeout": 50,
+        "deprecated-action": 59,
         "fetch-depth-zero": 2,
         "always-run-on-pr": 3,
         "matrix-overcommit": 3,
         "stale-cache-key": 2,
-        "artifact-no-retention": 4,
+        "artifact-no-retention": 5,
         "fail-fast-true": 4,
         "expensive-runner": 2
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 9.3
+      "score": 9.84
     },
     {
       "repo": "rollup/rollup",
