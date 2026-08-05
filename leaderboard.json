@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04 16:10 UTC",
+  "generatedAt": "2026-08-05 16:01 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -160,8 +160,8 @@
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.4,
-      "monthly": 5760,
+      "perRun": 6.46,
+      "monthly": 5818,
       "score": 3
     },
     {
@@ -278,28 +278,6 @@
       "score": 3.97
     },
     {
-      "repo": "microsoft/playwright",
-      "workflows": 21,
-      "findings": 90,
-      "e": 0,
-      "w": 83,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 24,
-        "missing-timeout": 31,
-        "artifact-no-retention": 5,
-        "fetch-depth-zero": 2,
-        "missing-concurrency": 7,
-        "missing-permissions": 7,
-        "pinned-action-sha": 4,
-        "matrix-overcommit": 9,
-        "expensive-runner": 1
-      },
-      "perRun": 4.54,
-      "monthly": 4090,
-      "score": 4.12
-    },
-    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -341,15 +319,15 @@
     {
       "repo": "vercel/next.js",
       "workflows": 37,
-      "findings": 151,
+      "findings": 150,
       "e": 13,
-      "w": 125,
+      "w": 124,
       "i": 13,
       "ruleHits": {
         "missing-cache": 29,
         "missing-timeout": 54,
         "deprecated-action": 13,
-        "missing-permissions": 27,
+        "missing-permissions": 26,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
@@ -359,7 +337,7 @@
       },
       "perRun": 3.84,
       "monthly": 3456,
-      "score": 4.61
+      "score": 4.58
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -562,6 +540,28 @@
       "score": 5.75
     },
     {
+      "repo": "ReactiveX/rxjs",
+      "workflows": 11,
+      "findings": 41,
+      "e": 15,
+      "w": 22,
+      "i": 4,
+      "ruleHits": {
+        "missing-timeout": 10,
+        "deprecated-action": 15,
+        "missing-concurrency": 5,
+        "fail-fast-true": 1,
+        "always-run-on-pr": 2,
+        "missing-cache": 4,
+        "stale-cache-key": 2,
+        "fetch-depth-zero": 1,
+        "expensive-runner": 1
+      },
+      "perRun": 2.5,
+      "monthly": 2246,
+      "score": 6.27
+    },
+    {
       "repo": "sequelize/sequelize",
       "workflows": 9,
       "findings": 41,
@@ -685,26 +685,26 @@
       "score": 8.25
     },
     {
-      "repo": "ReactiveX/rxjs",
-      "workflows": 16,
-      "findings": 90,
-      "e": 29,
-      "w": 52,
-      "i": 9,
+      "repo": "microsoft/playwright",
+      "workflows": 21,
+      "findings": 127,
+      "e": 41,
+      "w": 79,
+      "i": 7,
       "ruleHits": {
-        "missing-timeout": 24,
-        "deprecated-action": 29,
-        "missing-concurrency": 5,
-        "fail-fast-true": 1,
-        "always-run-on-pr": 2,
-        "missing-cache": 19,
-        "stale-cache-key": 2,
-        "fetch-depth-zero": 6,
-        "expensive-runner": 2
+        "missing-cache": 24,
+        "missing-timeout": 31,
+        "deprecated-action": 41,
+        "artifact-no-retention": 5,
+        "fetch-depth-zero": 2,
+        "missing-concurrency": 7,
+        "missing-permissions": 7,
+        "matrix-overcommit": 9,
+        "expensive-runner": 1
       },
-      "perRun": 4.93,
-      "monthly": 4435,
-      "score": 8.97
+      "perRun": 4.54,
+      "monthly": 4090,
+      "score": 9.79
     },
     {
       "repo": "pnpm/pnpm",
