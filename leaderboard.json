@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05 16:01 UTC",
+  "generatedAt": "2026-08-07 14:52 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -49,21 +49,6 @@
       "perRun": 0.06,
       "monthly": 58,
       "score": 2
-    },
-    {
-      "repo": "jestjs/jest",
-      "workflows": 11,
-      "findings": 23,
-      "e": 0,
-      "w": 23,
-      "i": 0,
-      "ruleHits": {
-        "missing-timeout": 19,
-        "missing-permissions": 4
-      },
-      "perRun": 1.34,
-      "monthly": 1210,
-      "score": 2.09
     },
     {
       "repo": "storybookjs/storybook",
@@ -520,6 +505,22 @@
       "score": 5.59
     },
     {
+      "repo": "jestjs/jest",
+      "workflows": 11,
+      "findings": 36,
+      "e": 13,
+      "w": 23,
+      "i": 0,
+      "ruleHits": {
+        "missing-timeout": 19,
+        "deprecated-action": 13,
+        "missing-permissions": 4
+      },
+      "perRun": 1.34,
+      "monthly": 1210,
+      "score": 5.64
+    },
+    {
       "repo": "prisma/prisma",
       "workflows": 16,
       "findings": 56,
@@ -604,14 +605,14 @@
     {
       "repo": "biomejs/biome",
       "workflows": 25,
-      "findings": 166,
+      "findings": 168,
       "e": 12,
-      "w": 114,
-      "i": 40,
+      "w": 115,
+      "i": 41,
       "ruleHits": {
         "missing-concurrency": 10,
-        "missing-timeout": 71,
-        "fail-fast-true": 25,
+        "missing-timeout": 72,
+        "fail-fast-true": 26,
         "missing-cache": 15,
         "deprecated-action": 12,
         "missing-permissions": 14,
@@ -620,25 +621,25 @@
       },
       "perRun": 0.64,
       "monthly": 576,
-      "score": 6.8
+      "score": 6.86
     },
     {
       "repo": "webpack/webpack",
-      "workflows": 10,
-      "findings": 47,
-      "e": 18,
-      "w": 25,
+      "workflows": 11,
+      "findings": 50,
+      "e": 20,
+      "w": 26,
       "i": 4,
       "ruleHits": {
-        "missing-timeout": 19,
-        "deprecated-action": 18,
+        "missing-timeout": 20,
+        "deprecated-action": 20,
         "fetch-depth-zero": 4,
         "missing-concurrency": 5,
         "matrix-overcommit": 1
       },
-      "perRun": 1.66,
-      "monthly": 1498,
-      "score": 8.1
+      "perRun": 1.73,
+      "monthly": 1555,
+      "score": 8
     },
     {
       "repo": "denoland/deno",
