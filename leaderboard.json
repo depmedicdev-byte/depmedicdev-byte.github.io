@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07 14:52 UTC",
+  "generatedAt": "2026-08-08 14:30 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -584,23 +584,23 @@
     },
     {
       "repo": "electron/electron",
-      "workflows": 50,
-      "findings": 209,
+      "workflows": 52,
+      "findings": 216,
       "e": 75,
-      "w": 94,
-      "i": 40,
+      "w": 99,
+      "i": 42,
       "ruleHits": {
-        "missing-timeout": 75,
+        "missing-timeout": 79,
         "deprecated-action": 75,
-        "artifact-no-retention": 4,
+        "artifact-no-retention": 6,
         "fetch-depth-zero": 36,
         "missing-cache": 6,
-        "missing-concurrency": 12,
+        "missing-concurrency": 13,
         "stale-cache-key": 1
       },
-      "perRun": 3.01,
-      "monthly": 2707,
-      "score": 6.78
+      "perRun": 3.26,
+      "monthly": 2938,
+      "score": 6.63
     },
     {
       "repo": "biomejs/biome",
@@ -687,25 +687,25 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 21,
-      "findings": 127,
-      "e": 41,
-      "w": 79,
+      "workflows": 20,
+      "findings": 118,
+      "e": 39,
+      "w": 72,
       "i": 7,
       "ruleHits": {
-        "missing-cache": 24,
-        "missing-timeout": 31,
-        "deprecated-action": 41,
+        "missing-cache": 22,
+        "missing-timeout": 29,
+        "deprecated-action": 39,
         "artifact-no-retention": 5,
         "fetch-depth-zero": 2,
-        "missing-concurrency": 7,
-        "missing-permissions": 7,
-        "matrix-overcommit": 9,
+        "missing-concurrency": 6,
+        "missing-permissions": 6,
+        "matrix-overcommit": 8,
         "expensive-runner": 1
       },
-      "perRun": 4.54,
-      "monthly": 4090,
-      "score": 9.79
+      "perRun": 4.48,
+      "monthly": 4032,
+      "score": 9.63
     },
     {
       "repo": "pnpm/pnpm",
