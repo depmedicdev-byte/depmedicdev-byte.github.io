@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-09 14:32 UTC",
+  "generatedAt": "2026-08-10 14:56 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -625,21 +625,21 @@
     },
     {
       "repo": "webpack/webpack",
-      "workflows": 11,
-      "findings": 50,
+      "workflows": 12,
+      "findings": 52,
       "e": 20,
-      "w": 26,
+      "w": 28,
       "i": 4,
       "ruleHits": {
-        "missing-timeout": 20,
+        "missing-timeout": 21,
         "deprecated-action": 20,
         "fetch-depth-zero": 4,
-        "missing-concurrency": 5,
+        "missing-concurrency": 6,
         "matrix-overcommit": 1
       },
-      "perRun": 1.73,
-      "monthly": 1555,
-      "score": 8
+      "perRun": 1.79,
+      "monthly": 1613,
+      "score": 7.5
     },
     {
       "repo": "denoland/deno",
