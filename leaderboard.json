@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12 14:55 UTC",
+  "generatedAt": "2026-08-13 14:55 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -303,14 +303,14 @@
     },
     {
       "repo": "vercel/next.js",
-      "workflows": 37,
-      "findings": 150,
+      "workflows": 38,
+      "findings": 151,
       "e": 13,
-      "w": 124,
+      "w": 125,
       "i": 13,
       "ruleHits": {
         "missing-cache": 29,
-        "missing-timeout": 54,
+        "missing-timeout": 55,
         "deprecated-action": 13,
         "missing-permissions": 26,
         "artifact-no-retention": 12,
@@ -320,9 +320,9 @@
         "stale-cache-key": 1,
         "missing-concurrency": 1
       },
-      "perRun": 3.84,
-      "monthly": 3456,
-      "score": 4.58
+      "perRun": 3.9,
+      "monthly": 3514,
+      "score": 4.49
     },
     {
       "repo": "tailwindlabs/tailwindcss",
