@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16 14:21 UTC",
+  "generatedAt": "2026-08-17 14:26 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -304,15 +304,15 @@
     {
       "repo": "vercel/next.js",
       "workflows": 38,
-      "findings": 151,
+      "findings": 150,
       "e": 13,
-      "w": 125,
+      "w": 124,
       "i": 13,
       "ruleHits": {
         "missing-cache": 29,
         "missing-timeout": 55,
         "deprecated-action": 13,
-        "missing-permissions": 26,
+        "missing-permissions": 25,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
@@ -322,7 +322,7 @@
       },
       "perRun": 3.9,
       "monthly": 3514,
-      "score": 4.49
+      "score": 4.46
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -586,13 +586,13 @@
     {
       "repo": "electron/electron",
       "workflows": 52,
-      "findings": 216,
-      "e": 75,
+      "findings": 214,
+      "e": 73,
       "w": 99,
       "i": 42,
       "ruleHits": {
         "missing-timeout": 79,
-        "deprecated-action": 75,
+        "deprecated-action": 73,
         "artifact-no-retention": 6,
         "fetch-depth-zero": 36,
         "missing-cache": 6,
@@ -601,7 +601,7 @@
       },
       "perRun": 3.26,
       "monthly": 2938,
-      "score": 6.63
+      "score": 6.52
     },
     {
       "repo": "biomejs/biome",
@@ -627,20 +627,20 @@
     {
       "repo": "webpack/webpack",
       "workflows": 12,
-      "findings": 52,
-      "e": 20,
+      "findings": 53,
+      "e": 21,
       "w": 28,
       "i": 4,
       "ruleHits": {
         "missing-timeout": 21,
-        "deprecated-action": 20,
+        "deprecated-action": 21,
         "fetch-depth-zero": 4,
         "missing-concurrency": 6,
         "matrix-overcommit": 1
       },
-      "perRun": 1.79,
-      "monthly": 1613,
-      "score": 7.5
+      "perRun": 1.86,
+      "monthly": 1670,
+      "score": 7.75
     },
     {
       "repo": "denoland/deno",
