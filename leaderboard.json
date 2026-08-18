@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17 14:26 UTC",
+  "generatedAt": "2026-08-18 14:31 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -506,23 +506,23 @@
     },
     {
       "repo": "prisma/prisma",
-      "workflows": 16,
-      "findings": 56,
-      "e": 20,
-      "w": 28,
+      "workflows": 17,
+      "findings": 58,
+      "e": 21,
+      "w": 29,
       "i": 8,
       "ruleHits": {
         "missing-cache": 1,
-        "deprecated-action": 20,
-        "missing-timeout": 25,
+        "deprecated-action": 21,
+        "missing-timeout": 26,
         "fetch-depth-zero": 7,
         "missing-concurrency": 1,
         "artifact-no-retention": 1,
         "pinned-action-sha": 1
       },
-      "perRun": 1.79,
-      "monthly": 1613,
-      "score": 5.75
+      "perRun": 1.86,
+      "monthly": 1670,
+      "score": 5.65
     },
     {
       "repo": "jestjs/jest",
@@ -645,25 +645,25 @@
     {
       "repo": "denoland/deno",
       "workflows": 11,
-      "findings": 99,
+      "findings": 97,
       "e": 0,
-      "w": 81,
-      "i": 18,
+      "w": 80,
+      "i": 17,
       "ruleHits": {
         "missing-permissions": 10,
         "fetch-depth-zero": 2,
         "missing-cache": 23,
-        "missing-timeout": 11,
+        "missing-timeout": 10,
         "expensive-runner": 11,
         "artifact-no-retention": 13,
         "matrix-overcommit": 13,
         "stale-cache-key": 12,
-        "fail-fast-true": 3,
+        "fail-fast-true": 2,
         "missing-concurrency": 1
       },
       "perRun": 21.89,
       "monthly": 19699,
-      "score": 8.18
+      "score": 8.05
     },
     {
       "repo": "parcel-bundler/parcel",
