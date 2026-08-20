@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19 14:31 UTC",
+  "generatedAt": "2026-08-20 14:34 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -241,28 +241,6 @@
       "score": 3.83
     },
     {
-      "repo": "microsoft/TypeScript",
-      "workflows": 17,
-      "findings": 73,
-      "e": 0,
-      "w": 62,
-      "i": 11,
-      "ruleHits": {
-        "missing-cache": 23,
-        "missing-timeout": 30,
-        "missing-concurrency": 4,
-        "artifact-no-retention": 3,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 1,
-        "always-run-on-pr": 3,
-        "pinned-action-sha": 4,
-        "fetch-depth-zero": 4
-      },
-      "perRun": 1.79,
-      "monthly": 1613,
-      "score": 3.97
-    },
-    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -303,15 +281,15 @@
     {
       "repo": "vercel/next.js",
       "workflows": 38,
-      "findings": 150,
+      "findings": 146,
       "e": 13,
-      "w": 124,
+      "w": 120,
       "i": 13,
       "ruleHits": {
         "missing-cache": 29,
         "missing-timeout": 55,
         "deprecated-action": 13,
-        "missing-permissions": 25,
+        "missing-permissions": 21,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
@@ -321,7 +299,7 @@
       },
       "perRun": 3.9,
       "monthly": 3514,
-      "score": 4.46
+      "score": 4.36
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -381,6 +359,28 @@
       "perRun": 2.56,
       "monthly": 2304,
       "score": 4.75
+    },
+    {
+      "repo": "microsoft/TypeScript",
+      "workflows": 8,
+      "findings": 42,
+      "e": 0,
+      "w": 35,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 12,
+        "missing-timeout": 18,
+        "missing-concurrency": 3,
+        "artifact-no-retention": 1,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 2,
+        "always-run-on-pr": 2,
+        "pinned-action-sha": 1,
+        "fetch-depth-zero": 2
+      },
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 4.81
     },
     {
       "repo": "preactjs/preact",
