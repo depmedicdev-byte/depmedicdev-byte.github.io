@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22 14:19 UTC",
+  "generatedAt": "2026-08-23 14:20 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -425,25 +425,6 @@
       "score": 5
     },
     {
-      "repo": "expressjs/express",
-      "workflows": 4,
-      "findings": 18,
-      "e": 2,
-      "w": 14,
-      "i": 2,
-      "ruleHits": {
-        "missing-cache": 3,
-        "missing-timeout": 7,
-        "deprecated-action": 2,
-        "matrix-overcommit": 2,
-        "missing-concurrency": 2,
-        "always-run-on-pr": 2
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 5.25
-    },
-    {
       "repo": "prisma/prisma",
       "workflows": 17,
       "findings": 55,
@@ -584,14 +565,14 @@
     },
     {
       "repo": "biomejs/biome",
-      "workflows": 25,
-      "findings": 168,
+      "workflows": 24,
+      "findings": 166,
       "e": 12,
-      "w": 115,
+      "w": 113,
       "i": 41,
       "ruleHits": {
-        "missing-concurrency": 10,
-        "missing-timeout": 72,
+        "missing-concurrency": 9,
+        "missing-timeout": 71,
         "fail-fast-true": 26,
         "missing-cache": 15,
         "deprecated-action": 12,
@@ -599,9 +580,9 @@
         "artifact-no-retention": 15,
         "matrix-overcommit": 4
       },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 6.86
+      "perRun": 0.58,
+      "monthly": 518,
+      "score": 7.06
     },
     {
       "repo": "webpack/webpack",
@@ -709,6 +690,25 @@
       "perRun": 1.6,
       "monthly": 1440,
       "score": 10.38
+    },
+    {
+      "repo": "expressjs/express",
+      "workflows": 4,
+      "findings": 25,
+      "e": 9,
+      "w": 14,
+      "i": 2,
+      "ruleHits": {
+        "missing-cache": 3,
+        "missing-timeout": 7,
+        "deprecated-action": 9,
+        "matrix-overcommit": 2,
+        "missing-concurrency": 2,
+        "always-run-on-pr": 2
+      },
+      "perRun": 0.38,
+      "monthly": 346,
+      "score": 10.5
     },
     {
       "repo": "rollup/rollup",
