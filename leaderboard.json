@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23 14:20 UTC",
+  "generatedAt": "2026-08-24 14:40 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -169,26 +169,6 @@
       "score": 3.06
     },
     {
-      "repo": "swc-project/swc",
-      "workflows": 16,
-      "findings": 56,
-      "e": 0,
-      "w": 51,
-      "i": 5,
-      "ruleHits": {
-        "missing-timeout": 39,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 3,
-        "missing-concurrency": 3,
-        "fail-fast-true": 1,
-        "missing-cache": 6,
-        "artifact-no-retention": 1
-      },
-      "perRun": 3.01,
-      "monthly": 2707,
-      "score": 3.34
-    },
-    {
       "repo": "remix-run/react-router",
       "workflows": 13,
       "findings": 47,
@@ -206,6 +186,26 @@
       "perRun": 1.15,
       "monthly": 1037,
       "score": 3.46
+    },
+    {
+      "repo": "swc-project/swc",
+      "workflows": 16,
+      "findings": 58,
+      "e": 0,
+      "w": 53,
+      "i": 5,
+      "ruleHits": {
+        "missing-cache": 7,
+        "missing-timeout": 40,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 3,
+        "missing-concurrency": 3,
+        "fail-fast-true": 1,
+        "artifact-no-retention": 1
+      },
+      "perRun": 2.82,
+      "monthly": 2534,
+      "score": 3.47
     },
     {
       "repo": "nestjs/nest",
@@ -425,6 +425,26 @@
       "score": 5
     },
     {
+      "repo": "facebook/react",
+      "workflows": 23,
+      "findings": 131,
+      "e": 0,
+      "w": 112,
+      "i": 19,
+      "ruleHits": {
+        "missing-concurrency": 7,
+        "missing-timeout": 61,
+        "missing-cache": 35,
+        "artifact-no-retention": 19,
+        "stale-cache-key": 4,
+        "pinned-action-sha": 1,
+        "matrix-overcommit": 4
+      },
+      "perRun": 16.45,
+      "monthly": 14803,
+      "score": 5.28
+    },
+    {
       "repo": "prisma/prisma",
       "workflows": 17,
       "findings": 55,
@@ -443,26 +463,6 @@
       "perRun": 1.98,
       "monthly": 1786,
       "score": 5.38
-    },
-    {
-      "repo": "facebook/react",
-      "workflows": 22,
-      "findings": 129,
-      "e": 0,
-      "w": 111,
-      "i": 18,
-      "ruleHits": {
-        "missing-concurrency": 7,
-        "missing-timeout": 60,
-        "missing-cache": 35,
-        "artifact-no-retention": 18,
-        "stale-cache-key": 4,
-        "pinned-action-sha": 1,
-        "matrix-overcommit": 4
-      },
-      "perRun": 16.38,
-      "monthly": 14746,
-      "score": 5.45
     },
     {
       "repo": "prettier/prettier",
