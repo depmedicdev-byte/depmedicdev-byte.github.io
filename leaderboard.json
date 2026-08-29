@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28 23:24 UTC",
+  "generatedAt": "2026-08-29 17:30 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -129,13 +129,13 @@
     {
       "repo": "nodejs/node",
       "workflows": 43,
-      "findings": 123,
+      "findings": 124,
       "e": 6,
-      "w": 105,
+      "w": 106,
       "i": 12,
       "ruleHits": {
         "missing-cache": 31,
-        "missing-timeout": 64,
+        "missing-timeout": 65,
         "deprecated-action": 6,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
@@ -145,9 +145,9 @@
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.59,
-      "monthly": 5933,
-      "score": 3
+      "perRun": 6.66,
+      "monthly": 5990,
+      "score": 3.02
     },
     {
       "repo": "lodash/lodash",
@@ -260,16 +260,16 @@
     },
     {
       "repo": "vercel/next.js",
-      "workflows": 34,
-      "findings": 132,
+      "workflows": 33,
+      "findings": 129,
       "e": 11,
-      "w": 108,
+      "w": 105,
       "i": 13,
       "ruleHits": {
-        "missing-cache": 26,
-        "missing-timeout": 50,
+        "missing-cache": 25,
+        "missing-timeout": 49,
         "deprecated-action": 11,
-        "missing-permissions": 17,
+        "missing-permissions": 16,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
@@ -277,30 +277,9 @@
         "stale-cache-key": 1,
         "missing-concurrency": 1
       },
-      "perRun": 3.46,
-      "monthly": 3110,
-      "score": 4.34
-    },
-    {
-      "repo": "nuxt/nuxt",
-      "workflows": 27,
-      "findings": 81,
-      "e": 24,
-      "w": 49,
-      "i": 8,
-      "ruleHits": {
-        "missing-timeout": 26,
-        "missing-concurrency": 19,
-        "deprecated-action": 24,
-        "expensive-runner": 1,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 2,
-        "fail-fast-true": 5
-      },
-      "perRun": 2.69,
-      "monthly": 2419,
-      "score": 4.63
+      "perRun": 3.39,
+      "monthly": 3053,
+      "score": 4.38
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -339,6 +318,27 @@
       "perRun": 1.6,
       "monthly": 1440,
       "score": 4.65
+    },
+    {
+      "repo": "nuxt/nuxt",
+      "workflows": 26,
+      "findings": 78,
+      "e": 24,
+      "w": 47,
+      "i": 7,
+      "ruleHits": {
+        "missing-timeout": 25,
+        "missing-concurrency": 18,
+        "deprecated-action": 24,
+        "expensive-runner": 1,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 2,
+        "fail-fast-true": 4
+      },
+      "perRun": 2.62,
+      "monthly": 2362,
+      "score": 4.71
     },
     {
       "repo": "vitejs/vite",
