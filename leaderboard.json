@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30 17:54 UTC",
+  "generatedAt": "2026-08-31 19:50 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -261,12 +261,12 @@
     {
       "repo": "vercel/next.js",
       "workflows": 33,
-      "findings": 129,
+      "findings": 128,
       "e": 11,
-      "w": 105,
+      "w": 104,
       "i": 13,
       "ruleHits": {
-        "missing-cache": 25,
+        "missing-cache": 24,
         "missing-timeout": 49,
         "deprecated-action": 11,
         "missing-permissions": 16,
@@ -279,7 +279,7 @@
       },
       "perRun": 3.39,
       "monthly": 3053,
-      "score": 4.38
+      "score": 4.35
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -756,9 +756,9 @@
     {
       "repo": "remix-run/remix",
       "workflows": 8,
-      "findings": 111,
+      "findings": 113,
       "e": 0,
-      "w": 107,
+      "w": 109,
       "i": 4,
       "ruleHits": {
         "pinned-action-sha": 40,
@@ -767,11 +767,11 @@
         "expensive-runner": 6,
         "missing-permissions": 7,
         "fetch-depth-zero": 4,
-        "stale-cache-key": 8
+        "stale-cache-key": 10
       },
       "perRun": 3.2,
       "monthly": 2880,
-      "score": 13.63
+      "score": 13.88
     },
     {
       "repo": "axios/axios",
