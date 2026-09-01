@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31 19:50 UTC",
+  "generatedAt": "2026-09-01 17:36 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -426,23 +426,23 @@
     },
     {
       "repo": "facebook/react",
-      "workflows": 23,
-      "findings": 133,
+      "workflows": 25,
+      "findings": 139,
       "e": 0,
-      "w": 113,
+      "w": 119,
       "i": 20,
       "ruleHits": {
         "missing-concurrency": 7,
-        "missing-timeout": 62,
-        "missing-cache": 35,
+        "missing-timeout": 64,
+        "missing-cache": 36,
         "artifact-no-retention": 20,
         "stale-cache-key": 4,
-        "pinned-action-sha": 1,
+        "pinned-action-sha": 4,
         "matrix-overcommit": 4
       },
-      "perRun": 16.51,
-      "monthly": 14861,
-      "score": 5.35
+      "perRun": 16.64,
+      "monthly": 14976,
+      "score": 5.16
     },
     {
       "repo": "prettier/prettier",
@@ -565,24 +565,24 @@
     },
     {
       "repo": "biomejs/biome",
-      "workflows": 24,
-      "findings": 166,
+      "workflows": 25,
+      "findings": 169,
       "e": 12,
-      "w": 113,
+      "w": 116,
       "i": 41,
       "ruleHits": {
         "missing-concurrency": 9,
-        "missing-timeout": 71,
+        "missing-timeout": 73,
         "fail-fast-true": 26,
         "missing-cache": 15,
         "deprecated-action": 12,
-        "missing-permissions": 14,
+        "missing-permissions": 15,
         "artifact-no-retention": 15,
         "matrix-overcommit": 4
       },
       "perRun": 0.58,
       "monthly": 518,
-      "score": 7.06
+      "score": 6.9
     },
     {
       "repo": "webpack/webpack",
@@ -668,27 +668,8 @@
       "score": 9.18
     },
     {
-      "repo": "expressjs/express",
-      "workflows": 4,
-      "findings": 25,
-      "e": 9,
-      "w": 14,
-      "i": 2,
-      "ruleHits": {
-        "missing-cache": 3,
-        "missing-timeout": 7,
-        "deprecated-action": 9,
-        "matrix-overcommit": 2,
-        "missing-concurrency": 2,
-        "always-run-on-pr": 2
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 10.5
-    },
-    {
       "repo": "pnpm/pnpm",
-      "workflows": 24,
+      "workflows": 25,
       "findings": 141,
       "e": 61,
       "w": 64,
@@ -707,7 +688,26 @@
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 10.63
+      "score": 10.2
+    },
+    {
+      "repo": "expressjs/express",
+      "workflows": 4,
+      "findings": 25,
+      "e": 9,
+      "w": 14,
+      "i": 2,
+      "ruleHits": {
+        "missing-cache": 3,
+        "missing-timeout": 7,
+        "deprecated-action": 9,
+        "matrix-overcommit": 2,
+        "missing-concurrency": 2,
+        "always-run-on-pr": 2
+      },
+      "perRun": 0.38,
+      "monthly": 346,
+      "score": 10.5
     },
     {
       "repo": "rollup/rollup",
@@ -754,26 +754,6 @@
       "score": 12.88
     },
     {
-      "repo": "remix-run/remix",
-      "workflows": 8,
-      "findings": 113,
-      "e": 0,
-      "w": 109,
-      "i": 4,
-      "ruleHits": {
-        "pinned-action-sha": 40,
-        "missing-cache": 2,
-        "missing-timeout": 44,
-        "expensive-runner": 6,
-        "missing-permissions": 7,
-        "fetch-depth-zero": 4,
-        "stale-cache-key": 10
-      },
-      "perRun": 3.2,
-      "monthly": 2880,
-      "score": 13.88
-    },
-    {
       "repo": "axios/axios",
       "workflows": 8,
       "findings": 74,
@@ -789,6 +769,28 @@
       "perRun": 2.88,
       "monthly": 2592,
       "score": 17.5
+    },
+    {
+      "repo": "remix-run/remix",
+      "workflows": 11,
+      "findings": 182,
+      "e": 33,
+      "w": 126,
+      "i": 23,
+      "ruleHits": {
+        "missing-cache": 10,
+        "missing-timeout": 53,
+        "deprecated-action": 33,
+        "artifact-no-retention": 15,
+        "fetch-depth-zero": 8,
+        "pinned-action-sha": 40,
+        "expensive-runner": 6,
+        "missing-permissions": 7,
+        "stale-cache-key": 10
+      },
+      "perRun": 4.35,
+      "monthly": 3917,
+      "score": 21.5
     }
   ]
 }
