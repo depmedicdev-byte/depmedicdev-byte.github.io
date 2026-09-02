@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01 17:36 UTC",
+  "generatedAt": "2026-09-02 17:37 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -772,25 +772,25 @@
     },
     {
       "repo": "remix-run/remix",
-      "workflows": 11,
-      "findings": 182,
-      "e": 33,
-      "w": 126,
-      "i": 23,
+      "workflows": 12,
+      "findings": 201,
+      "e": 42,
+      "w": 131,
+      "i": 28,
       "ruleHits": {
-        "missing-cache": 10,
-        "missing-timeout": 53,
-        "deprecated-action": 33,
-        "artifact-no-retention": 15,
+        "missing-cache": 12,
+        "missing-timeout": 56,
+        "deprecated-action": 42,
+        "artifact-no-retention": 20,
         "fetch-depth-zero": 8,
         "pinned-action-sha": 40,
         "expensive-runner": 6,
         "missing-permissions": 7,
         "stale-cache-key": 10
       },
-      "perRun": 4.35,
-      "monthly": 3917,
-      "score": 21.5
+      "perRun": 4.74,
+      "monthly": 4262,
+      "score": 22.58
     }
   ]
 }
