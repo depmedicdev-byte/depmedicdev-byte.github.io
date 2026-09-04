@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03 17:32 UTC",
+  "generatedAt": "2026-09-04 17:23 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -106,29 +106,6 @@
       "perRun": 0,
       "monthly": 0,
       "score": 3
-    },
-    {
-      "repo": "nodejs/node",
-      "workflows": 43,
-      "findings": 124,
-      "e": 6,
-      "w": 106,
-      "i": 12,
-      "ruleHits": {
-        "missing-cache": 31,
-        "missing-timeout": 65,
-        "deprecated-action": 6,
-        "artifact-no-retention": 7,
-        "fail-fast-true": 1,
-        "missing-concurrency": 7,
-        "fetch-depth-zero": 4,
-        "expensive-runner": 1,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 1
-      },
-      "perRun": 6.66,
-      "monthly": 5990,
-      "score": 3.02
     },
     {
       "repo": "lodash/lodash",
@@ -260,7 +237,7 @@
     },
     {
       "repo": "vercel/next.js",
-      "workflows": 33,
+      "workflows": 34,
       "findings": 128,
       "e": 11,
       "w": 104,
@@ -277,9 +254,9 @@
         "stale-cache-key": 1,
         "missing-concurrency": 1
       },
-      "perRun": 3.39,
-      "monthly": 3053,
-      "score": 4.35
+      "perRun": 3.46,
+      "monthly": 3110,
+      "score": 4.22
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -502,6 +479,29 @@
       "score": 6.18
     },
     {
+      "repo": "nodejs/node",
+      "workflows": 43,
+      "findings": 169,
+      "e": 52,
+      "w": 105,
+      "i": 12,
+      "ruleHits": {
+        "missing-cache": 31,
+        "missing-timeout": 64,
+        "deprecated-action": 52,
+        "artifact-no-retention": 7,
+        "fail-fast-true": 1,
+        "missing-concurrency": 7,
+        "fetch-depth-zero": 4,
+        "expensive-runner": 1,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 1
+      },
+      "perRun": 6.59,
+      "monthly": 5933,
+      "score": 6.21
+    },
+    {
       "repo": "ReactiveX/rxjs",
       "workflows": 11,
       "findings": 41,
@@ -587,20 +587,20 @@
     {
       "repo": "webpack/webpack",
       "workflows": 12,
-      "findings": 53,
+      "findings": 51,
       "e": 21,
-      "w": 28,
+      "w": 26,
       "i": 4,
       "ruleHits": {
-        "missing-timeout": 21,
         "deprecated-action": 21,
         "fetch-depth-zero": 4,
+        "missing-timeout": 19,
         "missing-concurrency": 6,
         "matrix-overcommit": 1
       },
       "perRun": 1.86,
       "monthly": 1670,
-      "score": 7.75
+      "score": 7.58
     },
     {
       "repo": "denoland/deno",
@@ -649,23 +649,23 @@
     {
       "repo": "microsoft/playwright",
       "workflows": 19,
-      "findings": 106,
-      "e": 35,
-      "w": 68,
+      "findings": 109,
+      "e": 36,
+      "w": 70,
       "i": 3,
       "ruleHits": {
-        "missing-cache": 20,
-        "missing-timeout": 27,
-        "deprecated-action": 35,
+        "missing-cache": 21,
+        "missing-timeout": 28,
+        "deprecated-action": 36,
         "missing-concurrency": 6,
         "missing-permissions": 6,
         "artifact-no-retention": 3,
         "matrix-overcommit": 8,
         "expensive-runner": 1
       },
-      "perRun": 4.35,
-      "monthly": 3917,
-      "score": 9.18
+      "perRun": 4.42,
+      "monthly": 3974,
+      "score": 9.45
     },
     {
       "repo": "pnpm/pnpm",
@@ -772,25 +772,25 @@
     },
     {
       "repo": "remix-run/remix",
-      "workflows": 11,
-      "findings": 176,
-      "e": 30,
-      "w": 125,
-      "i": 21,
+      "workflows": 13,
+      "findings": 223,
+      "e": 53,
+      "w": 137,
+      "i": 33,
       "ruleHits": {
-        "missing-cache": 9,
-        "missing-timeout": 53,
-        "deprecated-action": 30,
-        "artifact-no-retention": 15,
-        "fetch-depth-zero": 6,
+        "missing-cache": 13,
+        "missing-timeout": 61,
+        "deprecated-action": 53,
+        "artifact-no-retention": 25,
+        "fetch-depth-zero": 8,
         "pinned-action-sha": 40,
         "expensive-runner": 6,
         "missing-permissions": 7,
         "stale-cache-key": 10
       },
-      "perRun": 4.35,
-      "monthly": 3917,
-      "score": 20.5
+      "perRun": 5.25,
+      "monthly": 4723,
+      "score": 24.04
     }
   ]
 }
