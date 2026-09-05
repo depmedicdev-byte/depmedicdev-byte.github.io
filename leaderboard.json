@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04 17:23 UTC",
+  "generatedAt": "2026-09-05 16:33 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -278,25 +278,6 @@
       "score": 4.63
     },
     {
-      "repo": "eslint/eslint",
-      "workflows": 10,
-      "findings": 49,
-      "e": 0,
-      "w": 44,
-      "i": 5,
-      "ruleHits": {
-        "missing-cache": 16,
-        "missing-concurrency": 7,
-        "missing-timeout": 19,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "always-run-on-pr": 3
-      },
-      "perRun": 1.6,
-      "monthly": 1440,
-      "score": 4.65
-    },
-    {
       "repo": "nuxt/nuxt",
       "workflows": 26,
       "findings": 78,
@@ -400,6 +381,25 @@
       "perRun": 2.56,
       "monthly": 2304,
       "score": 5
+    },
+    {
+      "repo": "eslint/eslint",
+      "workflows": 10,
+      "findings": 53,
+      "e": 0,
+      "w": 48,
+      "i": 5,
+      "ruleHits": {
+        "missing-cache": 18,
+        "missing-concurrency": 7,
+        "missing-timeout": 21,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 2,
+        "always-run-on-pr": 3
+      },
+      "perRun": 1.73,
+      "monthly": 1555,
+      "score": 5.05
     },
     {
       "repo": "facebook/react",
@@ -546,14 +546,14 @@
     {
       "repo": "electron/electron",
       "workflows": 53,
-      "findings": 219,
+      "findings": 220,
       "e": 75,
       "w": 101,
-      "i": 43,
+      "i": 44,
       "ruleHits": {
         "missing-timeout": 81,
         "deprecated-action": 75,
-        "artifact-no-retention": 6,
+        "artifact-no-retention": 7,
         "fetch-depth-zero": 37,
         "missing-cache": 6,
         "missing-concurrency": 13,
@@ -561,7 +561,7 @@
       },
       "perRun": 3.33,
       "monthly": 2995,
-      "score": 6.56
+      "score": 6.57
     },
     {
       "repo": "biomejs/biome",
