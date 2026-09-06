@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05 16:33 UTC",
+  "generatedAt": "2026-09-06 16:42 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -670,9 +670,9 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 25,
-      "findings": 141,
+      "findings": 143,
       "e": 61,
-      "w": 64,
+      "w": 66,
       "i": 16,
       "ruleHits": {
         "missing-concurrency": 4,
@@ -681,6 +681,7 @@
         "fetch-depth-zero": 2,
         "always-run-on-pr": 3,
         "matrix-overcommit": 4,
+        "missing-cache": 2,
         "stale-cache-key": 2,
         "artifact-no-retention": 6,
         "fail-fast-true": 5,
@@ -688,7 +689,7 @@
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 10.2
+      "score": 10.28
     },
     {
       "repo": "expressjs/express",
