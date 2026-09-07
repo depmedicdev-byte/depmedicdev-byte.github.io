@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06 16:42 UTC",
+  "generatedAt": "2026-09-07 18:36 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -480,15 +480,15 @@
     },
     {
       "repo": "nodejs/node",
-      "workflows": 43,
-      "findings": 169,
-      "e": 52,
-      "w": 105,
+      "workflows": 44,
+      "findings": 172,
+      "e": 53,
+      "w": 107,
       "i": 12,
       "ruleHits": {
-        "missing-cache": 31,
-        "missing-timeout": 64,
-        "deprecated-action": 52,
+        "missing-cache": 32,
+        "missing-timeout": 65,
+        "deprecated-action": 53,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
         "missing-concurrency": 7,
@@ -497,9 +497,9 @@
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.59,
-      "monthly": 5933,
-      "score": 6.21
+      "perRun": 6.66,
+      "monthly": 5990,
+      "score": 6.18
     },
     {
       "repo": "ReactiveX/rxjs",
@@ -539,8 +539,8 @@
         "expensive-runner": 1,
         "matrix-overcommit": 2
       },
-      "perRun": 5.25,
-      "monthly": 4723,
+      "perRun": 5.06,
+      "monthly": 4550,
       "score": 6.44
     },
     {
@@ -587,20 +587,20 @@
     {
       "repo": "webpack/webpack",
       "workflows": 12,
-      "findings": 51,
-      "e": 21,
+      "findings": 52,
+      "e": 22,
       "w": 26,
       "i": 4,
       "ruleHits": {
-        "deprecated-action": 21,
+        "deprecated-action": 22,
         "fetch-depth-zero": 4,
         "missing-timeout": 19,
         "missing-concurrency": 6,
         "matrix-overcommit": 1
       },
-      "perRun": 1.86,
-      "monthly": 1670,
-      "score": 7.58
+      "perRun": 1.92,
+      "monthly": 1728,
+      "score": 7.83
     },
     {
       "repo": "denoland/deno",
