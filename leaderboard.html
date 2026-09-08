@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-09-07"
+  "dateModified": "2026-09-08"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-09-07 18:36 UTC</strong> &middot;
+  Last updated <strong>2026-09-08 17:46 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,9 +95,9 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">564</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,657</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$95,384</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">566</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,668</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$96,249</div></div>
 </div>
 
 <div class="toplist">
@@ -107,14 +107,14 @@
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
-    <ol><li>remix-run/remix <code>24.04</code></li><li>axios/axios <code>17.50</code></li><li>microsoft/TypeScript <code>12.88</code></li><li>rollup/rollup <code>11.90</code></li><li>expressjs/express <code>10.50</code></li></ol>
+    <ol><li>remix-run/remix <code>23.88</code></li><li>axios/axios <code>17.50</code></li><li>microsoft/TypeScript <code>12.88</code></li><li>rollup/rollup <code>11.90</code></li><li>expressjs/express <code>10.50</code></li></ol>
   </div>
 </div>
 
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">973</td></tr><tr><td><code>deprecated-action</code></td><td class="right">540</td></tr><tr><td><code>missing-cache</code></td><td class="right">272</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">171</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">133</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">976</td></tr><tr><td><code>deprecated-action</code></td><td class="right">543</td></tr><tr><td><code>missing-cache</code></td><td class="right">273</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">171</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">135</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -297,7 +297,18 @@
       <td class="right">$1,440</td>
     </tr><tr>
       <td class="right">16</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;2</span></td>
+      <td><a href="https://github.com/preactjs/preact" rel="noopener">preactjs/preact</a>
+          &middot; <a href="/scan.html#r=preactjs%2Fpreact&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>4.69</strong></td>
+      <td class="right">8</td>
+      <td class="right">28</td>
+      <td class="right">6/17/5</td>
+      <td class="right">$0.70</td>
+      <td class="right">$634</td>
+    </tr><tr>
+      <td class="right">17</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/nuxt/nuxt" rel="noopener">nuxt/nuxt</a>
           &middot; <a href="/scan.html#r=nuxt%2Fnuxt&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.71</strong></td>
@@ -307,8 +318,8 @@
       <td class="right">$2.62</td>
       <td class="right">$2,362</td>
     </tr><tr>
-      <td class="right">17</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">18</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a>
           &middot; <a href="/scan.html#r=vitejs%2Fvite&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.81</strong></td>
@@ -317,17 +328,6 @@
       <td class="right">10/31/3</td>
       <td class="right">$1.22</td>
       <td class="right">$1,094</td>
-    </tr><tr>
-      <td class="right">18</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/preactjs/preact" rel="noopener">preactjs/preact</a>
-          &middot; <a href="/scan.html#r=preactjs%2Fpreact&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.81</strong></td>
-      <td class="right">8</td>
-      <td class="right">29</td>
-      <td class="right">6/18/5</td>
-      <td class="right">$0.70</td>
-      <td class="right">$634</td>
     </tr><tr>
       <td class="right">19</td>
       <td><span class="trend same">-</span></td>
@@ -499,11 +499,11 @@
       <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
           &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>9.45</strong></td>
-      <td class="right">19</td>
-      <td class="right">109</td>
-      <td class="right">36/70/3</td>
-      <td class="right">$4.42</td>
-      <td class="right">$3,974</td>
+      <td class="right">21</td>
+      <td class="right">121</td>
+      <td class="right">40/76/5</td>
+      <td class="right">$5.31</td>
+      <td class="right">$4,781</td>
     </tr><tr>
       <td class="right">35</td>
       <td><span class="trend same">-</span></td>
@@ -564,12 +564,12 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/remix-run/remix" rel="noopener">remix-run/remix</a>
           &middot; <a href="/scan.html#r=remix-run%2Fremix&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>24.04</strong></td>
+      <td class="right"><strong>23.88</strong></td>
       <td class="right">13</td>
       <td class="right">223</td>
-      <td class="right">53/137/33</td>
-      <td class="right">$5.25</td>
-      <td class="right">$4,723</td>
+      <td class="right">52/138/33</td>
+      <td class="right">$5.31</td>
+      <td class="right">$4,781</td>
     </tr></tbody>
 </table>
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07 18:36 UTC",
+  "generatedAt": "2026-09-08 17:46 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -278,6 +278,25 @@
       "score": 4.63
     },
     {
+      "repo": "preactjs/preact",
+      "workflows": 8,
+      "findings": 28,
+      "e": 6,
+      "w": 17,
+      "i": 5,
+      "ruleHits": {
+        "deprecated-action": 6,
+        "missing-permissions": 6,
+        "artifact-no-retention": 5,
+        "missing-timeout": 8,
+        "missing-concurrency": 2,
+        "missing-cache": 1
+      },
+      "perRun": 0.7,
+      "monthly": 634,
+      "score": 4.69
+    },
+    {
       "repo": "nuxt/nuxt",
       "workflows": 26,
       "findings": 78,
@@ -317,25 +336,6 @@
       },
       "perRun": 1.22,
       "monthly": 1094,
-      "score": 4.81
-    },
-    {
-      "repo": "preactjs/preact",
-      "workflows": 8,
-      "findings": 29,
-      "e": 6,
-      "w": 18,
-      "i": 5,
-      "ruleHits": {
-        "deprecated-action": 6,
-        "missing-permissions": 6,
-        "artifact-no-retention": 5,
-        "missing-cache": 2,
-        "missing-timeout": 8,
-        "missing-concurrency": 2
-      },
-      "perRun": 0.7,
-      "monthly": 634,
       "score": 4.81
     },
     {
@@ -648,23 +648,23 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 19,
-      "findings": 109,
-      "e": 36,
-      "w": 70,
-      "i": 3,
+      "workflows": 21,
+      "findings": 121,
+      "e": 40,
+      "w": 76,
+      "i": 5,
       "ruleHits": {
-        "missing-cache": 21,
-        "missing-timeout": 28,
-        "deprecated-action": 36,
+        "missing-cache": 23,
+        "missing-timeout": 30,
+        "deprecated-action": 40,
         "missing-concurrency": 6,
         "missing-permissions": 6,
-        "artifact-no-retention": 3,
+        "artifact-no-retention": 5,
         "matrix-overcommit": 8,
-        "expensive-runner": 1
+        "expensive-runner": 3
       },
-      "perRun": 4.42,
-      "monthly": 3974,
+      "perRun": 5.31,
+      "monthly": 4781,
       "score": 9.45
     },
     {
@@ -775,13 +775,13 @@
       "repo": "remix-run/remix",
       "workflows": 13,
       "findings": 223,
-      "e": 53,
-      "w": 137,
+      "e": 52,
+      "w": 138,
       "i": 33,
       "ruleHits": {
         "missing-cache": 13,
-        "missing-timeout": 61,
-        "deprecated-action": 53,
+        "missing-timeout": 62,
+        "deprecated-action": 52,
         "artifact-no-retention": 25,
         "fetch-depth-zero": 8,
         "pinned-action-sha": 40,
@@ -789,9 +789,9 @@
         "missing-permissions": 7,
         "stale-cache-key": 10
       },
-      "perRun": 5.25,
-      "monthly": 4723,
-      "score": 24.04
+      "perRun": 5.31,
+      "monthly": 4781,
+      "score": 23.88
     }
   ]
 }
