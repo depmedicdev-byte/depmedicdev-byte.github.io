@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09 17:34 UTC",
+  "generatedAt": "2026-09-10 17:30 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -647,30 +647,6 @@
       "score": 9.45
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 25,
-      "findings": 143,
-      "e": 61,
-      "w": 66,
-      "i": 16,
-      "ruleHits": {
-        "missing-concurrency": 4,
-        "missing-timeout": 52,
-        "deprecated-action": 61,
-        "fetch-depth-zero": 2,
-        "always-run-on-pr": 3,
-        "matrix-overcommit": 4,
-        "missing-cache": 2,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 6,
-        "fail-fast-true": 5,
-        "expensive-runner": 2
-      },
-      "perRun": 1.6,
-      "monthly": 1440,
-      "score": 10.28
-    },
-    {
       "repo": "expressjs/express",
       "workflows": 4,
       "findings": 25,
@@ -688,6 +664,30 @@
       "perRun": 0.38,
       "monthly": 346,
       "score": 10.5
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 25,
+      "findings": 155,
+      "e": 67,
+      "w": 71,
+      "i": 17,
+      "ruleHits": {
+        "missing-concurrency": 4,
+        "missing-timeout": 56,
+        "deprecated-action": 67,
+        "fetch-depth-zero": 4,
+        "always-run-on-pr": 3,
+        "matrix-overcommit": 5,
+        "missing-cache": 2,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 6,
+        "fail-fast-true": 4,
+        "expensive-runner": 2
+      },
+      "perRun": 1.6,
+      "monthly": 1440,
+      "score": 11.22
     },
     {
       "repo": "microsoft/TypeScript",
@@ -774,12 +774,12 @@
     {
       "repo": "remix-run/remix",
       "workflows": 14,
-      "findings": 242,
+      "findings": 241,
       "e": 61,
-      "w": 143,
+      "w": 142,
       "i": 38,
       "ruleHits": {
-        "missing-cache": 15,
+        "missing-cache": 14,
         "missing-timeout": 65,
         "deprecated-action": 61,
         "artifact-no-retention": 30,
@@ -791,7 +791,7 @@
       },
       "perRun": 5.7,
       "monthly": 5126,
-      "score": 24.64
+      "score": 24.57
     }
   ]
 }
