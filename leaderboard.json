@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10 17:30 UTC",
+  "generatedAt": "2026-09-11 17:31 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -146,25 +146,6 @@
       "score": 3.21
     },
     {
-      "repo": "remix-run/react-router",
-      "workflows": 13,
-      "findings": 47,
-      "e": 0,
-      "w": 43,
-      "i": 4,
-      "ruleHits": {
-        "pinned-action-sha": 14,
-        "missing-timeout": 18,
-        "missing-permissions": 6,
-        "missing-concurrency": 1,
-        "fetch-depth-zero": 4,
-        "missing-cache": 4
-      },
-      "perRun": 1.15,
-      "monthly": 1037,
-      "score": 3.46
-    },
-    {
       "repo": "swc-project/swc",
       "workflows": 16,
       "findings": 58,
@@ -237,26 +218,25 @@
     },
     {
       "repo": "vercel/next.js",
-      "workflows": 34,
-      "findings": 128,
+      "workflows": 29,
+      "findings": 117,
       "e": 11,
-      "w": 104,
+      "w": 93,
       "i": 13,
       "ruleHits": {
-        "missing-cache": 24,
-        "missing-timeout": 49,
+        "missing-cache": 20,
+        "missing-timeout": 46,
         "deprecated-action": 11,
-        "missing-permissions": 16,
+        "missing-permissions": 13,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
         "pinned-action-sha": 1,
-        "stale-cache-key": 1,
-        "missing-concurrency": 1
+        "stale-cache-key": 1
       },
-      "perRun": 3.46,
-      "monthly": 3110,
-      "score": 4.22
+      "perRun": 3.14,
+      "monthly": 2822,
+      "score": 4.57
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -460,8 +440,8 @@
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.72,
-      "monthly": 6048,
+      "perRun": 6.66,
+      "monthly": 5990,
       "score": 5.98
     },
     {
@@ -732,6 +712,27 @@
       "perRun": 0.7,
       "monthly": 634,
       "score": 11.9
+    },
+    {
+      "repo": "remix-run/react-router",
+      "workflows": 19,
+      "findings": 175,
+      "e": 61,
+      "w": 76,
+      "i": 38,
+      "ruleHits": {
+        "missing-cache": 16,
+        "missing-timeout": 39,
+        "deprecated-action": 61,
+        "artifact-no-retention": 30,
+        "fetch-depth-zero": 8,
+        "pinned-action-sha": 14,
+        "missing-permissions": 6,
+        "missing-concurrency": 1
+      },
+      "perRun": 3.65,
+      "monthly": 3283,
+      "score": 14.63
     },
     {
       "repo": "biomejs/biome",
