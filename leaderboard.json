@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11 17:31 UTC",
+  "generatedAt": "2026-09-12 16:45 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -106,25 +106,6 @@
       "perRun": 0,
       "monthly": 0,
       "score": 3
-    },
-    {
-      "repo": "lodash/lodash",
-      "workflows": 8,
-      "findings": 26,
-      "e": 0,
-      "w": 23,
-      "i": 3,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-concurrency": 7,
-        "missing-timeout": 8,
-        "missing-permissions": 6,
-        "matrix-overcommit": 1,
-        "always-run-on-pr": 3
-      },
-      "perRun": 0.64,
-      "monthly": 576,
-      "score": 3.06
     },
     {
       "repo": "mui/material-ui",
@@ -445,6 +426,26 @@
       "score": 5.98
     },
     {
+      "repo": "lodash/lodash",
+      "workflows": 8,
+      "findings": 34,
+      "e": 8,
+      "w": 23,
+      "i": 3,
+      "ruleHits": {
+        "missing-cache": 1,
+        "missing-concurrency": 7,
+        "missing-timeout": 8,
+        "deprecated-action": 8,
+        "missing-permissions": 6,
+        "matrix-overcommit": 1,
+        "always-run-on-pr": 3
+      },
+      "perRun": 0.64,
+      "monthly": 576,
+      "score": 6.06
+    },
+    {
       "repo": "prisma/prisma",
       "workflows": 17,
       "findings": 61,
@@ -519,8 +520,8 @@
         "expensive-runner": 1,
         "matrix-overcommit": 2
       },
-      "perRun": 5.06,
-      "monthly": 4550,
+      "perRun": 5.18,
+      "monthly": 4666,
       "score": 6.44
     },
     {
