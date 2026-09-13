@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12 16:45 UTC",
+  "generatedAt": "2026-09-13 17:16 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -127,26 +127,6 @@
       "score": 3.21
     },
     {
-      "repo": "swc-project/swc",
-      "workflows": 16,
-      "findings": 58,
-      "e": 0,
-      "w": 53,
-      "i": 5,
-      "ruleHits": {
-        "missing-cache": 7,
-        "missing-timeout": 40,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 3,
-        "missing-concurrency": 3,
-        "fail-fast-true": 1,
-        "artifact-no-retention": 1
-      },
-      "perRun": 2.82,
-      "monthly": 2534,
-      "score": 3.47
-    },
-    {
       "repo": "nestjs/nest",
       "workflows": 1,
       "findings": 5,
@@ -196,6 +176,26 @@
       "perRun": 0.51,
       "monthly": 461,
       "score": 4.17
+    },
+    {
+      "repo": "swc-project/swc",
+      "workflows": 16,
+      "findings": 77,
+      "e": 0,
+      "w": 65,
+      "i": 12,
+      "ruleHits": {
+        "missing-cache": 11,
+        "missing-timeout": 45,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 6,
+        "missing-concurrency": 3,
+        "fail-fast-true": 1,
+        "artifact-no-retention": 8
+      },
+      "perRun": 3.46,
+      "monthly": 3110,
+      "score": 4.44
     },
     {
       "repo": "vercel/next.js",
@@ -607,6 +607,25 @@
       "score": 8.25
     },
     {
+      "repo": "expressjs/express",
+      "workflows": 5,
+      "findings": 28,
+      "e": 10,
+      "w": 16,
+      "i": 2,
+      "ruleHits": {
+        "missing-cache": 4,
+        "missing-timeout": 8,
+        "deprecated-action": 10,
+        "matrix-overcommit": 2,
+        "missing-concurrency": 2,
+        "always-run-on-pr": 2
+      },
+      "perRun": 0.45,
+      "monthly": 403,
+      "score": 9.4
+    },
+    {
       "repo": "microsoft/playwright",
       "workflows": 21,
       "findings": 121,
@@ -626,25 +645,6 @@
       "perRun": 5.31,
       "monthly": 4781,
       "score": 9.45
-    },
-    {
-      "repo": "expressjs/express",
-      "workflows": 4,
-      "findings": 25,
-      "e": 9,
-      "w": 14,
-      "i": 2,
-      "ruleHits": {
-        "missing-cache": 3,
-        "missing-timeout": 7,
-        "deprecated-action": 9,
-        "matrix-overcommit": 2,
-        "missing-concurrency": 2,
-        "always-run-on-pr": 2
-      },
-      "perRun": 0.38,
-      "monthly": 346,
-      "score": 10.5
     },
     {
       "repo": "pnpm/pnpm",
