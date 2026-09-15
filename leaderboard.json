@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14 19:02 UTC",
+  "generatedAt": "2026-09-15 17:57 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -384,35 +384,34 @@
     },
     {
       "repo": "prettier/prettier",
-      "workflows": 17,
-      "findings": 49,
-      "e": 23,
-      "w": 23,
-      "i": 3,
+      "workflows": 16,
+      "findings": 45,
+      "e": 22,
+      "w": 22,
+      "i": 1,
       "ruleHits": {
-        "missing-timeout": 16,
-        "deprecated-action": 23,
+        "missing-timeout": 15,
+        "deprecated-action": 22,
         "artifact-no-retention": 1,
-        "always-run-on-pr": 2,
         "matrix-overcommit": 3,
         "missing-cache": 3,
         "stale-cache-key": 1
       },
-      "perRun": 1.02,
-      "monthly": 922,
-      "score": 5.5
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 5.53
     },
     {
       "repo": "nodejs/node",
       "workflows": 45,
-      "findings": 171,
-      "e": 52,
+      "findings": 169,
+      "e": 50,
       "w": 107,
       "i": 12,
       "ruleHits": {
         "missing-timeout": 66,
         "missing-cache": 32,
-        "deprecated-action": 52,
+        "deprecated-action": 50,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
         "missing-concurrency": 6,
@@ -423,7 +422,7 @@
       },
       "perRun": 6.66,
       "monthly": 5990,
-      "score": 5.98
+      "score": 5.84
     },
     {
       "repo": "lodash/lodash",
@@ -695,14 +694,14 @@
     {
       "repo": "rollup/rollup",
       "workflows": 5,
-      "findings": 37,
-      "e": 13,
-      "w": 17,
+      "findings": 39,
+      "e": 14,
+      "w": 18,
       "i": 7,
       "ruleHits": {
-        "missing-cache": 7,
+        "missing-cache": 8,
         "missing-timeout": 6,
-        "deprecated-action": 13,
+        "deprecated-action": 14,
         "artifact-no-retention": 4,
         "fetch-depth-zero": 1,
         "matrix-overcommit": 2,
@@ -710,9 +709,9 @@
         "missing-concurrency": 1,
         "missing-permissions": 1
       },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 11.9
+      "perRun": 0.77,
+      "monthly": 691,
+      "score": 12.7
     },
     {
       "repo": "remix-run/react-router",
