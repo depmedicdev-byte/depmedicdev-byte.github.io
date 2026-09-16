@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15 17:57 UTC",
+  "generatedAt": "2026-09-16 17:58 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -404,13 +404,13 @@
     {
       "repo": "nodejs/node",
       "workflows": 45,
-      "findings": 169,
+      "findings": 170,
       "e": 50,
-      "w": 107,
+      "w": 108,
       "i": 12,
       "ruleHits": {
         "missing-timeout": 66,
-        "missing-cache": 32,
+        "missing-cache": 33,
         "deprecated-action": 50,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
@@ -422,7 +422,7 @@
       },
       "perRun": 6.66,
       "monthly": 5990,
-      "score": 5.84
+      "score": 5.87
     },
     {
       "repo": "lodash/lodash",
