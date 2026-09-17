@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16 17:58 UTC",
+  "generatedAt": "2026-09-17 17:56 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -646,16 +646,38 @@
       "score": 9.45
     },
     {
+      "repo": "microsoft/TypeScript",
+      "workflows": 13,
+      "findings": 90,
+      "e": 26,
+      "w": 50,
+      "i": 14,
+      "ruleHits": {
+        "missing-cache": 19,
+        "missing-timeout": 27,
+        "deprecated-action": 26,
+        "artifact-no-retention": 2,
+        "fetch-depth-zero": 7,
+        "missing-concurrency": 3,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 3,
+        "always-run-on-pr": 2
+      },
+      "perRun": 1.47,
+      "monthly": 1325,
+      "score": 10.38
+    },
+    {
       "repo": "pnpm/pnpm",
-      "workflows": 25,
-      "findings": 155,
-      "e": 67,
+      "workflows": 26,
+      "findings": 156,
+      "e": 68,
       "w": 71,
       "i": 17,
       "ruleHits": {
         "missing-concurrency": 4,
         "missing-timeout": 56,
-        "deprecated-action": 67,
+        "deprecated-action": 68,
         "fetch-depth-zero": 4,
         "always-run-on-pr": 3,
         "matrix-overcommit": 5,
@@ -667,29 +689,7 @@
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 11.22
-    },
-    {
-      "repo": "microsoft/TypeScript",
-      "workflows": 10,
-      "findings": 77,
-      "e": 23,
-      "w": 43,
-      "i": 11,
-      "ruleHits": {
-        "missing-cache": 15,
-        "missing-timeout": 24,
-        "deprecated-action": 23,
-        "artifact-no-retention": 2,
-        "fetch-depth-zero": 4,
-        "missing-concurrency": 3,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 3,
-        "always-run-on-pr": 2
-      },
-      "perRun": 1.28,
-      "monthly": 1152,
-      "score": 11.75
+      "score": 10.9
     },
     {
       "repo": "rollup/rollup",
