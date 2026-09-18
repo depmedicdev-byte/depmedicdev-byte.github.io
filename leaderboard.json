@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17 17:56 UTC",
+  "generatedAt": "2026-09-18 17:30 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -300,26 +300,6 @@
       "score": 4.81
     },
     {
-      "repo": "vuejs/core",
-      "workflows": 9,
-      "findings": 26,
-      "e": 9,
-      "w": 16,
-      "i": 1,
-      "ruleHits": {
-        "missing-timeout": 12,
-        "deprecated-action": 9,
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "missing-permissions": 1,
-        "artifact-no-retention": 1,
-        "expensive-runner": 1
-      },
-      "perRun": 0.83,
-      "monthly": 749,
-      "score": 4.83
-    },
-    {
       "repo": "npm/cli",
       "workflows": 26,
       "findings": 133,
@@ -381,6 +361,26 @@
       "perRun": 16.83,
       "monthly": 15149,
       "score": 5.12
+    },
+    {
+      "repo": "vuejs/core",
+      "workflows": 8,
+      "findings": 25,
+      "e": 9,
+      "w": 15,
+      "i": 1,
+      "ruleHits": {
+        "missing-timeout": 11,
+        "deprecated-action": 9,
+        "missing-cache": 1,
+        "missing-concurrency": 1,
+        "missing-permissions": 1,
+        "artifact-no-retention": 1,
+        "expensive-runner": 1
+      },
+      "perRun": 0.77,
+      "monthly": 691,
+      "score": 5.31
     },
     {
       "repo": "prettier/prettier",
@@ -557,8 +557,8 @@
         "missing-concurrency": 6,
         "matrix-overcommit": 1
       },
-      "perRun": 1.92,
-      "monthly": 1728,
+      "perRun": 2.11,
+      "monthly": 1901,
       "score": 7.83
     },
     {
@@ -627,35 +627,57 @@
     {
       "repo": "microsoft/playwright",
       "workflows": 21,
-      "findings": 121,
-      "e": 40,
-      "w": 76,
+      "findings": 123,
+      "e": 41,
+      "w": 77,
       "i": 5,
       "ruleHits": {
         "missing-cache": 23,
-        "missing-timeout": 30,
-        "deprecated-action": 40,
+        "missing-timeout": 31,
+        "deprecated-action": 41,
         "missing-concurrency": 6,
         "missing-permissions": 6,
         "artifact-no-retention": 5,
         "matrix-overcommit": 8,
         "expensive-runner": 3
       },
-      "perRun": 5.31,
-      "monthly": 4781,
-      "score": 9.45
+      "perRun": 5.38,
+      "monthly": 4838,
+      "score": 9.64
+    },
+    {
+      "repo": "rollup/rollup",
+      "workflows": 6,
+      "findings": 39,
+      "e": 14,
+      "w": 18,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 8,
+        "missing-timeout": 6,
+        "deprecated-action": 14,
+        "artifact-no-retention": 4,
+        "fetch-depth-zero": 1,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 2,
+        "missing-concurrency": 1,
+        "missing-permissions": 1
+      },
+      "perRun": 0.83,
+      "monthly": 749,
+      "score": 10.58
     },
     {
       "repo": "microsoft/TypeScript",
       "workflows": 13,
-      "findings": 90,
-      "e": 26,
+      "findings": 91,
+      "e": 27,
       "w": 50,
       "i": 14,
       "ruleHits": {
         "missing-cache": 19,
         "missing-timeout": 27,
-        "deprecated-action": 26,
+        "deprecated-action": 27,
         "artifact-no-retention": 2,
         "fetch-depth-zero": 7,
         "missing-concurrency": 3,
@@ -665,7 +687,7 @@
       },
       "perRun": 1.47,
       "monthly": 1325,
-      "score": 10.38
+      "score": 10.62
     },
     {
       "repo": "pnpm/pnpm",
@@ -690,28 +712,6 @@
       "perRun": 1.6,
       "monthly": 1440,
       "score": 10.9
-    },
-    {
-      "repo": "rollup/rollup",
-      "workflows": 5,
-      "findings": 39,
-      "e": 14,
-      "w": 18,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 8,
-        "missing-timeout": 6,
-        "deprecated-action": 14,
-        "artifact-no-retention": 4,
-        "fetch-depth-zero": 1,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "missing-concurrency": 1,
-        "missing-permissions": 1
-      },
-      "perRun": 0.77,
-      "monthly": 691,
-      "score": 12.7
     },
     {
       "repo": "remix-run/react-router",

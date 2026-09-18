@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-09-17"
+  "dateModified": "2026-09-18"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-09-17 17:56 UTC</strong> &middot;
+  Last updated <strong>2026-09-18 17:30 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -96,8 +96,8 @@
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
   <div class="stat"><div class="label">Workflows scanned</div><div class="val">578</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,939</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$99,934</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,941</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$100,164</div></div>
 </div>
 
 <div class="toplist">
@@ -107,14 +107,14 @@
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
-    <ol><li>remix-run/remix <code>24.57</code></li><li>axios/axios <code>17.50</code></li><li>biomejs/biome <code>15.60</code></li><li>remix-run/react-router <code>14.63</code></li><li>rollup/rollup <code>12.70</code></li></ol>
+    <ol><li>remix-run/remix <code>24.57</code></li><li>axios/axios <code>17.50</code></li><li>biomejs/biome <code>15.60</code></li><li>remix-run/react-router <code>14.63</code></li><li>pnpm/pnpm <code>10.90</code></li></ol>
   </div>
 </div>
 
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1017</td></tr><tr><td><code>deprecated-action</code></td><td class="right">701</td></tr><tr><td><code>missing-cache</code></td><td class="right">295</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">178</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">169</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1017</td></tr><tr><td><code>deprecated-action</code></td><td class="right">703</td></tr><tr><td><code>missing-cache</code></td><td class="right">295</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">178</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">169</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -308,18 +308,7 @@
       <td class="right">$1,094</td>
     </tr><tr>
       <td class="right">17</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/vuejs/core" rel="noopener">vuejs/core</a>
-          &middot; <a href="/scan.html#r=vuejs%2Fcore&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.83</strong></td>
-      <td class="right">9</td>
-      <td class="right">26</td>
-      <td class="right">9/16/1</td>
-      <td class="right">$0.83</td>
-      <td class="right">$749</td>
-    </tr><tr>
-      <td class="right">18</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/npm/cli" rel="noopener">npm/cli</a>
           &middot; <a href="/scan.html#r=npm%2Fcli&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.00</strong></td>
@@ -329,8 +318,8 @@
       <td class="right">$2.56</td>
       <td class="right">$2,304</td>
     </tr><tr>
-      <td class="right">19</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">18</td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/eslint/eslint" rel="noopener">eslint/eslint</a>
           &middot; <a href="/scan.html#r=eslint%2Feslint&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.05</strong></td>
@@ -340,8 +329,8 @@
       <td class="right">$1.73</td>
       <td class="right">$1,555</td>
     </tr><tr>
-      <td class="right">20</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">19</td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/facebook/react" rel="noopener">facebook/react</a>
           &middot; <a href="/scan.html#r=facebook%2Freact&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.12</strong></td>
@@ -350,6 +339,17 @@
       <td class="right">0/123/20</td>
       <td class="right">$16.83</td>
       <td class="right">$15,149</td>
+    </tr><tr>
+      <td class="right">20</td>
+      <td><span class="trend down">&darr;3</span></td>
+      <td><a href="https://github.com/vuejs/core" rel="noopener">vuejs/core</a>
+          &middot; <a href="/scan.html#r=vuejs%2Fcore&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.31</strong></td>
+      <td class="right">8</td>
+      <td class="right">25</td>
+      <td class="right">9/15/1</td>
+      <td class="right">$0.77</td>
+      <td class="right">$691</td>
     </tr><tr>
       <td class="right">21</td>
       <td><span class="trend same">-</span></td>
@@ -447,8 +447,8 @@
       <td class="right">12</td>
       <td class="right">52</td>
       <td class="right">22/26/4</td>
-      <td class="right">$1.92</td>
-      <td class="right">$1,728</td>
+      <td class="right">$2.11</td>
+      <td class="right">$1,901</td>
     </tr><tr>
       <td class="right">30</td>
       <td><span class="trend same">-</span></td>
@@ -487,25 +487,36 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
           &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>9.45</strong></td>
+      <td class="right"><strong>9.64</strong></td>
       <td class="right">21</td>
-      <td class="right">121</td>
-      <td class="right">40/76/5</td>
-      <td class="right">$5.31</td>
-      <td class="right">$4,781</td>
+      <td class="right">123</td>
+      <td class="right">41/77/5</td>
+      <td class="right">$5.38</td>
+      <td class="right">$4,838</td>
     </tr><tr>
       <td class="right">34</td>
-      <td><span class="trend up">&uarr;1</span></td>
+      <td><span class="trend up">&uarr;2</span></td>
+      <td><a href="https://github.com/rollup/rollup" rel="noopener">rollup/rollup</a>
+          &middot; <a href="/scan.html#r=rollup%2Frollup&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>10.58</strong></td>
+      <td class="right">6</td>
+      <td class="right">39</td>
+      <td class="right">14/18/7</td>
+      <td class="right">$0.83</td>
+      <td class="right">$749</td>
+    </tr><tr>
+      <td class="right">35</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/microsoft/TypeScript" rel="noopener">microsoft/TypeScript</a>
           &middot; <a href="/scan.html#r=microsoft%2FTypeScript&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>10.38</strong></td>
+      <td class="right"><strong>10.62</strong></td>
       <td class="right">13</td>
-      <td class="right">90</td>
-      <td class="right">26/50/14</td>
+      <td class="right">91</td>
+      <td class="right">27/50/14</td>
       <td class="right">$1.47</td>
       <td class="right">$1,325</td>
     </tr><tr>
-      <td class="right">35</td>
+      <td class="right">36</td>
       <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
           &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
@@ -515,17 +526,6 @@
       <td class="right">68/71/17</td>
       <td class="right">$1.60</td>
       <td class="right">$1,440</td>
-    </tr><tr>
-      <td class="right">36</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/rollup/rollup" rel="noopener">rollup/rollup</a>
-          &middot; <a href="/scan.html#r=rollup%2Frollup&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>12.70</strong></td>
-      <td class="right">5</td>
-      <td class="right">39</td>
-      <td class="right">14/18/7</td>
-      <td class="right">$0.77</td>
-      <td class="right">$691</td>
     </tr><tr>
       <td class="right">37</td>
       <td><span class="trend same">-</span></td>
