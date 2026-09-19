@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18 17:30 UTC",
+  "generatedAt": "2026-09-19 17:00 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -384,22 +384,22 @@
     },
     {
       "repo": "prettier/prettier",
-      "workflows": 16,
-      "findings": 45,
-      "e": 22,
-      "w": 22,
+      "workflows": 17,
+      "findings": 47,
+      "e": 23,
+      "w": 23,
       "i": 1,
       "ruleHits": {
-        "missing-timeout": 15,
-        "deprecated-action": 22,
+        "missing-timeout": 16,
+        "deprecated-action": 23,
         "artifact-no-retention": 1,
         "matrix-overcommit": 3,
         "missing-cache": 3,
         "stale-cache-key": 1
       },
-      "perRun": 0.96,
-      "monthly": 864,
-      "score": 5.53
+      "perRun": 1.02,
+      "monthly": 922,
+      "score": 5.44
     },
     {
       "repo": "nodejs/node",
@@ -545,21 +545,22 @@
     },
     {
       "repo": "webpack/webpack",
-      "workflows": 12,
-      "findings": 52,
-      "e": 22,
-      "w": 26,
+      "workflows": 13,
+      "findings": 55,
+      "e": 23,
+      "w": 28,
       "i": 4,
       "ruleHits": {
-        "deprecated-action": 22,
+        "deprecated-action": 23,
         "fetch-depth-zero": 4,
-        "missing-timeout": 19,
+        "missing-timeout": 20,
         "missing-concurrency": 6,
+        "missing-cache": 1,
         "matrix-overcommit": 1
       },
-      "perRun": 2.11,
-      "monthly": 1901,
-      "score": 7.83
+      "perRun": 2.18,
+      "monthly": 1958,
+      "score": 7.62
     },
     {
       "repo": "denoland/deno",
@@ -736,24 +737,25 @@
     },
     {
       "repo": "biomejs/biome",
-      "workflows": 24,
-      "findings": 235,
-      "e": 80,
-      "w": 114,
-      "i": 41,
+      "workflows": 25,
+      "findings": 251,
+      "e": 85,
+      "w": 123,
+      "i": 43,
       "ruleHits": {
         "missing-concurrency": 8,
-        "missing-timeout": 72,
-        "deprecated-action": 80,
+        "missing-timeout": 77,
+        "deprecated-action": 85,
         "fail-fast-true": 26,
-        "missing-cache": 15,
-        "missing-permissions": 15,
+        "missing-cache": 20,
+        "missing-permissions": 14,
         "artifact-no-retention": 15,
-        "matrix-overcommit": 4
+        "matrix-overcommit": 4,
+        "fetch-depth-zero": 2
       },
-      "perRun": 0.58,
-      "monthly": 518,
-      "score": 15.6
+      "perRun": 0.51,
+      "monthly": 461,
+      "score": 15.98
     },
     {
       "repo": "axios/axios",
