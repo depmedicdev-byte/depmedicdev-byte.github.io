@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20 17:18 UTC",
+  "generatedAt": "2026-09-21 19:04 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -546,21 +546,21 @@
     {
       "repo": "webpack/webpack",
       "workflows": 13,
-      "findings": 55,
-      "e": 23,
-      "w": 28,
+      "findings": 57,
+      "e": 24,
+      "w": 29,
       "i": 4,
       "ruleHits": {
-        "deprecated-action": 23,
+        "deprecated-action": 24,
         "fetch-depth-zero": 4,
-        "missing-timeout": 20,
+        "missing-timeout": 21,
         "missing-concurrency": 6,
         "missing-cache": 1,
         "matrix-overcommit": 1
       },
-      "perRun": 2.18,
-      "monthly": 1958,
-      "score": 7.62
+      "perRun": 2.24,
+      "monthly": 2016,
+      "score": 7.92
     },
     {
       "repo": "denoland/deno",
@@ -693,14 +693,14 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 26,
-      "findings": 156,
-      "e": 68,
+      "findings": 157,
+      "e": 69,
       "w": 71,
       "i": 17,
       "ruleHits": {
         "missing-concurrency": 4,
         "missing-timeout": 56,
-        "deprecated-action": 68,
+        "deprecated-action": 69,
         "fetch-depth-zero": 4,
         "always-run-on-pr": 3,
         "matrix-overcommit": 5,
@@ -712,7 +712,7 @@
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 10.9
+      "score": 11.02
     },
     {
       "repo": "remix-run/react-router",
