@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-21 19:04 UTC",
+  "generatedAt": "2026-09-22 17:57 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -125,22 +125,22 @@
     },
     {
       "repo": "mui/material-ui",
-      "workflows": 17,
-      "findings": 40,
-      "e": 9,
-      "w": 24,
-      "i": 7,
+      "workflows": 16,
+      "findings": 37,
+      "e": 8,
+      "w": 23,
+      "i": 6,
       "ruleHits": {
         "missing-concurrency": 5,
-        "missing-timeout": 17,
+        "missing-timeout": 16,
         "matrix-overcommit": 2,
         "fail-fast-true": 2,
-        "deprecated-action": 9,
-        "fetch-depth-zero": 5
+        "deprecated-action": 8,
+        "fetch-depth-zero": 4
       },
-      "perRun": 0.96,
-      "monthly": 864,
-      "score": 3.21
+      "perRun": 0.9,
+      "monthly": 806,
+      "score": 3.13
     },
     {
       "repo": "date-fns/date-fns",
@@ -504,26 +504,6 @@
       "score": 6.27
     },
     {
-      "repo": "sequelize/sequelize",
-      "workflows": 9,
-      "findings": 41,
-      "e": 9,
-      "w": 30,
-      "i": 2,
-      "ruleHits": {
-        "missing-timeout": 20,
-        "fetch-depth-zero": 2,
-        "missing-permissions": 5,
-        "missing-concurrency": 2,
-        "deprecated-action": 9,
-        "expensive-runner": 1,
-        "matrix-overcommit": 2
-      },
-      "perRun": 5.18,
-      "monthly": 4666,
-      "score": 6.44
-    },
-    {
       "repo": "electron/electron",
       "workflows": 53,
       "findings": 220,
@@ -546,21 +526,21 @@
     {
       "repo": "webpack/webpack",
       "workflows": 13,
-      "findings": 57,
-      "e": 24,
-      "w": 29,
+      "findings": 49,
+      "e": 22,
+      "w": 23,
       "i": 4,
       "ruleHits": {
-        "deprecated-action": 24,
+        "deprecated-action": 22,
         "fetch-depth-zero": 4,
-        "missing-timeout": 21,
-        "missing-concurrency": 6,
+        "missing-timeout": 19,
         "missing-cache": 1,
+        "missing-concurrency": 2,
         "matrix-overcommit": 1
       },
-      "perRun": 2.24,
-      "monthly": 2016,
-      "score": 7.92
+      "perRun": 2.3,
+      "monthly": 2074,
+      "score": 7
     },
     {
       "repo": "denoland/deno",
@@ -691,16 +671,36 @@
       "score": 10.62
     },
     {
+      "repo": "sequelize/sequelize",
+      "workflows": 9,
+      "findings": 54,
+      "e": 22,
+      "w": 30,
+      "i": 2,
+      "ruleHits": {
+        "missing-timeout": 20,
+        "deprecated-action": 22,
+        "fetch-depth-zero": 2,
+        "missing-permissions": 5,
+        "missing-concurrency": 2,
+        "expensive-runner": 1,
+        "matrix-overcommit": 2
+      },
+      "perRun": 5.18,
+      "monthly": 4666,
+      "score": 10.78
+    },
+    {
       "repo": "pnpm/pnpm",
       "workflows": 26,
-      "findings": 157,
-      "e": 69,
-      "w": 71,
+      "findings": 159,
+      "e": 70,
+      "w": 72,
       "i": 17,
       "ruleHits": {
         "missing-concurrency": 4,
-        "missing-timeout": 56,
-        "deprecated-action": 69,
+        "missing-timeout": 57,
+        "deprecated-action": 70,
         "fetch-depth-zero": 4,
         "always-run-on-pr": 3,
         "matrix-overcommit": 5,
@@ -712,7 +712,7 @@
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 11.02
+      "score": 11.17
     },
     {
       "repo": "remix-run/react-router",
@@ -776,25 +776,25 @@
     },
     {
       "repo": "remix-run/remix",
-      "workflows": 14,
-      "findings": 241,
+      "workflows": 13,
+      "findings": 229,
       "e": 61,
-      "w": 142,
+      "w": 130,
       "i": 38,
       "ruleHits": {
         "missing-cache": 14,
-        "missing-timeout": 65,
+        "missing-timeout": 62,
         "deprecated-action": 61,
         "artifact-no-retention": 30,
         "fetch-depth-zero": 8,
-        "pinned-action-sha": 40,
-        "expensive-runner": 6,
-        "missing-permissions": 7,
-        "stale-cache-key": 10
+        "pinned-action-sha": 37,
+        "expensive-runner": 4,
+        "missing-permissions": 6,
+        "stale-cache-key": 7
       },
-      "perRun": 5.7,
-      "monthly": 5126,
-      "score": 24.57
+      "perRun": 5.38,
+      "monthly": 4838,
+      "score": 25.54
     }
   ]
 }
