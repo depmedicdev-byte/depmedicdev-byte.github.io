@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22 17:57 UTC",
+  "generatedAt": "2026-09-23 18:16 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -108,24 +108,8 @@
       "score": 2.65
     },
     {
-      "repo": "sindresorhus/got",
-      "workflows": 1,
-      "findings": 3,
-      "e": 0,
-      "w": 3,
-      "i": 0,
-      "ruleHits": {
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "missing-timeout": 1
-      },
-      "perRun": 0,
-      "monthly": 0,
-      "score": 3
-    },
-    {
       "repo": "mui/material-ui",
-      "workflows": 16,
+      "workflows": 17,
       "findings": 37,
       "e": 8,
       "w": 23,
@@ -140,7 +124,23 @@
       },
       "perRun": 0.9,
       "monthly": 806,
-      "score": 3.13
+      "score": 2.94
+    },
+    {
+      "repo": "sindresorhus/got",
+      "workflows": 1,
+      "findings": 3,
+      "e": 0,
+      "w": 3,
+      "i": 0,
+      "ruleHits": {
+        "missing-cache": 1,
+        "missing-concurrency": 1,
+        "missing-timeout": 1
+      },
+      "perRun": 0,
+      "monthly": 0,
+      "score": 3
     },
     {
       "repo": "date-fns/date-fns",
@@ -178,37 +178,17 @@
       "score": 4.17
     },
     {
-      "repo": "swc-project/swc",
-      "workflows": 16,
-      "findings": 77,
-      "e": 0,
-      "w": 65,
-      "i": 12,
-      "ruleHits": {
-        "missing-cache": 11,
-        "missing-timeout": 45,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 6,
-        "missing-concurrency": 3,
-        "fail-fast-true": 1,
-        "artifact-no-retention": 8
-      },
-      "perRun": 3.46,
-      "monthly": 3110,
-      "score": 4.44
-    },
-    {
       "repo": "vercel/next.js",
       "workflows": 29,
-      "findings": 117,
+      "findings": 116,
       "e": 11,
-      "w": 93,
+      "w": 92,
       "i": 13,
       "ruleHits": {
         "missing-cache": 20,
         "missing-timeout": 46,
         "deprecated-action": 11,
-        "missing-permissions": 13,
+        "missing-permissions": 12,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
@@ -217,7 +197,7 @@
       },
       "perRun": 3.14,
       "monthly": 2822,
-      "score": 4.57
+      "score": 4.53
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -237,6 +217,26 @@
       "perRun": 1.6,
       "monthly": 1440,
       "score": 4.63
+    },
+    {
+      "repo": "swc-project/swc",
+      "workflows": 15,
+      "findings": 76,
+      "e": 0,
+      "w": 64,
+      "i": 12,
+      "ruleHits": {
+        "missing-cache": 11,
+        "missing-timeout": 44,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 6,
+        "missing-concurrency": 3,
+        "fail-fast-true": 1,
+        "artifact-no-retention": 8
+      },
+      "perRun": 3.39,
+      "monthly": 3053,
+      "score": 4.67
     },
     {
       "repo": "preactjs/preact",
@@ -649,28 +649,6 @@
       "score": 10.58
     },
     {
-      "repo": "microsoft/TypeScript",
-      "workflows": 13,
-      "findings": 91,
-      "e": 27,
-      "w": 50,
-      "i": 14,
-      "ruleHits": {
-        "missing-cache": 19,
-        "missing-timeout": 27,
-        "deprecated-action": 27,
-        "artifact-no-retention": 2,
-        "fetch-depth-zero": 7,
-        "missing-concurrency": 3,
-        "matrix-overcommit": 1,
-        "fail-fast-true": 3,
-        "always-run-on-pr": 2
-      },
-      "perRun": 1.47,
-      "monthly": 1325,
-      "score": 10.62
-    },
-    {
       "repo": "sequelize/sequelize",
       "workflows": 9,
       "findings": 54,
@@ -691,19 +669,40 @@
       "score": 10.78
     },
     {
+      "repo": "microsoft/TypeScript",
+      "workflows": 13,
+      "findings": 94,
+      "e": 28,
+      "w": 52,
+      "i": 14,
+      "ruleHits": {
+        "missing-cache": 20,
+        "missing-timeout": 28,
+        "deprecated-action": 28,
+        "artifact-no-retention": 2,
+        "fetch-depth-zero": 7,
+        "missing-concurrency": 3,
+        "matrix-overcommit": 1,
+        "fail-fast-true": 3,
+        "always-run-on-pr": 2
+      },
+      "perRun": 1.54,
+      "monthly": 1382,
+      "score": 11
+    },
+    {
       "repo": "pnpm/pnpm",
       "workflows": 26,
-      "findings": 159,
+      "findings": 155,
       "e": 70,
-      "w": 72,
-      "i": 17,
+      "w": 69,
+      "i": 16,
       "ruleHits": {
-        "missing-concurrency": 4,
         "missing-timeout": 57,
         "deprecated-action": 70,
-        "fetch-depth-zero": 4,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 6,
         "always-run-on-pr": 3,
-        "matrix-overcommit": 5,
         "missing-cache": 2,
         "stale-cache-key": 2,
         "artifact-no-retention": 6,
@@ -712,7 +711,7 @@
       },
       "perRun": 1.6,
       "monthly": 1440,
-      "score": 11.17
+      "score": 11.04
     },
     {
       "repo": "remix-run/react-router",
@@ -738,16 +737,16 @@
     {
       "repo": "biomejs/biome",
       "workflows": 25,
-      "findings": 251,
-      "e": 85,
-      "w": 123,
+      "findings": 245,
+      "e": 83,
+      "w": 119,
       "i": 43,
       "ruleHits": {
         "missing-concurrency": 8,
-        "missing-timeout": 77,
-        "deprecated-action": 85,
+        "missing-timeout": 75,
+        "deprecated-action": 83,
         "fail-fast-true": 26,
-        "missing-cache": 20,
+        "missing-cache": 18,
         "missing-permissions": 14,
         "artifact-no-retention": 15,
         "matrix-overcommit": 4,
@@ -755,7 +754,7 @@
       },
       "perRun": 0.51,
       "monthly": 461,
-      "score": 15.98
+      "score": 15.58
     },
     {
       "repo": "axios/axios",
