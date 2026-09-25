@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24 18:12 UTC",
+  "generatedAt": "2026-09-25 18:14 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -178,17 +178,37 @@
       "score": 4.17
     },
     {
+      "repo": "vitejs/vite",
+      "workflows": 13,
+      "findings": 39,
+      "e": 10,
+      "w": 26,
+      "i": 3,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 18,
+        "stale-cache-key": 2,
+        "deprecated-action": 10,
+        "matrix-overcommit": 1,
+        "wide-trigger": 1,
+        "fetch-depth-zero": 2
+      },
+      "perRun": 1.22,
+      "monthly": 1094,
+      "score": 4.42
+    },
+    {
       "repo": "vercel/next.js",
       "workflows": 29,
-      "findings": 116,
+      "findings": 114,
       "e": 11,
-      "w": 92,
+      "w": 90,
       "i": 13,
       "ruleHits": {
         "missing-cache": 20,
-        "missing-timeout": 46,
+        "missing-timeout": 45,
         "deprecated-action": 11,
-        "missing-permissions": 12,
+        "missing-permissions": 11,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
@@ -197,7 +217,7 @@
       },
       "perRun": 3.14,
       "monthly": 2822,
-      "score": 4.53
+      "score": 4.47
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -277,27 +297,6 @@
       "perRun": 2.62,
       "monthly": 2362,
       "score": 4.71
-    },
-    {
-      "repo": "vitejs/vite",
-      "workflows": 13,
-      "findings": 44,
-      "e": 10,
-      "w": 31,
-      "i": 3,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 18,
-        "stale-cache-key": 2,
-        "missing-cache": 5,
-        "deprecated-action": 10,
-        "matrix-overcommit": 1,
-        "wide-trigger": 1,
-        "fetch-depth-zero": 2
-      },
-      "perRun": 1.22,
-      "monthly": 1094,
-      "score": 4.81
     },
     {
       "repo": "npm/cli",
@@ -420,8 +419,8 @@
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.66,
-      "monthly": 5990,
+      "perRun": 6.72,
+      "monthly": 6048,
       "score": 5.87
     },
     {
@@ -443,26 +442,6 @@
       "perRun": 0.64,
       "monthly": 576,
       "score": 6.06
-    },
-    {
-      "repo": "prisma/prisma",
-      "workflows": 17,
-      "findings": 61,
-      "e": 23,
-      "w": 31,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 1,
-        "deprecated-action": 23,
-        "missing-timeout": 28,
-        "fetch-depth-zero": 6,
-        "missing-concurrency": 1,
-        "artifact-no-retention": 1,
-        "pinned-action-sha": 1
-      },
-      "perRun": 2.37,
-      "monthly": 2131,
-      "score": 6.09
     },
     {
       "repo": "jestjs/jest",
@@ -502,6 +481,26 @@
       "perRun": 2.5,
       "monthly": 2246,
       "score": 6.27
+    },
+    {
+      "repo": "prisma/prisma",
+      "workflows": 16,
+      "findings": 60,
+      "e": 23,
+      "w": 30,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 1,
+        "deprecated-action": 23,
+        "missing-timeout": 27,
+        "fetch-depth-zero": 6,
+        "missing-concurrency": 1,
+        "artifact-no-retention": 1,
+        "pinned-action-sha": 1
+      },
+      "perRun": 2.3,
+      "monthly": 2074,
+      "score": 6.41
     },
     {
       "repo": "webpack/webpack",
