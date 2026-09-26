@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25 18:14 UTC",
+  "generatedAt": "2026-09-26 17:37 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -517,8 +517,8 @@
         "missing-concurrency": 2,
         "matrix-overcommit": 1
       },
-      "perRun": 2.37,
-      "monthly": 2131,
+      "perRun": 2.43,
+      "monthly": 2189,
       "score": 6.53
     },
     {
