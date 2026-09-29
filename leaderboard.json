@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28 20:24 UTC",
+  "generatedAt": "2026-09-29 19:07 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -691,15 +691,15 @@
     },
     {
       "repo": "pnpm/pnpm",
-      "workflows": 26,
-      "findings": 155,
-      "e": 70,
-      "w": 69,
-      "i": 16,
+      "workflows": 28,
+      "findings": 166,
+      "e": 77,
+      "w": 72,
+      "i": 17,
       "ruleHits": {
-        "missing-timeout": 57,
-        "deprecated-action": 70,
-        "fetch-depth-zero": 3,
+        "missing-timeout": 60,
+        "deprecated-action": 77,
+        "fetch-depth-zero": 4,
         "matrix-overcommit": 6,
         "always-run-on-pr": 3,
         "missing-cache": 2,
@@ -708,9 +708,9 @@
         "fail-fast-true": 4,
         "expensive-runner": 2
       },
-      "perRun": 1.6,
-      "monthly": 1440,
-      "score": 11.04
+      "perRun": 1.79,
+      "monthly": 1613,
+      "score": 11.13
     },
     {
       "repo": "remix-run/react-router",
@@ -736,14 +736,14 @@
     {
       "repo": "biomejs/biome",
       "workflows": 25,
-      "findings": 245,
-      "e": 83,
-      "w": 119,
+      "findings": 247,
+      "e": 84,
+      "w": 120,
       "i": 43,
       "ruleHits": {
         "missing-concurrency": 8,
-        "missing-timeout": 75,
-        "deprecated-action": 83,
+        "missing-timeout": 76,
+        "deprecated-action": 84,
         "fail-fast-true": 26,
         "missing-cache": 18,
         "missing-permissions": 14,
@@ -753,7 +753,7 @@
       },
       "perRun": 0.51,
       "monthly": 461,
-      "score": 15.58
+      "score": 15.74
     },
     {
       "repo": "axios/axios",
