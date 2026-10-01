@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30 18:51 UTC",
+  "generatedAt": "2026-10-01 19:17 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -337,8 +337,8 @@
         "fail-fast-true": 2,
         "always-run-on-pr": 3
       },
-      "perRun": 1.73,
-      "monthly": 1555,
+      "perRun": 1.66,
+      "monthly": 1498,
       "score": 5.05
     },
     {
@@ -606,24 +606,24 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 20,
-      "findings": 120,
+      "workflows": 21,
+      "findings": 122,
       "e": 40,
-      "w": 75,
+      "w": 77,
       "i": 5,
       "ruleHits": {
-        "missing-cache": 22,
+        "missing-cache": 23,
+        "missing-concurrency": 7,
         "missing-timeout": 30,
         "deprecated-action": 40,
-        "missing-concurrency": 6,
         "missing-permissions": 6,
         "artifact-no-retention": 5,
         "matrix-overcommit": 8,
         "expensive-runner": 3
       },
-      "perRun": 5.31,
-      "monthly": 4781,
-      "score": 9.88
+      "perRun": 5.38,
+      "monthly": 4838,
+      "score": 9.5
     },
     {
       "repo": "rollup/rollup",
