@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01 19:17 UTC",
+  "generatedAt": "2026-10-02 18:58 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -239,26 +239,6 @@
       "score": 4.63
     },
     {
-      "repo": "swc-project/swc",
-      "workflows": 15,
-      "findings": 76,
-      "e": 0,
-      "w": 64,
-      "i": 12,
-      "ruleHits": {
-        "missing-cache": 11,
-        "missing-timeout": 44,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 6,
-        "missing-concurrency": 3,
-        "fail-fast-true": 1,
-        "artifact-no-retention": 8
-      },
-      "perRun": 3.39,
-      "monthly": 3053,
-      "score": 4.67
-    },
-    {
       "repo": "preactjs/preact",
       "workflows": 8,
       "findings": 28,
@@ -297,6 +277,26 @@
       "perRun": 2.62,
       "monthly": 2362,
       "score": 4.71
+    },
+    {
+      "repo": "swc-project/swc",
+      "workflows": 16,
+      "findings": 83,
+      "e": 0,
+      "w": 71,
+      "i": 12,
+      "ruleHits": {
+        "missing-cache": 12,
+        "missing-timeout": 50,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 6,
+        "missing-concurrency": 3,
+        "fail-fast-true": 1,
+        "artifact-no-retention": 8
+      },
+      "perRun": 3.78,
+      "monthly": 3398,
+      "score": 4.81
     },
     {
       "repo": "npm/cli",
@@ -505,9 +505,9 @@
     {
       "repo": "webpack/webpack",
       "workflows": 15,
-      "findings": 52,
+      "findings": 53,
       "e": 24,
-      "w": 24,
+      "w": 25,
       "i": 4,
       "ruleHits": {
         "deprecated-action": 24,
@@ -515,11 +515,11 @@
         "missing-timeout": 20,
         "missing-cache": 1,
         "missing-concurrency": 2,
-        "matrix-overcommit": 1
+        "matrix-overcommit": 2
       },
-      "perRun": 2.43,
-      "monthly": 2189,
-      "score": 6.53
+      "perRun": 2.5,
+      "monthly": 2246,
+      "score": 6.6
     },
     {
       "repo": "electron/electron",
@@ -691,26 +691,26 @@
     },
     {
       "repo": "pnpm/pnpm",
-      "workflows": 28,
-      "findings": 168,
-      "e": 79,
-      "w": 72,
-      "i": 17,
+      "workflows": 29,
+      "findings": 174,
+      "e": 83,
+      "w": 73,
+      "i": 18,
       "ruleHits": {
-        "missing-timeout": 60,
-        "deprecated-action": 79,
+        "missing-timeout": 61,
+        "deprecated-action": 83,
         "fetch-depth-zero": 4,
         "matrix-overcommit": 6,
         "always-run-on-pr": 3,
         "missing-cache": 2,
         "stale-cache-key": 2,
-        "artifact-no-retention": 6,
+        "artifact-no-retention": 7,
         "fail-fast-true": 4,
         "expensive-runner": 2
       },
       "perRun": 1.79,
       "monthly": 1613,
-      "score": 11.34
+      "score": 11.41
     },
     {
       "repo": "remix-run/react-router",
