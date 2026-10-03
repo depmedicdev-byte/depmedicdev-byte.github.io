@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02 18:58 UTC",
+  "generatedAt": "2026-10-03 17:49 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -403,13 +403,13 @@
     {
       "repo": "nodejs/node",
       "workflows": 45,
-      "findings": 170,
+      "findings": 169,
       "e": 50,
-      "w": 108,
+      "w": 107,
       "i": 12,
       "ruleHits": {
         "missing-timeout": 66,
-        "missing-cache": 33,
+        "missing-cache": 32,
         "deprecated-action": 50,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
@@ -421,7 +421,7 @@
       },
       "perRun": 6.72,
       "monthly": 6048,
-      "score": 5.87
+      "score": 5.84
     },
     {
       "repo": "lodash/lodash",
@@ -586,6 +586,27 @@
       "score": 8.25
     },
     {
+      "repo": "microsoft/playwright",
+      "workflows": 21,
+      "findings": 120,
+      "e": 39,
+      "w": 76,
+      "i": 5,
+      "ruleHits": {
+        "missing-cache": 23,
+        "missing-concurrency": 7,
+        "missing-timeout": 29,
+        "deprecated-action": 39,
+        "missing-permissions": 6,
+        "artifact-no-retention": 5,
+        "matrix-overcommit": 8,
+        "expensive-runner": 3
+      },
+      "perRun": 5.31,
+      "monthly": 4781,
+      "score": 9.31
+    },
+    {
       "repo": "expressjs/express",
       "workflows": 5,
       "findings": 28,
@@ -603,27 +624,6 @@
       "perRun": 0.45,
       "monthly": 403,
       "score": 9.4
-    },
-    {
-      "repo": "microsoft/playwright",
-      "workflows": 21,
-      "findings": 122,
-      "e": 40,
-      "w": 77,
-      "i": 5,
-      "ruleHits": {
-        "missing-cache": 23,
-        "missing-concurrency": 7,
-        "missing-timeout": 30,
-        "deprecated-action": 40,
-        "missing-permissions": 6,
-        "artifact-no-retention": 5,
-        "matrix-overcommit": 8,
-        "expensive-runner": 3
-      },
-      "perRun": 5.38,
-      "monthly": 4838,
-      "score": 9.5
     },
     {
       "repo": "rollup/rollup",
@@ -692,12 +692,12 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 29,
-      "findings": 174,
+      "findings": 175,
       "e": 83,
-      "w": 73,
+      "w": 74,
       "i": 18,
       "ruleHits": {
-        "missing-timeout": 61,
+        "missing-timeout": 62,
         "deprecated-action": 83,
         "fetch-depth-zero": 4,
         "matrix-overcommit": 6,
@@ -708,9 +708,9 @@
         "fail-fast-true": 4,
         "expensive-runner": 2
       },
-      "perRun": 1.79,
-      "monthly": 1613,
-      "score": 11.41
+      "perRun": 1.86,
+      "monthly": 1670,
+      "score": 11.45
     },
     {
       "repo": "remix-run/react-router",
@@ -736,13 +736,13 @@
     {
       "repo": "biomejs/biome",
       "workflows": 25,
-      "findings": 247,
+      "findings": 248,
       "e": 84,
-      "w": 120,
+      "w": 121,
       "i": 43,
       "ruleHits": {
         "missing-concurrency": 8,
-        "missing-timeout": 76,
+        "missing-timeout": 77,
         "deprecated-action": 84,
         "fail-fast-true": 26,
         "missing-cache": 18,
@@ -753,7 +753,7 @@
       },
       "perRun": 0.51,
       "monthly": 461,
-      "score": 15.74
+      "score": 15.78
     },
     {
       "repo": "axios/axios",
