@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05 21:22 UTC",
+  "generatedAt": "2026-10-06 19:19 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -69,23 +69,23 @@
     {
       "repo": "storybookjs/storybook",
       "workflows": 20,
-      "findings": 46,
+      "findings": 48,
       "e": 0,
-      "w": 39,
+      "w": 41,
       "i": 7,
       "ruleHits": {
-        "missing-timeout": 30,
+        "missing-cache": 4,
+        "missing-timeout": 31,
         "stale-cache-key": 1,
         "missing-concurrency": 5,
         "wide-trigger": 3,
         "fail-fast-true": 1,
-        "missing-cache": 3,
         "fetch-depth-zero": 2,
         "always-run-on-pr": 1
       },
-      "perRun": 1.92,
-      "monthly": 1728,
-      "score": 2.13
+      "perRun": 1.98,
+      "monthly": 1786,
+      "score": 2.23
     },
     {
       "repo": "fastify/fastify",
@@ -461,6 +461,26 @@
       "score": 6.18
     },
     {
+      "repo": "prisma/prisma",
+      "workflows": 18,
+      "findings": 65,
+      "e": 25,
+      "w": 33,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 1,
+        "deprecated-action": 25,
+        "missing-timeout": 29,
+        "fetch-depth-zero": 6,
+        "missing-concurrency": 2,
+        "artifact-no-retention": 1,
+        "pinned-action-sha": 1
+      },
+      "perRun": 2.62,
+      "monthly": 2362,
+      "score": 6.19
+    },
+    {
       "repo": "ReactiveX/rxjs",
       "workflows": 11,
       "findings": 41,
@@ -481,26 +501,6 @@
       "perRun": 2.5,
       "monthly": 2246,
       "score": 6.27
-    },
-    {
-      "repo": "prisma/prisma",
-      "workflows": 17,
-      "findings": 63,
-      "e": 24,
-      "w": 32,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 1,
-        "deprecated-action": 24,
-        "missing-timeout": 28,
-        "fetch-depth-zero": 6,
-        "missing-concurrency": 2,
-        "artifact-no-retention": 1,
-        "pinned-action-sha": 1
-      },
-      "perRun": 2.37,
-      "monthly": 2131,
-      "score": 6.32
     },
     {
       "repo": "webpack/webpack",

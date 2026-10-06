@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-10-05"
+  "dateModified": "2026-10-06"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-10-05 21:22 UTC</strong> &middot;
+  Last updated <strong>2026-10-06 19:19 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,15 +95,15 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">585</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,971</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$100,798</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">586</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,975</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,087</div></div>
 </div>
 
 <div class="toplist">
   <div class="card best">
     <h3>Cleanest 5 (lowest score)</h3>
-    <ol><li>sveltejs/svelte <code>1.50</code></li><li>nestjs/nest <code>1.75</code></li><li>TanStack/query <code>2.00</code></li><li>gatsbyjs/gatsby <code>2.00</code></li><li>storybookjs/storybook <code>2.13</code></li></ol>
+    <ol><li>sveltejs/svelte <code>1.50</code></li><li>nestjs/nest <code>1.75</code></li><li>TanStack/query <code>2.00</code></li><li>gatsbyjs/gatsby <code>2.00</code></li><li>storybookjs/storybook <code>2.23</code></li></ol>
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
@@ -114,7 +114,7 @@
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1029</td></tr><tr><td><code>deprecated-action</code></td><td class="right">737</td></tr><tr><td><code>missing-cache</code></td><td class="right">295</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">179</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">163</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1031</td></tr><tr><td><code>deprecated-action</code></td><td class="right">738</td></tr><tr><td><code>missing-cache</code></td><td class="right">296</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">179</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">163</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -179,12 +179,12 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/storybookjs/storybook" rel="noopener">storybookjs/storybook</a>
           &middot; <a href="/scan.html#r=storybookjs%2Fstorybook&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.13</strong></td>
+      <td class="right"><strong>2.23</strong></td>
       <td class="right">20</td>
-      <td class="right">46</td>
-      <td class="right">0/39/7</td>
-      <td class="right">$1.92</td>
-      <td class="right">$1,728</td>
+      <td class="right">48</td>
+      <td class="right">0/41/7</td>
+      <td class="right">$1.98</td>
+      <td class="right">$1,786</td>
     </tr><tr>
       <td class="right">6</td>
       <td><span class="trend same">-</span></td>
@@ -396,7 +396,18 @@
       <td class="right">$1,325</td>
     </tr><tr>
       <td class="right">25</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
+      <td><a href="https://github.com/prisma/prisma" rel="noopener">prisma/prisma</a>
+          &middot; <a href="/scan.html#r=prisma%2Fprisma&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>6.19</strong></td>
+      <td class="right">18</td>
+      <td class="right">65</td>
+      <td class="right">25/33/7</td>
+      <td class="right">$2.62</td>
+      <td class="right">$2,362</td>
+    </tr><tr>
+      <td class="right">26</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/ReactiveX/rxjs" rel="noopener">ReactiveX/rxjs</a>
           &middot; <a href="/scan.html#r=ReactiveX%2Frxjs&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>6.27</strong></td>
@@ -405,17 +416,6 @@
       <td class="right">15/22/4</td>
       <td class="right">$2.50</td>
       <td class="right">$2,246</td>
-    </tr><tr>
-      <td class="right">26</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/prisma/prisma" rel="noopener">prisma/prisma</a>
-          &middot; <a href="/scan.html#r=prisma%2Fprisma&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>6.32</strong></td>
-      <td class="right">17</td>
-      <td class="right">63</td>
-      <td class="right">24/32/7</td>
-      <td class="right">$2.37</td>
-      <td class="right">$2,131</td>
     </tr><tr>
       <td class="right">27</td>
       <td><span class="trend same">-</span></td>
