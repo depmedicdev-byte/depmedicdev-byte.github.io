@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06 19:19 UTC",
+  "generatedAt": "2026-10-07 19:45 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -626,28 +626,6 @@
       "score": 9.4
     },
     {
-      "repo": "rollup/rollup",
-      "workflows": 6,
-      "findings": 39,
-      "e": 14,
-      "w": 18,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 8,
-        "missing-timeout": 6,
-        "deprecated-action": 14,
-        "artifact-no-retention": 4,
-        "fetch-depth-zero": 1,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "missing-concurrency": 1,
-        "missing-permissions": 1
-      },
-      "perRun": 0.83,
-      "monthly": 749,
-      "score": 10.58
-    },
-    {
       "repo": "sequelize/sequelize",
       "workflows": 9,
       "findings": 54,
@@ -666,6 +644,28 @@
       "perRun": 5.18,
       "monthly": 4666,
       "score": 10.78
+    },
+    {
+      "repo": "rollup/rollup",
+      "workflows": 6,
+      "findings": 38,
+      "e": 15,
+      "w": 18,
+      "i": 5,
+      "ruleHits": {
+        "missing-cache": 8,
+        "missing-timeout": 5,
+        "deprecated-action": 15,
+        "artifact-no-retention": 3,
+        "fetch-depth-zero": 1,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 1,
+        "missing-concurrency": 2,
+        "missing-permissions": 1
+      },
+      "perRun": 0.96,
+      "monthly": 864,
+      "score": 10.92
     },
     {
       "repo": "microsoft/TypeScript",
