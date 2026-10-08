@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-10-07"
+  "dateModified": "2026-10-08"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-10-07 19:45 UTC</strong> &middot;
+  Last updated <strong>2026-10-08 19:40 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,9 +95,9 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">586</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,974</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,202</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">585</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,975</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,145</div></div>
 </div>
 
 <div class="toplist">
@@ -107,14 +107,14 @@
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
-    <ol><li>remix-run/remix <code>25.54</code></li><li>axios/axios <code>17.50</code></li><li>biomejs/biome <code>15.78</code></li><li>remix-run/react-router <code>14.63</code></li><li>pnpm/pnpm <code>11.45</code></li></ol>
+    <ol><li>remix-run/remix <code>25.54</code></li><li>axios/axios <code>17.50</code></li><li>biomejs/biome <code>15.94</code></li><li>remix-run/react-router <code>14.63</code></li><li>pnpm/pnpm <code>11.45</code></li></ol>
   </div>
 </div>
 
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1030</td></tr><tr><td><code>deprecated-action</code></td><td class="right">739</td></tr><tr><td><code>missing-cache</code></td><td class="right">296</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">178</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">164</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1030</td></tr><tr><td><code>deprecated-action</code></td><td class="right">740</td></tr><tr><td><code>missing-cache</code></td><td class="right">296</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">178</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">164</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -198,18 +198,7 @@
       <td class="right">$1,267</td>
     </tr><tr>
       <td class="right">7</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/mui/material-ui" rel="noopener">mui/material-ui</a>
-          &middot; <a href="/scan.html#r=mui%2Fmaterial-ui&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>2.94</strong></td>
-      <td class="right">17</td>
-      <td class="right">37</td>
-      <td class="right">8/23/6</td>
-      <td class="right">$0.90</td>
-      <td class="right">$806</td>
-    </tr><tr>
-      <td class="right">8</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/sindresorhus/got" rel="noopener">sindresorhus/got</a>
           &middot; <a href="/scan.html#r=sindresorhus%2Fgot&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>3.00</strong></td>
@@ -218,6 +207,17 @@
       <td class="right">0/3/0</td>
       <td class="right">$0.00</td>
       <td class="right">$0</td>
+    </tr><tr>
+      <td class="right">8</td>
+      <td><span class="trend down">&darr;1</span></td>
+      <td><a href="https://github.com/mui/material-ui" rel="noopener">mui/material-ui</a>
+          &middot; <a href="/scan.html#r=mui%2Fmaterial-ui&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>3.06</strong></td>
+      <td class="right">16</td>
+      <td class="right">36</td>
+      <td class="right">8/22/6</td>
+      <td class="right">$0.83</td>
+      <td class="right">$749</td>
     </tr><tr>
       <td class="right">9</td>
       <td><span class="trend same">-</span></td>
@@ -484,7 +484,7 @@
       <td class="right">$403</td>
     </tr><tr>
       <td class="right">33</td>
-      <td><span class="trend up">&uarr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/sequelize/sequelize" rel="noopener">sequelize/sequelize</a>
           &middot; <a href="/scan.html#r=sequelize%2Fsequelize&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>10.78</strong></td>
@@ -495,7 +495,7 @@
       <td class="right">$4,666</td>
     </tr><tr>
       <td class="right">34</td>
-      <td><span class="trend down">&darr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/rollup/rollup" rel="noopener">rollup/rollup</a>
           &middot; <a href="/scan.html#r=rollup%2Frollup&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>10.92</strong></td>
@@ -542,10 +542,10 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/biomejs/biome" rel="noopener">biomejs/biome</a>
           &middot; <a href="/scan.html#r=biomejs%2Fbiome&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>15.78</strong></td>
+      <td class="right"><strong>15.94</strong></td>
       <td class="right">25</td>
-      <td class="right">248</td>
-      <td class="right">84/121/43</td>
+      <td class="right">250</td>
+      <td class="right">85/122/43</td>
       <td class="right">$0.51</td>
       <td class="right">$461</td>
     </tr><tr>
