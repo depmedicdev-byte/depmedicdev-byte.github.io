@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09 19:16 UTC",
+  "generatedAt": "2026-10-10 18:13 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -197,6 +197,28 @@
       "score": 4.38
     },
     {
+      "repo": "vercel/next.js",
+      "workflows": 29,
+      "findings": 112,
+      "e": 11,
+      "w": 88,
+      "i": 13,
+      "ruleHits": {
+        "missing-cache": 20,
+        "missing-timeout": 44,
+        "deprecated-action": 11,
+        "missing-permissions": 10,
+        "artifact-no-retention": 12,
+        "fail-fast-true": 1,
+        "matrix-overcommit": 12,
+        "pinned-action-sha": 1,
+        "stale-cache-key": 1
+      },
+      "perRun": 3.14,
+      "monthly": 2822,
+      "score": 4.4
+    },
+    {
       "repo": "vitejs/vite",
       "workflows": 13,
       "findings": 39,
@@ -215,28 +237,6 @@
       "perRun": 1.22,
       "monthly": 1094,
       "score": 4.42
-    },
-    {
-      "repo": "vercel/next.js",
-      "workflows": 28,
-      "findings": 111,
-      "e": 11,
-      "w": 87,
-      "i": 13,
-      "ruleHits": {
-        "missing-cache": 19,
-        "missing-timeout": 44,
-        "deprecated-action": 11,
-        "missing-permissions": 10,
-        "artifact-no-retention": 12,
-        "fail-fast-true": 1,
-        "matrix-overcommit": 12,
-        "pinned-action-sha": 1,
-        "stale-cache-key": 1
-      },
-      "perRun": 3.07,
-      "monthly": 2765,
-      "score": 4.52
     },
     {
       "repo": "tailwindlabs/tailwindcss",
@@ -517,8 +517,8 @@
         "missing-concurrency": 2,
         "matrix-overcommit": 1
       },
-      "perRun": 2.43,
-      "monthly": 2189,
+      "perRun": 2.3,
+      "monthly": 2074,
       "score": 6.53
     },
     {
@@ -651,14 +651,14 @@
     {
       "repo": "rollup/rollup",
       "workflows": 7,
-      "findings": 39,
-      "e": 15,
+      "findings": 40,
+      "e": 16,
       "w": 19,
       "i": 5,
       "ruleHits": {
         "missing-cache": 8,
         "missing-timeout": 6,
-        "deprecated-action": 15,
+        "deprecated-action": 16,
         "artifact-no-retention": 3,
         "fetch-depth-zero": 1,
         "matrix-overcommit": 2,
@@ -668,7 +668,7 @@
       },
       "perRun": 1.09,
       "monthly": 979,
-      "score": 9.5
+      "score": 9.93
     },
     {
       "repo": "sequelize/sequelize",
