@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-10 18:13 UTC",
+  "generatedAt": "2026-10-11 18:37 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -277,27 +277,6 @@
       "score": 4.69
     },
     {
-      "repo": "nuxt/nuxt",
-      "workflows": 26,
-      "findings": 77,
-      "e": 24,
-      "w": 47,
-      "i": 6,
-      "ruleHits": {
-        "missing-timeout": 25,
-        "missing-concurrency": 18,
-        "deprecated-action": 24,
-        "expensive-runner": 1,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 2,
-        "fail-fast-true": 4
-      },
-      "perRun": 2.69,
-      "monthly": 2419,
-      "score": 4.69
-    },
-    {
       "repo": "swc-project/swc",
       "workflows": 16,
       "findings": 83,
@@ -316,6 +295,27 @@
       "perRun": 3.78,
       "monthly": 3398,
       "score": 4.81
+    },
+    {
+      "repo": "nuxt/nuxt",
+      "workflows": 24,
+      "findings": 73,
+      "e": 24,
+      "w": 43,
+      "i": 6,
+      "ruleHits": {
+        "missing-timeout": 23,
+        "missing-concurrency": 16,
+        "deprecated-action": 24,
+        "expensive-runner": 1,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 1,
+        "stale-cache-key": 2,
+        "fail-fast-true": 4
+      },
+      "perRun": 2.56,
+      "monthly": 2304,
+      "score": 4.92
     },
     {
       "repo": "npm/cli",
