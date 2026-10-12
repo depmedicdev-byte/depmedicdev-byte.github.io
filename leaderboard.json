@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11 18:37 UTC",
+  "generatedAt": "2026-10-12 21:59 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -713,6 +713,28 @@
       "score": 11
     },
     {
+      "repo": "biomejs/biome",
+      "workflows": 25,
+      "findings": 238,
+      "e": 73,
+      "w": 122,
+      "i": 43,
+      "ruleHits": {
+        "missing-concurrency": 8,
+        "missing-timeout": 78,
+        "deprecated-action": 73,
+        "fail-fast-true": 26,
+        "missing-cache": 18,
+        "missing-permissions": 14,
+        "artifact-no-retention": 15,
+        "matrix-overcommit": 4,
+        "fetch-depth-zero": 2
+      },
+      "perRun": 0.51,
+      "monthly": 461,
+      "score": 14.5
+    },
+    {
       "repo": "remix-run/react-router",
       "workflows": 19,
       "findings": 175,
@@ -732,28 +754,6 @@
       "perRun": 3.65,
       "monthly": 3283,
       "score": 14.63
-    },
-    {
-      "repo": "biomejs/biome",
-      "workflows": 25,
-      "findings": 250,
-      "e": 85,
-      "w": 122,
-      "i": 43,
-      "ruleHits": {
-        "missing-concurrency": 8,
-        "missing-timeout": 78,
-        "deprecated-action": 85,
-        "fail-fast-true": 26,
-        "missing-cache": 18,
-        "missing-permissions": 14,
-        "artifact-no-retention": 15,
-        "matrix-overcommit": 4,
-        "fetch-depth-zero": 2
-      },
-      "perRun": 0.51,
-      "monthly": 461,
-      "score": 15.94
     },
     {
       "repo": "axios/axios",
