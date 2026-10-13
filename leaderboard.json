@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12 21:59 UTC",
+  "generatedAt": "2026-10-13 20:06 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -542,6 +542,27 @@
       "score": 6.69
     },
     {
+      "repo": "remix-run/react-router",
+      "workflows": 19,
+      "findings": 130,
+      "e": 16,
+      "w": 76,
+      "i": 38,
+      "ruleHits": {
+        "missing-cache": 16,
+        "missing-timeout": 39,
+        "deprecated-action": 16,
+        "artifact-no-retention": 30,
+        "fetch-depth-zero": 8,
+        "pinned-action-sha": 14,
+        "missing-permissions": 6,
+        "missing-concurrency": 1
+      },
+      "perRun": 3.65,
+      "monthly": 3283,
+      "score": 7.53
+    },
+    {
       "repo": "denoland/deno",
       "workflows": 11,
       "findings": 97,
@@ -733,27 +754,6 @@
       "perRun": 0.51,
       "monthly": 461,
       "score": 14.5
-    },
-    {
-      "repo": "remix-run/react-router",
-      "workflows": 19,
-      "findings": 175,
-      "e": 61,
-      "w": 76,
-      "i": 38,
-      "ruleHits": {
-        "missing-cache": 16,
-        "missing-timeout": 39,
-        "deprecated-action": 61,
-        "artifact-no-retention": 30,
-        "fetch-depth-zero": 8,
-        "pinned-action-sha": 14,
-        "missing-permissions": 6,
-        "missing-concurrency": 1
-      },
-      "perRun": 3.65,
-      "monthly": 3283,
-      "score": 14.63
     },
     {
       "repo": "axios/axios",

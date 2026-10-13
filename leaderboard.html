@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-10-12"
+  "dateModified": "2026-10-13"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-10-12 21:59 UTC</strong> &middot;
+  Last updated <strong>2026-10-13 20:06 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -96,7 +96,7 @@
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
   <div class="stat"><div class="label">Workflows scanned</div><div class="val">584</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,933</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,888</div></div>
   <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$101,031</div></div>
 </div>
 
@@ -107,14 +107,14 @@
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
-    <ol><li>remix-run/remix <code>25.54</code></li><li>axios/axios <code>17.50</code></li><li>remix-run/react-router <code>14.63</code></li><li>biomejs/biome <code>14.50</code></li><li>microsoft/TypeScript <code>11.00</code></li></ol>
+    <ol><li>remix-run/remix <code>25.54</code></li><li>axios/axios <code>17.50</code></li><li>biomejs/biome <code>14.50</code></li><li>microsoft/TypeScript <code>11.00</code></li><li>sequelize/sequelize <code>10.78</code></li></ol>
   </div>
 </div>
 
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1029</td></tr><tr><td><code>deprecated-action</code></td><td class="right">702</td></tr><tr><td><code>missing-cache</code></td><td class="right">296</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">179</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">162</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1029</td></tr><tr><td><code>deprecated-action</code></td><td class="right">657</td></tr><tr><td><code>missing-cache</code></td><td class="right">296</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">179</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">162</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -440,7 +440,18 @@
       <td class="right">$2,995</td>
     </tr><tr>
       <td class="right">29</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;9</span></td>
+      <td><a href="https://github.com/remix-run/react-router" rel="noopener">remix-run/react-router</a>
+          &middot; <a href="/scan.html#r=remix-run%2Freact-router&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>7.53</strong></td>
+      <td class="right">19</td>
+      <td class="right">130</td>
+      <td class="right">16/76/38</td>
+      <td class="right">$3.65</td>
+      <td class="right">$3,283</td>
+    </tr><tr>
+      <td class="right">30</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/denoland/deno" rel="noopener">denoland/deno</a>
           &middot; <a href="/scan.html#r=denoland%2Fdeno&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>8.05</strong></td>
@@ -450,8 +461,8 @@
       <td class="right">$21.89</td>
       <td class="right">$19,699</td>
     </tr><tr>
-      <td class="right">30</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">31</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/parcel-bundler/parcel" rel="noopener">parcel-bundler/parcel</a>
           &middot; <a href="/scan.html#r=parcel-bundler%2Fparcel&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>8.25</strong></td>
@@ -461,8 +472,8 @@
       <td class="right">$0.90</td>
       <td class="right">$806</td>
     </tr><tr>
-      <td class="right">31</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">32</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
           &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>9.31</strong></td>
@@ -472,8 +483,8 @@
       <td class="right">$5.31</td>
       <td class="right">$4,781</td>
     </tr><tr>
-      <td class="right">32</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">33</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
           &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>9.33</strong></td>
@@ -483,8 +494,8 @@
       <td class="right">$1.92</td>
       <td class="right">$1,728</td>
     </tr><tr>
-      <td class="right">33</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">34</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/expressjs/express" rel="noopener">expressjs/express</a>
           &middot; <a href="/scan.html#r=expressjs%2Fexpress&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>9.40</strong></td>
@@ -494,8 +505,8 @@
       <td class="right">$0.45</td>
       <td class="right">$403</td>
     </tr><tr>
-      <td class="right">34</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">35</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/rollup/rollup" rel="noopener">rollup/rollup</a>
           &middot; <a href="/scan.html#r=rollup%2Frollup&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>9.93</strong></td>
@@ -505,8 +516,8 @@
       <td class="right">$1.09</td>
       <td class="right">$979</td>
     </tr><tr>
-      <td class="right">35</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">36</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/sequelize/sequelize" rel="noopener">sequelize/sequelize</a>
           &middot; <a href="/scan.html#r=sequelize%2Fsequelize&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>10.78</strong></td>
@@ -516,8 +527,8 @@
       <td class="right">$5.18</td>
       <td class="right">$4,666</td>
     </tr><tr>
-      <td class="right">36</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">37</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/microsoft/TypeScript" rel="noopener">microsoft/TypeScript</a>
           &middot; <a href="/scan.html#r=microsoft%2FTypeScript&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>11.00</strong></td>
@@ -527,8 +538,8 @@
       <td class="right">$1.54</td>
       <td class="right">$1,382</td>
     </tr><tr>
-      <td class="right">37</td>
-      <td><span class="trend up">&uarr;1</span></td>
+      <td class="right">38</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/biomejs/biome" rel="noopener">biomejs/biome</a>
           &middot; <a href="/scan.html#r=biomejs%2Fbiome&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>14.50</strong></td>
@@ -537,17 +548,6 @@
       <td class="right">73/122/43</td>
       <td class="right">$0.51</td>
       <td class="right">$461</td>
-    </tr><tr>
-      <td class="right">38</td>
-      <td><span class="trend down">&darr;1</span></td>
-      <td><a href="https://github.com/remix-run/react-router" rel="noopener">remix-run/react-router</a>
-          &middot; <a href="/scan.html#r=remix-run%2Freact-router&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>14.63</strong></td>
-      <td class="right">19</td>
-      <td class="right">175</td>
-      <td class="right">61/76/38</td>
-      <td class="right">$3.65</td>
-      <td class="right">$3,283</td>
     </tr><tr>
       <td class="right">39</td>
       <td><span class="trend same">-</span></td>
