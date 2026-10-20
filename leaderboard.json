@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19 19:39 UTC",
+  "generatedAt": "2026-10-20 18:22 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -179,25 +179,25 @@
     },
     {
       "repo": "vercel/next.js",
-      "workflows": 29,
+      "workflows": 30,
       "findings": 111,
       "e": 11,
       "w": 87,
       "i": 13,
       "ruleHits": {
         "missing-cache": 20,
-        "missing-timeout": 44,
+        "missing-timeout": 45,
         "deprecated-action": 11,
-        "missing-permissions": 9,
+        "missing-permissions": 8,
         "artifact-no-retention": 12,
         "fail-fast-true": 1,
         "matrix-overcommit": 12,
         "pinned-action-sha": 1,
         "stale-cache-key": 1
       },
-      "perRun": 3.14,
-      "monthly": 2822,
-      "score": 4.36
+      "perRun": 3.2,
+      "monthly": 2880,
+      "score": 4.22
     },
     {
       "repo": "prettier/prettier",
@@ -383,20 +383,20 @@
     {
       "repo": "webpack/webpack",
       "workflows": 15,
-      "findings": 33,
+      "findings": 34,
       "e": 23,
-      "w": 6,
+      "w": 7,
       "i": 4,
       "ruleHits": {
         "deprecated-action": 23,
         "fetch-depth-zero": 4,
+        "matrix-overcommit": 3,
         "missing-cache": 1,
-        "matrix-overcommit": 2,
         "stale-cache-key": 3
       },
-      "perRun": 2.05,
-      "monthly": 1843,
-      "score": 5.13
+      "perRun": 2.56,
+      "monthly": 2304,
+      "score": 5.2
     },
     {
       "repo": "vuejs/core",
@@ -562,6 +562,26 @@
       "score": 7.53
     },
     {
+      "repo": "sequelize/sequelize",
+      "workflows": 9,
+      "findings": 45,
+      "e": 13,
+      "w": 30,
+      "i": 2,
+      "ruleHits": {
+        "missing-timeout": 20,
+        "deprecated-action": 13,
+        "fetch-depth-zero": 2,
+        "missing-permissions": 5,
+        "missing-concurrency": 2,
+        "expensive-runner": 1,
+        "matrix-overcommit": 2
+      },
+      "perRun": 5.18,
+      "monthly": 4666,
+      "score": 7.78
+    },
+    {
       "repo": "rollup/rollup",
       "workflows": 7,
       "findings": 35,
@@ -711,26 +731,6 @@
       "perRun": 1.54,
       "monthly": 1382,
       "score": 10.77
-    },
-    {
-      "repo": "sequelize/sequelize",
-      "workflows": 9,
-      "findings": 54,
-      "e": 22,
-      "w": 30,
-      "i": 2,
-      "ruleHits": {
-        "missing-timeout": 20,
-        "deprecated-action": 22,
-        "fetch-depth-zero": 2,
-        "missing-permissions": 5,
-        "missing-concurrency": 2,
-        "expensive-runner": 1,
-        "matrix-overcommit": 2
-      },
-      "perRun": 5.18,
-      "monthly": 4666,
-      "score": 10.78
     },
     {
       "repo": "axios/axios",
