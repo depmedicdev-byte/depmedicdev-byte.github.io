@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20 18:22 UTC",
+  "generatedAt": "2026-10-21 18:23 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -669,6 +669,29 @@
       "score": 9.02
     },
     {
+      "repo": "pnpm/pnpm",
+      "workflows": 30,
+      "findings": 158,
+      "e": 64,
+      "w": 75,
+      "i": 19,
+      "ruleHits": {
+        "missing-timeout": 63,
+        "deprecated-action": 64,
+        "fetch-depth-zero": 4,
+        "matrix-overcommit": 6,
+        "always-run-on-pr": 3,
+        "missing-cache": 2,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 8,
+        "fail-fast-true": 4,
+        "expensive-runner": 2
+      },
+      "perRun": 1.92,
+      "monthly": 1728,
+      "score": 9.22
+    },
+    {
       "repo": "expressjs/express",
       "workflows": 5,
       "findings": 28,
@@ -686,29 +709,6 @@
       "perRun": 0.45,
       "monthly": 403,
       "score": 9.4
-    },
-    {
-      "repo": "pnpm/pnpm",
-      "workflows": 29,
-      "findings": 157,
-      "e": 63,
-      "w": 75,
-      "i": 19,
-      "ruleHits": {
-        "missing-timeout": 63,
-        "deprecated-action": 63,
-        "fetch-depth-zero": 4,
-        "matrix-overcommit": 6,
-        "always-run-on-pr": 3,
-        "missing-cache": 2,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 8,
-        "fail-fast-true": 4,
-        "expensive-runner": 2
-      },
-      "perRun": 1.92,
-      "monthly": 1728,
-      "score": 9.43
     },
     {
       "repo": "microsoft/TypeScript",
@@ -774,13 +774,13 @@
     {
       "repo": "remix-run/remix",
       "workflows": 13,
-      "findings": 229,
+      "findings": 230,
       "e": 61,
-      "w": 130,
+      "w": 131,
       "i": 38,
       "ruleHits": {
         "missing-cache": 14,
-        "missing-timeout": 62,
+        "missing-timeout": 63,
         "deprecated-action": 61,
         "artifact-no-retention": 30,
         "fetch-depth-zero": 8,
@@ -789,9 +789,9 @@
         "missing-permissions": 6,
         "stale-cache-key": 7
       },
-      "perRun": 5.38,
-      "monthly": 4838,
-      "score": 25.54
+      "perRun": 5.44,
+      "monthly": 4896,
+      "score": 25.62
     }
   ]
 }
