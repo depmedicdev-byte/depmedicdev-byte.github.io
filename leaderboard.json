@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25 17:25 UTC",
+  "generatedAt": "2026-10-26 19:45 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -107,6 +107,25 @@
       "score": 2.65
     },
     {
+      "repo": "mui/material-ui",
+      "workflows": 17,
+      "findings": 35,
+      "e": 8,
+      "w": 21,
+      "i": 6,
+      "ruleHits": {
+        "missing-concurrency": 5,
+        "missing-timeout": 14,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 2,
+        "deprecated-action": 8,
+        "fetch-depth-zero": 4
+      },
+      "perRun": 0.83,
+      "monthly": 749,
+      "score": 2.82
+    },
+    {
       "repo": "sindresorhus/got",
       "workflows": 1,
       "findings": 3,
@@ -121,25 +140,6 @@
       "perRun": 0,
       "monthly": 0,
       "score": 3
-    },
-    {
-      "repo": "mui/material-ui",
-      "workflows": 16,
-      "findings": 36,
-      "e": 8,
-      "w": 22,
-      "i": 6,
-      "ruleHits": {
-        "missing-concurrency": 5,
-        "missing-timeout": 15,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "deprecated-action": 8,
-        "fetch-depth-zero": 4
-      },
-      "perRun": 0.83,
-      "monthly": 749,
-      "score": 3.06
     },
     {
       "repo": "date-fns/date-fns",
@@ -276,47 +276,6 @@
       "score": 4.69
     },
     {
-      "repo": "nuxt/nuxt",
-      "workflows": 25,
-      "findings": 73,
-      "e": 24,
-      "w": 43,
-      "i": 6,
-      "ruleHits": {
-        "missing-timeout": 23,
-        "missing-concurrency": 16,
-        "deprecated-action": 24,
-        "expensive-runner": 1,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 1,
-        "stale-cache-key": 2,
-        "fail-fast-true": 4
-      },
-      "perRun": 2.56,
-      "monthly": 2304,
-      "score": 4.72
-    },
-    {
-      "repo": "swc-project/swc",
-      "workflows": 17,
-      "findings": 87,
-      "e": 0,
-      "w": 74,
-      "i": 13,
-      "ruleHits": {
-        "missing-cache": 13,
-        "missing-timeout": 51,
-        "fetch-depth-zero": 4,
-        "matrix-overcommit": 6,
-        "missing-concurrency": 4,
-        "fail-fast-true": 1,
-        "artifact-no-retention": 8
-      },
-      "perRun": 3.84,
-      "monthly": 3456,
-      "score": 4.74
-    },
-    {
       "repo": "npm/cli",
       "workflows": 26,
       "findings": 133,
@@ -358,6 +317,27 @@
       "perRun": 1.73,
       "monthly": 1555,
       "score": 5.05
+    },
+    {
+      "repo": "nuxt/nuxt",
+      "workflows": 23,
+      "findings": 72,
+      "e": 24,
+      "w": 42,
+      "i": 6,
+      "ruleHits": {
+        "missing-timeout": 21,
+        "missing-concurrency": 16,
+        "deprecated-action": 24,
+        "expensive-runner": 1,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 2,
+        "stale-cache-key": 2,
+        "fail-fast-true": 4
+      },
+      "perRun": 2.5,
+      "monthly": 2246,
+      "score": 5.09
     },
     {
       "repo": "facebook/react",
@@ -439,13 +419,13 @@
     {
       "repo": "nodejs/node",
       "workflows": 45,
-      "findings": 168,
+      "findings": 167,
       "e": 50,
-      "w": 107,
+      "w": 106,
       "i": 11,
       "ruleHits": {
         "missing-timeout": 66,
-        "missing-cache": 32,
+        "missing-cache": 31,
         "deprecated-action": 50,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
@@ -457,7 +437,7 @@
       },
       "perRun": 6.72,
       "monthly": 6048,
-      "score": 5.83
+      "score": 5.81
     },
     {
       "repo": "lodash/lodash",
@@ -745,6 +725,27 @@
       "perRun": 2.88,
       "monthly": 2592,
       "score": 13
+    },
+    {
+      "repo": "swc-project/swc",
+      "workflows": 17,
+      "findings": 135,
+      "e": 48,
+      "w": 74,
+      "i": 13,
+      "ruleHits": {
+        "missing-cache": 13,
+        "missing-timeout": 51,
+        "deprecated-action": 48,
+        "fetch-depth-zero": 4,
+        "matrix-overcommit": 6,
+        "missing-concurrency": 4,
+        "fail-fast-true": 1,
+        "artifact-no-retention": 8
+      },
+      "perRun": 3.84,
+      "monthly": 3456,
+      "score": 13.21
     },
     {
       "repo": "biomejs/biome",
