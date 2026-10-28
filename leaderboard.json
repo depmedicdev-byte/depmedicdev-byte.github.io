@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27 19:14 UTC",
+  "generatedAt": "2026-10-28 19:20 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -363,19 +363,19 @@
     {
       "repo": "webpack/webpack",
       "workflows": 14,
-      "findings": 31,
+      "findings": 32,
       "e": 22,
-      "w": 5,
+      "w": 6,
       "i": 4,
       "ruleHits": {
         "deprecated-action": 22,
         "fetch-depth-zero": 4,
         "matrix-overcommit": 2,
-        "stale-cache-key": 3
+        "stale-cache-key": 4
       },
       "perRun": 1.92,
       "monthly": 1728,
-      "score": 5.21
+      "score": 5.29
     },
     {
       "repo": "vuejs/core",
@@ -398,36 +398,16 @@
       "score": 5.31
     },
     {
-      "repo": "electron/electron",
-      "workflows": 52,
-      "findings": 204,
-      "e": 59,
-      "w": 101,
-      "i": 44,
-      "ruleHits": {
-        "missing-timeout": 81,
-        "deprecated-action": 59,
-        "artifact-no-retention": 7,
-        "fetch-depth-zero": 37,
-        "missing-cache": 6,
-        "missing-concurrency": 13,
-        "stale-cache-key": 1
-      },
-      "perRun": 3.33,
-      "monthly": 2995,
-      "score": 5.77
-    },
-    {
       "repo": "nodejs/node",
       "workflows": 45,
-      "findings": 167,
-      "e": 50,
+      "findings": 161,
+      "e": 44,
       "w": 106,
       "i": 11,
       "ruleHits": {
         "missing-timeout": 66,
         "missing-cache": 31,
-        "deprecated-action": 50,
+        "deprecated-action": 44,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
         "missing-concurrency": 6,
@@ -438,7 +418,27 @@
       },
       "perRun": 6.72,
       "monthly": 6048,
-      "score": 5.81
+      "score": 5.41
+    },
+    {
+      "repo": "electron/electron",
+      "workflows": 54,
+      "findings": 215,
+      "e": 63,
+      "w": 105,
+      "i": 47,
+      "ruleHits": {
+        "missing-timeout": 85,
+        "deprecated-action": 63,
+        "artifact-no-retention": 8,
+        "fetch-depth-zero": 39,
+        "missing-cache": 6,
+        "missing-concurrency": 13,
+        "stale-cache-key": 1
+      },
+      "perRun": 3.39,
+      "monthly": 3053,
+      "score": 5.88
     },
     {
       "repo": "lodash/lodash",
