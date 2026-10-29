@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-10-28"
+  "dateModified": "2026-10-29"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-10-28 19:20 UTC</strong> &middot;
+  Last updated <strong>2026-10-29 19:26 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,9 +95,9 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">591</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,890</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$97,461</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">590</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,886</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$97,403</div></div>
 </div>
 
 <div class="toplist">
@@ -114,7 +114,7 @@
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1021</td></tr><tr><td><code>deprecated-action</code></td><td class="right">664</td></tr><tr><td><code>missing-cache</code></td><td class="right">295</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">182</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">161</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1021</td></tr><tr><td><code>deprecated-action</code></td><td class="right">665</td></tr><tr><td><code>missing-cache</code></td><td class="right">295</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">178</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">161</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -242,18 +242,7 @@
       <td class="right">$461</td>
     </tr><tr>
       <td class="right">11</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/vercel/next.js" rel="noopener">vercel/next.js</a>
-          &middot; <a href="/scan.html#r=vercel%2Fnext.js&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>4.32</strong></td>
-      <td class="right">30</td>
-      <td class="right">114</td>
-      <td class="right">11/90/13</td>
-      <td class="right">$3.26</td>
-      <td class="right">$2,938</td>
-    </tr><tr>
-      <td class="right">12</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/prettier/prettier" rel="noopener">prettier/prettier</a>
           &middot; <a href="/scan.html#r=prettier%2Fprettier&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.38</strong></td>
@@ -263,8 +252,8 @@
       <td class="right">$1.02</td>
       <td class="right">$922</td>
     </tr><tr>
-      <td class="right">13</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">12</td>
+      <td><span class="trend up">&uarr;1</span></td>
       <td><a href="https://github.com/vitejs/vite" rel="noopener">vitejs/vite</a>
           &middot; <a href="/scan.html#r=vitejs%2Fvite&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>4.42</strong></td>
@@ -273,6 +262,17 @@
       <td class="right">10/26/3</td>
       <td class="right">$1.22</td>
       <td class="right">$1,094</td>
+    </tr><tr>
+      <td class="right">13</td>
+      <td><span class="trend down">&darr;2</span></td>
+      <td><a href="https://github.com/vercel/next.js" rel="noopener">vercel/next.js</a>
+          &middot; <a href="/scan.html#r=vercel%2Fnext.js&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>4.47</strong></td>
+      <td class="right">29</td>
+      <td class="right">114</td>
+      <td class="right">11/90/13</td>
+      <td class="right">$3.20</td>
+      <td class="right">$2,880</td>
     </tr><tr>
       <td class="right">14</td>
       <td><span class="trend same">-</span></td>
@@ -319,7 +319,18 @@
       <td class="right">$2,304</td>
     </tr><tr>
       <td class="right">18</td>
-      <td><span class="trend same">-</span></td>
+      <td><span class="trend up">&uarr;2</span></td>
+      <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
+          &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>5.04</strong></td>
+      <td class="right">14</td>
+      <td class="right">30</td>
+      <td class="right">21/6/3</td>
+      <td class="right">$1.92</td>
+      <td class="right">$1,728</td>
+    </tr><tr>
+      <td class="right">19</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/eslint/eslint" rel="noopener">eslint/eslint</a>
           &middot; <a href="/scan.html#r=eslint%2Feslint&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.05</strong></td>
@@ -329,8 +340,8 @@
       <td class="right">$1.73</td>
       <td class="right">$1,555</td>
     </tr><tr>
-      <td class="right">19</td>
-      <td><span class="trend same">-</span></td>
+      <td class="right">20</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/facebook/react" rel="noopener">facebook/react</a>
           &middot; <a href="/scan.html#r=facebook%2Freact&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.12</strong></td>
@@ -339,17 +350,6 @@
       <td class="right">0/123/20</td>
       <td class="right">$16.83</td>
       <td class="right">$15,149</td>
-    </tr><tr>
-      <td class="right">20</td>
-      <td><span class="trend same">-</span></td>
-      <td><a href="https://github.com/webpack/webpack" rel="noopener">webpack/webpack</a>
-          &middot; <a href="/scan.html#r=webpack%2Fwebpack&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>5.29</strong></td>
-      <td class="right">14</td>
-      <td class="right">32</td>
-      <td class="right">22/6/4</td>
-      <td class="right">$1.92</td>
-      <td class="right">$1,728</td>
     </tr><tr>
       <td class="right">21</td>
       <td><span class="trend same">-</span></td>
@@ -363,7 +363,7 @@
       <td class="right">$691</td>
     </tr><tr>
       <td class="right">22</td>
-      <td><span class="trend up">&uarr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/nodejs/node" rel="noopener">nodejs/node</a>
           &middot; <a href="/scan.html#r=nodejs%2Fnode&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.41</strong></td>
@@ -374,7 +374,7 @@
       <td class="right">$6,048</td>
     </tr><tr>
       <td class="right">23</td>
-      <td><span class="trend down">&darr;1</span></td>
+      <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/electron/electron" rel="noopener">electron/electron</a>
           &middot; <a href="/scan.html#r=electron%2Felectron&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>5.88</strong></td>
@@ -509,10 +509,10 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
           &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>9.63</strong></td>
+      <td class="right"><strong>9.82</strong></td>
       <td class="right">20</td>
-      <td class="right">119</td>
-      <td class="right">38/76/5</td>
+      <td class="right">117</td>
+      <td class="right">40/76/1</td>
       <td class="right">$4.03</td>
       <td class="right">$3,629</td>
     </tr><tr>
