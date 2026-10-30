@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29 19:26 UTC",
+  "generatedAt": "2026-10-30 19:00 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -298,6 +298,24 @@
       "score": 4.82
     },
     {
+      "repo": "webpack/webpack",
+      "workflows": 15,
+      "findings": 32,
+      "e": 22,
+      "w": 7,
+      "i": 3,
+      "ruleHits": {
+        "deprecated-action": 22,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 2,
+        "missing-cache": 1,
+        "stale-cache-key": 4
+      },
+      "perRun": 1.98,
+      "monthly": 1786,
+      "score": 4.97
+    },
+    {
       "repo": "npm/cli",
       "workflows": 26,
       "findings": 133,
@@ -322,23 +340,6 @@
       "score": 5
     },
     {
-      "repo": "webpack/webpack",
-      "workflows": 14,
-      "findings": 30,
-      "e": 21,
-      "w": 6,
-      "i": 3,
-      "ruleHits": {
-        "deprecated-action": 21,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 2,
-        "stale-cache-key": 4
-      },
-      "perRun": 1.92,
-      "monthly": 1728,
-      "score": 5.04
-    },
-    {
       "repo": "eslint/eslint",
       "workflows": 10,
       "findings": 53,
@@ -353,8 +354,8 @@
         "fail-fast-true": 2,
         "always-run-on-pr": 3
       },
-      "perRun": 1.73,
-      "monthly": 1555,
+      "perRun": 1.66,
+      "monthly": 1498,
       "score": 5.05
     },
     {
@@ -478,26 +479,6 @@
       "score": 6.18
     },
     {
-      "repo": "prisma/prisma",
-      "workflows": 18,
-      "findings": 65,
-      "e": 25,
-      "w": 33,
-      "i": 7,
-      "ruleHits": {
-        "missing-cache": 1,
-        "deprecated-action": 25,
-        "missing-timeout": 29,
-        "fetch-depth-zero": 6,
-        "missing-concurrency": 2,
-        "artifact-no-retention": 1,
-        "pinned-action-sha": 1
-      },
-      "perRun": 2.62,
-      "monthly": 2362,
-      "score": 6.19
-    },
-    {
       "repo": "ReactiveX/rxjs",
       "workflows": 11,
       "findings": 41,
@@ -518,6 +499,26 @@
       "perRun": 2.5,
       "monthly": 2246,
       "score": 6.27
+    },
+    {
+      "repo": "prisma/prisma",
+      "workflows": 18,
+      "findings": 67,
+      "e": 26,
+      "w": 34,
+      "i": 7,
+      "ruleHits": {
+        "missing-cache": 1,
+        "deprecated-action": 26,
+        "missing-timeout": 30,
+        "fetch-depth-zero": 6,
+        "missing-concurrency": 2,
+        "artifact-no-retention": 1,
+        "pinned-action-sha": 1
+      },
+      "perRun": 2.69,
+      "monthly": 2419,
+      "score": 6.42
     },
     {
       "repo": "remix-run/react-router",
@@ -671,44 +672,46 @@
     {
       "repo": "microsoft/playwright",
       "workflows": 20,
-      "findings": 117,
+      "findings": 123,
       "e": 40,
-      "w": 76,
-      "i": 1,
+      "w": 79,
+      "i": 4,
       "ruleHits": {
         "missing-cache": 22,
         "missing-concurrency": 8,
         "missing-timeout": 34,
         "deprecated-action": 40,
         "missing-permissions": 6,
+        "pinned-action-sha": 3,
+        "always-run-on-pr": 3,
         "matrix-overcommit": 6,
         "artifact-no-retention": 1
       },
       "perRun": 4.03,
       "monthly": 3629,
-      "score": 9.82
+      "score": 10.05
     },
     {
       "repo": "microsoft/TypeScript",
       "workflows": 13,
-      "findings": 93,
-      "e": 27,
-      "w": 52,
+      "findings": 97,
+      "e": 28,
+      "w": 55,
       "i": 14,
       "ruleHits": {
-        "missing-cache": 20,
-        "missing-timeout": 28,
-        "deprecated-action": 27,
+        "missing-cache": 21,
+        "missing-timeout": 29,
+        "deprecated-action": 28,
         "artifact-no-retention": 2,
         "fetch-depth-zero": 7,
         "missing-concurrency": 3,
-        "matrix-overcommit": 1,
+        "matrix-overcommit": 2,
         "fail-fast-true": 3,
         "always-run-on-pr": 2
       },
-      "perRun": 1.54,
-      "monthly": 1382,
-      "score": 10.77
+      "perRun": 1.6,
+      "monthly": 1440,
+      "score": 11.23
     },
     {
       "repo": "axios/axios",
