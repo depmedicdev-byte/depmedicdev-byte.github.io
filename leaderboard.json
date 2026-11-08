@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-07 18:29 UTC",
+  "generatedAt": "2026-11-08 18:40 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -419,8 +419,8 @@
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.72,
-      "monthly": 6048,
+      "perRun": 6.66,
+      "monthly": 5990,
       "score": 5.41
     },
     {
@@ -628,29 +628,6 @@
       "score": 8.2
     },
     {
-      "repo": "pnpm/pnpm",
-      "workflows": 32,
-      "findings": 169,
-      "e": 70,
-      "w": 79,
-      "i": 20,
-      "ruleHits": {
-        "missing-timeout": 67,
-        "deprecated-action": 70,
-        "fetch-depth-zero": 4,
-        "matrix-overcommit": 6,
-        "always-run-on-pr": 3,
-        "missing-cache": 2,
-        "stale-cache-key": 2,
-        "artifact-no-retention": 9,
-        "fail-fast-true": 4,
-        "expensive-runner": 2
-      },
-      "perRun": 2.11,
-      "monthly": 1901,
-      "score": 9.34
-    },
-    {
       "repo": "microsoft/playwright",
       "workflows": 21,
       "findings": 120,
@@ -670,6 +647,29 @@
       "perRun": 3.97,
       "monthly": 3571,
       "score": 9.4
+    },
+    {
+      "repo": "pnpm/pnpm",
+      "workflows": 32,
+      "findings": 170,
+      "e": 71,
+      "w": 79,
+      "i": 20,
+      "ruleHits": {
+        "missing-timeout": 67,
+        "deprecated-action": 71,
+        "fetch-depth-zero": 4,
+        "matrix-overcommit": 6,
+        "always-run-on-pr": 3,
+        "missing-cache": 2,
+        "stale-cache-key": 2,
+        "artifact-no-retention": 9,
+        "fail-fast-true": 4,
+        "expensive-runner": 2
+      },
+      "perRun": 2.11,
+      "monthly": 1901,
+      "score": 9.44
     },
     {
       "repo": "parcel-bundler/parcel",
