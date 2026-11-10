@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09 23:17 UTC",
+  "generatedAt": "2026-11-10 20:43 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -628,6 +628,26 @@
       "score": 8.2
     },
     {
+      "repo": "microsoft/playwright",
+      "workflows": 21,
+      "findings": 106,
+      "e": 35,
+      "w": 69,
+      "i": 2,
+      "ruleHits": {
+        "missing-concurrency": 8,
+        "missing-cache": 21,
+        "missing-timeout": 28,
+        "deprecated-action": 35,
+        "missing-permissions": 6,
+        "artifact-no-retention": 2,
+        "matrix-overcommit": 6
+      },
+      "perRun": 3.9,
+      "monthly": 3514,
+      "score": 8.33
+    },
+    {
       "repo": "pnpm/pnpm",
       "workflows": 32,
       "findings": 170,
@@ -649,27 +669,6 @@
       "perRun": 2.11,
       "monthly": 1901,
       "score": 9.44
-    },
-    {
-      "repo": "microsoft/playwright",
-      "workflows": 20,
-      "findings": 120,
-      "e": 40,
-      "w": 75,
-      "i": 5,
-      "ruleHits": {
-        "missing-cache": 23,
-        "missing-concurrency": 8,
-        "missing-timeout": 32,
-        "deprecated-action": 40,
-        "missing-permissions": 6,
-        "artifact-no-retention": 2,
-        "always-run-on-pr": 3,
-        "matrix-overcommit": 6
-      },
-      "perRun": 3.97,
-      "monthly": 3571,
-      "score": 9.88
     },
     {
       "repo": "parcel-bundler/parcel",
@@ -775,13 +774,13 @@
     {
       "repo": "remix-run/remix",
       "workflows": 13,
-      "findings": 233,
+      "findings": 225,
       "e": 61,
-      "w": 142,
+      "w": 134,
       "i": 30,
       "ruleHits": {
         "missing-cache": 17,
-        "missing-timeout": 66,
+        "missing-timeout": 58,
         "deprecated-action": 61,
         "artifact-no-retention": 30,
         "pinned-action-sha": 39,
@@ -792,7 +791,7 @@
       },
       "perRun": 6.78,
       "monthly": 6106,
-      "score": 26.15
+      "score": 25.54
     }
   ]
 }

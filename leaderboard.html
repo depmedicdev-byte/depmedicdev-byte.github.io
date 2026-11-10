@@ -60,7 +60,7 @@
   "url": "https://depmedicdev-byte.github.io/leaderboard.html",
   "creator": { "@type": "Organization", "name": "depmedic" },
   "license": "https://opensource.org/licenses/MIT",
-  "dateModified": "2026-11-09"
+  "dateModified": "2026-11-10"
 }
 </script>
 </head>
@@ -78,7 +78,7 @@
   (per-job pricing). Workflow YAML re-fetched from each repo every day.
 </p>
 <p class="meta">
-  Last updated <strong>2026-11-09 23:17 UTC</strong> &middot;
+  Last updated <strong>2026-11-10 20:43 UTC</strong> &middot;
   <a href="/leaderboard.json">raw data (JSON)</a> &middot;
   <a href="/scan.html">scan your own repo</a> &middot;
   <a href="/benchmarks.html">original 20-repo report</a>
@@ -95,9 +95,9 @@
 
 <div class="stats">
   <div class="stat"><div class="label">Repos ranked</div><div class="val">40</div></div>
-  <div class="stat"><div class="label">Workflows scanned</div><div class="val">597</div></div>
-  <div class="stat"><div class="label">Total findings</div><div class="val">2,929</div></div>
-  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$99,647</div></div>
+  <div class="stat"><div class="label">Workflows scanned</div><div class="val">598</div></div>
+  <div class="stat"><div class="label">Total findings</div><div class="val">2,907</div></div>
+  <div class="stat"><div class="label">Modeled $/mo combined</div><div class="val">$99,590</div></div>
 </div>
 
 <div class="toplist">
@@ -107,14 +107,14 @@
   </div>
   <div class="card worst">
     <h3>Most findings per workflow (highest score)</h3>
-    <ol><li>remix-run/remix <code>26.15</code></li><li>biomejs/biome <code>14.50</code></li><li>swc-project/swc <code>13.50</code></li><li>axios/axios <code>13.00</code></li><li>microsoft/TypeScript <code>11.93</code></li></ol>
+    <ol><li>remix-run/remix <code>25.54</code></li><li>biomejs/biome <code>14.50</code></li><li>swc-project/swc <code>13.50</code></li><li>axios/axios <code>13.00</code></li><li>microsoft/TypeScript <code>11.93</code></li></ol>
   </div>
 </div>
 
 <h2>Top rules across all repos</h2>
 <table>
   <thead><tr><th>Rule</th><th class="right">Hits</th></tr></thead>
-  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1040</td></tr><tr><td><code>deprecated-action</code></td><td class="right">678</td></tr><tr><td><code>missing-cache</code></td><td class="right">322</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">182</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">164</td></tr></tbody>
+  <tbody><tr><td><code>missing-timeout</code></td><td class="right">1028</td></tr><tr><td><code>deprecated-action</code></td><td class="right">673</td></tr><tr><td><code>missing-cache</code></td><td class="right">320</td></tr><tr><td><code>artifact-no-retention</code></td><td class="right">182</td></tr><tr><td><code>missing-concurrency</code></td><td class="right">164</td></tr></tbody>
 </table>
 
 <h2>Full ranking (sorted by hygiene score)</h2>
@@ -485,6 +485,17 @@
     </tr><tr>
       <td class="right">33</td>
       <td><span class="trend up">&uarr;1</span></td>
+      <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
+          &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
+      <td class="right"><strong>8.33</strong></td>
+      <td class="right">21</td>
+      <td class="right">106</td>
+      <td class="right">35/69/2</td>
+      <td class="right">$3.90</td>
+      <td class="right">$3,514</td>
+    </tr><tr>
+      <td class="right">34</td>
+      <td><span class="trend down">&darr;1</span></td>
       <td><a href="https://github.com/pnpm/pnpm" rel="noopener">pnpm/pnpm</a>
           &middot; <a href="/scan.html#r=pnpm%2Fpnpm&m=8&d=30" title="re-scan in browser">scan</a></td>
       <td class="right"><strong>9.44</strong></td>
@@ -493,17 +504,6 @@
       <td class="right">71/79/20</td>
       <td class="right">$2.11</td>
       <td class="right">$1,901</td>
-    </tr><tr>
-      <td class="right">34</td>
-      <td><span class="trend down">&darr;1</span></td>
-      <td><a href="https://github.com/microsoft/playwright" rel="noopener">microsoft/playwright</a>
-          &middot; <a href="/scan.html#r=microsoft%2Fplaywright&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>9.88</strong></td>
-      <td class="right">20</td>
-      <td class="right">120</td>
-      <td class="right">40/75/5</td>
-      <td class="right">$3.97</td>
-      <td class="right">$3,571</td>
     </tr><tr>
       <td class="right">35</td>
       <td><span class="trend same">-</span></td>
@@ -564,10 +564,10 @@
       <td><span class="trend same">-</span></td>
       <td><a href="https://github.com/remix-run/remix" rel="noopener">remix-run/remix</a>
           &middot; <a href="/scan.html#r=remix-run%2Fremix&m=8&d=30" title="re-scan in browser">scan</a></td>
-      <td class="right"><strong>26.15</strong></td>
+      <td class="right"><strong>25.54</strong></td>
       <td class="right">13</td>
-      <td class="right">233</td>
-      <td class="right">61/142/30</td>
+      <td class="right">225</td>
+      <td class="right">61/134/30</td>
       <td class="right">$6.78</td>
       <td class="right">$6,106</td>
     </tr></tbody>
