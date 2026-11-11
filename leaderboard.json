@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10 20:43 UTC",
+  "generatedAt": "2026-11-11 21:04 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -525,13 +525,13 @@
     {
       "repo": "remix-run/react-router",
       "workflows": 19,
-      "findings": 128,
+      "findings": 129,
       "e": 16,
-      "w": 74,
+      "w": 75,
       "i": 38,
       "ruleHits": {
         "missing-cache": 16,
-        "missing-timeout": 39,
+        "missing-timeout": 40,
         "deprecated-action": 16,
         "artifact-no-retention": 30,
         "fetch-depth-zero": 8,
@@ -539,9 +539,9 @@
         "missing-permissions": 6,
         "missing-concurrency": 1
       },
-      "perRun": 3.65,
-      "monthly": 3283,
-      "score": 7.42
+      "perRun": 3.71,
+      "monthly": 3341,
+      "score": 7.47
     },
     {
       "repo": "sequelize/sequelize",
@@ -629,23 +629,23 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 21,
-      "findings": 106,
-      "e": 35,
-      "w": 69,
+      "workflows": 20,
+      "findings": 102,
+      "e": 33,
+      "w": 67,
       "i": 2,
       "ruleHits": {
         "missing-concurrency": 8,
-        "missing-cache": 21,
-        "missing-timeout": 28,
-        "deprecated-action": 35,
+        "missing-cache": 20,
+        "missing-timeout": 27,
+        "deprecated-action": 33,
         "missing-permissions": 6,
         "artifact-no-retention": 2,
         "matrix-overcommit": 6
       },
-      "perRun": 3.9,
-      "monthly": 3514,
-      "score": 8.33
+      "perRun": 3.84,
+      "monthly": 3456,
+      "score": 8.35
     },
     {
       "repo": "pnpm/pnpm",
