@@ -69,7 +69,7 @@
   4 vCPU, and so on - private repos only; public repos are free. Once your team
   starts pushing past <strong>~50,000 minutes/month</strong>, third-party runner
   providers can drop the per-minute cost by 50-90% with a one-line
-  <code>runs-on:</code> change. This page compares six of them. Pricing was
+  <code>runs-on:</code> change. This page compares seven of them. Pricing was
   pulled from each provider's public docs as of <strong>April 2026</strong>;
   always verify on the provider's site before signing.
 </p>
@@ -159,6 +159,16 @@
       <td>Y Combinator-backed. "2x faster, 50% cheaper" is their claim. Drop-in.</td>
     </tr>
     <tr>
+      <td><a href="https://sengi.run/"><strong>Sengi</strong></a><br/><a class="cta" href="https://sengi.run/">Sign up</a></td>
+      <td class="price">$0.001</td>
+      <td class="price">$0.002</td>
+      <td>~6x cheaper vs GitHub's $0.006</td>
+      <td>Yes</td>
+      <td>actions/cache + Docker layer cache, included</td>
+      <td>No - their cloud</td>
+      <td>Basic class. 3,000 free minutes/month, no card. Drop-in <code>runs-on: sengi-basic-2-ubuntu-2404</code>. Linux x64 only (Ubuntu 24.04).</td>
+    </tr>
+    <tr>
       <td><strong>GitHub-hosted</strong> <span class="pill">baseline</span></td>
       <td class="gh">$0.008</td>
       <td class="gh">$0.016</td>
@@ -222,6 +232,14 @@ jobs:
     # profile defined in your Namespace dashboard</code></pre>
 </details>
 
+<details>
+<summary>Show example: Sengi</summary>
+<pre><code>jobs:
+  test:
+    runs-on: sengi-basic-2-ubuntu-2404  # 2 vCPU, 8 GB
+    # or: sengi-basic-4-ubuntu-2404, sengi-basic-8-ubuntu-2404</code></pre>
+</details>
+
 <h2>Which one for which workload?</h2>
 <ul>
   <li><strong>You just want a one-line cheaper Linux runner</strong>: BuildJet
@@ -266,6 +284,7 @@ const ALT = {
   ubicloud:  { label: 'Ubicloud',  perMin: 0.0008 },
   warpbuild: { label: 'WarpBuild', perMin: 0.004 },
   blacksmith:{ label: 'Blacksmith',perMin: 0.004 },
+  sengi:     { label: 'Sengi',     perMin: 0.001 },
 };
 function recalc() {
   const min = Math.max(0, Number(document.getElementById('gmin').value) || 0);
