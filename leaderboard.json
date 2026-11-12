@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11 21:04 UTC",
+  "generatedAt": "2026-11-12 21:18 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -159,6 +159,25 @@
       "score": 3.83
     },
     {
+      "repo": "preactjs/preact",
+      "workflows": 8,
+      "findings": 23,
+      "e": 6,
+      "w": 12,
+      "i": 5,
+      "ruleHits": {
+        "deprecated-action": 6,
+        "artifact-no-retention": 5,
+        "missing-timeout": 8,
+        "missing-concurrency": 2,
+        "missing-cache": 1,
+        "missing-permissions": 1
+      },
+      "perRun": 0.7,
+      "monthly": 634,
+      "score": 4.06
+    },
+    {
       "repo": "chakra-ui/chakra-ui",
       "workflows": 3,
       "findings": 13,
@@ -258,25 +277,6 @@
       "score": 4.42
     },
     {
-      "repo": "preactjs/preact",
-      "workflows": 8,
-      "findings": 28,
-      "e": 6,
-      "w": 17,
-      "i": 5,
-      "ruleHits": {
-        "deprecated-action": 6,
-        "missing-permissions": 6,
-        "artifact-no-retention": 5,
-        "missing-timeout": 8,
-        "missing-concurrency": 2,
-        "missing-cache": 1
-      },
-      "perRun": 0.7,
-      "monthly": 634,
-      "score": 4.69
-    },
-    {
       "repo": "webpack/webpack",
       "workflows": 16,
       "findings": 33,
@@ -297,24 +297,24 @@
     {
       "repo": "nuxt/nuxt",
       "workflows": 26,
-      "findings": 78,
-      "e": 26,
-      "w": 45,
+      "findings": 80,
+      "e": 27,
+      "w": 46,
       "i": 7,
       "ruleHits": {
         "missing-timeout": 22,
         "missing-concurrency": 18,
-        "deprecated-action": 26,
+        "deprecated-action": 27,
         "artifact-no-retention": 1,
         "expensive-runner": 1,
         "fetch-depth-zero": 2,
         "matrix-overcommit": 2,
-        "stale-cache-key": 2,
+        "stale-cache-key": 3,
         "fail-fast-true": 4
       },
-      "perRun": 2.82,
-      "monthly": 2534,
-      "score": 4.87
+      "perRun": 2.88,
+      "monthly": 2592,
+      "score": 5.02
     },
     {
       "repo": "eslint/eslint",
@@ -649,14 +649,14 @@
     },
     {
       "repo": "pnpm/pnpm",
-      "workflows": 32,
-      "findings": 170,
-      "e": 71,
+      "workflows": 33,
+      "findings": 171,
+      "e": 72,
       "w": 79,
       "i": 20,
       "ruleHits": {
         "missing-timeout": 67,
-        "deprecated-action": 71,
+        "deprecated-action": 72,
         "fetch-depth-zero": 4,
         "matrix-overcommit": 6,
         "always-run-on-pr": 3,
@@ -668,7 +668,7 @@
       },
       "perRun": 2.11,
       "monthly": 1901,
-      "score": 9.44
+      "score": 9.24
     },
     {
       "repo": "parcel-bundler/parcel",
