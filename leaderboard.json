@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12 21:18 UTC",
+  "generatedAt": "2026-11-13 20:46 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -67,14 +67,14 @@
     },
     {
       "repo": "storybookjs/storybook",
-      "workflows": 20,
-      "findings": 48,
+      "workflows": 21,
+      "findings": 57,
       "e": 0,
-      "w": 41,
+      "w": 50,
       "i": 7,
       "ruleHits": {
-        "missing-cache": 4,
-        "missing-timeout": 31,
+        "missing-cache": 9,
+        "missing-timeout": 35,
         "stale-cache-key": 1,
         "missing-concurrency": 5,
         "wide-trigger": 3,
@@ -82,9 +82,9 @@
         "fetch-depth-zero": 2,
         "always-run-on-pr": 1
       },
-      "perRun": 1.98,
-      "monthly": 1786,
-      "score": 2.23
+      "perRun": 2.3,
+      "monthly": 2074,
+      "score": 2.55
     },
     {
       "repo": "fastify/fastify",
@@ -629,46 +629,47 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 20,
-      "findings": 102,
-      "e": 33,
-      "w": 67,
-      "i": 2,
+      "workflows": 21,
+      "findings": 112,
+      "e": 36,
+      "w": 72,
+      "i": 4,
       "ruleHits": {
         "missing-concurrency": 8,
-        "missing-cache": 20,
-        "missing-timeout": 27,
-        "deprecated-action": 33,
+        "missing-cache": 23,
+        "missing-timeout": 29,
+        "deprecated-action": 36,
         "missing-permissions": 6,
-        "artifact-no-retention": 2,
+        "fetch-depth-zero": 1,
+        "artifact-no-retention": 3,
         "matrix-overcommit": 6
       },
-      "perRun": 3.84,
-      "monthly": 3456,
-      "score": 8.35
+      "perRun": 4.03,
+      "monthly": 3629,
+      "score": 8.67
     },
     {
       "repo": "pnpm/pnpm",
-      "workflows": 33,
-      "findings": 171,
-      "e": 72,
+      "workflows": 34,
+      "findings": 174,
+      "e": 74,
       "w": 79,
-      "i": 20,
+      "i": 21,
       "ruleHits": {
         "missing-timeout": 67,
-        "deprecated-action": 72,
+        "deprecated-action": 74,
         "fetch-depth-zero": 4,
         "matrix-overcommit": 6,
         "always-run-on-pr": 3,
         "missing-cache": 2,
         "stale-cache-key": 2,
-        "artifact-no-retention": 9,
+        "artifact-no-retention": 10,
         "fail-fast-true": 4,
         "expensive-runner": 2
       },
       "perRun": 2.11,
       "monthly": 1901,
-      "score": 9.24
+      "score": 9.16
     },
     {
       "repo": "parcel-bundler/parcel",
