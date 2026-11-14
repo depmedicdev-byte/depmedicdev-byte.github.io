@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13 20:46 UTC",
+  "generatedAt": "2026-11-14 18:57 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -629,24 +629,24 @@
     },
     {
       "repo": "microsoft/playwright",
-      "workflows": 21,
-      "findings": 112,
-      "e": 36,
-      "w": 72,
+      "workflows": 22,
+      "findings": 115,
+      "e": 37,
+      "w": 74,
       "i": 4,
       "ruleHits": {
         "missing-concurrency": 8,
-        "missing-cache": 23,
-        "missing-timeout": 29,
-        "deprecated-action": 36,
+        "missing-cache": 24,
+        "missing-timeout": 30,
+        "deprecated-action": 37,
         "missing-permissions": 6,
         "fetch-depth-zero": 1,
         "artifact-no-retention": 3,
         "matrix-overcommit": 6
       },
-      "perRun": 4.03,
-      "monthly": 3629,
-      "score": 8.67
+      "perRun": 4.1,
+      "monthly": 3686,
+      "score": 8.5
     },
     {
       "repo": "pnpm/pnpm",
