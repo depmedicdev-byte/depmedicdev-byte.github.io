@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14 18:57 UTC",
+  "generatedAt": "2026-11-15 19:33 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -295,28 +295,6 @@
       "score": 4.84
     },
     {
-      "repo": "nuxt/nuxt",
-      "workflows": 26,
-      "findings": 80,
-      "e": 27,
-      "w": 46,
-      "i": 7,
-      "ruleHits": {
-        "missing-timeout": 22,
-        "missing-concurrency": 18,
-        "deprecated-action": 27,
-        "artifact-no-retention": 1,
-        "expensive-runner": 1,
-        "fetch-depth-zero": 2,
-        "matrix-overcommit": 2,
-        "stale-cache-key": 3,
-        "fail-fast-true": 4
-      },
-      "perRun": 2.88,
-      "monthly": 2592,
-      "score": 5.02
-    },
-    {
       "repo": "eslint/eslint",
       "workflows": 10,
       "findings": 53,
@@ -379,6 +357,28 @@
       "perRun": 17.15,
       "monthly": 15437,
       "score": 5.12
+    },
+    {
+      "repo": "nuxt/nuxt",
+      "workflows": 24,
+      "findings": 76,
+      "e": 27,
+      "w": 42,
+      "i": 7,
+      "ruleHits": {
+        "missing-timeout": 20,
+        "missing-concurrency": 16,
+        "deprecated-action": 27,
+        "artifact-no-retention": 1,
+        "expensive-runner": 1,
+        "fetch-depth-zero": 2,
+        "matrix-overcommit": 2,
+        "stale-cache-key": 3,
+        "fail-fast-true": 4
+      },
+      "perRun": 2.88,
+      "monthly": 2592,
+      "score": 5.27
     },
     {
       "repo": "vuejs/core",
