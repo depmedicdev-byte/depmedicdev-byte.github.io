@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15 19:33 UTC",
+  "generatedAt": "2026-11-16 23:12 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -425,23 +425,23 @@
     },
     {
       "repo": "electron/electron",
-      "workflows": 56,
-      "findings": 219,
-      "e": 65,
-      "w": 107,
+      "workflows": 57,
+      "findings": 224,
+      "e": 66,
+      "w": 111,
       "i": 47,
       "ruleHits": {
-        "missing-timeout": 86,
-        "deprecated-action": 65,
+        "missing-timeout": 89,
+        "deprecated-action": 66,
         "artifact-no-retention": 8,
         "fetch-depth-zero": 39,
-        "missing-cache": 7,
+        "missing-cache": 8,
         "missing-concurrency": 13,
         "stale-cache-key": 1
       },
-      "perRun": 3.46,
-      "monthly": 3110,
-      "score": 5.81
+      "perRun": 3.65,
+      "monthly": 3283,
+      "score": 5.83
     },
     {
       "repo": "lodash/lodash",
@@ -651,12 +651,12 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 34,
-      "findings": 174,
+      "findings": 175,
       "e": 74,
-      "w": 79,
+      "w": 80,
       "i": 21,
       "ruleHits": {
-        "missing-timeout": 67,
+        "missing-timeout": 68,
         "deprecated-action": 74,
         "fetch-depth-zero": 4,
         "matrix-overcommit": 6,
@@ -669,7 +669,7 @@
       },
       "perRun": 2.11,
       "monthly": 1901,
-      "score": 9.16
+      "score": 9.19
     },
     {
       "repo": "parcel-bundler/parcel",
@@ -752,25 +752,25 @@
     },
     {
       "repo": "biomejs/biome",
-      "workflows": 25,
-      "findings": 238,
-      "e": 73,
-      "w": 122,
-      "i": 43,
+      "workflows": 27,
+      "findings": 244,
+      "e": 75,
+      "w": 125,
+      "i": 44,
       "ruleHits": {
-        "missing-concurrency": 8,
-        "missing-timeout": 78,
-        "deprecated-action": 73,
+        "missing-concurrency": 9,
+        "missing-timeout": 80,
+        "deprecated-action": 75,
         "fail-fast-true": 26,
         "missing-cache": 18,
         "missing-permissions": 14,
         "artifact-no-retention": 15,
         "matrix-overcommit": 4,
-        "fetch-depth-zero": 2
+        "fetch-depth-zero": 3
       },
       "perRun": 0.51,
       "monthly": 461,
-      "score": 14.5
+      "score": 13.78
     },
     {
       "repo": "remix-run/remix",
