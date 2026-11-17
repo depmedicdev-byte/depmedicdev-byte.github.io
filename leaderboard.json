@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16 23:12 UTC",
+  "generatedAt": "2026-11-17 22:02 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -67,14 +67,14 @@
     },
     {
       "repo": "storybookjs/storybook",
-      "workflows": 21,
-      "findings": 57,
+      "workflows": 22,
+      "findings": 58,
       "e": 0,
-      "w": 50,
+      "w": 51,
       "i": 7,
       "ruleHits": {
         "missing-cache": 9,
-        "missing-timeout": 35,
+        "missing-timeout": 36,
         "stale-cache-key": 1,
         "missing-concurrency": 5,
         "wide-trigger": 3,
@@ -82,9 +82,9 @@
         "fetch-depth-zero": 2,
         "always-run-on-pr": 1
       },
-      "perRun": 2.3,
-      "monthly": 2074,
-      "score": 2.55
+      "perRun": 2.37,
+      "monthly": 2131,
+      "score": 2.48
     },
     {
       "repo": "fastify/fastify",
@@ -402,26 +402,26 @@
     },
     {
       "repo": "nodejs/node",
-      "workflows": 45,
-      "findings": 161,
+      "workflows": 46,
+      "findings": 163,
       "e": 44,
-      "w": 106,
+      "w": 108,
       "i": 11,
       "ruleHits": {
-        "missing-timeout": 66,
+        "missing-timeout": 67,
         "missing-cache": 31,
         "deprecated-action": 44,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
-        "missing-concurrency": 6,
+        "missing-concurrency": 7,
         "fetch-depth-zero": 3,
         "expensive-runner": 1,
         "matrix-overcommit": 1,
         "stale-cache-key": 1
       },
-      "perRun": 6.66,
-      "monthly": 5990,
-      "score": 5.41
+      "perRun": 6.72,
+      "monthly": 6048,
+      "score": 5.34
     },
     {
       "repo": "electron/electron",
@@ -775,24 +775,25 @@
     {
       "repo": "remix-run/remix",
       "workflows": 13,
-      "findings": 225,
+      "findings": 228,
       "e": 61,
-      "w": 134,
-      "i": 30,
+      "w": 136,
+      "i": 31,
       "ruleHits": {
-        "missing-cache": 17,
-        "missing-timeout": 58,
+        "missing-cache": 18,
+        "missing-timeout": 59,
         "deprecated-action": 61,
         "artifact-no-retention": 30,
         "pinned-action-sha": 39,
         "expensive-runner": 6,
         "missing-permissions": 5,
         "stale-cache-key": 8,
-        "missing-concurrency": 1
+        "missing-concurrency": 1,
+        "fetch-depth-zero": 1
       },
-      "perRun": 6.78,
-      "monthly": 6106,
-      "score": 25.54
+      "perRun": 6.85,
+      "monthly": 6163,
+      "score": 25.73
     }
   ]
 }
