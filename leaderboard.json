@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18 21:44 UTC",
+  "generatedAt": "2026-11-19 21:59 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -295,27 +295,8 @@
       "score": 4.84
     },
     {
-      "repo": "eslint/eslint",
-      "workflows": 10,
-      "findings": 53,
-      "e": 0,
-      "w": 48,
-      "i": 5,
-      "ruleHits": {
-        "missing-cache": 18,
-        "missing-concurrency": 7,
-        "missing-timeout": 21,
-        "matrix-overcommit": 2,
-        "fail-fast-true": 2,
-        "always-run-on-pr": 3
-      },
-      "perRun": 1.73,
-      "monthly": 1555,
-      "score": 5.05
-    },
-    {
       "repo": "npm/cli",
-      "workflows": 26,
+      "workflows": 27,
       "findings": 136,
       "e": 1,
       "w": 124,
@@ -334,9 +315,28 @@
         "artifact-no-retention": 2,
         "stale-cache-key": 2
       },
-      "perRun": 2.56,
-      "monthly": 2304,
-      "score": 5.1
+      "perRun": 2.62,
+      "monthly": 2362,
+      "score": 4.91
+    },
+    {
+      "repo": "eslint/eslint",
+      "workflows": 10,
+      "findings": 53,
+      "e": 0,
+      "w": 48,
+      "i": 5,
+      "ruleHits": {
+        "missing-cache": 18,
+        "missing-concurrency": 7,
+        "missing-timeout": 21,
+        "matrix-overcommit": 2,
+        "fail-fast-true": 2,
+        "always-run-on-pr": 3
+      },
+      "perRun": 1.73,
+      "monthly": 1555,
+      "score": 5.05
     },
     {
       "repo": "facebook/react",
@@ -651,13 +651,13 @@
     {
       "repo": "pnpm/pnpm",
       "workflows": 34,
-      "findings": 175,
-      "e": 74,
+      "findings": 176,
+      "e": 75,
       "w": 80,
       "i": 21,
       "ruleHits": {
         "missing-timeout": 68,
-        "deprecated-action": 74,
+        "deprecated-action": 75,
         "fetch-depth-zero": 4,
         "matrix-overcommit": 6,
         "always-run-on-pr": 3,
@@ -669,7 +669,7 @@
       },
       "perRun": 2.11,
       "monthly": 1901,
-      "score": 9.19
+      "score": 9.28
     },
     {
       "repo": "parcel-bundler/parcel",
@@ -775,13 +775,13 @@
     {
       "repo": "remix-run/remix",
       "workflows": 13,
-      "findings": 228,
+      "findings": 230,
       "e": 61,
-      "w": 136,
+      "w": 138,
       "i": 31,
       "ruleHits": {
-        "missing-cache": 18,
-        "missing-timeout": 59,
+        "missing-cache": 19,
+        "missing-timeout": 60,
         "deprecated-action": 61,
         "artifact-no-retention": 30,
         "pinned-action-sha": 39,
@@ -791,9 +791,9 @@
         "missing-concurrency": 1,
         "fetch-depth-zero": 1
       },
-      "perRun": 6.85,
-      "monthly": 6163,
-      "score": 25.73
+      "perRun": 6.91,
+      "monthly": 6221,
+      "score": 25.88
     }
   ]
 }
