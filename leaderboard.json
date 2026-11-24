@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22 20:35 UTC",
+  "generatedAt": "2026-11-24 01:31 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -68,12 +68,12 @@
     {
       "repo": "storybookjs/storybook",
       "workflows": 22,
-      "findings": 58,
+      "findings": 59,
       "e": 0,
-      "w": 51,
+      "w": 52,
       "i": 7,
       "ruleHits": {
-        "missing-cache": 9,
+        "missing-cache": 10,
         "missing-timeout": 36,
         "stale-cache-key": 1,
         "missing-concurrency": 5,
@@ -84,7 +84,7 @@
       },
       "perRun": 2.37,
       "monthly": 2131,
-      "score": 2.48
+      "score": 2.52
     },
     {
       "repo": "fastify/fastify",
@@ -279,20 +279,20 @@
     {
       "repo": "webpack/webpack",
       "workflows": 16,
-      "findings": 33,
-      "e": 22,
+      "findings": 34,
+      "e": 23,
       "w": 8,
       "i": 3,
       "ruleHits": {
-        "deprecated-action": 22,
+        "deprecated-action": 23,
         "fetch-depth-zero": 3,
         "matrix-overcommit": 2,
         "missing-cache": 1,
         "stale-cache-key": 5
       },
-      "perRun": 2.05,
-      "monthly": 1843,
-      "score": 4.72
+      "perRun": 2.11,
+      "monthly": 1901,
+      "score": 4.91
     },
     {
       "repo": "npm/cli",
