@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26 22:49 UTC",
+  "generatedAt": "2026-11-27 22:29 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -277,25 +277,6 @@
       "score": 4.42
     },
     {
-      "repo": "webpack/webpack",
-      "workflows": 17,
-      "findings": 36,
-      "e": 24,
-      "w": 9,
-      "i": 3,
-      "ruleHits": {
-        "deprecated-action": 24,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 2,
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "stale-cache-key": 5
-      },
-      "perRun": 2.18,
-      "monthly": 1958,
-      "score": 4.85
-    },
-    {
       "repo": "npm/cli",
       "workflows": 27,
       "findings": 136,
@@ -339,6 +320,27 @@
       "perRun": 17.15,
       "monthly": 15437,
       "score": 5.12
+    },
+    {
+      "repo": "webpack/webpack",
+      "workflows": 17,
+      "findings": 40,
+      "e": 25,
+      "w": 10,
+      "i": 5,
+      "ruleHits": {
+        "deprecated-action": 25,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 2,
+        "missing-timeout": 1,
+        "always-run-on-pr": 2,
+        "missing-cache": 1,
+        "missing-concurrency": 1,
+        "stale-cache-key": 5
+      },
+      "perRun": 2.3,
+      "monthly": 2074,
+      "score": 5.15
     },
     {
       "repo": "eslint/eslint",
@@ -404,13 +406,13 @@
     {
       "repo": "nodejs/node",
       "workflows": 46,
-      "findings": 164,
+      "findings": 165,
       "e": 44,
-      "w": 109,
+      "w": 110,
       "i": 11,
       "ruleHits": {
         "missing-timeout": 68,
-        "missing-cache": 31,
+        "missing-cache": 32,
         "deprecated-action": 44,
         "artifact-no-retention": 7,
         "fail-fast-true": 1,
@@ -422,7 +424,7 @@
       },
       "perRun": 6.78,
       "monthly": 6106,
-      "score": 5.36
+      "score": 5.38
     },
     {
       "repo": "electron/electron",
@@ -505,23 +507,23 @@
     },
     {
       "repo": "prisma/prisma",
-      "workflows": 17,
-      "findings": 65,
-      "e": 25,
-      "w": 33,
+      "workflows": 18,
+      "findings": 68,
+      "e": 27,
+      "w": 34,
       "i": 7,
       "ruleHits": {
-        "missing-cache": 1,
-        "deprecated-action": 25,
+        "missing-cache": 2,
+        "deprecated-action": 27,
         "missing-timeout": 29,
         "fetch-depth-zero": 6,
         "missing-concurrency": 2,
         "artifact-no-retention": 1,
         "pinned-action-sha": 1
       },
-      "perRun": 2.62,
-      "monthly": 2362,
-      "score": 6.56
+      "perRun": 2.75,
+      "monthly": 2477,
+      "score": 6.58
     },
     {
       "repo": "remix-run/react-router",
