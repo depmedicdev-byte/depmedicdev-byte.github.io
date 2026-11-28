@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27 22:29 UTC",
+  "generatedAt": "2026-11-28 21:32 UTC",
   "rows": [
     {
       "repo": "sveltejs/svelte",
@@ -302,6 +302,27 @@
       "score": 4.91
     },
     {
+      "repo": "webpack/webpack",
+      "workflows": 18,
+      "findings": 41,
+      "e": 26,
+      "w": 10,
+      "i": 5,
+      "ruleHits": {
+        "deprecated-action": 26,
+        "fetch-depth-zero": 3,
+        "matrix-overcommit": 2,
+        "missing-timeout": 1,
+        "always-run-on-pr": 2,
+        "missing-cache": 1,
+        "missing-concurrency": 1,
+        "stale-cache-key": 5
+      },
+      "perRun": 2.37,
+      "monthly": 2131,
+      "score": 5.03
+    },
+    {
       "repo": "facebook/react",
       "workflows": 26,
       "findings": 143,
@@ -320,27 +341,6 @@
       "perRun": 17.15,
       "monthly": 15437,
       "score": 5.12
-    },
-    {
-      "repo": "webpack/webpack",
-      "workflows": 17,
-      "findings": 40,
-      "e": 25,
-      "w": 10,
-      "i": 5,
-      "ruleHits": {
-        "deprecated-action": 25,
-        "fetch-depth-zero": 3,
-        "matrix-overcommit": 2,
-        "missing-timeout": 1,
-        "always-run-on-pr": 2,
-        "missing-cache": 1,
-        "missing-concurrency": 1,
-        "stale-cache-key": 5
-      },
-      "perRun": 2.3,
-      "monthly": 2074,
-      "score": 5.15
     },
     {
       "repo": "eslint/eslint",
@@ -659,8 +659,8 @@
       "w": 76,
       "i": 20,
       "ruleHits": {
-        "missing-timeout": 66,
         "deprecated-action": 69,
+        "missing-timeout": 66,
         "always-run-on-pr": 3,
         "matrix-overcommit": 6,
         "missing-cache": 2,
